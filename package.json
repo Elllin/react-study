@@ -13,7 +13,10 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build"
+    "build": "react-scripts build",
+    "deploy": "aws s3 sync ./build s3://study-web-service --profile=eunbi",
+    "invalidate": "aws cloudfront create-invalidation --profile=eunbi --distribution-id E38FU75PR9MQK6 --paths / /index.html /error.html /service-worker.js /manifest.json /favicon.ico",
+    "all": "npm-run-all -s build deploy invalidate"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -29,5 +32,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.5"
   }
 }
