@@ -2,9 +2,12 @@ import React from 'react';
 import HomeContainer from './containers/HomeContainer';
 import { Route, Switch } from 'react-router-dom';
 
+import GlobalStyle from './style/GlobalStyle';
+
 function App() {
   return (
-    <div>
+    <>
+      <GlobalStyle />
       <Switch>
         <Route path="/" component={HomeContainer} exact />
         <Route
@@ -16,7 +19,7 @@ function App() {
           )}
         />
       </Switch>
-    </div>
+    </>
   );
 }
 
