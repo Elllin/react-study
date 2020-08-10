@@ -1,8 +1,14 @@
 import React from 'react';
+import LoginButton from '../Common/LoginButton';
+
 import styled from 'styled-components';
 
 function Header() {
-  return <HeaderBar></HeaderBar>;
+  return (
+    <HeaderBar>
+      <LoginButton />
+    </HeaderBar>
+  );
 }
 
 const HeaderBar = styled.header`

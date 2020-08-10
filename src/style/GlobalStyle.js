@@ -14,6 +14,7 @@ const GlobalStyle = createGlobalStyle`
         border: none;
         outline: none;
         background: transparent;
+        cursor: pointer;
     }
 `;
 
