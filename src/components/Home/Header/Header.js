@@ -12,6 +12,7 @@ function Header() {
 }
 
 const HeaderBar = styled.header`
+  display: flex;
   width: 100%;
   height: 50px;
   background-color: pink;
