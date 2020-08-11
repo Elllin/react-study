@@ -4,10 +4,10 @@ import Carousel from '../components/Home/Main/Carousel';
 
 function HomeContainer() {
   return (
-    <>
+    <div>
       <Header>home</Header>
       <Carousel />
-    </>
+    </div>
   );
 }
 
