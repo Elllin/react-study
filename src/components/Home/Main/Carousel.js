@@ -29,8 +29,17 @@ function Carousel() {
 }
 
 const SliderWrap = styled.div`
-  width: 950px;
+  width: 100%;
+  height: 300px;
   margin: 0 auto;
+  div {
+    background: blue;
+    height: 100%;
+  }
+  h3 {
+    color: white;
+    font-size: 300px;
+  }
 `;
 
 export default Carousel;
