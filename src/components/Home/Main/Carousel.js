@@ -10,7 +10,7 @@ function Carousel() {
     slidesToScroll: 1,
     autoplay: true,
     infinite: true,
-    autoplaySpeed: 4000,
+    autoplaySpeed: 3000,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
   };
