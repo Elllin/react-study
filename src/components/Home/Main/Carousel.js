@@ -35,7 +35,6 @@ const SliderWrap = styled.div`
   position: relative;
   width: 100%;
   height: 300px;
-  margin: 0 auto;
   div {
     background: blue;
     height: 100%;
