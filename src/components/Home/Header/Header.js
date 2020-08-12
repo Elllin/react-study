@@ -2,7 +2,7 @@ import React from 'react';
 import LoginButton from '../Common/LoginButton';
 
 import styled from 'styled-components';
-import { Container } from '../../../style/CustomStyle';
+import { Container } from 'style/CustomStyle';
 
 function Header() {
   return (
