@@ -1,25 +1,24 @@
 import React from 'react';
 import Slider from 'react-slick';
 
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 function Carousel() {
-  const carouselSettins = {
+  const carouselSettings = {
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
     infinite: true,
     autoplaySpeed: 4000,
-    // arrows: true,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
   };
   return (
     <SliderWrap>
-      <Slider {...carouselSettins}>
+      <Slider {...carouselSettings}>
         <div>
-          <h3>1{/* <FaChevronRight /> */}</h3>
+          <h3>1</h3>
         </div>
         <div>
           <h3>2</h3>
@@ -47,11 +46,8 @@ const SliderWrap = styled.div`
   }
 `;
 
-const PrevArrow = styled(FaChevronLeft)`
+const ArrowButton = css`
   position: absolute;
-  font-size: 50px;
-  left: 0;
-  z-index: 1;
   height: 30px;
   width: 30px;
   color: #fff;
@@ -61,16 +57,15 @@ const PrevArrow = styled(FaChevronLeft)`
   }
 `;
 
+const PrevArrow = styled(FaChevronLeft)`
+  ${ArrowButton}
+  left: 0;
+  z-index: 1;
+`;
+
 const NextArrow = styled(FaChevronRight)`
-  color: white;
-  position: absolute;
-  right: 0;
-  height: 30px;
-  width: 30px;
-  &:hover,
-  &:focus {
-    color: #fff;
-  }
+  ${ArrowButton}
+  right:0;
 `;
 
 export default Carousel;
