@@ -1,6 +1,7 @@
 import React from 'react';
-import HomeContainer from './containers/HomeContainer';
 import { Route, Switch } from 'react-router-dom';
+import HomeContainer from './containers/HomeContainer';
+import CreationContainer from './containers/CreationContainer';
 
 import GlobalStyle from './style/GlobalStyle';
 
@@ -10,6 +11,7 @@ function App() {
       <GlobalStyle />
       <Switch>
         <Route path="/" component={HomeContainer} exact />
+        <Route path="/create" component={CreationContainer} exact />
         <Route
           render={({ location }) => (
             <div>

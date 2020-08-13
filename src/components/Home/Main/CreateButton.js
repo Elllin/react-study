@@ -1,12 +1,15 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import styled from 'styled-components';
 
 function CreateButton() {
   return (
     <Button>
-      스터디
-      <br /> 개설하기
+      <Link to="/create">
+        스터디
+        <br /> 개설하기
+      </Link>
     </Button>
   );
 }
@@ -19,6 +22,13 @@ const Button = styled.button`
   width: 100px;
   height: 100px;
   border-radius: 50%;
+  a {
+    text-decoration: none;
+    color: #000;
+    &:active {
+      color: #000;
+    }
+  }
 `;
 
 export default CreateButton;
