@@ -1,5 +1,5 @@
 import React from 'react';
-import LoginButton from '../Common/LoginButton';
+import LoginButton from '../common/LoginButton';
 
 import styled from 'styled-components';
 import { Container, Layout } from 'style/CustomStyle';
