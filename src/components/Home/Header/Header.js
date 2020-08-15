@@ -8,7 +8,7 @@ function Header() {
   return (
     <HeaderBar>
       <InnerWrap>
-        LOGO
+        <span>DO IT. DO IT</span>
         <LoginButton />
       </InnerWrap>
     </HeaderBar>
@@ -18,7 +18,9 @@ function Header() {
 const HeaderBar = styled.header`
   width: 100%;
   height: 60px;
-  background-color: pink;
+  span {
+    font-weight: 900;
+  }
 `;
 
 const InnerWrap = styled(Container)`
