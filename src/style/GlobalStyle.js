@@ -9,6 +9,7 @@ const GlobalStyle = createGlobalStyle`
         box-sizing: border-box;
         font-family: AppleSDGothicNeo; 
         /* font-family 추가 예정 */
+        scroll-behavior: smooth;
     }
     button{
         margin: 0;
