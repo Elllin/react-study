@@ -1,17 +1,17 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import HomeContainer from './containers/HomeContainer';
-import CreationContainer from './containers/CreationContainer';
+import HomePage from 'pages/HomePage';
+import CreationPage from 'pages/CreationPage';
 
-import GlobalStyle from './style/GlobalStyle';
+import GlobalStyle from 'style/GlobalStyle';
 
 function App() {
   return (
     <>
       <GlobalStyle />
       <Switch>
-        <Route path="/" component={HomeContainer} exact />
-        <Route path="/create" component={CreationContainer} exact />
+        <Route path="/" component={HomePage} exact />
+        <Route path="/create" component={CreationPage} />
         <Route
           render={({ location }) => (
             <div>

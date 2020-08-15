@@ -1,17 +1,16 @@
 import React from 'react';
-import Header from 'components/Home/Header/Header';
-import Carousel from 'components/Home/Main/Carousel';
-import Creation from 'components/Home/Main/Creation';
-import Description from 'components/Home/Main/Description';
-import CreateButton from 'components/Home/Main/CreateButton';
+import Header from 'components/home/header/Header';
+import Carousel from 'components/home/main/Carousel';
+import Beginning from 'components/home/main/Beginning';
+import Description from 'components/home/main/description/Description';
+import CreateButton from 'components/home/main/CreateButton';
 
 function HomeContainer() {
   return (
     <div>
       <Header />
       <main>
-        <Carousel />
-        <Creation />
+        <Beginning />
         <Description />
         <CreateButton />
       </main>
