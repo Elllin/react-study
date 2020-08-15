@@ -23,6 +23,11 @@ const Div = styled.div`
   background: red;
   width: 100%;
   height: 200px;
+  h2 {
+    font-family: NanumSquareOTFB;
+    font-size: 51px;
+    line-height: 1.53;
+  }
 `;
 
 export default Beginning;
