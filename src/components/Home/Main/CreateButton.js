@@ -18,10 +18,14 @@ const Button = styled.button`
   position: fixed;
   right: 256px;
   bottom: 50px;
-  background: green;
-  width: 100px;
-  height: 100px;
+  background-color: #b9b9b9;
+  width: 188px;
+  height: 188px;
   border-radius: 50%;
+
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.31;
   a {
     text-decoration: none;
     color: #000;
