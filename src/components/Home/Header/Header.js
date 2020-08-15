@@ -2,7 +2,7 @@ import React from 'react';
 import LoginButton from '../common/LoginButton';
 
 import styled from 'styled-components';
-import { Container } from 'style/CustomStyle';
+import { Container, Layout } from 'style/CustomStyle';
 
 function Header() {
   return (
@@ -25,6 +25,7 @@ const HeaderBar = styled.header`
 `;
 
 const InnerWrap = styled(Container)`
+  ${Layout}
   justify-content: space-between;
 `;
 

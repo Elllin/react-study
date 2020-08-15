@@ -21,8 +21,9 @@ function Beginning() {
 
 const Div = styled.div`
   background: red;
-  width: 100%;
-  height: 200px;
+  padding-top: 81px;
+  /* width: 100%; */
+  height: 77vh;
   h2 {
     font-family: NanumSquareOTFB;
     font-size: 51px;
