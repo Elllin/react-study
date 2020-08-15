@@ -1,7 +1,7 @@
 import React from 'react';
 
 import styled from 'styled-components';
-import { Container, Layout } from 'style/CustomStyle';
+import { Container } from 'style/CustomStyle';
 
 function Description() {
   return (
