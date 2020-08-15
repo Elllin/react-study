@@ -1,7 +1,8 @@
 import React from 'react';
 
 import styled from 'styled-components';
-import { Container } from 'style/CustomStyle';
+import { Container, Layout } from 'style/CustomStyle';
+import { BsChevronCompactDown } from 'react-icons/bs';
 
 function Beginning() {
   return (
@@ -14,20 +15,44 @@ function Beginning() {
           <br />
           효율적으로 찾아보세요
         </h2>
+        <button>시작하기</button>
+        <DownButtonWrap>
+          <DownButton />
+        </DownButtonWrap>
       </Container>
     </Div>
   );
 }
 
+const DownButtonWrap = styled.div`
+  ${Layout}
+  justify-content: center;
+  margin-top: 50px;
+`;
+
+const DownButton = styled(BsChevronCompactDown)`
+  font-size: 60px;
+  color: grey;
+  cursor: pointer;
+`;
+
 const Div = styled.div`
-  background: red;
   padding-top: 81px;
-  /* width: 100%; */
   height: 77vh;
   h2 {
+    margin-bottom: 98px;
     font-family: NanumSquareOTFB;
     font-size: 51px;
     line-height: 1.53;
+  }
+  button {
+    display: block;
+    width: 305px;
+    height: 74px;
+    background-color: #000000;
+    font-size: 31px;
+    font-weight: 600;
+    color: #ffffff;
   }
 `;
 
