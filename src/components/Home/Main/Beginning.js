@@ -17,7 +17,9 @@ function Beginning() {
         </h2>
         <button>시작하기</button>
         <DownButtonWrap>
-          <DownButton />
+          <a href="#bottom">
+            <DownIcon />
+          </a>
         </DownButtonWrap>
       </Container>
     </Div>
@@ -26,11 +28,10 @@ function Beginning() {
 
 const DownButtonWrap = styled.div`
   ${Layout}
-  justify-content: center;
   margin-top: 50px;
 `;
 
-const DownButton = styled(BsChevronCompactDown)`
+const DownIcon = styled(BsChevronCompactDown)`
   font-size: 60px;
   color: grey;
   cursor: pointer;

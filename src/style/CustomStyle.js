@@ -9,4 +9,5 @@ export const Container = styled.div`
 export const Layout = css`
   display: flex;
   align-items: center;
+  justify-content: center;
 `;
