@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 
 import styled from 'styled-components';
 
-function CreateButton() {
+function OpeningButton() {
   return (
     <Button>
-      <Link to="/create">
+      <Link to="/opening">
         스터디
         <br /> 개설하기
       </Link>
@@ -35,4 +35,4 @@ const Button = styled.button`
   }
 `;
 
-export default CreateButton;
+export default OpeningButton;
