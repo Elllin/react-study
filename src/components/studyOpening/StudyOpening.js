@@ -1,6 +1,6 @@
 import React from 'react';
 
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Container, Layout } from 'style/CustomStyle';
 
 function StudyOpening() {
@@ -10,40 +10,36 @@ function StudyOpening() {
         <div>
           <legend>스터디 개설하기</legend>
           <div>
-            <label htmlFor="title">
-              스터디 그룹 이름 <span>*</span>
-            </label>
+            <Title htmlFor="title">
+              스터디 그룹 이름 <Required>*</Required>
+            </Title>
             <input type="text" id="title" name="title" />
           </div>
           <div>
-            <label htmlFor="title">
-              지역 <span>*</span>
-            </label>
+            <Title htmlFor="title">
+              지역 <Required>*</Required>
+            </Title>
             <input type="text" id="title" name="title" />
           </div>
           <div>
-            <label htmlFor="title">
-              시간 <span>*</span>
-            </label>
+            <Title htmlFor="title">
+              시간 <Required>*</Required>
+            </Title>
             <input type="text" id="title" name="title" />
           </div>
           <div>
-            <div className="label-title">
-              예치금 여부 <span>*</span>
-            </div>
-            <label htmlFor="title" className="radio-title">
-              예
-            </label>
-            <input type="radio" id="title" name="title" value="예" />
-            <label htmlFor="title" className="radio-title">
-              아니오
-            </label>
-            <input type="radio" id="title" name="title" value="아니오" />
+            <Title as="div">
+              예치금 여부 <Required>*</Required>
+            </Title>
+            <label htmlFor="yes">예</label>
+            <input type="radio" id="yes" name="deposit" value="예" />
+            <label htmlFor="no">아니오</label>
+            <input type="radio" id="no" name="deposit" value="아니오" />
           </div>
           <div>
-            <label htmlFor="title">
-              카테고리 <span>*</span>
-            </label>
+            <Title htmlFor="title">
+              카테고리 <Required>*</Required>
+            </Title>
             <select id="title" name="title">
               <option value="">대입 / 수능</option>
               <option value="">대학생 / 취업</option>
@@ -51,29 +47,29 @@ function StudyOpening() {
             </select>
           </div>
           <div>
-            <label htmlFor="title">
-              스터디 설명 <span>*</span>
-            </label>
+            <Title htmlFor="title">
+              스터디 설명 <Required>*</Required>
+            </Title>
             <textarea id="title" name="title" />
           </div>
           <div>
-            <label htmlFor="title">해시태그</label>
+            <Title htmlFor="title">해시태그</Title>
             <input type="text" id="title" name="title" />
           </div>
           <div>
-            <label htmlFor="title">기간</label>
+            <Title htmlFor="title">기간</Title>
             <input type="text" id="title" name="title" />
           </div>
           <div>
-            <label htmlFor="title">희망 인원</label>
+            <Title htmlFor="title">희망 인원</Title>
             <input type="text" id="title" name="title" />
           </div>
           <div>
-            <label htmlFor="title">희망 나이</label>
+            <Title htmlFor="title">희망 나이</Title>
             <input type="text" id="title" name="title" />
           </div>
           <div>
-            <label htmlFor="title">썸네일</label>
+            <Title htmlFor="title">썸네일</Title>
             <input type="text" id="title" name="title" />
           </div>
         </div>
@@ -84,8 +80,8 @@ function StudyOpening() {
 
 const StudyForm = styled.form`
   margin: 20px auto;
-  padding: 60px 30px 30px;
-  width: 500px;
+  padding: 60px 70px 30px;
+  width: 600px;
   border: 1px solid black;
   border-radius: 10px;
   legend {
@@ -102,19 +98,18 @@ const StudyForm = styled.form`
   div + div {
     margin-top: 20px;
   }
-  label,
-  .label-title {
-    margin-right: 30px;
-    display: block;
-    width: 100%;
-  }
-  .radio-title {
-    margin-right: 0;
-    display: inline;
-  }
-  label > span {
-    color: red;
-  }
 `;
 
+const Title = styled.label`
+  margin-right: 30px;
+  display: block;
+  width: 100%;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 15px;
+`;
+
+const Required = styled.span`
+  color: red;
+`;
 export default StudyOpening;
