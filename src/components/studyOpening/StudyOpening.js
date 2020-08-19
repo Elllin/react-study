@@ -1,7 +1,7 @@
 import React from 'react';
 
-import styled, { css } from 'styled-components';
-import { Container, Layout } from 'style/CustomStyle';
+import styled from 'styled-components';
+import { Layout } from 'style/CustomStyle';
 
 function StudyOpening() {
   return (
