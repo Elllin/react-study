@@ -9,18 +9,19 @@ function Header() {
     <HeaderBar>
       <InnerWrap>
         <h1>DO IT. DO IT</h1>
-        <LoginButton />
+        {/* <LoginButton /> */}
       </InnerWrap>
     </HeaderBar>
   );
 }
 
 const HeaderBar = styled.header`
-  padding: 29px 0;
+  padding: 2.5rem 0;
   width: 100%;
   h1 {
+    height: 2.9rem;
+    font-size: 2.4rem;
     font-weight: 900;
-    font-size: 36px;
   }
 `;
 

@@ -9,7 +9,7 @@ const GlobalStyle = createGlobalStyle`
     html, body {
         width: 100%;
         height: 100%;
-        
+        font-size:10px;
         font-family: AppleSDGothicNeo; 
         /* font-family 추가 예정 */
         scroll-behavior: smooth;

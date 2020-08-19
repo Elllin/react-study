@@ -16,6 +16,7 @@ function Description() {
 
 const Div = styled.div`
   height: 100vh;
+  /* height: 1045px; */
   h2 {
     font-family: DIN;
     font-size: 50px;

@@ -16,16 +16,16 @@ function OpeningButton() {
 
 const Button = styled.button`
   position: fixed;
-  right: 256px;
+  right: 21.8%;
   bottom: 50px;
-  background-color: #b9b9b9;
-  width: 188px;
-  height: 188px;
+  width: 127px;
+  height: 127px;
+  box-shadow: 0 2px 6px 1px rgba(153, 153, 153, 0.55);
+  background-color: #ffd000;
   border-radius: 50%;
 
-  font-size: 32px;
-  font-weight: 600;
-  line-height: 1.31;
+  font-size: 16px;
+  line-height: 1.63;
   a {
     text-decoration: none;
     color: #000;
