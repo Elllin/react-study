@@ -39,9 +39,16 @@ const InnerWrap = styled(Container)`
   padding-top: 74px;
 `;
 
-const ItemWrap = styled.div`
+const ItemWrap = styled.dl`
   margin: 0 auto;
   width: 77.1rem;
+  text-align: start;
+  dt + dt {
+    margin-left: 22.5rem;
+  }
+  dd + dt {
+    margin-top: 11.3rem;
+  }
 `;
 
 export default Description;

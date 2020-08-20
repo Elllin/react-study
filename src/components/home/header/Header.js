@@ -18,6 +18,7 @@ const HeaderBar = styled.header`
   width: 100%;
   h1 {
     height: 2.9rem;
+    font-family: AppleSDGothicNeo, sans-serif;
     font-size: 2.4rem;
     font-weight: 900;
   }

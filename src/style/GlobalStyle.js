@@ -13,7 +13,8 @@ const GlobalStyle = createGlobalStyle`
         width: 100%;
         height: 100%;
         font-size:10px;
-        font-family: NanumSquareRoundL, sans-serif; 
+        /* font-family: NanumSquareRoundL, sans-serif;  */
+        font-family: "나눔스퀘어라운드OTF", "nanum-square-round-otf", sans-serif; 
         scroll-behavior: smooth;
     }
     button{

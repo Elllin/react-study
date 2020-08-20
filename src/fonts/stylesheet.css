@@ -1,0 +1,13 @@
+@font-face {
+    font-family: '';
+    src: url('NanumSquareRoundOTFEB00.eot');
+    src: url('NanumSquareRoundOTFEB00.eot?#iefix') format('embedded-opentype'),
+        url('NanumSquareRoundOTFEB00.woff2') format('woff2'),
+        url('NanumSquareRoundOTFEB00.woff') format('woff'),
+        url('NanumSquareRoundOTFEB00.ttf') format('truetype'),
+        url('NanumSquareRoundOTFEB00.svg#NanumSquareRoundOTFEB00') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
