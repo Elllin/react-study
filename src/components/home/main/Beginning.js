@@ -41,7 +41,7 @@ const DownIcon = styled(BsChevronDown)`
 
 const Div = styled.div`
   padding-top: 17.7rem;
-  height: 77vh;
+  height: 90vh;
   h2 {
     margin-bottom: 51.6px;
     font-size: 36px;

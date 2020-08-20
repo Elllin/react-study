@@ -1,39 +1,47 @@
 import React from 'react';
+import DescriptionItem from './DescriptionItem';
 
 import styled from 'styled-components';
 import { Container } from 'style/CustomStyle';
 
 function Description() {
   return (
-    <Div>
+    <Div id="bottom">
       <InnerWrap>
-        <h2 id="bottom">ABOUT DO IT. DO IT SERVICE</h2>
+        <h2>ABOUT DO IT. DO IT SERVICE</h2>
         <p>
           기존 스터디그룹과는 다른, 스터디 효과를 능률적으로 높힐 수 있는 두잇두잇을 소개할게요 :)
         </p>
+        <ItemWrap>
+          <DescriptionItem />
+        </ItemWrap>
       </InnerWrap>
     </Div>
   );
 }
-
+// 771
 const Div = styled.div`
-  /* height: 100vh; */
-  height: 1045px;
+  height: 100vh;
   h2 {
+    margin-bottom: 1.5rem;
     font-family: '210 Yeonpilsketch R';
     font-size: 34px;
-    line-height: 2.29;
   }
   p {
     font-family: NanumSquareRoundOTFR;
     font-size: 20px;
-    line-height: 3.9;
+    margin-bottom: 17.2rem;
   }
 `;
 
 const InnerWrap = styled(Container)`
   text-align: center;
   padding-top: 74px;
+`;
+
+const ItemWrap = styled.div`
+  margin: 0 auto;
+  width: 77.1rem;
 `;
 
 export default Description;
