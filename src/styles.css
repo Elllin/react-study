@@ -7,3 +7,13 @@
   font-weight: normal;
   font-style: normal;
 }
+
+@font-face {
+  font-family: 'NanumSquareRoundB';
+  src: url('./fonts/NanumSquareRoundB.eot?#iefix') format('embedded-opentype'),
+    url('./fonts/NanumSquareRoundB.woff') format('woff'),
+    url('./fonts/NanumSquareRoundB.ttf') format('truetype'),
+    url('./fonts/NanumSquareRoundB.svg#NanumSquareRoundB') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}

@@ -47,6 +47,7 @@ const Div = styled.div`
     font-size: 36px;
     line-height: 1.64;
     letter-spacing: -0.6px;
+    font-family: NanumSquareRoundB, sans-serif;
   }
   button {
     position: relative;
