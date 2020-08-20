@@ -1,24 +1,25 @@
 import React from 'react';
 
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-function DescriptionItem() {
+function DescriptionItem({ title, discription, width, float, color }) {
   return (
-    <List>
-      <div
-        style={{ background: '#fd5e5c', width: '48px', height: '62px', borderRadius: '50%' }}
-      ></div>
-      <Title>나와 맞는 스터디 그룹원</Title>
-      <Discription>
-        스터디 그룹의 참석률, 대화 데이터를 통해 그룹 성향을 미리 파악하여 나에게 적합한 스터디
-        그룹을 찾을 수 있어요.
-      </Discription>
+    <List width={width} float={float}>
+      <div style={{ background: color, width: '48px', height: '62px', borderRadius: '50%' }}></div>
+      <Title>{title}</Title>
+      <Discription width={width}>{discription}</Discription>
     </List>
   );
 }
 
 const List = styled.li`
-  width: 26.5rem;
+  ${({ width, float }) =>
+    css`
+      width: ${width};
+      float: ${float};
+    `};
+
+  margin-bottom: 128px;
 `;
 
 const Title = styled.div`
@@ -28,7 +29,7 @@ const Title = styled.div`
 `;
 
 const Discription = styled.div`
-  width: 26.5rem;
+  word-break: keep-all;
   font-size: 16px;
   line-height: 1.56;
   letter-spacing: -0.3px;
