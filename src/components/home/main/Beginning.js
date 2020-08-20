@@ -44,7 +44,6 @@ const Div = styled.div`
   height: 77vh;
   h2 {
     margin-bottom: 51.6px;
-    font-family: NanumSquareOTFB;
     font-size: 36px;
     line-height: 1.64;
     letter-spacing: -0.6px;
@@ -58,8 +57,8 @@ const Div = styled.div`
     border-radius: 0 0 0 23.8px;
     box-shadow: 2px 2px 6px 1px rgba(153, 153, 153, 0.55);
     transform: rotate(-4deg);
-    font-family: NanumSquareRoundOTFB;
     font-size: 19px;
+    font-family: 'NanumSquareRoundL';
     &:before {
       content: '';
       display: block;

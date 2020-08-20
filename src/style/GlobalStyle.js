@@ -2,6 +2,9 @@ import { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
 
 const GlobalStyle = createGlobalStyle`
+
+
+
     ${reset}
     *{
         box-sizing: border-box;
@@ -10,7 +13,7 @@ const GlobalStyle = createGlobalStyle`
         width: 100%;
         height: 100%;
         font-size:10px;
-        font-family: AppleSDGothicNeo; 
+        font-family: 'NanumSquareRoundL'; 
         /* font-family 추가 예정 */
         scroll-behavior: smooth;
     }

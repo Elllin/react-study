@@ -1,0 +1,9 @@
+@font-face {
+  font-family: 'NanumSquareRoundL';
+  src: url('./fonts/NanumSquareRoundL.eot?#iefix') format('embedded-opentype'),
+    url('./fonts/NanumSquareRoundL.woff') format('woff'),
+    url('./fonts/NanumSquareRoundL.ttf') format('truetype'),
+    url('./fonts/NanumSquareRoundL.svg#NanumSquareRoundL') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
