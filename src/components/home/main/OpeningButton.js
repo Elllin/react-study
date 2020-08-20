@@ -16,7 +16,7 @@ function OpeningButton() {
 
 const Button = styled.button`
   position: fixed;
-  right: 21.8%;
+  right: 14%;
   bottom: 50px;
   width: 127px;
   height: 127px;
