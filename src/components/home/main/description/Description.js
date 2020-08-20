@@ -14,6 +14,9 @@ function Description() {
         </p>
         <ItemWrap>
           <DescriptionItem />
+          <DescriptionItem />
+          <DescriptionItem />
+          <DescriptionItem />
         </ItemWrap>
       </InnerWrap>
     </Div>
@@ -36,19 +39,17 @@ const Div = styled.div`
 
 const InnerWrap = styled(Container)`
   text-align: center;
-  padding-top: 74px;
+  padding-top: 135px;
 `;
 
-const ItemWrap = styled.dl`
+const ItemWrap = styled.ul`
   margin: 0 auto;
   width: 77.1rem;
+  display: grid;
+  grid-template-rows: repeat(2, 26.5rem);
+  grid-template-columns: repeat(2, 26.5rem);
+  justify-content: space-between;
   text-align: start;
-  dt + dt {
-    margin-left: 22.5rem;
-  }
-  dd + dt {
-    margin-top: 11.3rem;
-  }
 `;
 
 export default Description;
