@@ -20,7 +20,7 @@ const Div = styled.div`
   /* height: 100vh; */
   height: 1045px;
   h2 {
-    font-family: TTYeonpilsketchR;
+    font-family: '210 Yeonpilsketch R';
     font-size: 34px;
     line-height: 2.29;
   }
