@@ -72,13 +72,14 @@ const Div = styled.div`
 
 const InnerWrap = styled(Container)`
   text-align: center;
-  padding-top: 13rem;
+  padding-top: 12rem;
 `;
 
 const ItemWrap = styled.ul`
   margin: 0 auto;
   width: 77.1rem;
-  text-align: start;
+
+  text-align: left;
   :after {
     content: '';
     display: block;

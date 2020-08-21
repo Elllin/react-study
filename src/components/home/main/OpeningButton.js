@@ -5,12 +5,12 @@ import styled from 'styled-components';
 
 function OpeningButton() {
   return (
-    <Button>
-      <Link to="/opening">
+    <Link to="/opening">
+      <Button>
         스터디
         <br /> 개설하기
-      </Link>
-    </Button>
+      </Button>
+    </Link>
   );
 }
 
