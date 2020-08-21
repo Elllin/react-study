@@ -3,7 +3,7 @@ import Header from 'components/home/header/Header';
 import Carousel from 'components/home/main/Carousel';
 import Beginning from 'components/home/main/Beginning';
 import Description from 'components/home/main/description/Description';
-import OpeningButton from 'components/home/main/OpeningButton';
+import CreateButton from 'components/home/main/CreateButton';
 
 function HomeContainer() {
   return (
@@ -12,7 +12,7 @@ function HomeContainer() {
       <main>
         <Beginning />
         <Description />
-        <OpeningButton />
+        <CreateButton />
       </main>
     </div>
   );

@@ -11,7 +11,7 @@ function App() {
       <GlobalStyle />
       <Switch>
         <Route path="/" component={HomePage} exact />
-        <Route path="/opening" component={StudyOpeningPage} />
+        <Route path="/create" component={StudyOpeningPage} />
         <Route
           render={({ location }) => (
             <div>

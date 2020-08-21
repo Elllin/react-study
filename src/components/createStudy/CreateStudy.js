@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
 import { Layout } from 'style/CustomStyle';
 
-function StudyOpening() {
+function CreateStudy() {
   const { register, handleSubmit, errors } = useForm();
 
   const onSubmit = (data) => {
@@ -153,4 +153,4 @@ const BoxLayout = styled.div`
 const BoxWrap = styled.div`
   margin-top: 30px;
 `;
-export default StudyOpening;
+export default CreateStudy;
