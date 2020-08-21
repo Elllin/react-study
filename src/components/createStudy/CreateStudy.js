@@ -4,18 +4,17 @@ import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
 import { Layout } from 'style/CustomStyle';
 
-function CreateStudy() {
+function CreateStudy({ onSubmit }) {
   const { register, handleSubmit, errors } = useForm();
 
-  const onSubmit = (data) => {
-    const formData = JSON.stringify(data);
-    console.log(formData);
-    fetch('https://jsonplaceholder.typicode.com/posts', {
-      method: 'POST',
-      body: formData,
-    }).then((data) => console.log(data));
-    //try catch를 통해 tru라면? 화면 이동하기
-  };
+  // const onSubmit = (data) => {
+  //   const formData = JSON.stringify(data);
+  //   console.log(formData);
+  //   fetch('https://jsonplaceholder.typicode.com/posts', {
+  //     method: 'POST',
+  //     body: formData,
+  //   }).then((data) => console.log(data));
+  // };
 
   return (
     <StudyForm action="#" method="post" onSubmit={handleSubmit(onSubmit)}>

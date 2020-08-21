@@ -12,7 +12,6 @@ import './styles.css';
 import '@kfonts/nanum-square-round-otf';
 
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(ReduxThunk)));
-
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
