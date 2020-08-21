@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
+import createStudy from './createStudy';
 
-const rootReducer = combineReducers({});
+const rootReducer = combineReducers({ createStudy });
 
 export default rootReducer;
