@@ -55,9 +55,8 @@ function Description() {
     </Div>
   );
 }
-// 771
+
 const Div = styled.div`
-  height: 100vh;
   h2 {
     margin-bottom: 1.5rem;
     font-family: '210 Yeonpilsketch R';

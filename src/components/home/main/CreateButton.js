@@ -5,19 +5,20 @@ import styled from 'styled-components';
 
 function CreateButton() {
   return (
-    <Link to="/create">
-      <Button>
-        스터디
-        <br /> 개설하기
-      </Button>
-    </Link>
+    <Anchor to="/create">
+      스터디
+      <br /> 개설하기
+    </Anchor>
   );
 }
 
-const Button = styled.button`
+const Anchor = styled(Link)`
   position: fixed;
   right: 14%;
   bottom: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 127px;
   height: 127px;
   box-shadow: 0 2px 6px 1px rgba(153, 153, 153, 0.55);
@@ -26,12 +27,12 @@ const Button = styled.button`
 
   font-size: 16px;
   line-height: 1.63;
-  a {
-    text-decoration: none;
+  text-decoration: none;
+  text-align: center;
+
+  color: #000;
+  &:active {
     color: #000;
-    &:active {
-      color: #000;
-    }
   }
 `;
 
