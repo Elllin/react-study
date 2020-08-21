@@ -22,4 +22,6 @@ export const reducerUtils = {
     data: null,
     error,
   }),
+
+  reset: (data = null) => reducerUtils.initial(data),
 };
