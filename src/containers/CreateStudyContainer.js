@@ -1,5 +1,5 @@
 import React from 'react';
-import CreateStudy from '../components/createStudy/CreateStudy';
+import CreateStudy from 'components/createStudy/CreateStudy';
 
 function CreateStudyContainer() {
   return (

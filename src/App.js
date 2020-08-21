@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import HomePage from 'pages/HomePage';
-import StudyOpeningPage from 'pages/StudyOpeningPage';
+import CreateStudyPage from 'pages/CreateStudyPage';
 
 import GlobalStyle from 'style/GlobalStyle';
 
@@ -11,7 +11,7 @@ function App() {
       <GlobalStyle />
       <Switch>
         <Route path="/" component={HomePage} exact />
-        <Route path="/create" component={StudyOpeningPage} />
+        <Route path="/create" component={CreateStudyPage} />
         <Route
           render={({ location }) => (
             <div>
