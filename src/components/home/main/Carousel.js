@@ -34,14 +34,14 @@ function Carousel() {
 const SliderWrap = styled.div`
   position: relative;
   width: 100%;
-  height: 300px;
+  height: 30rem;
   div {
     background: blue;
     height: 100%;
   }
   h3 {
     color: white;
-    font-size: 300px;
+    font-size: 30rem;
   }
 `;
 

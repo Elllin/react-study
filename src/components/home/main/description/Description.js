@@ -60,11 +60,11 @@ const Div = styled.div`
   h2 {
     margin-bottom: 1.5rem;
     font-family: '210 Yeonpilsketch R';
-    font-size: 34px;
+    font-size: 3.4rem;
   }
   p {
     margin-bottom: 17.2rem;
-    font-size: 20px;
+    font-size: 2rem;
   }
 `;
 

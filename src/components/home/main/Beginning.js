@@ -34,7 +34,7 @@ const DownButtonWrap = styled.div`
 `;
 
 const DownIcon = styled(BsChevronDown)`
-  font-size: 50px;
+  font-size: 5rem;
   color: #000;
   cursor: pointer;
 `;
@@ -43,22 +43,22 @@ const Div = styled.div`
   padding-top: 17.7rem;
   height: 87vh;
   h2 {
-    margin-bottom: 51.6px;
-    font-size: 36px;
+    margin-bottom: 5.16rem;
+    font-size: 3.6rem;
     line-height: 1.64;
-    letter-spacing: -0.6px;
+    letter-spacing: -0.06rem;
     font-family: NanumSquareRoundOTFEB, sans-serif;
   }
   button {
     position: relative;
     display: block;
-    width: 190px;
-    height: 55px;
+    width: 19rem;
+    height: 5.5rem;
     background: #ffd000;
-    border-radius: 0 0 0 24.5px;
-    box-shadow: 2px 2px 6px 1px rgba(153, 153, 153, 0.55);
+    border-radius: 0 0 0 2.45rem;
+    box-shadow: 0.2rem 0.2rem 0.6rem 0.1rem rgba(153, 153, 153, 0.55);
     transform: rotate(-4deg);
-    font-size: 19px;
+    font-size: 1.9rem;
 
     &:before {
       content: '';

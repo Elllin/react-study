@@ -15,17 +15,17 @@ function CreateButton() {
 const Anchor = styled(Link)`
   position: fixed;
   right: 14%;
-  bottom: 50px;
+  bottom: 5rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 127px;
-  height: 127px;
-  box-shadow: 0 2px 6px 1px rgba(153, 153, 153, 0.55);
+  width: 12.7rem;
+  height: 12.7rem;
+  box-shadow: 0 0.2rem 0.6rem 0.1rem rgba(153, 153, 153, 0.55);
   background-color: #ffd000;
   border-radius: 50%;
 
-  font-size: 16px;
+  font-size: 1.6rem;
   line-height: 1.63;
   text-decoration: none;
   text-align: center;

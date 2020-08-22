@@ -91,15 +91,15 @@ function CreateStudy({ onSubmit }) {
 }
 
 const StudyForm = styled.form`
-  margin: 20px auto;
-  padding: 60px 70px 30px;
-  width: 600px;
-  border: 1px solid black;
-  border-radius: 10px;
+  margin: 2rem auto;
+  padding: 6rem 7rem 3rem;
+  width: 60rem;
+  border: 0.1rem solid black;
+  border-radius: 1rem;
   legend {
-    padding-bottom: 30px;
+    padding-bottom: 3rem;
     font-weight: 700;
-    font-size: 20px;
+    font-size: 2rem;
     text-align: center;
   }
   fieldset > div {
@@ -108,23 +108,23 @@ const StudyForm = styled.form`
     align-items: normal;
   }
   input + label {
-    margin-left: 100px;
+    margin-left: 10rem;
   }
   button {
-    margin-top: 20px;
+    margin-top: 2rem;
     width: 100%;
-    height: 40px;
+    height: 4rem;
     background: #ffd000;
   }
 `;
 
 const Title = styled.label`
-  margin-right: 30px;
+  margin-right: 3rem;
   display: block;
   width: 100%;
-  font-size: 20px;
+  font-size: 2rem;
   font-weight: 700;
-  margin-bottom: 15px;
+  margin-bottom: 1.5rem;
 `;
 
 const Required = styled.span`
@@ -133,15 +133,15 @@ const Required = styled.span`
 `;
 
 const Input = styled.input`
-  padding: 0 20px;
+  padding: 0 2rem;
   width: 100%;
-  height: 40px;
+  height: 4rem;
 `;
 
 const TextArea = styled.textarea`
   width: 100%;
-  height: 100px;
-  padding: 10px 20px;
+  height: 10rem;
+  padding: 1rem 2rem;
 `;
 
 const BoxLayout = styled.div`
@@ -151,11 +151,11 @@ const BoxLayout = styled.div`
     flex-grow: 1;
   }
   div + div {
-    margin-left: 10px;
+    margin-left: 1rem;
   }
 `;
 
 const BoxWrap = styled.div`
-  margin-top: 30px;
+  margin-top: 3rem;
 `;
 export default CreateStudy;

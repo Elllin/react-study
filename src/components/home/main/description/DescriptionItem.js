@@ -19,7 +19,7 @@ const List = styled.li`
       float: ${float};
     `};
 
-  margin-bottom: 128px;
+  margin-bottom: 12.8rem;
 `;
 
 const Title = styled.div`
@@ -30,7 +30,7 @@ const Title = styled.div`
 
 const Discription = styled.div`
   word-break: keep-all;
-  font-size: 16px;
+  font-size: 1.6rem;
   line-height: 1.56;
   letter-spacing: -0.3px;
   color: #666666;
