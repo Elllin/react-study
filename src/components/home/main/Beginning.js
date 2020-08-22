@@ -55,7 +55,7 @@ const Div = styled.div`
     width: 190px;
     height: 55px;
     background: #ffd000;
-    border-radius: 0 0 0 23.8px;
+    border-radius: 0 0 0 24.5px;
     box-shadow: 2px 2px 6px 1px rgba(153, 153, 153, 0.55);
     transform: rotate(-4deg);
     font-size: 19px;
@@ -66,7 +66,7 @@ const Div = styled.div`
       position: absolute;
       bottom: 0;
       left: 0;
-      background: rgb(241 255 237 / 50%);
+      background: rgb(258 254 236 / 57%);
       border-width: 0 1.9rem 1.8rem 0;
       border-style: solid;
       border-color: transparent #ffac00 transparent transparent;

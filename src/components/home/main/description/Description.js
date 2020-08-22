@@ -63,9 +63,8 @@ const Div = styled.div`
     font-size: 34px;
   }
   p {
-    font-family: NanumSquareRoundOTFR;
-    font-size: 20px;
     margin-bottom: 17.2rem;
+    font-size: 20px;
   }
 `;
 

@@ -110,6 +110,12 @@ const StudyForm = styled.form`
   input + label {
     margin-left: 100px;
   }
+  button {
+    margin-top: 20px;
+    width: 100%;
+    height: 40px;
+    background: #ffd000;
+  }
 `;
 
 const Title = styled.label`

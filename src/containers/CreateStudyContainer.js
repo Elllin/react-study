@@ -23,8 +23,8 @@ function CreateStudyContainer() {
     return () => resetData(dispatch);
   }, [dispatch]);
 
-  if (loading) return <div>로딩중</div>;
-  if (error) return <div>error</div>;
+  if (loading) return <div style={{ fontSize: '30px' }}>로딩중</div>;
+  if (error) return <div style={{ fontSize: '30px' }}>`error ${error}`</div>;
 
   return <>{data ? <MailCheck /> : <CreateStudy onSubmit={onSubmit} />}</>;
 }
