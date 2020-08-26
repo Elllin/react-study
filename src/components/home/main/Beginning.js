@@ -43,7 +43,8 @@ const Div = styled.div`
   padding-top: 17.7rem;
   height: 87vh;
   h2 {
-    margin-bottom: 5.16rem;
+    /* margin-bottom: 5.16rem; */
+    margin-bottom: 51.6px;
     font-size: 3.6rem;
     line-height: 1.64;
     letter-spacing: -0.06rem;
