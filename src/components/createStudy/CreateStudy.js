@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useLocation } from 'react-router-dom';
+import createStudy from './constants/constants';
 
 import styled, { css } from 'styled-components';
 import { Layout } from 'style/CustomStyle';
@@ -22,7 +23,11 @@ function CreateStudy({ onSubmit }) {
   // useEffect(() => {
   //   window.scrollTo(0, 0);
   // }, [pathname]);
-
+  const {
+    groupName,
+    groupIntroduction,
+    hashtag: { placeholder, description },
+  } = createStudy;
   return (
     <Wrap>
       <h1>DO IT DO IT</h1>
@@ -35,27 +40,41 @@ function CreateStudy({ onSubmit }) {
                 그룹 이름 <Required>*</Required>
               </Title>
 
-              <Input type="text" id="title" name="title" ref={register} />
+              <Input
+                type="text"
+                id="title"
+                name="title"
+                ref={register}
+                required
+                placeholder={groupName}
+              />
             </BoxWrap>
             <BoxWrap>
               <Title htmlFor="description">
                 그룹 소개 <Required>*</Required>
               </Title>
-              <TextArea as="textarea" id="description" name="description" ref={register}></TextArea>
+              <TextArea
+                as="textarea"
+                id="description"
+                name="description"
+                ref={register}
+                required
+                placeholder={groupIntroduction}
+              ></TextArea>
             </BoxWrap>
-            <BoxWrap>
+            {/* <BoxWrap>
               <Title htmlFor="email">
                 이메일 <Required>*</Required>
               </Title>
-              <Input type="email" id="email" name="email" ref={register} />
-            </BoxWrap>
+              <Input type="email" id="email" name="email" ref={register} required />
+            </BoxWrap> */}
             <BoxLayout>
               <BoxWrap>
                 <Title htmlFor="location">
                   지역 <Required>*</Required>
                 </Title>
                 <SelectWrap>
-                  <Input as="select" id="location" name="location" ref={register}>
+                  <Input as="select" id="location" name="location" ref={register} required>
                     <option value="서울">서울 전체</option>
                     <option value="경기">경기 전체</option>
                     <option value="인천">인천 전체</option>
@@ -70,7 +89,7 @@ function CreateStudy({ onSubmit }) {
                   그룹 카테고리 <Required>*</Required>
                 </Title>
                 <SelectWrap>
-                  <Input as="select" id="category" name="category" ref={register}>
+                  <Input as="select" id="category" name="category" ref={register} required>
                     <option value="대입 / 수능">대입 / 수능</option>
                     <option value="대학생 / 취업">대학생 / 취업</option>
                     <option value="공무원 / 임용">공무원 / 임용</option>
@@ -83,24 +102,29 @@ function CreateStudy({ onSubmit }) {
             </BoxLayout>
 
             <BoxWrap>
-              <Title as="div">
+              <Title as="div" far>
                 예치금 설정을 하시나요? <Required>*</Required>
               </Title>
               <RadioWrap>
-                <input type="radio" id="yes" name="is_deposit" value="예" ref={register} />
+                <input type="radio" id="yes" name="is_deposit" value="예" ref={register} required />
                 <label htmlFor="yes">네. 할래요!</label>
               </RadioWrap>
               <RadioWrap>
-                <input type="radio" id="no" name="is_deposit" value="아니오" ref={register} />
+                <input
+                  type="radio"
+                  id="no"
+                  name="is_deposit"
+                  value="아니오"
+                  ref={register}
+                  required
+                />
                 <label htmlFor="no">아니요. 괜찮아요!</label>
               </RadioWrap>
             </BoxWrap>
             <BoxWrap>
               <Title htmlFor="hashtag">그룹 해시태그</Title>
-              <Input type="text" id="hashtag" name="hashtag" />
-              <Description>
-                *그룹을 특색있게 나타내는 해시태그를 입력해주세요. 설정시 검색 확률이 높아져요 :)
-              </Description>
+              <Input type="text" id="hashtag" name="hashtag" required placeholder={placeholder} />
+              <Description>{description}</Description>
             </BoxWrap>
             {/* <BoxWrap>
             <Title htmlFor="image">썸네일</Title>
@@ -124,7 +148,6 @@ const Wrap = styled.main`
   h1 {
     margin-bottom: 1.3rem;
     text-align: center;
-    /* font-family: AppleSDGothicNeo; */
     font-size: 24px;
     font-weight: 900;
   }
@@ -133,7 +156,7 @@ const Wrap = styled.main`
 const StudyForm = styled.form`
   legend {
     margin-bottom: 5.1rem;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    text-shadow: ${({ theme }) => theme.textShadow};
     font-family: NanumSquareRoundOTFEB;
     font-size: 32px;
     letter-spacing: -0.6px;
@@ -148,9 +171,8 @@ const StudyForm = styled.form`
 
 const Title = styled.label`
   display: block;
-  margin-bottom: 1.3rem;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-  /* font-family: AppleSDGothicNeo; */
+  margin-bottom: ${({ far }) => (far ? '1.5rem' : '1.3rem')};
+  text-shadow: ${({ theme }) => theme.textShadow};
   font-size: 2rem;
   font-weight: bold;
   letter-spacing: -0.3px;
@@ -167,9 +189,13 @@ const Input = styled.input`
   height: 5rem;
   border-radius: 2px;
   border: solid 1px #939393;
-  /* font-family: AppleSDGothicNeo; */
   font-size: 1.6rem;
-  letter-spacing: -0.3px;
+  font-family: AppleSDGothicNeo;
+
+  &::placeholder {
+    letter-spacing: -0.3px;
+    color: #9f9f9f;
+  }
 `;
 
 const TextArea = styled(Input)`
@@ -191,8 +217,7 @@ const BoxWrap = styled.div`
 const Description = styled.span`
   display: inline-block;
   margin-top: 1.2rem;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-  /* font-family: AppleSDGothicNeo; */
+  text-shadow: ${({ theme }) => theme.textShadow};
   font-size: 15px;
   letter-spacing: -0.3px;
   color: #828282;
@@ -253,7 +278,6 @@ const RadioWrap = styled.div`
   }
 
   [type='radio'] + label {
-    /* font-family: AppleSDGothicNeo; */
     font-size: 20px;
     letter-spacing: -0.3px;
     cursor: pointer;
@@ -293,14 +317,12 @@ const ButtonWrap = styled.div`
   button {
     width: 100%;
     border-radius: 0.6rem;
-    background-color: #ffd000;
-    /* 인풋과 같은 속성으로 변수 만들기 */
+    background-color: ${({ theme }) => theme.mainColor};
     height: 5.6rem;
-
-    text-shadow: 0 0.1rem 0.3rem rgba(0, 0, 0, 0.5);
-    /* font-family: AppleSDGothicNeo; */
+    text-shadow: ${({ theme }) => theme.textShadow};
     font-size: 2rem;
     font-weight: bold;
+    font-family: AppleSDGothicNeo;
   }
 `;
 

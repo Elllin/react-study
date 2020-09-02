@@ -10,15 +10,19 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 
 import './styles.css';
 import '@kfonts/nanum-square-round-otf';
+import { ThemeProvider } from 'styled-components';
+import theme from './style/theme';
 
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(ReduxThunk)));
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </Provider>
+    <ThemeProvider theme={theme}>
+      <Provider store={store}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </Provider>
+    </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root'),
 );
