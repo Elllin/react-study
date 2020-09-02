@@ -2,8 +2,9 @@ import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useLocation } from 'react-router-dom';
 
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Layout } from 'style/CustomStyle';
+import { BsChevronDown } from 'react-icons/bs';
 
 function CreateStudy({ onSubmit }) {
   const { register, handleSubmit, errors } = useForm();
@@ -53,21 +54,31 @@ function CreateStudy({ onSubmit }) {
                 <Title htmlFor="location">
                   지역 <Required>*</Required>
                 </Title>
-                <Input as="select" id="location" name="location" ref={register}>
-                  <option value="서울">서울</option>
-                  <option value="경기">경기</option>
-                  <option value="인천">인천</option>
-                </Input>
+                <SelectWrap>
+                  <Input as="select" id="location" name="location" ref={register}>
+                    <option value="서울">서울 전체</option>
+                    <option value="경기">경기 전체</option>
+                    <option value="인천">인천 전체</option>
+                  </Input>
+                  <SelectArrow>
+                    <BsChevronDown />
+                  </SelectArrow>
+                </SelectWrap>
               </BoxWrap>
               <BoxWrap>
                 <Title htmlFor="category">
                   그룹 카테고리 <Required>*</Required>
                 </Title>
-                <Input as="select" id="category" name="category" ref={register}>
-                  <option value="대입 / 수능">대입 / 수능</option>
-                  <option value="대학생 / 취업">대학생 / 취업</option>
-                  <option value="공무원 / 임용">공무원 / 임용</option>
-                </Input>
+                <SelectWrap>
+                  <Input as="select" id="category" name="category" ref={register}>
+                    <option value="대입 / 수능">대입 / 수능</option>
+                    <option value="대학생 / 취업">대학생 / 취업</option>
+                    <option value="공무원 / 임용">공무원 / 임용</option>
+                  </Input>
+                  <SelectArrow>
+                    <BsChevronDown />
+                  </SelectArrow>
+                </SelectWrap>
               </BoxWrap>
             </BoxLayout>
 
@@ -75,21 +86,30 @@ function CreateStudy({ onSubmit }) {
               <Title as="div">
                 예치금 설정을 하시나요? <Required>*</Required>
               </Title>
-              <label htmlFor="yes">네. 할래요!</label>
-              <input type="radio" id="yes" name="is_deposit" value="예" ref={register} />
-              <label htmlFor="no">아니요. 괜찮아요!</label>
-              <input type="radio" id="no" name="is_deposit" value="아니오" ref={register} />
+              <RadioWrap>
+                <input type="radio" id="yes" name="is_deposit" value="예" ref={register} />
+                <label htmlFor="yes">네. 할래요!</label>
+              </RadioWrap>
+              <RadioWrap>
+                <input type="radio" id="no" name="is_deposit" value="아니오" ref={register} />
+                <label htmlFor="no">아니요. 괜찮아요!</label>
+              </RadioWrap>
             </BoxWrap>
             <BoxWrap>
               <Title htmlFor="hashtag">그룹 해시태그</Title>
               <Input type="text" id="hashtag" name="hashtag" />
+              <Description>
+                *그룹을 특색있게 나타내는 해시태그를 입력해주세요. 설정시 검색 확률이 높아져요 :)
+              </Description>
             </BoxWrap>
             {/* <BoxWrap>
             <Title htmlFor="image">썸네일</Title>
             <Input type="file" id="image" name="image" ref={register} />
           </BoxWrap> */}
 
-            <button type="submit">승인요청</button>
+            <ButtonWrap>
+              <button type="submit">그룹 개설하기</button>
+            </ButtonWrap>
           </div>
         </fieldset>
       </StudyForm>
@@ -98,27 +118,24 @@ function CreateStudy({ onSubmit }) {
 }
 
 const Wrap = styled.main`
-  margin: 12rem auto;
+  margin: 9rem auto;
   width: 57rem;
+  font-family: AppleSDGothicNeo;
   h1 {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.3rem;
     text-align: center;
-    font-family: AppleSDGothicNeo;
+    /* font-family: AppleSDGothicNeo; */
     font-size: 24px;
     font-weight: 900;
   }
 `;
 
 const StudyForm = styled.form`
-  /* margin: 2rem auto; */
-  /* padding: 6rem 7rem 3rem; */
-  /* width: 60rem; */
-  /* border: 0.1rem solid black; */
   legend {
     margin-bottom: 5.1rem;
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-    font-family: NanumSquareRoundOTFEB, sans-serif;
-    font-size: 3.2rem;
+    font-family: NanumSquareRoundOTFEB;
+    font-size: 32px;
     letter-spacing: -0.6px;
     text-align: center;
   }
@@ -127,22 +144,13 @@ const StudyForm = styled.form`
     flex-direction: column;
     align-items: normal;
   }
-  input + label {
-    margin-left: 10rem;
-  }
-  button {
-    margin-top: 2rem;
-    width: 100%;
-    height: 4rem;
-    background: #ffd000;
-  }
 `;
 
 const Title = styled.label`
   display: block;
   margin-bottom: 1.3rem;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-  font-family: AppleSDGothicNeo;
+  /* font-family: AppleSDGothicNeo; */
   font-size: 2rem;
   font-weight: bold;
   letter-spacing: -0.3px;
@@ -154,29 +162,146 @@ const Required = styled.span`
 `;
 
 const Input = styled.input`
-  padding: 0 2rem;
+  padding: 0 1.6rem;
   width: 100%;
-  height: 4rem;
+  height: 5rem;
+  border-radius: 2px;
+  border: solid 1px #939393;
+  /* font-family: AppleSDGothicNeo; */
+  font-size: 1.6rem;
+  letter-spacing: -0.3px;
 `;
 
-const TextArea = styled.textarea`
+const TextArea = styled(Input)`
   width: 100%;
-  height: 10rem;
+  height: 24.4rem;
   padding: 1rem 2rem;
 `;
 
 const BoxLayout = styled.div`
-  ${Layout}
-  justify-content: start;
-  div {
-    flex-grow: 1;
-  }
-  div + div {
-    margin-left: 1rem;
-  }
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0 3rem;
 `;
 
 const BoxWrap = styled.div`
   margin-bottom: 4.4rem;
 `;
+
+const Description = styled.span`
+  display: inline-block;
+  margin-top: 1.2rem;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  /* font-family: AppleSDGothicNeo; */
+  font-size: 15px;
+  letter-spacing: -0.3px;
+  color: #828282;
+`;
+
+const RadioWrap = styled.div`
+  display: inline-flex;
+  position: relative;
+  align-items: center;
+
+  & + & {
+    margin-left: 17.9rem;
+  }
+
+  [type='radio'] {
+    appearance: none;
+    margin: 0;
+    margin-right: 3.8rem;
+  }
+
+  [type='radio'] + label:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 2.2rem;
+    height: 2.2rem;
+    text-align: center;
+    background: #fff;
+    border: 1px solid #979797;
+    border-radius: 0.2rem;
+    cursor: pointer;
+    box-sizing: border-box;
+  }
+  [type='radio']:not(:checked) + label:after,
+  [type='radio']:checked + label:after {
+    content: '';
+    position: absolute;
+    left: 0.44rem;
+    top: 0.44rem;
+    width: 1.3rem;
+    height: 1.3rem;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+    border-radius: 0.2rem;
+    background-color: #3f97f4;
+  }
+
+  [type='radio']:not(:checked) + label:after {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+
+  [type='radio']:checked + label:after {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+
+  [type='radio'] + label {
+    /* font-family: AppleSDGothicNeo; */
+    font-size: 20px;
+    letter-spacing: -0.3px;
+    cursor: pointer;
+  }
+`;
+
+const SelectWrap = styled.div`
+  position: relative;
+  display: inline-block;
+  width: 100%;
+
+  select {
+    display: inline-block;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+  }
+  &::-ms-expand {
+    display: none;
+  }
+`;
+
+const SelectArrow = styled.div`
+  position: absolute;
+  margin-top: -1rem;
+  top: 50%;
+  right: 1.6rem;
+  color: #787878;
+  font-size: 2.1rem;
+  pointer-events: none;
+`;
+
+const ButtonWrap = styled.div`
+  margin-top: 4.2rem;
+
+  button {
+    width: 100%;
+    border-radius: 0.6rem;
+    background-color: #ffd000;
+    /* 인풋과 같은 속성으로 변수 만들기 */
+    height: 5.6rem;
+
+    text-shadow: 0 0.1rem 0.3rem rgba(0, 0, 0, 0.5);
+    /* font-family: AppleSDGothicNeo; */
+    font-size: 2rem;
+    font-weight: bold;
+  }
+`;
+
 export default CreateStudy;
