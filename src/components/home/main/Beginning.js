@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 import styled from 'styled-components';
 import { Container, Layout } from 'style/CustomStyle';
 import { BsChevronDown } from 'react-icons/bs';
 
 function Beginning() {
+  const onClickDown = () => {
+    const viewHeight = window.innerHeight;
+    window.scrollTo({ top: viewHeight, behavior: 'smooth' });
+  };
+
   return (
     <Div>
       <Container>
@@ -16,10 +22,8 @@ function Beginning() {
           스터디그룹을 시작해보세요!
         </h2>
         <button>시작하기</button>
-        <DownButtonWrap>
-          <a href="#bottom">
-            <DownIcon />
-          </a>
+        <DownButtonWrap onClick={onClickDown}>
+          <DownIcon />
         </DownButtonWrap>
       </Container>
     </Div>
