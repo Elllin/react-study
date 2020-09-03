@@ -103,6 +103,12 @@ function CreateStudy({ onSubmit }) {
             </BoxLayout>
 
             <BoxWrap>
+              <Title htmlFor="hashtag">그룹 해시태그</Title>
+              <Input type="text" id="hashtag" name="hashtag" required placeholder={placeholder} />
+              <Description>{description}</Description>
+            </BoxWrap>
+
+            <BoxWrap>
               <Title as="div" far>
                 예치금 설정을 하시나요? <Required>*</Required>
               </Title>
@@ -122,11 +128,7 @@ function CreateStudy({ onSubmit }) {
                 <label htmlFor="no">아니요. 괜찮아요!</label>
               </RadioWrap>
             </BoxWrap>
-            <BoxWrap>
-              <Title htmlFor="hashtag">그룹 해시태그</Title>
-              <Input type="text" id="hashtag" name="hashtag" required placeholder={placeholder} />
-              <Description>{description}</Description>
-            </BoxWrap>
+
             {/* <BoxWrap>
             <Title htmlFor="image">썸네일</Title>
             <Input type="file" id="image" name="image" ref={register} />

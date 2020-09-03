@@ -21,7 +21,7 @@ function Beginning() {
           <br />
           스터디그룹을 시작해보세요!
         </h2>
-        <button>시작하기</button>
+        <button>간편하게 이메일로 시작</button>
         <DownButtonWrap onClick={onClickDown}>
           <DownIcon />
         </DownButtonWrap>
@@ -57,24 +57,29 @@ const Div = styled.div`
   button {
     position: relative;
     display: block;
-    width: 19rem;
-    height: 5.5rem;
+    width: 24.8rem;
+    height: 6rem;
     background: #ffd000;
-    border-radius: 0 0 0 2.45rem;
-    box-shadow: 0.2rem 0.2rem 0.6rem 0.1rem rgba(153, 153, 153, 0.55);
-    transform: rotate(-4deg);
+    /* box-shadow: 0.2rem 0.2rem 0.6rem -0.1rem rgba(153, 153, 153, 0.55); */
+    transform: rotate(-5deg);
     font-size: 1.9rem;
+    background: linear-gradient(46deg, transparent 0.62em, #ffd000 0) no-repeat;
 
-    &:before {
+    &:after {
       content: '';
-      display: block;
+      display: inline-block;
       position: absolute;
       bottom: 0;
       left: 0;
-      background: rgb(258 254 236 / 57%);
-      border-width: 0 1.9rem 1.8rem 0;
-      border-style: solid;
-      border-color: transparent #ffac00 transparent transparent;
+      width: 1.8rem;
+      height: 1.9rem;
+      background: linear-gradient(46deg, transparent 0.62em, #ffac00 0) no-repeat;
+      /* background: rgb(258 254 236 / 57%); */
+      /* background: transparent; */
+      /* background: #fff; */
+      /* border-width: 0 1.9rem 1.8rem 0; */
+      /* border-style: solid; */
+      /* border-color: transparent #ffac00 transparent transparent; */
     }
   }
 `;

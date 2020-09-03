@@ -63,14 +63,14 @@ const Div = styled.div`
     font-size: 3.4rem;
   }
   p {
-    margin-bottom: 17.2rem;
+    margin-bottom: 17rem;
     font-size: 2rem;
   }
 `;
 
 const InnerWrap = styled(Container)`
   text-align: center;
-  padding-top: 12rem;
+  padding-top: 13.2rem;
 `;
 
 const ItemWrap = styled.ul`
