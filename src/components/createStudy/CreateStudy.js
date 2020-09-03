@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import { useLocation } from 'react-router-dom';
 import createStudy from './constants/constants';
@@ -35,14 +35,24 @@ function CreateStudy({ onSubmit }) {
     window.scrollTo({ top: 0 });
   }, []);
 
-  const onChangeHashtag = (e) => {
-    const { value } = e.target;
+  const tagId = useRef(1);
+
+  const onChangeHashtag = ({ target }) => {
+    const { value } = target;
     setHashtag(value);
     if (value.endsWith(',') && value.length > 0) {
-      const tagText = value.slice(0, -1);
-      setHashtags(hashtags.concat([tagText]));
+      const text = value.slice(0, -1);
+      const newhashTag = { id: tagId.current, text };
+      setHashtags(hashtags.concat([newhashTag]));
       setHashtag('');
+      tagId.current++;
     }
+  };
+
+  const removeHashtag = ({ target }) => {
+    const { tagId } = target.dataset;
+    const removedTags = hashtags.filter((tag) => tag.id !== parseInt(tagId));
+    setHashtags(removedTags);
   };
 
   const {
@@ -136,8 +146,8 @@ function CreateStudy({ onSubmit }) {
               />
               <Description>{description}</Description>
               <TagContainer>
-                {hashtags.map((tagText, i) => (
-                  <Hashtag key={tagText + i} text={tagText} />
+                {hashtags.map((tag) => (
+                  <Hashtag key={tag.id} tag={tag} onClick={removeHashtag} />
                 ))}
               </TagContainer>
             </BoxWrap>
@@ -367,6 +377,7 @@ const TagContainer = styled.div`
   display: flex;
   flex-flow: row wrap;
   width: 100%;
+  margin-top: 1rem;
   /* min-height: 30px; */
 `;
 
