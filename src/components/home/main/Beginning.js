@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
 
 import styled from 'styled-components';
 import { Container, Layout } from 'style/CustomStyle';
@@ -53,6 +52,7 @@ const Div = styled.div`
     letter-spacing: -0.06rem;
     font-family: NanumSquareRoundOTFEB, sans-serif;
   }
+
   button {
     position: relative;
     display: block;
@@ -86,23 +86,6 @@ const Div = styled.div`
       border-right: 4rem solid transparent;
       border-bottom: 4rem solid #fff;
     }
-
-    /* 
-
-    &:after {
-      content: '';
-      display: inline-block;
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 1.8rem;
-      height: 1.9rem;
-      background: linear-gradient(46deg, transparent 0.62em, #ffac00 0) no-repeat; */
-    /* background: rgb(258 254 236 / 50%); */
-    /* border-width: 0 1.9rem 1.8rem 0; */
-    /* border-style: solid; */
-    /* border-color: transparent #ffac00 transparent transparent; */
-    /* } */
   }
 `;
 

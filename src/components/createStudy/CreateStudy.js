@@ -3,6 +3,8 @@ import { useForm } from 'react-hook-form';
 import { useLocation } from 'react-router-dom';
 import createStudy from './constants/constants';
 
+import Hashtag from './hastag/Hashtag';
+
 import styled, { css } from 'styled-components';
 import { Layout } from 'style/CustomStyle';
 import { BsChevronDown } from 'react-icons/bs';
@@ -16,7 +18,8 @@ function CreateStudy({ onSubmit }) {
     is_deposit: '',
   });
 
-  const [hashtag, setHashtag] = useState();
+  const [hashtag, setHashtag] = useState('');
+  const [hashtags, setHashtags] = useState([]);
 
   // const onSubmit = (data) => {
   //   const formData = JSON.stringify(data);
@@ -34,7 +37,11 @@ function CreateStudy({ onSubmit }) {
 
   const onChangeHashtag = (e) => {
     const { value } = e.target;
-    if (e.key === 'Enter' && value.length > 0) {
+    setHashtag(value);
+    if (value.endsWith(',') && value.length > 0) {
+      const tagText = value.slice(0, -1);
+      setHashtags(hashtags.concat([tagText]));
+      setHashtag('');
     }
   };
 
@@ -118,9 +125,21 @@ function CreateStudy({ onSubmit }) {
 
             <BoxWrap>
               <Title htmlFor="hashtag">그룹 해시태그</Title>
-              <Input type="text" id="hashtag" name="hashtag" required placeholder={placeholder} />
+              <Input
+                type="text"
+                id="hashtag"
+                name="hashtag"
+                required
+                placeholder={placeholder}
+                value={hashtag}
+                onChange={onChangeHashtag}
+              />
               <Description>{description}</Description>
-              <TagContainer></TagContainer>
+              <TagContainer>
+                {hashtags.map((tagText, i) => (
+                  <Hashtag key={tagText + i} text={tagText} />
+                ))}
+              </TagContainer>
             </BoxWrap>
 
             <BoxWrap>
@@ -348,7 +367,7 @@ const TagContainer = styled.div`
   display: flex;
   flex-flow: row wrap;
   width: 100%;
-  min-height: 30px;
+  /* min-height: 30px; */
 `;
 
 export default CreateStudy;

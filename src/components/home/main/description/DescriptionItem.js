@@ -33,7 +33,7 @@ const Discription = styled.div`
   font-size: 1.6rem;
   line-height: 1.56;
   letter-spacing: -0.3px;
-  color: #666666;
+  color: #666;
 `;
 
 export default DescriptionItem;
