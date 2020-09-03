@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useLocation } from 'react-router-dom';
 import createStudy from './constants/constants';
@@ -9,6 +9,14 @@ import { BsChevronDown } from 'react-icons/bs';
 
 function CreateStudy({ onSubmit }) {
   const { register, handleSubmit, errors } = useForm();
+  const [inputs, setInputs] = useState({
+    title: '',
+    description: '',
+    hashtag: '',
+    is_deposit: '',
+  });
+
+  const [hashtag, setHashtag] = useState();
 
   // const onSubmit = (data) => {
   //   const formData = JSON.stringify(data);
@@ -23,6 +31,12 @@ function CreateStudy({ onSubmit }) {
   useEffect(() => {
     window.scrollTo({ top: 0 });
   }, []);
+
+  const onChangeHashtag = (e) => {
+    const { value } = e.target;
+    if (e.key === 'Enter' && value.length > 0) {
+    }
+  };
 
   const {
     groupName,
@@ -106,6 +120,7 @@ function CreateStudy({ onSubmit }) {
               <Title htmlFor="hashtag">그룹 해시태그</Title>
               <Input type="text" id="hashtag" name="hashtag" required placeholder={placeholder} />
               <Description>{description}</Description>
+              <TagContainer></TagContainer>
             </BoxWrap>
 
             <BoxWrap>
@@ -147,7 +162,7 @@ function CreateStudy({ onSubmit }) {
 const Wrap = styled.main`
   margin: 9rem auto;
   width: 57rem;
-  font-family: AppleSDGothicNeo;
+  font-family: AppleSDGothicNeo, sans-serif;
   h1 {
     margin-bottom: 1.3rem;
     text-align: center;
@@ -160,7 +175,7 @@ const StudyForm = styled.form`
   legend {
     margin-bottom: 5.1rem;
     text-shadow: ${({ theme }) => theme.textShadow};
-    font-family: NanumSquareRoundOTFEB;
+    font-family: NanumSquareRoundOTFEB, sans-serif;
     font-size: 32px;
     letter-spacing: -0.6px;
     text-align: center;
@@ -193,7 +208,7 @@ const Input = styled.input`
   border-radius: 2px;
   border: solid 1px #939393;
   font-size: 1.6rem;
-  font-family: AppleSDGothicNeo;
+  font-family: AppleSDGothicNeo, sans-serif;
 
   &::placeholder {
     letter-spacing: -0.3px;
@@ -327,6 +342,13 @@ const ButtonWrap = styled.div`
     font-weight: bold;
     font-family: AppleSDGothicNeo;
   }
+`;
+
+const TagContainer = styled.div`
+  display: flex;
+  flex-flow: row wrap;
+  width: 100%;
+  min-height: 30px;
 `;
 
 export default CreateStudy;

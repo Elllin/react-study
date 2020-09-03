@@ -47,7 +47,6 @@ const Div = styled.div`
   padding-top: 17.7rem;
   height: 87vh;
   h2 {
-    /* margin-bottom: 5.16rem; */
     margin-bottom: 51.6px;
     font-size: 3.6rem;
     line-height: 1.64;
@@ -59,11 +58,36 @@ const Div = styled.div`
     display: block;
     width: 24.8rem;
     height: 6rem;
-    background: #ffd000;
-    /* box-shadow: 0.2rem 0.2rem 0.6rem -0.1rem rgba(153, 153, 153, 0.55); */
+    box-shadow: 0.2rem 0.2rem 0.5rem -0.1rem rgba(153, 153, 153, 0.55);
     transform: rotate(-5deg);
     font-size: 1.9rem;
-    background: linear-gradient(46deg, transparent 0.62em, #ffd000 0) no-repeat;
+    background: ${({ theme }) => theme.mainColor};
+
+    &:before {
+      content: '';
+      position: absolute;
+      bottom: 0%;
+      left: 0%;
+      width: 0px;
+      height: 0px;
+      box-shadow: 0.2rem 0.2rem 0.5rem -0.1rem rgba(153, 153, 153, 0.55);
+      border-right: 1.8rem solid #ffac00;
+      border-bottom: 1.9rem solid #fff;
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+
+      bottom: -14%;
+      left: -5%;
+      width: 0px;
+      height: 0px;
+      border-right: 4rem solid transparent;
+      border-bottom: 4rem solid #fff;
+    }
+
+    /* 
 
     &:after {
       content: '';
@@ -73,14 +97,12 @@ const Div = styled.div`
       left: 0;
       width: 1.8rem;
       height: 1.9rem;
-      background: linear-gradient(46deg, transparent 0.62em, #ffac00 0) no-repeat;
-      /* background: rgb(258 254 236 / 57%); */
-      /* background: transparent; */
-      /* background: #fff; */
-      /* border-width: 0 1.9rem 1.8rem 0; */
-      /* border-style: solid; */
-      /* border-color: transparent #ffac00 transparent transparent; */
-    }
+      background: linear-gradient(46deg, transparent 0.62em, #ffac00 0) no-repeat; */
+    /* background: rgb(258 254 236 / 50%); */
+    /* border-width: 0 1.9rem 1.8rem 0; */
+    /* border-style: solid; */
+    /* border-color: transparent #ffac00 transparent transparent; */
+    /* } */
   }
 `;
 
