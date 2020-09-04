@@ -24,7 +24,7 @@ const List = styled.li`
 
 const Title = styled.div`
   margin: 2.4rem 0 1.7rem;
-  font-family: 'NanumSquareRoundOTFEB', sans-serif;
+  font-family: ${({ theme }) => theme.subFont};
   font-size: 1.8rem;
 `;
 
@@ -32,7 +32,7 @@ const Discription = styled.div`
   word-break: keep-all;
   font-size: 1.6rem;
   line-height: 1.56;
-  letter-spacing: -0.3px;
+  letter-spacing: -0.03rem;
   color: #666;
 `;
 

@@ -20,6 +20,7 @@ function Beginning() {
           <br />
           스터디그룹을 시작해보세요!
         </h2>
+        {/* 시작 버튼 컴포넌트 분리하기  */}
         <button>간편하게 이메일로 시작</button>
         <DownButtonWrap onClick={onClickDown}>
           <DownIcon />
@@ -45,12 +46,13 @@ const DownIcon = styled(BsChevronDown)`
 const Div = styled.div`
   padding-top: 17.7rem;
   height: 87vh;
+
   h2 {
     margin-bottom: 51.6px;
     font-size: 3.6rem;
     line-height: 1.64;
     letter-spacing: -0.06rem;
-    font-family: NanumSquareRoundOTFEB, sans-serif;
+    font-family: ${({ theme }) => theme.subFont};
   }
 
   button {
@@ -78,7 +80,6 @@ const Div = styled.div`
     &:after {
       content: '';
       position: absolute;
-
       bottom: -14%;
       left: -5%;
       width: 0px;

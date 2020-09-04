@@ -3,9 +3,10 @@ import { useForm } from 'react-hook-form';
 import { useLocation } from 'react-router-dom';
 import createStudy from './constants/constants';
 
-import Hashtag from './hastag/Hashtag';
+import Hashtag from './hashtag/Hashtag';
 import BoxWrap from './boxWrap/BoxWrap';
 import SelectBox from './selectBox/SelectBox';
+import RadioBox from './radioBox/RadioBox';
 
 import styled, { css } from 'styled-components';
 import { Layout, InputBox } from 'style/CustomStyle';
@@ -81,24 +82,17 @@ function CreateStudy({ onSubmit }) {
               </BoxWrap>
             </BoxLayout>
             <BoxWrap title="예치금 설정을 하시나요?" as="div" far>
-              <RadioWrap>
-                <input type="radio" id="yes" name="is_deposit" value="예" ref={register} required />
-                <label htmlFor="yes">네. 할래요!</label>
-              </RadioWrap>
-              <RadioWrap>
-                <input
-                  type="radio"
-                  id="no"
-                  name="is_deposit"
-                  value="아니오"
-                  ref={register}
-                  required
-                />
-                <label htmlFor="no">아니요. 괜찮아요!</label>
-              </RadioWrap>
+              <RadioBox id="yes" text="네. 할래요!" name="is_deposit" ref={register} required />
+              <RadioBox
+                id="no"
+                text="아니요. 괜찮아요!"
+                name="is_deposit"
+                ref={register}
+                required
+              />
             </BoxWrap>
             <BoxWrap title="그룹 이름" htmlFor="title">
-              <Input
+              <InputBox
                 type="text"
                 id="title"
                 name="title"
@@ -121,11 +115,11 @@ function CreateStudy({ onSubmit }) {
               <Title htmlFor="email">
                 이메일 <Required>*</Required>
               </Title>
-              <Input type="email" id="email" name="email" ref={register} required />
+              <InputBox type="email" id="email" name="email" ref={register} required />
             </BoxWrap> */}
 
             <BoxWrap title="그룹 해시태그" htmlFor="hashtag">
-              <Input
+              <InputBox
                 type="text"
                 id="hashtag"
                 name="hashtag"
@@ -144,7 +138,7 @@ function CreateStudy({ onSubmit }) {
 
             {/* <BoxWrap>
             <Title htmlFor="image">썸네일</Title>
-            <Input type="file" id="image" name="image" ref={register} />
+            <InputBox type="file" id="image" name="image" ref={register} />
           </BoxWrap> */}
 
             <ButtonWrap>
@@ -160,7 +154,7 @@ function CreateStudy({ onSubmit }) {
 const Wrap = styled.main`
   margin: 9rem auto;
   width: 57rem;
-  font-family: AppleSDGothicNeo, sans-serif;
+  font-family: ${({ theme }) => theme.formFont};
   h1 {
     margin-bottom: 1.3rem;
     text-align: center;
@@ -172,7 +166,7 @@ const Wrap = styled.main`
 const StudyForm = styled.form`
   legend {
     margin-bottom: 4.4rem;
-    font-family: NanumSquareRoundOTFEB, sans-serif;
+    font-family: ${({ theme }) => theme.subFont};
     font-size: 3.2rem;
     letter-spacing: -0.06rem;
     text-align: center;
@@ -190,22 +184,7 @@ const RequiredMessage = styled.span`
   color: ${({ theme }) => theme.requiredColor};
 `;
 
-const Input = styled.input`
-  padding: 0 1.6rem;
-  width: 100%;
-  height: 5rem;
-  border-radius: 2px;
-  border: solid 1px #939393;
-  font-size: 1.6rem;
-  font-family: AppleSDGothicNeo, sans-serif;
-
-  &::placeholder {
-    letter-spacing: -0.03rem;
-    color: #9f9f9f;
-  }
-`;
-
-const TextArea = styled(Input)`
+const TextArea = styled(InputBox)`
   width: 100%;
   height: 24.4rem;
   padding: 1rem 2rem;
@@ -226,67 +205,6 @@ const Description = styled.span`
   color: #5e5e5e;
 `;
 
-const RadioWrap = styled.div`
-  display: inline-flex;
-  position: relative;
-  align-items: center;
-
-  & + & {
-    margin-left: 17.9rem;
-  }
-
-  [type='radio'] {
-    appearance: none;
-    margin: 0;
-    margin-right: 3.8rem;
-  }
-
-  [type='radio'] + label:before {
-    content: '';
-    position: absolute;
-    left: 0;
-    width: 2.2rem;
-    height: 2.2rem;
-    text-align: center;
-    background: #fff;
-    border: 0.1rem solid #979797;
-    border-radius: 0.2rem;
-    cursor: pointer;
-    box-sizing: border-box;
-  }
-  [type='radio']:not(:checked) + label:after,
-  [type='radio']:checked + label:after {
-    content: '';
-    position: absolute;
-    left: 0.44rem;
-    top: 0.44rem;
-    width: 1.3rem;
-    height: 1.3rem;
-    -webkit-transition: all 0.2s ease;
-    transition: all 0.2s ease;
-    border-radius: 0.2rem;
-    background-color: #3f97f4;
-  }
-
-  [type='radio']:not(:checked) + label:after {
-    opacity: 0;
-    -webkit-transform: scale(0);
-    transform: scale(0);
-  }
-
-  [type='radio']:checked + label:after {
-    opacity: 1;
-    -webkit-transform: scale(1);
-    transform: scale(1);
-  }
-
-  [type='radio'] + label {
-    font-size: 2rem;
-    letter-spacing: -0.03rem;
-    cursor: pointer;
-  }
-`;
-
 const ButtonWrap = styled.div`
   margin-top: 1.1rem;
 
@@ -298,7 +216,7 @@ const ButtonWrap = styled.div`
     text-shadow: ${({ theme }) => theme.textShadow};
     font-size: 2rem;
     font-weight: bold;
-    font-family: AppleSDGothicNeo;
+    font-family: ${({ theme }) => theme.formFont};
   }
 `;
 

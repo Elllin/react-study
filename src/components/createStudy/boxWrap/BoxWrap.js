@@ -6,7 +6,8 @@ function BoxWrap({ children, title, required = 'true', requiredSign = '*', ...pr
   return (
     <Wrap>
       <Title {...props}>
-        {title} {required && <Required>{requiredSign}</Required>}
+        {title}
+        {required && <Required>{requiredSign}</Required>}
       </Title>
       {children}
     </Wrap>

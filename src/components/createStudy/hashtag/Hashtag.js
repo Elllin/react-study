@@ -14,22 +14,23 @@ function Hashtag({ onClick, tag: { id, text } }) {
 }
 
 const Tag = styled.p`
-  pointer-events: none;
+  /* pointer-events: none; */
   padding: 0.9rem 2rem;
+  ${Layout}
 
   border-radius: 17px;
   background-color: #eaf4ff;
 
   font-size: 1.4rem;
   font-weight: 500;
-  color: #3f97f4;
-  ${Layout}
+  color: ${({ theme }) => theme.blueColor};
+  cursor: pointer;
 
   & + & {
     margin-left: 1.2rem;
   }
 
-  &:after {
+  /* &:after {
     pointer-events: all;
     display: inline-block;
     content: 'x';
@@ -38,10 +39,12 @@ const Tag = styled.p`
     margin-left: 6px;
     vertical-align: text-top;
     text-align: center;
-    color: #3f97f4;
+    color: ${({
+    theme,
+  }) => theme.blueColor};
 
     cursor: pointer;
-  }
+  } */
 `;
 
 export default Hashtag;

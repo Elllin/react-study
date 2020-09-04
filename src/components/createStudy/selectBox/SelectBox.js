@@ -9,7 +9,9 @@ function SelectBox({ optionItems, name, ...props }) {
     <SelectWrap>
       <InputBox as="select" id={name} name={name} {...props}>
         {optionItems.map((text) => (
-          <option value={text}>{text}</option>
+          <option value={text} key={text}>
+            {text}
+          </option>
         ))}
       </InputBox>
       <SelectArrow>
