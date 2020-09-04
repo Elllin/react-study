@@ -6,6 +6,8 @@ const createStudy = {
     description:
       '*그룹을 특색있게 나타내는 해시태그를 입력해주세요. 설정시 검색 확률이 높아져요! (최대 3개)',
   },
+  locationOption: ['서울 전체', '경기 전체', '인천 전체'],
+  categoryOption: ['대입 / 수능', '대학생 / 취업', '공무원 / 임용'],
 };
 
 export default createStudy;

@@ -5,10 +5,10 @@ import createStudy from './constants/constants';
 
 import Hashtag from './hastag/Hashtag';
 import BoxWrap from './boxWrap/BoxWrap';
+import SelectBox from './selectBox/SelectBox';
 
 import styled, { css } from 'styled-components';
-import { Layout } from 'style/CustomStyle';
-import { BsChevronDown } from 'react-icons/bs';
+import { Layout, InputBox } from 'style/CustomStyle';
 
 function CreateStudy({ onSubmit }) {
   const { register, handleSubmit, errors } = useForm();
@@ -60,6 +60,8 @@ function CreateStudy({ onSubmit }) {
   const {
     groupName,
     groupIntroduction,
+    locationOption,
+    categoryOption,
     hashtag: { placeholder, description },
   } = createStudy;
   return (
@@ -72,28 +74,10 @@ function CreateStudy({ onSubmit }) {
             <RequiredMessage>* 는 필수 입력 사항입니다.</RequiredMessage>
             <BoxLayout>
               <BoxWrap title="지역" htmlFor="location">
-                <SelectWrap>
-                  <Input as="select" id="location" name="location" ref={register} required>
-                    <option value="서울">서울 전체</option>
-                    <option value="경기">경기 전체</option>
-                    <option value="인천">인천 전체</option>
-                  </Input>
-                  <SelectArrow>
-                    <BsChevronDown />
-                  </SelectArrow>
-                </SelectWrap>
+                <SelectBox optionItems={locationOption} name="location" ref={register} required />
               </BoxWrap>
               <BoxWrap title="그룹 카테고리" htmlFor="category">
-                <SelectWrap>
-                  <Input as="select" id="category" name="category" ref={register} required>
-                    <option value="대입 / 수능">대입 / 수능</option>
-                    <option value="대학생 / 취업">대학생 / 취업</option>
-                    <option value="공무원 / 임용">공무원 / 임용</option>
-                  </Input>
-                  <SelectArrow>
-                    <BsChevronDown />
-                  </SelectArrow>
-                </SelectWrap>
+                <SelectBox optionItems={categoryOption} name="category" ref={register} required />
               </BoxWrap>
             </BoxLayout>
             <BoxWrap title="예치금 설정을 하시나요?" as="div" far>
@@ -301,33 +285,6 @@ const RadioWrap = styled.div`
     letter-spacing: -0.03rem;
     cursor: pointer;
   }
-`;
-
-const SelectWrap = styled.div`
-  position: relative;
-  display: inline-block;
-  width: 100%;
-
-  select {
-    display: inline-block;
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    cursor: pointer;
-  }
-  &::-ms-expand {
-    display: none;
-  }
-`;
-
-const SelectArrow = styled.div`
-  position: absolute;
-  margin-top: -1rem;
-  top: 50%;
-  right: 1.6rem;
-  color: #787878;
-  font-size: 2.1rem;
-  pointer-events: none;
 `;
 
 const ButtonWrap = styled.div`
