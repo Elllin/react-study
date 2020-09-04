@@ -4,6 +4,7 @@ import { useLocation } from 'react-router-dom';
 import createStudy from './constants/constants';
 
 import Hashtag from './hastag/Hashtag';
+import BoxWrap from './boxWrap/BoxWrap';
 
 import styled, { css } from 'styled-components';
 import { Layout } from 'style/CustomStyle';
@@ -70,10 +71,7 @@ function CreateStudy({ onSubmit }) {
             <legend>스터디 그룹 개설하기</legend>
             <RequiredMessage>* 는 필수 입력 사항입니다.</RequiredMessage>
             <BoxLayout>
-              <BoxWrap>
-                <Title htmlFor="location">
-                  지역<Required>*</Required>
-                </Title>
+              <BoxWrap title="지역" htmlFor="location">
                 <SelectWrap>
                   <Input as="select" id="location" name="location" ref={register} required>
                     <option value="서울">서울 전체</option>
@@ -85,10 +83,7 @@ function CreateStudy({ onSubmit }) {
                   </SelectArrow>
                 </SelectWrap>
               </BoxWrap>
-              <BoxWrap>
-                <Title htmlFor="category">
-                  그룹 카테고리<Required>*</Required>
-                </Title>
+              <BoxWrap title="그룹 카테고리" htmlFor="category">
                 <SelectWrap>
                   <Input as="select" id="category" name="category" ref={register} required>
                     <option value="대입 / 수능">대입 / 수능</option>
@@ -101,10 +96,7 @@ function CreateStudy({ onSubmit }) {
                 </SelectWrap>
               </BoxWrap>
             </BoxLayout>
-            <BoxWrap>
-              <Title as="div" far>
-                예치금 설정을 하시나요?<Required>*</Required>
-              </Title>
+            <BoxWrap title="예치금 설정을 하시나요?" as="div" far>
               <RadioWrap>
                 <input type="radio" id="yes" name="is_deposit" value="예" ref={register} required />
                 <label htmlFor="yes">네. 할래요!</label>
@@ -121,11 +113,7 @@ function CreateStudy({ onSubmit }) {
                 <label htmlFor="no">아니요. 괜찮아요!</label>
               </RadioWrap>
             </BoxWrap>
-            <BoxWrap>
-              <Title htmlFor="title">
-                그룹 이름<Required>*</Required>
-              </Title>
-
+            <BoxWrap title="그룹 이름" htmlFor="title">
               <Input
                 type="text"
                 id="title"
@@ -135,10 +123,7 @@ function CreateStudy({ onSubmit }) {
                 placeholder={groupName}
               />
             </BoxWrap>
-            <BoxWrap>
-              <Title htmlFor="description">
-                그룹 소개<Required>*</Required>
-              </Title>
+            <BoxWrap title="그룹 소개" htmlFor="description">
               <TextArea
                 as="textarea"
                 id="description"
@@ -155,8 +140,7 @@ function CreateStudy({ onSubmit }) {
               <Input type="email" id="email" name="email" ref={register} required />
             </BoxWrap> */}
 
-            <BoxWrap>
-              <Title htmlFor="hashtag">그룹 해시태그</Title>
+            <BoxWrap title="그룹 해시태그" htmlFor="hashtag">
               <Input
                 type="text"
                 id="hashtag"
@@ -216,22 +200,10 @@ const StudyForm = styled.form`
   }
 `;
 
-const Title = styled.label`
-  display: block;
-  margin-bottom: ${({ far }) => (far ? '1.5rem' : '1.3rem')};
-  font-size: 2rem;
-  font-weight: bold;
-  letter-spacing: -0.03rem;
-`;
-
-const Required = styled.span`
-  margin-left: 0.3rem;
-  color: #fd5e5c;
-`;
-
-const RequiredMessage = styled(Required)`
+const RequiredMessage = styled.span`
   margin: 0 0 3rem 0.3rem;
   font-size: 1.6rem;
+  color: ${({ theme }) => theme.requiredColor};
 `;
 
 const Input = styled.input`
@@ -259,10 +231,6 @@ const BoxLayout = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 0 3rem;
-`;
-
-const BoxWrap = styled.div`
-  margin-bottom: 4.4rem;
 `;
 
 const Description = styled.span`
