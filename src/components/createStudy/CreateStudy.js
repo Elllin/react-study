@@ -41,7 +41,8 @@ function CreateStudy({ onSubmit }) {
     const { value } = target;
     setHashtag(value);
     if (value.endsWith(',') && value.length > 0) {
-      const text = value.slice(0, -1);
+      let text = value.slice(0, -1);
+      text = `#${text}`;
       const newhashTag = { id: tagId.current, text };
       setHashtags(hashtags.concat([newhashTag]));
       setHashtag('');
@@ -67,9 +68,62 @@ function CreateStudy({ onSubmit }) {
         <fieldset>
           <div>
             <legend>스터디 그룹 개설하기</legend>
+            <RequiredMessage>* 는 필수 입력 사항입니다.</RequiredMessage>
+            <BoxLayout>
+              <BoxWrap>
+                <Title htmlFor="location">
+                  지역<Required>*</Required>
+                </Title>
+                <SelectWrap>
+                  <Input as="select" id="location" name="location" ref={register} required>
+                    <option value="서울">서울 전체</option>
+                    <option value="경기">경기 전체</option>
+                    <option value="인천">인천 전체</option>
+                  </Input>
+                  <SelectArrow>
+                    <BsChevronDown />
+                  </SelectArrow>
+                </SelectWrap>
+              </BoxWrap>
+              <BoxWrap>
+                <Title htmlFor="category">
+                  그룹 카테고리<Required>*</Required>
+                </Title>
+                <SelectWrap>
+                  <Input as="select" id="category" name="category" ref={register} required>
+                    <option value="대입 / 수능">대입 / 수능</option>
+                    <option value="대학생 / 취업">대학생 / 취업</option>
+                    <option value="공무원 / 임용">공무원 / 임용</option>
+                  </Input>
+                  <SelectArrow>
+                    <BsChevronDown />
+                  </SelectArrow>
+                </SelectWrap>
+              </BoxWrap>
+            </BoxLayout>
+            <BoxWrap>
+              <Title as="div" far>
+                예치금 설정을 하시나요?<Required>*</Required>
+              </Title>
+              <RadioWrap>
+                <input type="radio" id="yes" name="is_deposit" value="예" ref={register} required />
+                <label htmlFor="yes">네. 할래요!</label>
+              </RadioWrap>
+              <RadioWrap>
+                <input
+                  type="radio"
+                  id="no"
+                  name="is_deposit"
+                  value="아니오"
+                  ref={register}
+                  required
+                />
+                <label htmlFor="no">아니요. 괜찮아요!</label>
+              </RadioWrap>
+            </BoxWrap>
             <BoxWrap>
               <Title htmlFor="title">
-                그룹 이름 <Required>*</Required>
+                그룹 이름<Required>*</Required>
               </Title>
 
               <Input
@@ -83,7 +137,7 @@ function CreateStudy({ onSubmit }) {
             </BoxWrap>
             <BoxWrap>
               <Title htmlFor="description">
-                그룹 소개 <Required>*</Required>
+                그룹 소개<Required>*</Required>
               </Title>
               <TextArea
                 as="textarea"
@@ -100,38 +154,6 @@ function CreateStudy({ onSubmit }) {
               </Title>
               <Input type="email" id="email" name="email" ref={register} required />
             </BoxWrap> */}
-            <BoxLayout>
-              <BoxWrap>
-                <Title htmlFor="location">
-                  지역 <Required>*</Required>
-                </Title>
-                <SelectWrap>
-                  <Input as="select" id="location" name="location" ref={register} required>
-                    <option value="서울">서울 전체</option>
-                    <option value="경기">경기 전체</option>
-                    <option value="인천">인천 전체</option>
-                  </Input>
-                  <SelectArrow>
-                    <BsChevronDown />
-                  </SelectArrow>
-                </SelectWrap>
-              </BoxWrap>
-              <BoxWrap>
-                <Title htmlFor="category">
-                  그룹 카테고리 <Required>*</Required>
-                </Title>
-                <SelectWrap>
-                  <Input as="select" id="category" name="category" ref={register} required>
-                    <option value="대입 / 수능">대입 / 수능</option>
-                    <option value="대학생 / 취업">대학생 / 취업</option>
-                    <option value="공무원 / 임용">공무원 / 임용</option>
-                  </Input>
-                  <SelectArrow>
-                    <BsChevronDown />
-                  </SelectArrow>
-                </SelectWrap>
-              </BoxWrap>
-            </BoxLayout>
 
             <BoxWrap>
               <Title htmlFor="hashtag">그룹 해시태그</Title>
@@ -150,27 +172,6 @@ function CreateStudy({ onSubmit }) {
                   <Hashtag key={tag.id} tag={tag} onClick={removeHashtag} />
                 ))}
               </TagContainer>
-            </BoxWrap>
-
-            <BoxWrap>
-              <Title as="div" far>
-                예치금 설정을 하시나요? <Required>*</Required>
-              </Title>
-              <RadioWrap>
-                <input type="radio" id="yes" name="is_deposit" value="예" ref={register} required />
-                <label htmlFor="yes">네. 할래요!</label>
-              </RadioWrap>
-              <RadioWrap>
-                <input
-                  type="radio"
-                  id="no"
-                  name="is_deposit"
-                  value="아니오"
-                  ref={register}
-                  required
-                />
-                <label htmlFor="no">아니요. 괜찮아요!</label>
-              </RadioWrap>
             </BoxWrap>
 
             {/* <BoxWrap>
@@ -195,18 +196,17 @@ const Wrap = styled.main`
   h1 {
     margin-bottom: 1.3rem;
     text-align: center;
-    font-size: 24px;
+    font-size: 2.4rem;
     font-weight: 900;
   }
 `;
 
 const StudyForm = styled.form`
   legend {
-    margin-bottom: 5.1rem;
-    text-shadow: ${({ theme }) => theme.textShadow};
+    margin-bottom: 4.4rem;
     font-family: NanumSquareRoundOTFEB, sans-serif;
-    font-size: 32px;
-    letter-spacing: -0.6px;
+    font-size: 3.2rem;
+    letter-spacing: -0.06rem;
     text-align: center;
   }
   fieldset > div {
@@ -219,15 +219,19 @@ const StudyForm = styled.form`
 const Title = styled.label`
   display: block;
   margin-bottom: ${({ far }) => (far ? '1.5rem' : '1.3rem')};
-  text-shadow: ${({ theme }) => theme.textShadow};
   font-size: 2rem;
   font-weight: bold;
-  letter-spacing: -0.3px;
+  letter-spacing: -0.03rem;
 `;
 
 const Required = styled.span`
-  vertical-align: middle;
-  color: red;
+  margin-left: 0.3rem;
+  color: #fd5e5c;
+`;
+
+const RequiredMessage = styled(Required)`
+  margin: 0 0 3rem 0.3rem;
+  font-size: 1.6rem;
 `;
 
 const Input = styled.input`
@@ -240,7 +244,7 @@ const Input = styled.input`
   font-family: AppleSDGothicNeo, sans-serif;
 
   &::placeholder {
-    letter-spacing: -0.3px;
+    letter-spacing: -0.03rem;
     color: #9f9f9f;
   }
 `;
@@ -264,10 +268,10 @@ const BoxWrap = styled.div`
 const Description = styled.span`
   display: inline-block;
   margin-top: 1.2rem;
-  text-shadow: ${({ theme }) => theme.textShadow};
-  font-size: 15px;
-  letter-spacing: -0.3px;
-  color: #828282;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  letter-spacing: -0.03rem;
+  color: #5e5e5e;
 `;
 
 const RadioWrap = styled.div`
@@ -293,7 +297,7 @@ const RadioWrap = styled.div`
     height: 2.2rem;
     text-align: center;
     background: #fff;
-    border: 1px solid #979797;
+    border: 0.1rem solid #979797;
     border-radius: 0.2rem;
     cursor: pointer;
     box-sizing: border-box;
@@ -325,8 +329,8 @@ const RadioWrap = styled.div`
   }
 
   [type='radio'] + label {
-    font-size: 20px;
-    letter-spacing: -0.3px;
+    font-size: 2rem;
+    letter-spacing: -0.03rem;
     cursor: pointer;
   }
 `;
@@ -359,7 +363,7 @@ const SelectArrow = styled.div`
 `;
 
 const ButtonWrap = styled.div`
-  margin-top: 4.2rem;
+  margin-top: 1.1rem;
 
   button {
     width: 100%;
@@ -377,7 +381,7 @@ const TagContainer = styled.div`
   display: flex;
   flex-flow: row wrap;
   width: 100%;
-  margin-top: 1rem;
+  margin-top: 1.2rem;
   /* min-height: 30px; */
 `;
 

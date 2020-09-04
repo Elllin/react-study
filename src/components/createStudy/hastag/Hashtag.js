@@ -1,5 +1,7 @@
 import React from 'react';
+
 import styled from 'styled-components';
+import { Layout } from 'style/CustomStyle';
 
 function Hashtag({ onClick, tag: { id, text } }) {
   return (
@@ -13,13 +15,20 @@ function Hashtag({ onClick, tag: { id, text } }) {
 
 const Tag = styled.p`
   pointer-events: none;
-  padding: 1rem 2rem;
+  padding: 0.9rem 2rem;
+
+  border-radius: 17px;
+  background-color: #eaf4ff;
+
   font-size: 1.4rem;
-  background: #f1f3f5;
+  font-weight: 500;
   color: #3f97f4;
-  font-weight: 600;
-  border-radius: 15px;
-  margin: 5px;
+  ${Layout}
+
+  & + & {
+    margin-left: 1.2rem;
+  }
+
   &:after {
     pointer-events: all;
     display: inline-block;
