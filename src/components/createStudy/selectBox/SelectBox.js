@@ -5,10 +5,10 @@ import { InputBox } from 'style/CustomStyle';
 import styled from 'styled-components';
 import { BsChevronDown } from 'react-icons/bs';
 
-function SelectBox({ optionItems, name, propsRef, ...props }) {
+function SelectBox({ optionItems, name, register, ...props }) {
   return (
     <SelectWrap>
-      <InputBox as="select" id={name} name={name} ref={propsRef} {...props}>
+      <InputBox as="select" id={name} name={name} ref={register} {...props}>
         {optionItems.map((text) => (
           <option value={text} key={text}>
             {text}
@@ -53,10 +53,10 @@ SelectBox.propTypes = {
   optionItems: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number]))
     .isRequired,
   name: PropTypes.string.isRequired,
-  propsRef: PropTypes.oneOfType([PropTypes.func, PropTypes.objectOf]),
+  register: PropTypes.func,
 };
 SelectBox.defaultProps = {
-  propsRef: null,
+  register: null,
 };
 
 export default SelectBox;

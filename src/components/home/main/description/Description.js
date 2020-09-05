@@ -21,6 +21,7 @@ function Description() {
                 width={width}
                 float={float}
                 color={color}
+                key={title}
               />
             );
           })}

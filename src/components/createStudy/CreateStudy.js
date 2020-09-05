@@ -1,6 +1,5 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { useLocation } from 'react-router-dom';
 import createStudy from './constants/constants';
 import PropTypes from 'prop-types';
 
@@ -15,77 +14,39 @@ import FormWrap from './FormWrap';
 import LoadingPage from 'containers/common/LoadingPage';
 
 function CreateStudy({ onSubmit, loading }) {
-  const { register, handleSubmit, errors } = useForm();
-  const [inputs, setInputs] = useState({
-    title: '',
-    description: '',
-    hashtag: '',
-    is_deposit: '',
-  });
+  const { register, handleSubmit, errors, setValue } = useForm();
 
-  const [hashtag, setHashtag] = useState('');
-  const [hashtags, setHashtags] = useState([]);
-
-  // const onSubmit = (data) => {
-  //   const formData = JSON.stringify(data);
-  //   console.log(formData);
-  //   fetch('https://jsonplaceholder.typicode.com/posts', {
-  //     method: 'POST',
-  //     body: formData,
-  //   }).then((data) => console.log(data));
-  // };
-  // const { pathname } = useLocation();
+  // const [inputs, setInputs] = useState({
+  //   title: '',
+  //   description: '',
+  //   hashtag: '',
+  //   is_deposit: '',
+  // });
 
   useEffect(() => {
     window.scrollTo({ top: 0 });
   }, []);
 
-  const tagId = useRef(1);
+  const { groupName, groupIntroduction, locationOption, categoryOption } = createStudy;
 
-  const onChangeHashtag = ({ target }) => {
-    const { value } = target;
-    setHashtag(value);
-    if (value.endsWith(',') && value.length > 0) {
-      let text = value.slice(0, -1);
-      text = `#${text}`;
-      const newhashTag = { id: tagId.current, text };
-      setHashtags(hashtags.concat([newhashTag]));
-      setHashtag('');
-      tagId.current++;
-    }
-  };
-
-  const removeHashtag = ({ target }) => {
-    const { tagId } = target.dataset;
-    const removedTags = hashtags.filter((tag) => tag.id !== parseInt(tagId));
-    setHashtags(removedTags);
-  };
-
-  const {
-    groupName,
-    groupIntroduction,
-    locationOption,
-    categoryOption,
-    hashtag: { placeholder, description },
-  } = createStudy;
   return (
     <>
       <FormWrap onSubmit={onSubmit} handleSubmit={handleSubmit}>
         <BoxLayout>
           <BoxWrap title="지역" htmlFor="location">
-            <SelectBox optionItems={locationOption} name="location" propsRef={register} required />
+            <SelectBox optionItems={locationOption} name="location" register={register} required />
           </BoxWrap>
           <BoxWrap title="그룹 카테고리" htmlFor="category">
-            <SelectBox optionItems={categoryOption} name="category" propsRef={register} required />
+            <SelectBox optionItems={categoryOption} name="category" register={register} required />
           </BoxWrap>
         </BoxLayout>
         <BoxWrap title="예치금 설정을 하시나요?" as="div" far>
-          <RadioBox id="yes" text="네. 할래요!" name="is_deposit" propsRef={register} required />
+          <RadioBox id="yes" text="네. 할래요!" name="is_deposit" register={register} required />
           <RadioBox
             id="no"
             text="아니요. 괜찮아요!"
             name="is_deposit"
-            propsRef={register}
+            // register={register}
             required
           />
         </BoxWrap>
@@ -117,22 +78,7 @@ function CreateStudy({ onSubmit, loading }) {
             </BoxWrap> */}
 
         <BoxWrap title="그룹 해시태그" htmlFor="hashtag" required={false}>
-          <InputBox
-            type="text"
-            id="hashtag"
-            name="hashtag"
-            placeholder={placeholder}
-            value={hashtag}
-            ref={register}
-            onChange={onChangeHashtag}
-          />
-          <Description>{description}</Description>
-          <TagContainer>
-            {hashtags.map((tag) => {
-              const { id, text } = tag;
-              return <Hashtag key={id} tag={id} text={text} onClick={removeHashtag} />;
-            })}
-          </TagContainer>
+          <Hashtag setValue={setValue} register={register} />
         </BoxWrap>
 
         {/* <BoxWrap>
@@ -161,15 +107,6 @@ const BoxLayout = styled.div`
   gap: 0 3rem;
 `;
 
-const Description = styled.span`
-  display: inline-block;
-  margin-top: 1.2rem;
-  font-size: 1.5rem;
-  line-height: 2rem;
-  letter-spacing: -0.03rem;
-  color: #5e5e5e;
-`;
-
 const ButtonWrap = styled.div`
   margin-top: 1.1rem;
 
@@ -183,14 +120,6 @@ const ButtonWrap = styled.div`
     font-weight: bold;
     font-family: ${({ theme }) => theme.formFont};
   }
-`;
-
-const TagContainer = styled.div`
-  display: flex;
-  flex-flow: row wrap;
-  width: 100%;
-  margin-top: 1.2rem;
-  /* min-height: 30px; */
 `;
 
 CreateStudy.propTypes = {

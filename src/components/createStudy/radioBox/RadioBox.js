@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 
 import styled from 'styled-components';
 
-function RadioBox({ id, text, propsRef, checkedcolor, ...props }) {
+function RadioBox({ id, text, register, checkedcolor, ...props }) {
   return (
     <RadioWrap>
       <input
         type="radio"
         id={id}
         value={text}
-        ref={propsRef}
+        ref={register}
         checkedcolor={checkedcolor}
         {...props}
       />
@@ -84,12 +84,12 @@ const RadioWrap = styled.div`
 RadioBox.propTypes = {
   id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   text: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-  propsRef: PropTypes.oneOfType([PropTypes.func, PropTypes.objectOf]),
+  register: PropTypes.func,
   checkedcolor: PropTypes.string,
 };
 
 RadioBox.defaultProps = {
-  propsRef: null,
+  register: null,
   checkedcolor: null,
 };
 

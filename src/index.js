@@ -8,7 +8,7 @@ import rootReducer from './modules';
 import ReduxThunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
-import './styles.css';
+import 'assets/fonts/styles.css';
 import '@kfonts/nanum-square-round-otf';
 import { ThemeProvider } from 'styled-components';
 import theme from './style/theme';

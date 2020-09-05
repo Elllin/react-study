@@ -23,8 +23,9 @@ const useStyles = makeStyles((theme) => ({
     width: '100vw',
     height: '100vh',
 
-    /* ie를 제외한 최신 웹브라우저*/
     background: 'none rgba(0, 0, 0, 0.5)',
+    filter:
+      'progid:DXImageTransform.Microsoft.Gradient(startColorstr="#80000000", endColorstr="#80000000")',
 
     '& > * + *': {
       marginLeft: theme.spacing(2),

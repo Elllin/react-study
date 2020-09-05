@@ -1,0 +1,25 @@
+@font-face {
+  font-family: '210 Yeonpilsketch R';
+  src: url('210 Yeonpilsketch Regular.eot');
+  src: url('210 Yeonpilsketch Regular.eot?#iefix') format('embedded-opentype'),
+    url('210 Yeonpilsketch Regular.woff2') format('woff2'),
+    url('210 Yeonpilsketch Regular.woff') format('woff'),
+    url('210 Yeonpilsketch Regular.svg#210 Yeonpilsketch Regular') format('svg');
+  font-weight: 400;
+  font-style: normal;
+  font-stretch: normal;
+  unicode-range: U+0020-00FE;
+}
+
+@font-face {
+  font-family: 'NanumSquareRoundOTFEB';
+  src: url('NanumSquareRoundOTFEB00.eot');
+  src: url('NanumSquareRoundOTFEB00.eot?#iefix') format('embedded-opentype'),
+    url('NanumSquareRoundOTFEB00.woff2') format('woff2'),
+    url('NanumSquareRoundOTFEB00.woff') format('woff'),
+    url('NanumSquareRoundOTFEB00.ttf') format('truetype'),
+    url('NanumSquareRoundOTFEB00.svg#NanumSquareRoundOTFEB00') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
