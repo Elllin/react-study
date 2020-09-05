@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { InputBox } from 'style/CustomStyle';
 import styled from 'styled-components';
@@ -47,5 +48,15 @@ const SelectArrow = styled.div`
   font-size: 2.1rem;
   pointer-events: none;
 `;
+
+SelectBox.propTypes = {
+  optionItems: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number]))
+    .isRequired,
+  name: PropTypes.string.isRequired,
+  propsRef: PropTypes.oneOfType([PropTypes.func, PropTypes.objectOf]),
+};
+SelectBox.defaultProps = {
+  propsRef: null,
+};
 
 export default SelectBox;

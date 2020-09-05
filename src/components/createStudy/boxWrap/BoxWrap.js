@@ -1,8 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import styled from 'styled-components';
 
-function BoxWrap({ children, title, required = 'true', requiredSign = '*', ...props }) {
+function BoxWrap({ children, title, required, requiredSign, ...props }) {
   return (
     <Wrap>
       <Title {...props}>
@@ -30,5 +31,17 @@ const Required = styled.span`
   margin-left: 0.3rem;
   color: ${({ theme }) => theme.requiredColor};
 `;
+
+BoxWrap.propTypes = {
+  children: PropTypes.node.isRequired,
+  title: PropTypes.string.isRequired,
+  required: PropTypes.bool,
+  requiredSign: PropTypes.string,
+};
+
+BoxWrap.defaultProps = {
+  required: true,
+  requiredSign: '*',
+};
 
 export default BoxWrap;

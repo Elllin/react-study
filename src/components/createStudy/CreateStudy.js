@@ -119,9 +119,10 @@ function CreateStudy({ onSubmit }) {
         />
         <Description>{description}</Description>
         <TagContainer>
-          {hashtags.map((tag) => (
-            <Hashtag key={tag.id} tag={tag} onClick={removeHashtag} />
-          ))}
+          {hashtags.map((tag) => {
+            const { id, text } = tag;
+            return <Hashtag key={id} tag={id} text={text} onClick={removeHashtag} />;
+          })}
         </TagContainer>
       </BoxWrap>
 

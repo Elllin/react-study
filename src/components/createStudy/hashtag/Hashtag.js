@@ -1,9 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import styled from 'styled-components';
 import { Layout } from 'style/CustomStyle';
 
-function Hashtag({ onClick, tag: { id, text } }) {
+function Hashtag({ onClick, id, text }) {
   return (
     <>
       <Tag onClick={onClick} data-tag-id={id}>
@@ -46,5 +47,11 @@ const Tag = styled.p`
     cursor: pointer;
   } */
 `;
+
+Hashtag.propTypes = {
+  onClick: PropTypes.func.isRequired,
+  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  text: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+};
 
 export default Hashtag;

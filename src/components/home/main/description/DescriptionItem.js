@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import styled, { css } from 'styled-components';
 
@@ -35,5 +36,18 @@ const Discription = styled.div`
   letter-spacing: -0.03rem;
   color: #666;
 `;
+
+DescriptionItem.propTypes = {
+  title: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  discription: PropTypes.string.isRequired,
+  width: PropTypes.string,
+  float: PropTypes.string,
+  color: PropTypes.string.isRequired,
+};
+
+DescriptionItem.defaultProps = {
+  width: '25.3rem',
+  float: 'left',
+};
 
 export default DescriptionItem;
