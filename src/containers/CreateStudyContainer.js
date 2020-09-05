@@ -6,7 +6,6 @@ import { resetData } from 'modules/createStudy';
 import CreateStudy from 'components/createStudy/CreateStudy';
 import MailCheck from 'components/createStudy/MailCheck';
 import ErrorPage from './common/ErrorPage';
-import LoadingPage from './common/LoadingPage';
 
 function CreateStudyContainer() {
   const { data, loading, error } = useSelector((state) => {

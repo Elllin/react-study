@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Layout } from 'style/CustomStyle';
 
-function FormWrap({ children, handleSubmit, onSubmit }) {
+function FormTemplate({ children, handleSubmit, onSubmit }) {
   return (
     <Wrap>
       <h1>DO IT DO IT</h1>
@@ -54,10 +54,10 @@ const RequiredMessage = styled.span`
   color: ${({ theme }) => theme.requiredColor};
 `;
 
-FormWrap.propTypes = {
+FormTemplate.propTypes = {
   children: PropTypes.node.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
 };
 
-export default FormWrap;
+export default FormTemplate;

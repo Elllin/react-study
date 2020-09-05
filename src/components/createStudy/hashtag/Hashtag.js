@@ -40,6 +40,7 @@ function Hashtag({ register, setValue }) {
 
   useEffect(() => {
     const textArr = hashtags.map((tag) => tag.text.slice(1));
+
     setValue(`hashtag`, textArr);
   }, [hashtags, setValue]);
 
@@ -54,7 +55,6 @@ function Hashtag({ register, setValue }) {
         ref={() => register({ name: 'hashtag' })}
         onChange={onChangeHashtag}
       />
-
       <Description>{description}</Description>
       <TagContainer>
         {hashtags.map((tag) => {

@@ -4,24 +4,17 @@ import createStudy from './constants/constants';
 import PropTypes from 'prop-types';
 
 import Hashtag from './hashtag/Hashtag';
-import BoxWrap from './boxWrap/BoxWrap';
+import BoxTemplate from './boxWrap/BoxTemplate';
 import SelectBox from './selectBox/SelectBox';
 import RadioBox from './radioBox/RadioBox';
+import FormTemplate from './formWrap/FormTemplate';
 
 import styled from 'styled-components';
 import { InputBox } from 'style/CustomStyle';
-import FormWrap from './FormWrap';
 import LoadingPage from 'containers/common/LoadingPage';
 
 function CreateStudy({ onSubmit, loading }) {
   const { register, handleSubmit, errors, setValue } = useForm();
-
-  // const [inputs, setInputs] = useState({
-  //   title: '',
-  //   description: '',
-  //   hashtag: '',
-  //   is_deposit: '',
-  // });
 
   useEffect(() => {
     window.scrollTo({ top: 0 });
@@ -31,26 +24,28 @@ function CreateStudy({ onSubmit, loading }) {
 
   return (
     <>
-      <FormWrap onSubmit={onSubmit} handleSubmit={handleSubmit}>
+      <FormTemplate onSubmit={onSubmit} handleSubmit={handleSubmit}>
         <BoxLayout>
-          <BoxWrap title="지역" htmlFor="location">
+          <BoxTemplate title="지역" htmlFor="location">
             <SelectBox optionItems={locationOption} name="location" register={register} required />
-          </BoxWrap>
-          <BoxWrap title="그룹 카테고리" htmlFor="category">
+          </BoxTemplate>
+          <BoxTemplate title="그룹 카테고리" htmlFor="category">
             <SelectBox optionItems={categoryOption} name="category" register={register} required />
-          </BoxWrap>
+          </BoxTemplate>
         </BoxLayout>
-        <BoxWrap title="예치금 설정을 하시나요?" as="div" far>
+
+        <BoxTemplate title="예치금 설정을 하시나요?" as="div" far>
           <RadioBox id="yes" text="네. 할래요!" name="is_deposit" register={register} required />
           <RadioBox
             id="no"
             text="아니요. 괜찮아요!"
             name="is_deposit"
-            // register={register}
+            register={register}
             required
           />
-        </BoxWrap>
-        <BoxWrap title="그룹 이름" htmlFor="title">
+        </BoxTemplate>
+
+        <BoxTemplate title="그룹 이름" htmlFor="title">
           <InputBox
             type="text"
             id="title"
@@ -59,8 +54,9 @@ function CreateStudy({ onSubmit, loading }) {
             required
             placeholder={groupName}
           />
-        </BoxWrap>
-        <BoxWrap title="그룹 소개" htmlFor="description">
+        </BoxTemplate>
+
+        <BoxTemplate title="그룹 소개" htmlFor="description">
           <TextArea
             as="textarea"
             id="description"
@@ -69,27 +65,16 @@ function CreateStudy({ onSubmit, loading }) {
             required
             placeholder={groupIntroduction}
           ></TextArea>
-        </BoxWrap>
-        {/* <BoxWrap>
-              <Title htmlFor="email">
-                이메일 <Required>*</Required>
-              </Title>
-              <InputBox type="email" id="email" name="email" ref={register} required />
-            </BoxWrap> */}
+        </BoxTemplate>
 
-        <BoxWrap title="그룹 해시태그" htmlFor="hashtag" required={false}>
+        <BoxTemplate title="그룹 해시태그" htmlFor="hashtag" required={false}>
           <Hashtag setValue={setValue} register={register} />
-        </BoxWrap>
-
-        {/* <BoxWrap>
-            <Title htmlFor="image">썸네일</Title>
-            <InputBox type="file" id="image" name="image" ref={register} />
-          </BoxWrap> */}
-
+        </BoxTemplate>
         <ButtonWrap>
           <button type="submit">그룹 개설하기</button>
         </ButtonWrap>
-      </FormWrap>
+      </FormTemplate>
+
       {loading && <LoadingPage />}
     </>
   );
@@ -132,3 +117,17 @@ CreateStudy.defaultProps = {
 };
 
 export default CreateStudy;
+
+// const [inputs, setInputs] = useState({
+//   title: '',
+//   description: '',
+//   hashtag: '',
+//   is_deposit: '',
+// });
+
+// <BoxTemplate>
+//           <Title htmlFor="email">
+//             이메일 <Required>*</Required>
+//           </Title>
+//           <InputBox type="email" id="email" name="email" ref={register} required />
+//         </BoxTemplate>
