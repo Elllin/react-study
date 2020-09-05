@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import CreateStudy from 'components/createStudy/CreateStudy';
 import { fetchCreateStudy } from 'modules/createStudy';
-import MailCheck from 'components/createStudy/MailCheck';
-import { useEffect } from 'react';
 import { resetData } from 'modules/createStudy';
+
+import CreateStudy from 'components/createStudy/CreateStudy';
+import MailCheck from 'components/createStudy/MailCheck';
+import ErrorPage from './common/ErrorPage';
+import LoadingPage from './common/LoadingPage';
+// import LoadingPage from './common/LoadingPage';
 
 function CreateStudyContainer() {
   const { data, loading, error } = useSelector((state) => {
@@ -23,8 +26,8 @@ function CreateStudyContainer() {
     return () => resetData(dispatch);
   }, [dispatch]);
 
-  if (loading) return <div style={{ fontSize: '30px' }}>로딩중</div>;
-  if (error) return <div style={{ fontSize: '30px' }}>`error ${error}`</div>;
+  if (loading) return <LoadingPage />;
+  if (error) return <ErrorPage />;
 
   return <>{data ? <MailCheck /> : <CreateStudy onSubmit={onSubmit} />}</>;
 }

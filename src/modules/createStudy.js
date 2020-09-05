@@ -17,7 +17,7 @@ export const resetData = (dispatch) => {
   dispatch({ type: CREATE_STUDY_RESET });
 };
 
-const asyncReducer = createAsyncActions(GET_CREATE_STUDY, createStudy);
+const asyncReducer = createAsyncActions(GET_CREATE_STUDY, 'createStudy');
 
 export default function createStudy(state = initialState, action) {
   switch (action.type) {
