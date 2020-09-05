@@ -4,10 +4,10 @@ import { InputBox } from 'style/CustomStyle';
 import styled from 'styled-components';
 import { BsChevronDown } from 'react-icons/bs';
 
-function SelectBox({ optionItems, name, ...props }) {
+function SelectBox({ optionItems, name, propsRef, ...props }) {
   return (
     <SelectWrap>
-      <InputBox as="select" id={name} name={name} {...props}>
+      <InputBox as="select" id={name} name={name} ref={propsRef} {...props}>
         {optionItems.map((text) => (
           <option value={text} key={text}>
             {text}

@@ -2,10 +2,17 @@ import React from 'react';
 
 import styled from 'styled-components';
 
-function RadioBox({ id, text, checkedColor, ...props }) {
+function RadioBox({ id, text, propsRef, checkedColor, ...props }) {
   return (
     <RadioWrap>
-      <input type="radio" id={id} value={text} checkedColor={checkedColor} {...props} />
+      <input
+        type="radio"
+        id={id}
+        value={text}
+        ref={propsRef}
+        checkedColor={checkedColor}
+        {...props}
+      />
       <label htmlFor={id}>{text}</label>
     </RadioWrap>
   );

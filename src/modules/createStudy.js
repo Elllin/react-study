@@ -1,47 +1,31 @@
 import { reducerUtils } from 'lib/asyncUtils';
 import * as createStudyAPI from 'api/createStudy';
+import { createAsyncActions, createAsyncThunk } from 'lib/asyncUtils';
 
-const CREATE_STUDY = 'createStudy/CREATE_STUDY';
-const CREATE_STUDY_SUCCESS = 'createStudy/CREATE_STUDY_SUCCESS';
-const CREATE_STUDY_ERROR = 'createStudy/CREATE_STUDY_ERROR';
+const GET_CREATE_STUDY = 'createStudy/GET_CREATE_STUDY';
+const GET_CREATE_STUDY_SUCCESS = 'createStudy/GET_CREATE_STUDY_SUCCESS';
+const GET_CREATE_STUDY_ERROR = 'createStudy/GET_CREATE_STUDY_ERROR';
 const CREATE_STUDY_RESET = 'createStudy/CREATE_STUDY_RESET';
 
 const initialState = {
   createStudy: reducerUtils.initial(),
 };
 
-export const fetchCreateStudy = (data) => async (dispatch) => {
-  dispatch({ type: 'CREATE_STUDY' });
-  try {
-    const res = await createStudyAPI.fetchCreateStudy(data);
-    dispatch({ type: CREATE_STUDY_SUCCESS, payload: res });
-  } catch (error) {
-    dispatch({ type: CREATE_STUDY_ERROR, payload: error, error: true });
-  }
-};
+export const fetchCreateStudy = createAsyncThunk(GET_CREATE_STUDY, createStudyAPI.fetchCreateStudy);
 
 export const resetData = (dispatch) => {
   dispatch({ type: CREATE_STUDY_RESET });
 };
 
+const asyncReducer = createAsyncActions(GET_CREATE_STUDY, createStudy);
+
 export default function createStudy(state = initialState, action) {
-  console.log(action);
   switch (action.type) {
-    case CREATE_STUDY:
-      return {
-        ...state,
-        createStudy: reducerUtils.loading(),
-      };
-    case CREATE_STUDY_SUCCESS:
-      return {
-        ...state,
-        createStudy: reducerUtils.success(action.payload),
-      };
-    case CREATE_STUDY_ERROR:
-      return {
-        ...state,
-        createStudy: reducerUtils.error(action.payload),
-      };
+    case GET_CREATE_STUDY:
+    case GET_CREATE_STUDY_SUCCESS:
+    case GET_CREATE_STUDY_ERROR:
+      return asyncReducer(state, action);
+
     case CREATE_STUDY_RESET:
       return {
         ...state,

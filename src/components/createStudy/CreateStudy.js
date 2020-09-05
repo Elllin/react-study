@@ -70,15 +70,15 @@ function CreateStudy({ onSubmit }) {
     <FormWrap onSubmit={onSubmit} handleSubmit={handleSubmit}>
       <BoxLayout>
         <BoxWrap title="지역" htmlFor="location">
-          <SelectBox optionItems={locationOption} name="location" ref={register} required />
+          <SelectBox optionItems={locationOption} name="location" propsRef={register} required />
         </BoxWrap>
         <BoxWrap title="그룹 카테고리" htmlFor="category">
-          <SelectBox optionItems={categoryOption} name="category" ref={register} required />
+          <SelectBox optionItems={categoryOption} name="category" propsRef={register} required />
         </BoxWrap>
       </BoxLayout>
       <BoxWrap title="예치금 설정을 하시나요?" as="div" far>
-        <RadioBox id="yes" text="네. 할래요!" name="is_deposit" ref={register} required />
-        <RadioBox id="no" text="아니요. 괜찮아요!" name="is_deposit" ref={register} required />
+        <RadioBox id="yes" text="네. 할래요!" name="is_deposit" propsRef={register} required />
+        <RadioBox id="no" text="아니요. 괜찮아요!" name="is_deposit" propsRef={register} required />
       </BoxWrap>
       <BoxWrap title="그룹 이름" htmlFor="title">
         <InputBox
@@ -107,14 +107,14 @@ function CreateStudy({ onSubmit }) {
               <InputBox type="email" id="email" name="email" ref={register} required />
             </BoxWrap> */}
 
-      <BoxWrap title="그룹 해시태그" htmlFor="hashtag">
+      <BoxWrap title="그룹 해시태그" htmlFor="hashtag" required={false}>
         <InputBox
           type="text"
           id="hashtag"
           name="hashtag"
-          required
           placeholder={placeholder}
           value={hashtag}
+          ref={register}
           onChange={onChangeHashtag}
         />
         <Description>{description}</Description>
