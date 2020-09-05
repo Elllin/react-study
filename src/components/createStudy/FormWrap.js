@@ -54,4 +54,10 @@ const RequiredMessage = styled.span`
   color: ${({ theme }) => theme.requiredColor};
 `;
 
+FormWrap.propTypes = {
+  children: PropTypes.node.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+};
+
 export default FormWrap;

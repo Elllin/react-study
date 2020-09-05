@@ -1,8 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import styled from 'styled-components';
 
-function RadioBox({ id, text, propsRef, checkedColor, ...props }) {
+function RadioBox({ id, text, propsRef, checkedcolor, ...props }) {
   return (
     <RadioWrap>
       <input
@@ -10,7 +11,7 @@ function RadioBox({ id, text, propsRef, checkedColor, ...props }) {
         id={id}
         value={text}
         ref={propsRef}
-        checkedColor={checkedColor}
+        checkedcolor={checkedcolor}
         {...props}
       />
       <label htmlFor={id}>{text}</label>
@@ -57,8 +58,8 @@ const RadioWrap = styled.div`
     -webkit-transition: all 0.2s ease;
     transition: all 0.2s ease;
     border-radius: 0.2rem;
-    background-color: ${({ checkedColor, theme }) =>
-      checkedColor ? checkedColor : theme.blueColor};
+    background-color: ${({ checkedcolor, theme }) =>
+      checkedcolor ? checkedcolor : theme.blueColor};
   }
 
   [type='radio']:not(:checked) + label:after {
@@ -79,5 +80,17 @@ const RadioWrap = styled.div`
     cursor: pointer;
   }
 `;
+
+RadioBox.propTypes = {
+  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  text: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  propsRef: PropTypes.oneOfType([PropTypes.func, PropTypes.objectOf]),
+  checkedcolor: PropTypes.string,
+};
+
+RadioBox.defaultProps = {
+  propsRef: null,
+  checkedcolor: null,
+};
 
 export default RadioBox;
