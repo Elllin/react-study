@@ -19,7 +19,7 @@ export const InputBox = styled.input`
   border-radius: 2px;
   border: solid 1px #939393;
   font-size: 1.6rem;
-  font-family: AppleSDGothicNeo, sans-serif;
+  font-family: AppleSDGothicNeo, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;
 
   &::placeholder {
     letter-spacing: -0.03rem;

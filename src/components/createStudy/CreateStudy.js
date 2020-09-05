@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import { useLocation } from 'react-router-dom';
 import createStudy from './constants/constants';
+import PropTypes from 'prop-types';
 
 import Hashtag from './hashtag/Hashtag';
 import BoxWrap from './boxWrap/BoxWrap';
@@ -11,8 +12,9 @@ import RadioBox from './radioBox/RadioBox';
 import styled from 'styled-components';
 import { InputBox } from 'style/CustomStyle';
 import FormWrap from './FormWrap';
+import LoadingPage from 'containers/common/LoadingPage';
 
-function CreateStudy({ onSubmit }) {
+function CreateStudy({ onSubmit, loading }) {
   const { register, handleSubmit, errors } = useForm();
   const [inputs, setInputs] = useState({
     title: '',
@@ -67,74 +69,83 @@ function CreateStudy({ onSubmit }) {
     hashtag: { placeholder, description },
   } = createStudy;
   return (
-    <FormWrap onSubmit={onSubmit} handleSubmit={handleSubmit}>
-      <BoxLayout>
-        <BoxWrap title="지역" htmlFor="location">
-          <SelectBox optionItems={locationOption} name="location" propsRef={register} required />
+    <>
+      <FormWrap onSubmit={onSubmit} handleSubmit={handleSubmit}>
+        <BoxLayout>
+          <BoxWrap title="지역" htmlFor="location">
+            <SelectBox optionItems={locationOption} name="location" propsRef={register} required />
+          </BoxWrap>
+          <BoxWrap title="그룹 카테고리" htmlFor="category">
+            <SelectBox optionItems={categoryOption} name="category" propsRef={register} required />
+          </BoxWrap>
+        </BoxLayout>
+        <BoxWrap title="예치금 설정을 하시나요?" as="div" far>
+          <RadioBox id="yes" text="네. 할래요!" name="is_deposit" propsRef={register} required />
+          <RadioBox
+            id="no"
+            text="아니요. 괜찮아요!"
+            name="is_deposit"
+            propsRef={register}
+            required
+          />
         </BoxWrap>
-        <BoxWrap title="그룹 카테고리" htmlFor="category">
-          <SelectBox optionItems={categoryOption} name="category" propsRef={register} required />
+        <BoxWrap title="그룹 이름" htmlFor="title">
+          <InputBox
+            type="text"
+            id="title"
+            name="title"
+            ref={register}
+            required
+            placeholder={groupName}
+          />
         </BoxWrap>
-      </BoxLayout>
-      <BoxWrap title="예치금 설정을 하시나요?" as="div" far>
-        <RadioBox id="yes" text="네. 할래요!" name="is_deposit" propsRef={register} required />
-        <RadioBox id="no" text="아니요. 괜찮아요!" name="is_deposit" propsRef={register} required />
-      </BoxWrap>
-      <BoxWrap title="그룹 이름" htmlFor="title">
-        <InputBox
-          type="text"
-          id="title"
-          name="title"
-          ref={register}
-          required
-          placeholder={groupName}
-        />
-      </BoxWrap>
-      <BoxWrap title="그룹 소개" htmlFor="description">
-        <TextArea
-          as="textarea"
-          id="description"
-          name="description"
-          ref={register}
-          required
-          placeholder={groupIntroduction}
-        ></TextArea>
-      </BoxWrap>
-      {/* <BoxWrap>
+        <BoxWrap title="그룹 소개" htmlFor="description">
+          <TextArea
+            as="textarea"
+            id="description"
+            name="description"
+            ref={register}
+            required
+            placeholder={groupIntroduction}
+          ></TextArea>
+        </BoxWrap>
+        {/* <BoxWrap>
               <Title htmlFor="email">
                 이메일 <Required>*</Required>
               </Title>
               <InputBox type="email" id="email" name="email" ref={register} required />
             </BoxWrap> */}
 
-      <BoxWrap title="그룹 해시태그" htmlFor="hashtag" required={false}>
-        <InputBox
-          type="text"
-          id="hashtag"
-          name="hashtag"
-          placeholder={placeholder}
-          value={hashtag}
-          ref={register}
-          onChange={onChangeHashtag}
-        />
-        <Description>{description}</Description>
-        <TagContainer>
-          {hashtags.map((tag) => {
-            const { id, text } = tag;
-            return <Hashtag key={id} tag={id} text={text} onClick={removeHashtag} />;
-          })}
-        </TagContainer>
-      </BoxWrap>
+        <BoxWrap title="그룹 해시태그" htmlFor="hashtag" required={false}>
+          <InputBox
+            type="text"
+            id="hashtag"
+            name="hashtag"
+            placeholder={placeholder}
+            value={hashtag}
+            ref={register}
+            onChange={onChangeHashtag}
+          />
+          <Description>{description}</Description>
+          <TagContainer>
+            {hashtags.map((tag) => {
+              const { id, text } = tag;
+              return <Hashtag key={id} tag={id} text={text} onClick={removeHashtag} />;
+            })}
+          </TagContainer>
+        </BoxWrap>
 
-      {/* <BoxWrap>
+        {/* <BoxWrap>
             <Title htmlFor="image">썸네일</Title>
             <InputBox type="file" id="image" name="image" ref={register} />
           </BoxWrap> */}
 
-      <ButtonWrap>
-        <button type="submit">그룹 개설하기</button>
-      </ButtonWrap>
-    </FormWrap>
+        <ButtonWrap>
+          <button type="submit">그룹 개설하기</button>
+        </ButtonWrap>
+      </FormWrap>
+      {loading && <LoadingPage />}
+    </>
   );
 }
 
@@ -181,5 +192,14 @@ const TagContainer = styled.div`
   margin-top: 1.2rem;
   /* min-height: 30px; */
 `;
+
+CreateStudy.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+  loading: PropTypes.bool,
+};
+
+CreateStudy.defaultProps = {
+  loading: false,
+};
 
 export default CreateStudy;

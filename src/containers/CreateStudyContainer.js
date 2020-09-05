@@ -7,7 +7,6 @@ import CreateStudy from 'components/createStudy/CreateStudy';
 import MailCheck from 'components/createStudy/MailCheck';
 import ErrorPage from './common/ErrorPage';
 import LoadingPage from './common/LoadingPage';
-// import LoadingPage from './common/LoadingPage';
 
 function CreateStudyContainer() {
   const { data, loading, error } = useSelector((state) => {
@@ -26,7 +25,7 @@ function CreateStudyContainer() {
     return () => resetData(dispatch);
   }, [dispatch]);
 
-  if (loading) return <LoadingPage />;
+  if (loading) return <CreateStudy loading={loading} onSubmit={onSubmit} />;
   if (error) return <ErrorPage />;
 
   return <>{data ? <MailCheck /> : <CreateStudy onSubmit={onSubmit} />}</>;
