@@ -4,10 +4,10 @@ import createStudy from './constants/constants';
 import PropTypes from 'prop-types';
 
 import Hashtag from './hashtag/Hashtag';
-import BoxTemplate from './boxWrap/BoxTemplate';
+import BoxTemplate from './boxTemplate/BoxTemplate';
 import SelectBox from './selectBox/SelectBox';
 import RadioBox from './radioBox/RadioBox';
-import FormTemplate from './formWrap/FormTemplate';
+import FormTemplate from './formTemplate/FormTemplate';
 
 import styled from 'styled-components';
 import { InputBox } from 'style/CustomStyle';
@@ -27,22 +27,24 @@ function CreateStudy({ onSubmit, loading }) {
       <FormTemplate onSubmit={onSubmit} handleSubmit={handleSubmit}>
         <BoxLayout>
           <BoxTemplate title="지역" htmlFor="location">
-            <SelectBox optionItems={locationOption} name="location" register={register} required />
+            <SelectBox
+              optionItems={locationOption}
+              name="location"
+              register={register({ required: true })}
+            />
           </BoxTemplate>
           <BoxTemplate title="그룹 카테고리" htmlFor="category">
-            <SelectBox optionItems={categoryOption} name="category" register={register} required />
+            <SelectBox
+              optionItems={categoryOption}
+              name="category"
+              register={register({ required: true })}
+            />
           </BoxTemplate>
         </BoxLayout>
 
         <BoxTemplate title="예치금 설정을 하시나요?" as="div" far>
-          <RadioBox id="yes" text="네. 할래요!" name="is_deposit" register={register} required />
-          <RadioBox
-            id="no"
-            text="아니요. 괜찮아요!"
-            name="is_deposit"
-            register={register}
-            required
-          />
+          <RadioBox id="yes" text="네. 할래요!" name="is_deposit" register={register} />
+          <RadioBox id="no" text="아니요. 괜찮아요!" name="is_deposit" register={register} />
         </BoxTemplate>
 
         <BoxTemplate title="그룹 이름" htmlFor="title">
@@ -50,10 +52,16 @@ function CreateStudy({ onSubmit, loading }) {
             type="text"
             id="title"
             name="title"
-            ref={register}
-            required
+            ref={register({
+              required: '그룹 이름을 입력해주세요.',
+              // pattern: {
+              //   value: /^[0-9a-zA-Z\_]+$/,
+              //   message: '특수문자 입력 금지',
+              // },
+            })}
             placeholder={groupName}
           />
+          {errors.title && <ErrorMessage>{errors.title.message}</ErrorMessage>}
         </BoxTemplate>
 
         <BoxTemplate title="그룹 소개" htmlFor="description">
@@ -61,15 +69,16 @@ function CreateStudy({ onSubmit, loading }) {
             as="textarea"
             id="description"
             name="description"
-            ref={register}
-            required
+            ref={register({ required: '그룹 소개를 입력해주세요.' })}
             placeholder={groupIntroduction}
           ></TextArea>
+          {errors.description && <ErrorMessage>{errors.description.message}</ErrorMessage>}
         </BoxTemplate>
 
         <BoxTemplate title="그룹 해시태그" htmlFor="hashtag" required={false}>
-          <Hashtag setValue={setValue} register={register} />
+          <Hashtag setValue={setValue} register={register} name={'hashtag'} />
         </BoxTemplate>
+
         <ButtonWrap>
           <button type="submit">그룹 개설하기</button>
         </ButtonWrap>
@@ -92,6 +101,12 @@ const BoxLayout = styled.div`
   gap: 0 3rem;
 `;
 
+const ErrorMessage = styled.p`
+  margin-top: 0.7rem;
+  color: red;
+  font-size: 1.3rem;
+`;
+
 const ButtonWrap = styled.div`
   margin-top: 1.1rem;
 
@@ -103,7 +118,7 @@ const ButtonWrap = styled.div`
     text-shadow: ${({ theme }) => theme.textShadow};
     font-size: 2rem;
     font-weight: bold;
-    font-family: ${({ theme }) => theme.formFont};
+    font-family: ${({ theme }) => theme.subFont};
   }
 `;
 

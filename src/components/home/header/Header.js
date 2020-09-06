@@ -8,6 +8,10 @@ function Header() {
     <HeaderBar>
       <InnerWrap>
         <h1>DO IT. DO IT</h1>
+        <div>
+          <NavButton>로그인</NavButton>
+          <NavButton>그룹리스트</NavButton>
+        </div>
       </InnerWrap>
     </HeaderBar>
   );
@@ -27,6 +31,17 @@ const HeaderBar = styled.header`
 const InnerWrap = styled(Container)`
   ${Layout}
   justify-content: space-between;
+`;
+
+const NavButton = styled.button`
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  font-family: ${({ theme }) => theme.subFont};
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #5b5b5b;
+  & + & {
+    margin-left: 4.4rem;
+  }
 `;
 
 export default Header;

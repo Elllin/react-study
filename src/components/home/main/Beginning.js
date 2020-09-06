@@ -52,7 +52,7 @@ const Div = styled.div`
     font-size: 3.6rem;
     line-height: 1.64;
     letter-spacing: -0.06rem;
-    font-family: ${({ theme }) => theme.subFont};
+    font-family: ${({ theme }) => theme.titleFont};
   }
 
   button {

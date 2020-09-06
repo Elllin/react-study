@@ -25,7 +25,7 @@ const List = styled.li`
 
 const Title = styled.div`
   margin: 2.4rem 0 1.7rem;
-  font-family: ${({ theme }) => theme.subFont};
+  font-family: ${({ theme }) => theme.titleFont};
   font-size: 1.8rem;
 `;
 

@@ -7,7 +7,7 @@ import TagItem from './tagItem/TagItem';
 import styled from 'styled-components';
 import { InputBox } from 'style/CustomStyle';
 
-function Hashtag({ register, setValue }) {
+function Hashtag({ register, setValue, name }) {
   const {
     hashtag: { placeholder, description },
   } = createStudy;
@@ -41,18 +41,18 @@ function Hashtag({ register, setValue }) {
   useEffect(() => {
     const textArr = hashtags.map((tag) => tag.text.slice(1));
 
-    setValue(`hashtag`, textArr);
-  }, [hashtags, setValue]);
+    setValue(name, textArr);
+  }, [hashtags, setValue, name]);
 
   return (
     <>
       <InputBox
         type="text"
-        id="hashtag"
-        name="hashtag"
+        id={name}
+        name={name}
         placeholder={placeholder}
         value={hashtag}
-        ref={() => register({ name: 'hashtag' })}
+        ref={() => register({ name })}
         onChange={onChangeHashtag}
       />
       <Description>{description}</Description>
@@ -65,6 +65,9 @@ function Hashtag({ register, setValue }) {
     </>
   );
 }
+
+// replace(/ /gi, "-")
+// 공백을 -로 바꾸기
 
 const TagContainer = styled.div`
   display: flex;

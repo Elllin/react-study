@@ -24,7 +24,7 @@ function FormTemplate({ children, handleSubmit, onSubmit }) {
 const Wrap = styled.main`
   margin: 9rem auto;
   width: 57rem;
-  font-family: ${({ theme }) => theme.formFont};
+  font-family: ${({ theme }) => theme.subFont};
   h1 {
     margin-bottom: 1.3rem;
     text-align: center;
@@ -36,7 +36,7 @@ const Wrap = styled.main`
 const StudyForm = styled.form`
   legend {
     margin-bottom: 4.4rem;
-    font-family: ${({ theme }) => theme.subFont};
+    font-family: ${({ theme }) => theme.titleFont};
     font-size: 3.2rem;
     letter-spacing: -0.06rem;
     text-align: center;
