@@ -4,7 +4,7 @@ import { fetchCreateStudy } from 'modules/createStudy';
 import { resetData } from 'modules/createStudy';
 
 import CreateStudy from 'components/createStudy/CreateStudy';
-import MailCheck from 'components/createStudy/MailCheck';
+import MailCheck from 'components/mailCheck/MailCheck';
 import ErrorPage from './common/ErrorPage';
 
 function CreateStudyContainer() {

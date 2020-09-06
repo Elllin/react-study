@@ -12,6 +12,7 @@ function App() {
       <Switch>
         <Route path="/" component={HomePage} exact />
         <Route path="/create" component={CreateStudyPage} />
+        <Route path="/mailCheck" component={CreateStudyPage} />
         <Route
           render={({ location }) => (
             <div>

@@ -11,7 +11,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import 'assets/fonts/styles.css';
 import '@kfonts/nanum-square-round-otf';
 import { ThemeProvider } from 'styled-components';
-import theme from './style/theme';
+import theme from 'style/theme';
 
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(ReduxThunk)));
 ReactDOM.render(
