@@ -4,7 +4,7 @@ import { fetchCreateStudy } from 'modules/createStudy';
 import { resetData } from 'modules/createStudy';
 
 import CreateStudy from 'components/createStudy/CreateStudy';
-import MailCheck from 'components/mailCheck/MailCheck';
+import Invitation from 'components/invitation/Invitation';
 import ErrorPage from './common/ErrorPage';
 
 function CreateStudyContainer() {
@@ -27,7 +27,7 @@ function CreateStudyContainer() {
   if (loading) return <CreateStudy loading={loading} onSubmit={onSubmit} />;
   if (error) return <ErrorPage />;
 
-  return <>{data ? <MailCheck /> : <CreateStudy onSubmit={onSubmit} />}</>;
+  return <>{data ? <Invitation /> : <CreateStudy onSubmit={onSubmit} />}</>;
 }
 
 export default CreateStudyContainer;

@@ -7,8 +7,10 @@ import { Layout } from 'style/CustomStyle';
 function CreateButton() {
   return (
     <Anchor to="/create">
-      스터디 그룹
-      <br /> 개설하기
+      <span>
+        스터디 그룹
+        <br /> 개설하기
+      </span>
     </Anchor>
   );
 }

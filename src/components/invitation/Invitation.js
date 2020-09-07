@@ -5,7 +5,11 @@ import Header from 'components/common/header/Header';
 import styled from 'styled-components';
 import { Layout } from 'style/CustomStyle';
 
-function MailCheck() {
+function MailCheck({ mailAddress = 'ddd@naver.com' }) {
+  const getDomain = () => {
+    return mailAddress.split('@')[1];
+  };
+
   return (
     <>
       <Header />
@@ -15,7 +19,7 @@ function MailCheck() {
         </ImgWrap>
         <h2>초대 메일이 발송되었습니다!</h2>
         <p>
-          나의 메일함에서 ( ujdesign@naver.com ) 초대 메일을 확인하세요.
+          나의 메일함에서 ( <MAilAddress>{mailAddress}</MAilAddress> ) 초대 메일을 확인하세요.
           <br />
           인증 버튼을 클릭하면 그룹개설이 바로 완료됩니다.
         </p>
@@ -53,6 +57,7 @@ const Wrap = styled.main`
     line-height: 1.68;
     text-align: center;
     color: #eb7d02;
+
     &:hover {
       background: #ffa91d;
       color: #fff;
@@ -68,6 +73,10 @@ const ImgWrap = styled.div`
     width: 100%;
     height: 100%;
   }
+`;
+
+const MAilAddress = styled.span`
+  color: #6fa3fc;
 `;
 
 export default MailCheck;
