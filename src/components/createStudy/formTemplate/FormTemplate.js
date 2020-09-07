@@ -24,7 +24,6 @@ function FormTemplate({ children, handleSubmit, onSubmit }) {
 const Wrap = styled.main`
   margin: 9rem auto;
   width: 57rem;
-  font-family: ${({ theme }) => theme.subFont};
   h1 {
     margin-bottom: 1.3rem;
     text-align: center;

@@ -11,7 +11,7 @@ function Beginning() {
   };
 
   return (
-    <Div>
+    <Wrap>
       <Container>
         <h2>
           효율적인 스터디 모임을 찾으시나요?
@@ -26,7 +26,7 @@ function Beginning() {
           <DownIcon />
         </DownButtonWrap>
       </Container>
-    </Div>
+    </Wrap>
   );
 }
 
@@ -43,7 +43,7 @@ const DownIcon = styled(BsChevronDown)`
   cursor: pointer;
 `;
 
-const Div = styled.div`
+const Wrap = styled.section`
   padding-top: 17.7rem;
   height: 87vh;
 
@@ -63,6 +63,7 @@ const Div = styled.div`
     box-shadow: 0.2rem 0.2rem 0.5rem -0.1rem rgba(153, 153, 153, 0.55);
     transform: rotate(-5deg);
     font-size: 1.9rem;
+    font-family: ${({ theme }) => theme.titleFont};
     background: ${({ theme }) => theme.mainColor};
 
     &:before {

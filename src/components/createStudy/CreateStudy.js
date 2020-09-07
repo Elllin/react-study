@@ -115,7 +115,6 @@ const ButtonWrap = styled.div`
     border-radius: 0.6rem;
     background-color: ${({ theme }) => theme.mainColor};
     height: 5.6rem;
-    text-shadow: ${({ theme }) => theme.textShadow};
     font-size: 2rem;
     font-weight: bold;
     font-family: ${({ theme }) => theme.subFont};

@@ -10,7 +10,7 @@ const GlobalStyle = createGlobalStyle`
         width: 100%;
         height: 100%;
         font-size:10px;
-        font-family: "나눔스퀘어라운드OTF", "nanum-square-round-otf", sans-serif; 
+        font-family: 'AppleSDGothicNeo','Malgun Gothic','맑은 고딕',dotum,'돋움',sans-serif; 
         /* scroll-behavior: smooth; */
     }
     button{

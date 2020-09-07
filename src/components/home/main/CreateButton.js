@@ -7,7 +7,7 @@ import { Layout } from 'style/CustomStyle';
 function CreateButton() {
   return (
     <Anchor to="/create">
-      스터디
+      스터디 그룹
       <br /> 개설하기
     </Anchor>
   );
@@ -25,6 +25,7 @@ const Anchor = styled(Link)`
   background-color: ${({ theme }) => theme.mainColor};
   border-radius: 50%;
 
+  font-family: ${({ theme }) => theme.titleFont};
   font-size: 1.6rem;
   line-height: 1.63;
   text-decoration: none;

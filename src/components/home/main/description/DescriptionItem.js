@@ -31,6 +31,7 @@ const Title = styled.div`
 
 const Discription = styled.div`
   word-break: keep-all;
+  font-family: ${({ theme }) => theme.subFont};
   font-size: 1.6rem;
   line-height: 1.56;
   letter-spacing: -0.03rem;

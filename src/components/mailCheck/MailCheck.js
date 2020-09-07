@@ -19,6 +19,7 @@ function MailCheck() {
           <br />
           인증 버튼을 클릭하면 그룹개설이 바로 완료됩니다.
         </p>
+        <button>초대 메일 재발송</button>
       </Wrap>
     </>
   );
@@ -28,6 +29,8 @@ const Wrap = styled.main`
   ${Layout}
   flex-direction: column;
   height: 70vh;
+  text-align: center;
+
   h2 {
     margin-bottom: 2.6rem;
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
@@ -37,9 +40,23 @@ const Wrap = styled.main`
   }
   p {
     margin-bottom: 5.9rem;
-    font-family: ${(theme) => theme.subFont};
     font-size: 2.4rem;
     line-height: 1.63;
+  }
+
+  button {
+    width: 21.6rem;
+    height: 5.4rem;
+    border-radius: 0.6rem;
+    border: solid 0.2rem #ffa91d;
+    font-size: 2.2rem;
+    line-height: 1.68;
+    text-align: center;
+    color: #eb7d02;
+    &:hover {
+      background: #ffa91d;
+      color: #fff;
+    }
   }
 `;
 
@@ -51,13 +68,6 @@ const ImgWrap = styled.div`
     width: 100%;
     height: 100%;
   }
-`;
-
-const Title = styled.h2`
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-  font-family: ${(theme) => theme.titleFont};
-  font-size: 36px;
-  letter-spacing: -0.6px;
 `;
 
 export default MailCheck;

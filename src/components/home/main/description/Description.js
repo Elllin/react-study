@@ -31,7 +31,7 @@ function Description() {
   );
 }
 
-const Div = styled.div`
+const Div = styled.section`
   h2 {
     margin-bottom: 1.5rem;
     font-family: '210 Yeonpilsketch R', sans-serif;
@@ -39,6 +39,7 @@ const Div = styled.div`
   }
   p {
     margin-bottom: 17rem;
+    font-family: ${({ theme }) => theme.subFont};
     font-size: 2rem;
   }
 `;
