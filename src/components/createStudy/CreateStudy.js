@@ -75,7 +75,11 @@ function CreateStudy({ onSubmit, loading }) {
           {errors.description && <ErrorMessage>{errors.description.message}</ErrorMessage>}
         </BoxTemplate>
 
-        <BoxTemplate title="그룹 해시태그" htmlFor="hashtag" required={false}>
+        <BoxTemplate
+          title="그룹 해시태그 (최대 3개 / 태그당 최대 20자)"
+          htmlFor="hashtag"
+          required={false}
+        >
           <Hashtag setValue={setValue} register={register} name={'hashtag'} />
         </BoxTemplate>
 

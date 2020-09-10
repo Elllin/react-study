@@ -7,8 +7,8 @@ function BoxTemplate({ children, title, required, requiredSign, ...props }) {
   return (
     <Wrap>
       <Title {...props}>
-        {title}
         {required && <Required>{requiredSign}</Required>}
+        {title}
       </Title>
       {children}
     </Wrap>
@@ -28,7 +28,7 @@ const Title = styled.label`
 `;
 
 const Required = styled.span`
-  margin-left: 0.3rem;
+  margin-right: 0.3rem;
   color: ${({ theme }) => theme.requiredColor};
 `;
 

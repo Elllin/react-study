@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import styled from 'styled-components';
+import { RiCheckLine } from 'react-icons/ri';
 
 function RadioBox({ id, text, register, checkedcolor, ...props }) {
   return (
@@ -14,7 +15,10 @@ function RadioBox({ id, text, register, checkedcolor, ...props }) {
         checkedcolor={checkedcolor}
         {...props}
       />
-      <label htmlFor={id}>{text}</label>
+      <label htmlFor={id}>
+        <CheckedIcon />
+        {text}
+      </label>
     </RadioWrap>
   );
 }
@@ -51,15 +55,20 @@ const RadioWrap = styled.div`
   [type='radio']:checked + label:after {
     content: '';
     position: absolute;
-    left: 0.44rem;
-    top: 0.44rem;
-    width: 1.3rem;
-    height: 1.3rem;
+    left: 0.01rem;
+    top: 0.04rem;
+    color: '#fff';
+    font-weight: 700;
+    /* width: 1.3rem; */
+    /* height: 1.3rem; */
+    width: 2.2rem;
+    height: 2.2rem;
+    border-radius: 0.2rem;
     -webkit-transition: all 0.2s ease;
     transition: all 0.2s ease;
     border-radius: 0.2rem;
     background-color: ${({ checkedcolor, theme }) =>
-      checkedcolor ? checkedcolor : theme.blueColor};
+      checkedcolor ? checkedcolor : theme.mainColor};
   }
 
   [type='radio']:not(:checked) + label:after {
@@ -79,6 +88,12 @@ const RadioWrap = styled.div`
     letter-spacing: -0.03rem;
     cursor: pointer;
   }
+`;
+const CheckedIcon = styled(RiCheckLine)`
+  position: absolute;
+  left: 0.1rem;
+  z-index: 1;
+  color: #fff;
 `;
 
 RadioBox.propTypes = {

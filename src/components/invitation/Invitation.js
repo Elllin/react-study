@@ -37,10 +37,9 @@ const Wrap = styled.main`
 
   h2 {
     margin-bottom: 2.6rem;
-    font-size: 36px;
+    font-size: 3.6rem;
     font-family: 'NanumSquareRoundOTFEB, sans-serif';
-    /* font-family: ${(theme) => theme.titleFont}; */
-    letter-spacing: -0.6px;
+    letter-spacing: -0.06rem;
   }
   p {
     margin-bottom: 5.9rem;
