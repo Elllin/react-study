@@ -12,7 +12,7 @@ function App() {
       <GlobalStyle />
       <Switch>
         <Route path="/" component={HomePage} exact />
-        <Route path="/create" component={CreateStudyPage} />
+        <Route path="/create" component={CreateStudyPage} exact />
         <Route path="/create/invitation" component={InvitationPage} />
         <Route
           render={({ location }) => (

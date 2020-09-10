@@ -117,7 +117,6 @@ const ButtonWrap = styled.div`
     height: 5.6rem;
     font-size: 2rem;
     font-weight: bold;
-    font-family: ${({ theme }) => theme.subFont};
   }
 `;
 

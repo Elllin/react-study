@@ -29,6 +29,7 @@ const Tag = styled.p`
 
   & + & {
     margin-left: 1.2rem;
+    margin-top: 1.2rem;
   }
 
   /* &:after {

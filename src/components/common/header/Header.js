@@ -34,7 +34,6 @@ const InnerWrap = styled(Container)`
 `;
 
 const NavButton = styled.button`
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
   font-family: ${({ theme }) => theme.subFont};
   font-size: 1.6rem;
   font-weight: 600;

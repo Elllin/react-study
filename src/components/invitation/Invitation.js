@@ -5,7 +5,7 @@ import Header from 'components/common/header/Header';
 import styled from 'styled-components';
 import { Layout } from 'style/CustomStyle';
 
-function MailCheck({ mailAddress = 'ddd@naver.com' }) {
+function Invitation({ mailAddress = 'ddd@naver.com' }) {
   const getDomain = () => {
     return mailAddress.split('@')[1];
   };
@@ -37,9 +37,9 @@ const Wrap = styled.main`
 
   h2 {
     margin-bottom: 2.6rem;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-    font-family: ${(theme) => theme.titleFont};
     font-size: 36px;
+    font-family: 'NanumSquareRoundOTFEB, sans-serif';
+    /* font-family: ${(theme) => theme.titleFont}; */
     letter-spacing: -0.6px;
   }
   p {
@@ -79,4 +79,4 @@ const MAilAddress = styled.span`
   color: #6fa3fc;
 `;
 
-export default MailCheck;
+export default Invitation;
