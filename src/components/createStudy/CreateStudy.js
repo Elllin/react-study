@@ -100,7 +100,7 @@ function CreateStudy({ onSubmit, loading }) {
             placeholder={groupName.placeholder}
           />
 
-          <StatusMessage validation={titleValidation}>
+          <StatusMessage validation={titleValidation} length={titleLength}>
             <StatusIcon>{titleValidation ? <FiX /> : <RiCheckLine />}</StatusIcon>
             <span>{titleValidation ? "Don't" : 'Do'}</span>
           </StatusMessage>
@@ -156,6 +156,11 @@ const StatusMessage = styled.div`
   margin-top: 0.7rem;
   font-size: 1.6rem;
   color: #cacaca;
+  color: ${({ validation, length, theme }) => {
+    if (length && validation) return theme.warningColor;
+    else if (length && !validation) return theme.successColor;
+  }};
+  /* color: #cacaca; */
   span + span {
     margin-left: 0.2rem;
   }
