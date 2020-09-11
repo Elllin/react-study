@@ -5,7 +5,7 @@ import createStudy from '../constants/constants';
 import TagItem from './tagItem/TagItem';
 
 import styled from 'styled-components';
-import { InputBox } from 'style/CustomStyle';
+import { InputBox, Description } from 'style/CustomStyle';
 
 function Hashtag({ register, setValue, name }) {
   const {
@@ -75,15 +75,6 @@ const TagContainer = styled.div`
   width: 100%;
   margin-top: 1.2rem;
   /* min-height: 30px; */
-`;
-
-const Description = styled.span`
-  display: inline-block;
-  margin-top: 1.2rem;
-  font-size: 1.5rem;
-  line-height: 2rem;
-  letter-spacing: -0.03rem;
-  color: #5e5e5e;
 `;
 
 Hashtag.propTypes = {

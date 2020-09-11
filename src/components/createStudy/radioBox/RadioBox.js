@@ -59,8 +59,6 @@ const RadioWrap = styled.div`
     top: 0.04rem;
     color: '#fff';
     font-weight: 700;
-    /* width: 1.3rem; */
-    /* height: 1.3rem; */
     width: 2.2rem;
     height: 2.2rem;
     border-radius: 0.2rem;
@@ -89,6 +87,7 @@ const RadioWrap = styled.div`
     cursor: pointer;
   }
 `;
+
 const CheckedIcon = styled(RiCheckLine)`
   position: absolute;
   left: 0.1rem;

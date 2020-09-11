@@ -12,6 +12,8 @@ export const Layout = css`
   justify-content: center;
 `;
 
+/* 스터디 개설 페이지 공통 스타일 */
+
 export const InputBox = styled.input`
   padding: 0 1.6rem;
   width: 100%;
@@ -25,4 +27,12 @@ export const InputBox = styled.input`
     letter-spacing: -0.03rem;
     color: #9f9f9f;
   }
+`;
+
+export const Description = styled.span`
+  display: inline-block;
+  margin-top: 0.8rem;
+  font-size: 1.4rem;
+  line-height: 1.8rem;
+  color: #5e5e5e;
 `;

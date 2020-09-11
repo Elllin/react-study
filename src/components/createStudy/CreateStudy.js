@@ -8,10 +8,10 @@ import BoxTemplate from './boxTemplate/BoxTemplate';
 import SelectBox from './selectBox/SelectBox';
 import RadioBox from './radioBox/RadioBox';
 import FormTemplate from './formTemplate/FormTemplate';
+import LoadingPage from 'containers/common/LoadingPage';
 
 import styled from 'styled-components';
-import { InputBox } from 'style/CustomStyle';
-import LoadingPage from 'containers/common/LoadingPage';
+import { InputBox, Description } from 'style/CustomStyle';
 
 function CreateStudy({ onSubmit, loading }) {
   const { register, handleSubmit, errors, setValue } = useForm();
@@ -59,9 +59,10 @@ function CreateStudy({ onSubmit, loading }) {
               //   message: '특수문자 입력 금지',
               // },
             })}
-            placeholder={groupName}
+            placeholder={groupName.placeholder}
           />
-          {errors.title && <ErrorMessage>{errors.title.message}</ErrorMessage>}
+          <Description>{groupName.description}</Description>
+          {/* {errors.title && <ErrorMessage>{errors.title.message}</ErrorMessage>} */}
         </BoxTemplate>
 
         <BoxTemplate title="그룹 소개" htmlFor="description">
@@ -75,11 +76,7 @@ function CreateStudy({ onSubmit, loading }) {
           {errors.description && <ErrorMessage>{errors.description.message}</ErrorMessage>}
         </BoxTemplate>
 
-        <BoxTemplate
-          title="그룹 해시태그 (최대 3개 / 태그당 최대 20자)"
-          htmlFor="hashtag"
-          required={false}
-        >
+        <BoxTemplate title="그룹 해시태그" htmlFor="hashtag" required={false}>
           <Hashtag setValue={setValue} register={register} name={'hashtag'} />
         </BoxTemplate>
 
@@ -110,6 +107,15 @@ const ErrorMessage = styled.p`
   color: red;
   font-size: 1.3rem;
 `;
+
+// export const Description = styled.span`
+//   display: inline-block;
+//   margin-top: 1.2rem;
+//   font-size: 1.5rem;
+//   line-height: 2rem;
+//   letter-spacing: -0.03rem;
+//   color: #5e5e5e;
+// `;
 
 const ButtonWrap = styled.div`
   margin-top: 1.1rem;
