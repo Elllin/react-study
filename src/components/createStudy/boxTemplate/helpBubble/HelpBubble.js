@@ -11,7 +11,7 @@ function HelpBubble() {
   return (
     <Wrap>
       <HelpIcon />
-      <Bubbel>
+      <Bubbel className="help-bubble">
         <span>{help}</span>
         <ArrowBorder />
         <BubbelArrow />
@@ -30,10 +30,14 @@ const HelpIcon = styled(AiOutlineQuestionCircle)`
   margin-left: 0.4rem;
   color: ${({ theme }) => theme.blueColor};
   cursor: pointer;
+  &:hover + .help-bubble {
+    display: block;
+  }
 `;
 
 const Bubbel = styled.div`
   ${Layout}
+  display: none;
   padding: 1.2rem 1rem;
   position: absolute;
   left: 3.4rem;
