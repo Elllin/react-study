@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import createStudy from './constants/constants';
 import PropTypes from 'prop-types';
@@ -14,14 +14,37 @@ import styled from 'styled-components';
 import { InputBox, Description } from 'style/CustomStyle';
 
 function CreateStudy({ onSubmit, loading }) {
+  const [inputs, setInputs] = useState({
+    title: '',
+    description: '',
+  });
+  const [inputLength, setInputLength] = useState({
+    titleLength: 0,
+    descriptionLength: 0,
+  });
+
+  const { title, description } = inputs;
+  const { titleLength, descriptionLength } = inputLength;
+
+  const onChange = (e) => {
+    const { value, name } = e.target;
+    setInputs({
+      ...inputs,
+      [name]: value,
+    });
+    setInputLength({
+      ...inputLength,
+      [`${name}Length`]: value.length,
+    });
+  };
+
   const { register, handleSubmit, errors, setValue } = useForm();
 
   useEffect(() => {
     window.scrollTo({ top: 0 });
   }, []);
 
-  const { groupName, groupIntroduction, locationOption, categoryOption } = createStudy;
-
+  const { groupName, introduction, locationOption, categoryOption } = createStudy;
   return (
     <>
       <FormTemplate onSubmit={onSubmit} handleSubmit={handleSubmit}>
@@ -43,15 +66,24 @@ function CreateStudy({ onSubmit, loading }) {
         </BoxLayout>
 
         <BoxTemplate title="예치금 설정을 하시나요?" as="div" far>
-          <RadioBox id="yes" text="네. 할래요!" name="is_deposit" register={register} />
-          <RadioBox id="no" text="아니요. 괜찮아요!" name="is_deposit" register={register} />
+          <RadioBox id="yes" value="yes" text="네. 할래요!" name="is_deposit" register={register} />
+          <RadioBox
+            id="no"
+            value="no"
+            text="아니요. 괜찮아요!"
+            name="is_deposit"
+            register={register}
+          />
         </BoxTemplate>
 
-        <BoxTemplate title="그룹 이름" htmlFor="title">
+        <BoxTemplate title="그룹 이름 (특수문자 불가)" htmlFor="title">
           <InputBox
             type="text"
             id="title"
             name="title"
+            maxLength={groupName.maxLength}
+            value={title}
+            onChange={onChange}
             ref={register({
               required: '그룹 이름을 입력해주세요.',
               // pattern: {
@@ -61,7 +93,9 @@ function CreateStudy({ onSubmit, loading }) {
             })}
             placeholder={groupName.placeholder}
           />
-          <Description>{groupName.description}</Description>
+          <CharacterCounter>
+            <span>{titleLength}</span>/{groupName.maxLength}
+          </CharacterCounter>
           {/* {errors.title && <ErrorMessage>{errors.title.message}</ErrorMessage>} */}
         </BoxTemplate>
 
@@ -70,10 +104,15 @@ function CreateStudy({ onSubmit, loading }) {
             as="textarea"
             id="description"
             name="description"
+            value={description}
+            onChange={onChange}
+            maxLength={introduction.maxLength}
             ref={register({ required: '그룹 소개를 입력해주세요.' })}
-            placeholder={groupIntroduction}
+            placeholder={introduction.placeholder}
           ></TextArea>
-          {errors.description && <ErrorMessage>{errors.description.message}</ErrorMessage>}
+          <CharacterCounter>
+            <span>{descriptionLength}</span>/{introduction.maxLength}
+          </CharacterCounter>
         </BoxTemplate>
 
         <BoxTemplate title="그룹 해시태그" htmlFor="hashtag" required={false} isHelp>
@@ -102,20 +141,20 @@ const BoxLayout = styled.div`
   gap: 0 3rem;
 `;
 
+const CharacterCounter = styled.div`
+  margin-top: 0.8rem;
+  text-align: end;
+  font-size: 1.4rem;
+  span {
+    color: ${({ theme }) => theme.requiredColor};
+  }
+`;
+
 const ErrorMessage = styled.p`
   margin-top: 0.7rem;
   color: red;
   font-size: 1.3rem;
 `;
-
-// export const Description = styled.span`
-//   display: inline-block;
-//   margin-top: 1.2rem;
-//   font-size: 1.5rem;
-//   line-height: 2rem;
-//   letter-spacing: -0.03rem;
-//   color: #5e5e5e;
-// `;
 
 const ButtonWrap = styled.div`
   margin-top: 1.1rem;

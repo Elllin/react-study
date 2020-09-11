@@ -66,6 +66,7 @@ const RadioWrap = styled.div`
     color: '#fff';
     font-weight: 700;
     -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
     transition: all 0.2s ease;
     background-color: ${({ checkedcolor, theme }) =>
       checkedcolor ? checkedcolor : theme.mainColor};
@@ -74,12 +75,14 @@ const RadioWrap = styled.div`
   [type='radio']:not(:checked) + label:after {
     opacity: 0;
     -webkit-transform: scale(0);
+    -moz-transform: scale(0);
     transform: scale(0);
   }
 
   [type='radio']:checked + label:after {
     opacity: 1;
     -webkit-transform: scale(1);
+    -moz-transform: scale(1);
     transform: scale(1);
   }
 
