@@ -8,10 +8,14 @@ import BoxTemplate from './boxTemplate/BoxTemplate';
 import SelectBox from './selectBox/SelectBox';
 import RadioBox from './radioBox/RadioBox';
 import FormTemplate from './formTemplate/FormTemplate';
+import CharacterCounter from './characterCounter/CharacterCounter';
 import LoadingPage from 'containers/common/LoadingPage';
 
 import styled from 'styled-components';
 import { InputBox, Description } from 'style/CustomStyle';
+
+import { FiCheck } from 'react-icons/fi';
+import { RiCheckLine } from 'react-icons/ri';
 
 function CreateStudy({ onSubmit, loading }) {
   const [inputs, setInputs] = useState({
@@ -93,9 +97,14 @@ function CreateStudy({ onSubmit, loading }) {
             })}
             placeholder={groupName.placeholder}
           />
-          <CharacterCounter>
-            <span>{titleLength}</span>/{groupName.maxLength}
-          </CharacterCounter>
+          <StatusMessage>
+            <StatusIcon>
+              <RiCheckLine />
+            </StatusIcon>
+            <span>Do</span>
+          </StatusMessage>
+          <CharacterCounter length={titleLength} maxLength={groupName.maxLength} />
+
           {/* {errors.title && <ErrorMessage>{errors.title.message}</ErrorMessage>} */}
         </BoxTemplate>
 
@@ -110,9 +119,7 @@ function CreateStudy({ onSubmit, loading }) {
             ref={register({ required: '그룹 소개를 입력해주세요.' })}
             placeholder={introduction.placeholder}
           ></TextArea>
-          <CharacterCounter>
-            <span>{descriptionLength}</span>/{introduction.maxLength}
-          </CharacterCounter>
+          <CharacterCounter length={descriptionLength} maxLength={introduction.maxLength} />
         </BoxTemplate>
 
         <BoxTemplate title="그룹 해시태그" htmlFor="hashtag" required={false} isHelp>
@@ -141,19 +148,21 @@ const BoxLayout = styled.div`
   gap: 0 3rem;
 `;
 
-const CharacterCounter = styled.div`
-  margin-top: 0.8rem;
-  text-align: end;
-  font-size: 1.4rem;
-  span {
-    color: ${({ theme }) => theme.requiredColor};
+const StatusMessage = styled.div`
+  position: absolute;
+  top: 3.9rem;
+  right: 1.3rem;
+  display: flex;
+  align-items: center;
+  margin-top: 0.7rem;
+  font-size: 1.6rem;
+  color: #cacaca;
+  span + span {
+    margin-left: 0.3rem;
   }
 `;
-
-const ErrorMessage = styled.p`
-  margin-top: 0.7rem;
-  color: red;
-  font-size: 1.3rem;
+const StatusIcon = styled.span`
+  font-size: 2.1rem;
 `;
 
 const ButtonWrap = styled.div`

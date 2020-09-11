@@ -19,6 +19,7 @@ function BoxTemplate({ children, title, required, requiredSign, isHelp, ...props
 }
 
 const Wrap = styled.div`
+  position: relative;
   margin-bottom: 4.4rem;
 `;
 

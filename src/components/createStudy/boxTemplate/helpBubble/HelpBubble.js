@@ -58,8 +58,9 @@ const Bubbel = styled.div`
     color: #5e5e5e;
   }
 
-  border-radius: 3px;
-  /* 확인하기 */
+  border-radius: 0.6rem;
+  -moz-border-radius: 0.6rem;
+  -webkit-border-radius: 0.6rem;
 `;
 
 const CommonStyle = css`
