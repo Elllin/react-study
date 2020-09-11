@@ -29,6 +29,8 @@ const CommonStyle = css`
   width: 2.2rem;
   height: 2.2rem;
   border-radius: 0.2rem;
+  -moz-border-radius: 0.2rem;
+  -webkit-border-radius: 0.2rem;
 `;
 
 const RadioWrap = styled.div`

@@ -1,14 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
+import createStudy from '../../constants/constants';
 
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { Layout } from 'style/CustomStyle';
 import { AiOutlineQuestionCircle } from 'react-icons/ai';
 
 function HelpBubble() {
+  //   const [isHover, setIsHover] = useState(false);
+  const { help } = createStudy.hashtag;
   return (
     <Wrap>
       <HelpIcon />
       <Bubbel>
-        <BubbelBorder />
+        <span>{help}</span>
+        <ArrowBorder />
         <BubbelArrow />
       </Bubbel>
     </Wrap>
@@ -20,60 +25,58 @@ const Wrap = styled.div`
 `;
 
 const HelpIcon = styled(AiOutlineQuestionCircle)`
+  position: relative;
+  top: -4px;
   margin-left: 0.4rem;
   color: ${({ theme }) => theme.blueColor};
   cursor: pointer;
 `;
 
-const HelpBox = styled.div`
-  position: absolute;
-  left: 34px;
-  bottom: 0;
-  width: 246px;
-  height: 79px;
-  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.36);
-  border: solid 1px #cbcbcb;
-  background-color: #fff;
-
-  font-size: 1.2rem;
-  font-weight: 500;
-  line-height: 1.5;
-  letter-spacing: -0.3px;
-  color: #5e5e5e;
-  /* 8 12 */
-  &:after {
-    border-top: 6px solid transparent;
-    border-left: 8px solid transparent;
-    border-right: 8px solid #fff;
-    border-bottom: 6px solid transparent;
-    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.36);
-
-    content: '';
-    position: absolute;
-    top: 10px;
-    left: -15px;
-  }
-`;
-
 const Bubbel = styled.div`
+  ${Layout}
+  padding: 1.2rem 1rem;
   position: absolute;
-  left: 34px;
+  left: 3.4rem;
   bottom: 0;
-  width: 246px;
-  height: 79px;
+  width: 24.6rem;
+
   box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.36);
+  -moz-box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.36);
+  -webkit-box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.36);
+
   border: solid 1px #cbcbcb;
   background-color: #fff;
+  span {
+    font-size: 1.2rem;
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: -0.03rem;
+    color: #5e5e5e;
+  }
 
-  font-size: 1.2rem;
-  font-weight: 500;
-  line-height: 1.5;
-  letter-spacing: -0.3px;
-  color: #5e5e5e;
+  border-radius: 3px;
+  /* 확인하기 */
 `;
 
-const BubbelBorder = styled.div``;
+const CommonStyle = css`
+  position: absolute;
+  border-style: solid;
+  border-width: 0.7rem;
+  height: 0;
+  width: 0;
+  bottom: 0.9rem;
+`;
 
-const BubbelArrow = styled(HelpBox)``;
+const ArrowBorder = styled.div`
+  ${CommonStyle}
+  border-color: transparent #cbcbcb transparent transparent;
+  left: -1.5rem;
+`;
+
+const BubbelArrow = styled.div`
+  ${CommonStyle}
+  border-color: transparent #fff transparent transparent;
+  left: -1.35rem;
+`;
 
 export default HelpBubble;

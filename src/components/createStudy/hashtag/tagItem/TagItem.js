@@ -19,7 +19,9 @@ const Tag = styled.p`
   padding: 0.9rem 2rem;
   ${Layout}
 
-  border-radius: 17px;
+  border-radius: 1.7rem;
+  -moz-border-radius: 1.7rem;
+  -webkit-border-radius: 1.7rem;
   background-color: #eaf4ff;
 
   font-size: 1.4rem;
