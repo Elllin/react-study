@@ -24,8 +24,12 @@ const Anchor = styled(Link)`
   height: 12.7rem;
 
   box-shadow: 0 0.2rem 0.6rem 0.1rem rgba(153, 153, 153, 0.55);
+  -moz-box-shadow: 0 0.2rem 0.6rem 0.1rem rgba(153, 153, 153, 0.55);
+  -webkit-box-shadow: 0 0.2rem 0.6rem 0.1rem rgba(153, 153, 153, 0.55);
   background-color: ${({ theme }) => theme.mainColor};
   border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
 
   font-family: ${({ theme }) => theme.titleFont};
   font-size: 1.6rem;

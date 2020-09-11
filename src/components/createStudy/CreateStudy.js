@@ -76,7 +76,7 @@ function CreateStudy({ onSubmit, loading }) {
           {errors.description && <ErrorMessage>{errors.description.message}</ErrorMessage>}
         </BoxTemplate>
 
-        <BoxTemplate title="그룹 해시태그" htmlFor="hashtag" required={false}>
+        <BoxTemplate title="그룹 해시태그" htmlFor="hashtag" required={false} isHelp>
           <Hashtag setValue={setValue} register={register} name={'hashtag'} />
         </BoxTemplate>
 
@@ -123,6 +123,8 @@ const ButtonWrap = styled.div`
   button {
     width: 100%;
     border-radius: 0.6rem;
+    -moz-border-radius: 0.6rem;
+    -webkit-border-radius: 0.6rem;
     background-color: ${({ theme }) => theme.mainColor};
     height: 5.6rem;
     font-size: 2rem;

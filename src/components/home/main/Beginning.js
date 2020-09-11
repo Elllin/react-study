@@ -61,6 +61,8 @@ const Wrap = styled.section`
     width: 24.8rem;
     height: 6rem;
     box-shadow: 0.2rem 0.2rem 0.5rem -0.1rem rgba(153, 153, 153, 0.55);
+    -moz-box-shadow: 0.2rem 0.2rem 0.5rem -0.1rem rgba(153, 153, 153, 0.55);
+    -webkit-box-shadow: 0.2rem 0.2rem 0.5rem -0.1rem rgba(153, 153, 153, 0.55);
     transform: rotate(-5deg);
     font-size: 1.9rem;
     font-family: ${({ theme }) => theme.titleFont};
@@ -74,6 +76,8 @@ const Wrap = styled.section`
       width: 0px;
       height: 0px;
       box-shadow: 0.2rem 0.2rem 0.5rem -0.1rem rgba(153, 153, 153, 0.55);
+      -moz-box-shadow: 0.2rem 0.2rem 0.5rem -0.1rem rgba(153, 153, 153, 0.55);
+      -webkit-box-shadow: 0.2rem 0.2rem 0.5rem -0.1rem rgba(153, 153, 153, 0.55);
       border-right: 1.8rem solid #ffac00;
       border-bottom: 1.9rem solid #fff;
     }
