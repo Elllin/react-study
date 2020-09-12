@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Header from 'components/common/header/Header';
 
@@ -6,9 +7,13 @@ import styled from 'styled-components';
 import { Layout } from 'style/CustomStyle';
 
 function Invitation({ mailAddress = 'ddd@naver.com' }) {
-  const getDomain = () => {
-    return mailAddress.split('@')[1];
+  const getUrl = (mailAddress) => {
+    const domain = mailAddress.split('@')[1];
+
+    return `https://${domain}`;
   };
+
+  const hrefUrl = getUrl(mailAddress);
 
   return (
     <>
@@ -19,7 +24,11 @@ function Invitation({ mailAddress = 'ddd@naver.com' }) {
         </ImgWrap>
         <h2>초대 메일이 발송되었습니다!</h2>
         <p>
-          나의 메일함에서 ( <MAilAddress>{mailAddress}</MAilAddress> ) 초대 메일을 확인하세요.
+          나의 메일함에서 (
+          <MAilAddress href={hrefUrl} target="_blank">
+            {mailAddress}
+          </MAilAddress>
+          ) 초대 메일을 확인하세요.
           <br />
           인증 버튼을 클릭하면 그룹개설이 바로 완료됩니다.
         </p>
@@ -38,7 +47,7 @@ const Wrap = styled.main`
   h2 {
     margin-bottom: 2.6rem;
     font-size: 3.6rem;
-    font-family: 'NanumSquareRoundOTFEB, sans-serif';
+    font-family: ${({ theme }) => theme.titleFont};
     letter-spacing: -0.06rem;
   }
   p {
@@ -74,8 +83,13 @@ const ImgWrap = styled.div`
   }
 `;
 
-const MAilAddress = styled.span`
+const MAilAddress = styled.a`
   color: #6fa3fc;
+  text-decoration: none;
 `;
+
+MAilAddress.propTypes = {
+  mailAddress: PropTypes.string,
+};
 
 export default Invitation;

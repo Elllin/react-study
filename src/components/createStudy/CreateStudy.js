@@ -71,10 +71,10 @@ function CreateStudy({ onSubmit, loading }) {
         </BoxLayout>
 
         <BoxTemplate title="예치금 설정을 하시나요?" as="div" far>
-          <RadioBox id="yes" value="yes" text="네. 할래요!" name="is_deposit" register={register} />
+          <RadioBox id="yes" value={1} text="네. 할래요!" name="is_deposit" register={register} />
           <RadioBox
             id="no"
-            value="no"
+            value={0}
             text="아니요. 괜찮아요!"
             name="is_deposit"
             register={register}
