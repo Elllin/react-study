@@ -14,6 +14,7 @@ import LoadingPage from 'containers/common/LoadingPage';
 import styled from 'styled-components';
 import { InputBox, Description } from 'style/CustomStyle';
 import ValidationMessage from './validationMessage/ValidationMessage';
+import DatePicker from './datePicker/DatePicker';
 
 function CreateStudy({ onSubmit, loading }) {
   const [inputLength, setInputLength] = useState({
@@ -31,7 +32,9 @@ function CreateStudy({ onSubmit, loading }) {
     });
   };
 
-  const { register, handleSubmit, setValue, watch } = useForm();
+  const { register, handleSubmit, setValue, watch } = useForm({
+    defaultValues: { duration: null },
+  });
   const title = watch('title', '');
   const description = watch('description', '');
 
@@ -70,28 +73,26 @@ function CreateStudy({ onSubmit, loading }) {
           </BoxTemplate>
         </BoxLayout>
 
-        <BoxTemplate title="스터디 기간" htmlFor="title">
-          <InputBox
-            type="text"
-            id="period"
-            name="period"
-            value={title}
-            onChange={onChange}
-            ref={register({ required: true })}
-            placeholder={period.placeholder}
-          />
-          <ValidationMessage validation={titleValidation} length={titleLength} />
-          <CharacterCounter length={titleLength} maxLength={groupName.maxLength} />
+        <BoxTemplate title="스터디 기간" htmlFor="period">
+          {/* <InputBox type="text" id="period" name="period" ref={register({ required: true })} /> */}
+          {/* <Controller as={<DatePicker />} name="duration" control={control} /> */}
+          <DatePicker register={register} name="duration" setValue={setValue} />
         </BoxTemplate>
 
         <BoxTemplate title="예치금 설정을 하시나요?" as="div" far>
-          <RadioBox id="yes" value={1} text="네. 할래요!" name="is_deposit" register={register} />
+          <RadioBox
+            id="yes"
+            value={1}
+            text="네. 할래요!"
+            name="is_deposit"
+            register={register({ required: true })}
+          />
           <RadioBox
             id="no"
             value={0}
             text="아니요. 괜찮아요!"
             name="is_deposit"
-            register={register}
+            register={register({ required: true })}
           />
         </BoxTemplate>
         <BoxTemplate title="그룹 이름 (특수문자 불가)" htmlFor="title">
