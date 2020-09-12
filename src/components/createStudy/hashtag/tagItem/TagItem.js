@@ -15,7 +15,6 @@ function TagItem({ onClick, id, text }) {
 }
 
 const Tag = styled.p`
-  /* pointer-events: none; */
   padding: 0.9rem 2rem;
   ${Layout}
 
@@ -28,27 +27,11 @@ const Tag = styled.p`
   font-weight: 500;
   color: ${({ theme }) => theme.blueColor};
   cursor: pointer;
+  margin-top: 1.5rem;
 
   & + & {
     margin-left: 1.2rem;
-    margin-top: 1.2rem;
   }
-
-  /* &:after {
-    pointer-events: all;
-    display: inline-block;
-    content: 'x';
-    height: 13px;
-    width: 13px;
-    margin-left: 6px;
-    vertical-align: text-top;
-    text-align: center;
-    color: ${({
-    theme,
-  }) => theme.blueColor};
-
-    cursor: pointer;
-  } */
 `;
 
 TagItem.propTypes = {

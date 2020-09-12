@@ -49,7 +49,7 @@ function CreateStudy({ onSubmit, loading }) {
 
   const titleValidation = !checkSpecial(title);
 
-  const { groupName, introduction, locationOption, categoryOption } = createStudy;
+  const { groupName, introduction, locationOption, categoryOption, hashtag } = createStudy;
   return (
     <>
       <FormTemplate onSubmit={onSubmit} handleSubmit={handleSubmit}>
@@ -69,6 +69,21 @@ function CreateStudy({ onSubmit, loading }) {
             />
           </BoxTemplate>
         </BoxLayout>
+
+        <BoxTemplate title="스터디 기간" htmlFor="title">
+          <InputBox
+            type="text"
+            id="period"
+            name="period"
+            maxLength={groupName.maxLength}
+            value={title}
+            onChange={onChange}
+            ref={register({ required: true })}
+            placeholder={groupName.placeholder}
+          />
+          <ValidationMessage validation={titleValidation} length={titleLength} />
+          <CharacterCounter length={titleLength} maxLength={groupName.maxLength} />
+        </BoxTemplate>
 
         <BoxTemplate title="예치금 설정을 하시나요?" as="div" far>
           <RadioBox id="yes" value={1} text="네. 할래요!" name="is_deposit" register={register} />
@@ -110,7 +125,12 @@ function CreateStudy({ onSubmit, loading }) {
         </BoxTemplate>
 
         <BoxTemplate title="그룹 해시태그" htmlFor="hashtag" required={false} isHelp>
-          <Hashtag setValue={setValue} register={register} name={'hashtag'} />
+          <Hashtag
+            setValue={setValue}
+            register={register}
+            name={'hashtag'}
+            maxLength={hashtag.maxLength}
+          />
         </BoxTemplate>
 
         <ButtonWrap>

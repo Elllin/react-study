@@ -9,7 +9,7 @@ import { InputBox, Description } from 'style/CustomStyle';
 
 function Hashtag({ register, setValue, name }) {
   const {
-    hashtag: { placeholder, description },
+    hashtag: { placeholder, description, maxLength },
   } = createStudy;
 
   const tagId = useRef(1);
@@ -19,10 +19,12 @@ function Hashtag({ register, setValue, name }) {
   const onChangeHashtag = ({ target }) => {
     const { value } = target;
     setHashtag(value);
+  };
 
-    if (value.endsWith(',') && value.length > 0) {
-      let text = value.slice(0, -1);
-      text = `#${text}`;
+  const onKeyDown = (e) => {
+    const value = e.target.value.trim();
+    if (e.key === ' ' && value.length > 0) {
+      let text = `#${value}`;
 
       const newhashTag = { id: tagId.current, text };
       setHashtags(hashtags.concat([newhashTag]));
@@ -50,10 +52,12 @@ function Hashtag({ register, setValue, name }) {
         type="text"
         id={name}
         name={name}
+        maxLength={maxLength}
         placeholder={placeholder}
         value={hashtag}
         ref={() => register({ name })}
         onChange={onChangeHashtag}
+        onKeyDown={onKeyDown}
       />
       <Description>{description}</Description>
       <TagContainer>
@@ -73,8 +77,6 @@ const TagContainer = styled.div`
   display: flex;
   flex-flow: row wrap;
   width: 100%;
-  margin-top: 1.2rem;
-  /* min-height: 30px; */
 `;
 
 Hashtag.propTypes = {
