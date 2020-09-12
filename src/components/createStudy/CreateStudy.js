@@ -15,6 +15,7 @@ import styled from 'styled-components';
 import { InputBox, Description } from 'style/CustomStyle';
 import ValidationMessage from './validationMessage/ValidationMessage';
 import DatePicker from './datePicker/DatePicker';
+import { darken, lighten } from 'polished';
 
 function CreateStudy({ onSubmit, loading }) {
   const [inputLength, setInputLength] = useState({
@@ -162,6 +163,12 @@ const ButtonWrap = styled.div`
     height: 5.6rem;
     font-size: 2rem;
     font-weight: bold;
+  }
+  button:hover {
+    background: ${({ theme }) => lighten(0.12, theme.mainColor)};
+  }
+  button:active {
+    background: ${({ theme }) => darken(0.12, theme.mainColor)};
   }
 `;
 

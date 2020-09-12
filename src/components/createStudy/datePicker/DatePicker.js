@@ -62,6 +62,8 @@ function DatePicker({ register, setValue }) {
 
 const Wrap = styled.div`
   position: relative;
+  font-family: AppleSDGothicNeo;
+  /* 고치기 */
   .DateRangePickerInput {
     display: flex;
     align-items: center;
@@ -75,23 +77,91 @@ const Wrap = styled.div`
   .DateRangePickerInput_clearDates_default:hover {
     background: none;
   }
-  .DateInput_fang {
-    /* top: 18px;
-    left: 477px;
-    transform: rotate(-92deg); */
-  }
+
   .DayPicker_transitionContainer {
-    width: 288px;
-    height: 243px;
     box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.36);
     border: solid 1px #cbcbcb;
     background-color: #ffffff;
   }
   .CalendarDay__default {
     border: none;
+    vertical-align: middle;
   }
   .DayPickerNavigation_button__default {
     border: none;
+  }
+  .CalendarMonth_caption {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #000;
+  }
+
+  .DayPicker_weekHeader_ul {
+    padding-bottom: 1rem;
+    font-size: 1.3rem;
+    color: #000;
+    border-bottom: solid 1px #cbcbcb;
+  }
+  .DayPicker_weekHeader_li {
+    &:first-child {
+      color: #ef505f;
+    }
+    &:last-child {
+      color: #2b73db;
+    }
+  }
+  table {
+    top: 1.3rem;
+    position: relative;
+  }
+  td {
+    font-size: 14px;
+  }
+
+  .CalendarDay__selected,
+  .CalendarDay__selected:active,
+  .CalendarDay__selected:hover {
+    background-color: #fd5e5c;
+
+    /* border-radius: 50%; */
+  }
+  .CalendarDay__selected,
+  .CalendarDay__selected_span {
+    /* background: none; */
+    /* border-radius: 13.5px; */
+    /* border: solid 0.6px #fd5e5c; */
+  }
+  .CalendarDay__hovered_span,
+  .CalendarDay__hovered_span:hover {
+    border-radius: 13.5px;
+    border-top: solid 0.6px #fd5e5c;
+    border-bottom: solid 0.6px #fd5e5c;
+    background: none;
+    color: #fd5e5c;
+  }
+
+  .CalendarDay__selected_span {
+    border-top: solid 0.6px #fd5e5c;
+    border-bottom: solid 0.6px #fd5e5c;
+    background: none;
+    color: #000;
+  }
+  .DayPickerNavigation_leftButton__horizontalDefault {
+    left: 8rem;
+    padding: 0.7rem;
+    svg {
+      fill: #232323;
+      height: 11px;
+    }
+  }
+
+  .DayPickerNavigation_rightButton__horizontalDefault {
+    right: 8rem;
+    padding: 0.7rem;
+    svg {
+      fill: #232323;
+      height: 11px;
+    }
   }
 `;
 
@@ -102,15 +172,6 @@ const DateArrow = styled(TiArrowRight)`
 const CalendarIcon = styled(FaRegCalendarCheck)`
   font-size: 1.9rem;
   color: #707070;
-`;
-
-const DatePickerInputWrap = styled(InputBox)`
-  /* position: absolute;
-  width: 96%;
-  height: 100%;
-  top: 4%;
-  border-radius: 10px;
-  cursor: pointer; */
 `;
 
 const Cover = styled(InputBox)`

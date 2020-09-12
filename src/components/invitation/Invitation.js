@@ -40,6 +40,7 @@ function Invitation({ mailAddress = 'ddd@naver.com' }) {
 
 const Wrap = styled.main`
   ${Layout}
+  margin-top: 4rem;
   flex-direction: column;
   height: 70vh;
   text-align: center;
