@@ -49,7 +49,7 @@ function CreateStudy({ onSubmit, loading }) {
 
   const titleValidation = !checkSpecial(title);
 
-  const { groupName, introduction, locationOption, categoryOption, hashtag } = createStudy;
+  const { groupName, introduction, locationOption, categoryOption, period } = createStudy;
   return (
     <>
       <FormTemplate onSubmit={onSubmit} handleSubmit={handleSubmit}>
@@ -75,11 +75,10 @@ function CreateStudy({ onSubmit, loading }) {
             type="text"
             id="period"
             name="period"
-            maxLength={groupName.maxLength}
             value={title}
             onChange={onChange}
             ref={register({ required: true })}
-            placeholder={groupName.placeholder}
+            placeholder={period.placeholder}
           />
           <ValidationMessage validation={titleValidation} length={titleLength} />
           <CharacterCounter length={titleLength} maxLength={groupName.maxLength} />
@@ -125,12 +124,7 @@ function CreateStudy({ onSubmit, loading }) {
         </BoxTemplate>
 
         <BoxTemplate title="그룹 해시태그" htmlFor="hashtag" required={false} isHelp>
-          <Hashtag
-            setValue={setValue}
-            register={register}
-            name={'hashtag'}
-            maxLength={hashtag.maxLength}
-          />
+          <Hashtag setValue={setValue} register={register} name={'hashtag'} />
         </BoxTemplate>
 
         <ButtonWrap>

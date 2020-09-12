@@ -7,7 +7,7 @@ import TagItem from './tagItem/TagItem';
 import styled from 'styled-components';
 import { InputBox, Description } from 'style/CustomStyle';
 
-function Hashtag({ register, setValue, name }) {
+function Hashtag({ register, setValue, name, maxCount, key }) {
   const {
     hashtag: { placeholder, description, maxLength },
   } = createStudy;
@@ -22,11 +22,14 @@ function Hashtag({ register, setValue, name }) {
   };
 
   const onKeyDown = (e) => {
-    const value = e.target.value.trim();
-    if (e.key === ' ' && value.length > 0) {
-      let text = `#${value}`;
+    if (hashtags.length >= maxCount) return setHashtag('');
 
+    const value = e.target.value.trim();
+
+    if (e.key === key && value.length > 0) {
+      const text = `#${value}`;
       const newhashTag = { id: tagId.current, text };
+
       setHashtags(hashtags.concat([newhashTag]));
       setHashtag('');
 
@@ -82,6 +85,13 @@ const TagContainer = styled.div`
 Hashtag.propTypes = {
   register: PropTypes.func.isRequired,
   setValue: PropTypes.func.isRequired,
+  key: PropTypes.string,
+  maxCount: PropTypes.number,
+};
+
+Hashtag.defaultProps = {
+  key: ' ',
+  maxCount: 3,
 };
 
 export default Hashtag;

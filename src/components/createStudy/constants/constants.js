@@ -8,6 +8,9 @@ const createStudy = {
     placeholder: '그룹 소개, 이 방의 규칙 등을 자유롭게 작성해주세요.',
     maxLength: 5000,
   },
+  period: {
+    description: '미정이 아닐 경우, 우측 캘린더를 클릭하여 날짜를 선택해주세요.',
+  },
   hashtag: {
     placeholder: 'ex) 열공하는그룹, 취업목표',
     description: '그룹을 특색있게 나타내는 해시태그를 입력해주세요. 설정시 검색 확률이 높아져요!',
