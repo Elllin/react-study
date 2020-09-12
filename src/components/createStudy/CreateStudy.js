@@ -16,16 +16,11 @@ import { InputBox, Description } from 'style/CustomStyle';
 import ValidationMessage from './validationMessage/ValidationMessage';
 
 function CreateStudy({ onSubmit, loading }) {
-  // const [inputs, setInputs] = useState({
-  //   title: '',
-  //   description: '',
-  // });
   const [inputLength, setInputLength] = useState({
     titleLength: 0,
     descriptionLength: 0,
   });
 
-  // const { title, description } = inputs;
   const { titleLength, descriptionLength } = inputLength;
 
   const onChange = (e) => {
@@ -37,14 +32,15 @@ function CreateStudy({ onSubmit, loading }) {
   };
 
   const { register, handleSubmit, setValue, watch } = useForm();
-  const title = watch('title');
-  const description = watch('description');
+  const title = watch('title', '');
+  const description = watch('description', '');
 
   useEffect(() => {
     window.scrollTo({ top: 0 });
   }, []);
 
   const checkSpecial = (str) => {
+    // eslint-disable-next-line
     const specialPattern = /[`~!@#$%^&*\.,\=(){}+<>\[\]\\\'\";:\/?|]/gi;
 
     if (specialPattern.test(str)) return true;
@@ -84,7 +80,6 @@ function CreateStudy({ onSubmit, loading }) {
             register={register}
           />
         </BoxTemplate>
-
         <BoxTemplate title="그룹 이름 (특수문자 불가)" htmlFor="title">
           <InputBox
             type="text"
