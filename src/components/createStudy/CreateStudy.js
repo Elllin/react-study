@@ -13,10 +13,7 @@ import LoadingPage from 'containers/common/LoadingPage';
 
 import styled from 'styled-components';
 import { InputBox, Description } from 'style/CustomStyle';
-
-import { FiCheck } from 'react-icons/fi';
-import { RiCheckLine } from 'react-icons/ri';
-import { FiX } from 'react-icons/fi';
+import ValidationMessage from './validationMessage/ValidationMessage';
 
 function CreateStudy({ onSubmit, loading }) {
   // const [inputs, setInputs] = useState({
@@ -39,7 +36,7 @@ function CreateStudy({ onSubmit, loading }) {
     });
   };
 
-  const { register, handleSubmit, errors, setValue, watch } = useForm();
+  const { register, handleSubmit, setValue, watch } = useForm();
   const title = watch('title');
   const description = watch('description');
 
@@ -48,13 +45,13 @@ function CreateStudy({ onSubmit, loading }) {
   }, []);
 
   const checkSpecial = (str) => {
-    const specialPattern = /[`~!@#$%^&*|\\\'\";:\/?]/gi;
+    const specialPattern = /[`~!@#$%^&*\.,\=(){}+<>\[\]\\\'\";:\/?|]/gi;
 
     if (specialPattern.test(str)) return true;
     else return false;
   };
 
-  const titleValidation = checkSpecial(title);
+  const titleValidation = !checkSpecial(title);
 
   const { groupName, introduction, locationOption, categoryOption } = createStudy;
   return (
@@ -99,11 +96,7 @@ function CreateStudy({ onSubmit, loading }) {
             ref={register({ required: true })}
             placeholder={groupName.placeholder}
           />
-
-          <StatusMessage validation={titleValidation} length={titleLength}>
-            <StatusIcon>{titleValidation ? <FiX /> : <RiCheckLine />}</StatusIcon>
-            <span>{titleValidation ? "Don't" : 'Do'}</span>
-          </StatusMessage>
+          <ValidationMessage validation={titleValidation} length={titleLength} />
           <CharacterCounter length={titleLength} maxLength={groupName.maxLength} />
         </BoxTemplate>
 
@@ -145,29 +138,6 @@ const BoxLayout = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 0 3rem;
-`;
-
-const StatusMessage = styled.div`
-  position: absolute;
-  top: 4rem;
-  right: 1.3rem;
-  display: flex;
-  align-items: center;
-  margin-top: 0.7rem;
-  font-size: 1.6rem;
-  color: #cacaca;
-  color: ${({ validation, length, theme }) => {
-    if (length && validation) return theme.warningColor;
-    else if (length && !validation) return theme.successColor;
-  }};
-  /* color: #cacaca; */
-  span + span {
-    margin-left: 0.2rem;
-  }
-`;
-const StatusIcon = styled.span`
-  font-size: 2.1rem;
-  height: 2rem;
 `;
 
 const ButtonWrap = styled.div`
