@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import createStudy from '../constants/constants';
 
@@ -15,32 +15,40 @@ function HashtagInput({ register, setValue, name, maxCount, key, condition }) {
   const [hashtag, setHashtag] = useState('');
   const [hashtags, setHashtags] = useState([]);
 
-  const onChangeHashtag = ({ target }) => {
+  const onChangeHashtag = useCallback(({ target }) => {
     const { value } = target;
     setHashtag(value);
-  };
+  }, []);
 
-  const onKeyDown = (e) => {
-    if (hashtags.length >= maxCount) return setHashtag('');
+  const onKeyDown = useCallback(
+    (e) => {
+      if (hashtags.length >= maxCount) return setHashtag('');
 
-    const value = e.target.value.trim();
+      const value = e.target.value.trim();
 
-    if ((e.key === ' ' || e.key === ',') && value.length > 0) {
-      const text = `#${value}`;
-      const newhashTag = { id: tagId.current, text };
+      if ((e.key === ' ' || e.key === ',') && value.length > 0) {
+        const text = `#${value}`;
+        const newhashTag = { id: tagId.current, text };
 
-      setHashtags(hashtags.concat([newhashTag]));
-      setHashtag('');
+        setHashtags(hashtags.concat([newhashTag]));
+        tagId.current++;
+      }
+    },
+    [hashtags, maxCount],
+  );
 
-      tagId.current++;
-    }
-  };
+  useEffect(() => {
+    setHashtag('');
+  }, [hashtags]);
 
-  const removeHashtag = ({ target }) => {
-    const { tagId } = target.dataset;
-    const removedTags = hashtags.filter((tag) => tag.id !== parseInt(tagId));
-    setHashtags(removedTags);
-  };
+  const removeHashtag = useCallback(
+    ({ target }) => {
+      const { tagId } = target.dataset;
+      const removedTags = hashtags.filter((tag) => tag.id !== parseInt(tagId));
+      setHashtags(removedTags);
+    },
+    [hashtags],
+  );
 
   useEffect(() => {
     const textArr = hashtags.map((tag) => tag.text.slice(1));

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 
 import styled from 'styled-components';
@@ -43,4 +43,4 @@ TagItem.defaultProps = {
   onClick: null,
 };
 
-export default TagItem;
+export default memo(TagItem);
