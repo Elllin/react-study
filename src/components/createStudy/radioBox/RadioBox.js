@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 
 import styled, { css } from 'styled-components';
@@ -113,4 +113,4 @@ RadioBox.defaultProps = {
   checkedcolor: null,
 };
 
-export default RadioBox;
+export default memo(RadioBox);

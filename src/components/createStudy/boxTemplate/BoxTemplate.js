@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 
 import HelpBubble from './helpBubble/HelpBubble';
@@ -50,4 +50,4 @@ BoxTemplate.defaultProps = {
   isHelp: false,
 };
 
-export default BoxTemplate;
+export default memo(BoxTemplate);

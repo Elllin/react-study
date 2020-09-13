@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { useForm } from 'react-hook-form';
 import PropTypes from 'prop-types';
 
@@ -25,15 +25,26 @@ function CreateStudy({ onSubmit, loading }) {
     descriptionLength: 0,
   });
 
+  useEffect(() => {
+    window.scrollTo({ top: 0 });
+  }, []);
+
   const { titleLength, descriptionLength } = inputLength;
 
-  const onChange = (e) => {
-    const { value, name } = e.target;
-    setInputLength({
-      ...inputLength,
-      [`${name}Length`]: value.length,
-    });
-  };
+  const onChange = useCallback(
+    (e) => {
+      const { value, name } = e.target;
+      setInputLength({
+        ...inputLength,
+        [`${name}Length`]: value.length,
+      });
+    },
+    [inputLength],
+  );
+
+  const isTagCreation = useCallback((e, value) => {
+    return (e.key === ' ' || e.key === ',') && value.length > 0;
+  }, []);
 
   const { register, handleSubmit, setValue, watch } = useForm({
     defaultValues: { duration: null },
@@ -41,10 +52,6 @@ function CreateStudy({ onSubmit, loading }) {
 
   const title = watch('title', '');
   const description = watch('description', '');
-
-  useEffect(() => {
-    window.scrollTo({ top: 0 });
-  }, []);
 
   const titleValidation = !checkSpecialCharacters(title);
 
@@ -121,7 +128,12 @@ function CreateStudy({ onSubmit, loading }) {
         </BoxTemplate>
 
         <BoxTemplate title="그룹 해시태그" htmlFor="hashtag" required={false} isHelp>
-          <HashtagInput setValue={setValue} register={register} name={'hashtag'} />
+          <HashtagInput
+            setValue={setValue}
+            register={register}
+            name={'hashtag'}
+            isTagCreation={isTagCreation}
+          />
         </BoxTemplate>
 
         <ButtonWrap>

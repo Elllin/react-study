@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef, useCallback } from 'react';
+import React, { useEffect, useState, useRef, useCallback, memo } from 'react';
 import PropTypes from 'prop-types';
 import createStudy from '../constants/constants';
 
@@ -6,7 +6,7 @@ import TagContainer from './tagContainer/TagContainer';
 
 import { InputBox, Description } from 'style/CustomStyle';
 
-function HashtagInput({ register, setValue, name, maxCount, key, condition }) {
+function HashtagInput({ register, setValue, name, maxCount, isTagCreation }) {
   const {
     hashtag: { placeholder, description, maxLength },
   } = createStudy;
@@ -26,7 +26,7 @@ function HashtagInput({ register, setValue, name, maxCount, key, condition }) {
 
       const value = e.target.value.trim();
 
-      if ((e.key === ' ' || e.key === ',') && value.length > 0) {
+      if (isTagCreation(e, value)) {
         const text = `#${value}`;
         const newhashTag = { id: tagId.current, text };
 
@@ -34,7 +34,7 @@ function HashtagInput({ register, setValue, name, maxCount, key, condition }) {
         tagId.current++;
       }
     },
-    [hashtags, maxCount],
+    [hashtags, maxCount, isTagCreation],
   );
 
   useEffect(() => {
@@ -78,6 +78,7 @@ function HashtagInput({ register, setValue, name, maxCount, key, condition }) {
 HashtagInput.propTypes = {
   register: PropTypes.func.isRequired,
   setValue: PropTypes.func.isRequired,
+  isTagCreation: PropTypes.func.isRequired,
   key: PropTypes.string,
   maxCount: PropTypes.number,
 };
@@ -87,4 +88,4 @@ HashtagInput.defaultProps = {
   maxCount: 3,
 };
 
-export default HashtagInput;
+export default memo(HashtagInput);

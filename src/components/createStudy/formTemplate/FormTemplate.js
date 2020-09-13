@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 
 import styled from 'styled-components';
@@ -59,4 +59,4 @@ FormTemplate.propTypes = {
   onSubmit: PropTypes.func.isRequired,
 };
 
-export default FormTemplate;
+export default memo(FormTemplate);

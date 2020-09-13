@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, memo } from 'react';
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
 import { DateRangePicker } from 'react-dates';
@@ -58,7 +58,6 @@ function DatePicker({ register, setValue }) {
 
 const Wrap = styled.div`
   position: relative;
-  /* font-family: AppleSDGothicNeo; */
   /* 고치기 */
   .DateRangePickerInput {
     display: flex;
@@ -175,4 +174,4 @@ const Cover = styled(InputBox)`
   letter-spacing: -0.3px;
 `;
 
-export default DatePicker;
+export default memo(DatePicker);

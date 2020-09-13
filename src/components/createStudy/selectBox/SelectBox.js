@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 
 import { InputBox } from 'style/CustomStyle';
@@ -59,4 +59,4 @@ SelectBox.defaultProps = {
   register: null,
 };
 
-export default SelectBox;
+export default memo(SelectBox);

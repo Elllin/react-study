@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import createStudy from '../../constants/constants';
 
 import styled, { css } from 'styled-components';
@@ -84,4 +84,4 @@ const BubbelArrow = styled.div`
   left: -1.35rem;
 `;
 
-export default HelpBubble;
+export default memo(HelpBubble);

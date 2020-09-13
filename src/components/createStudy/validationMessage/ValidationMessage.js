@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 
 import { RiCheckLine } from 'react-icons/ri';
@@ -50,4 +50,4 @@ ValidationMessage.defaultProps = {
   failText: "Don't",
 };
 
-export default ValidationMessage;
+export default memo(ValidationMessage);
