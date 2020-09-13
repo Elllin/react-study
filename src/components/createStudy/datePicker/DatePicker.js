@@ -1,17 +1,14 @@
 import React, { useState } from 'react';
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
-import { DateRangePicker, SingleDatePicker, DayPickerRangeController } from 'react-dates';
+import { DateRangePicker } from 'react-dates';
 import moment from 'moment';
 import 'moment/locale/ko';
-
-import { Controller } from 'react-hook-form';
 
 import styled from 'styled-components';
 import { InputBox } from 'style/CustomStyle';
 import { TiArrowRight } from 'react-icons/ti';
 import { FaRegCalendarCheck } from 'react-icons/fa';
-// import { BiCalendarCheck } from 'react-icons/bi';
 
 function DatePicker({ register, setValue }) {
   const [startDate, setStartDate] = useState();
@@ -44,7 +41,6 @@ function DatePicker({ register, setValue }) {
         onFocusChange={onFocusChange}
         numberOfMonths={1}
         ref={() => register('duration')}
-        // required={true}
         hideKeyboardShortcutsPanel
         showDefaultInputIcon
         inputIconPosition="after"
@@ -62,7 +58,7 @@ function DatePicker({ register, setValue }) {
 
 const Wrap = styled.div`
   position: relative;
-  font-family: AppleSDGothicNeo;
+  /* font-family: AppleSDGothicNeo; */
   /* 고치기 */
   .DateRangePickerInput {
     display: flex;
@@ -122,15 +118,8 @@ const Wrap = styled.div`
   .CalendarDay__selected:active,
   .CalendarDay__selected:hover {
     background-color: #fd5e5c;
+  }
 
-    /* border-radius: 50%; */
-  }
-  .CalendarDay__selected,
-  .CalendarDay__selected_span {
-    /* background: none; */
-    /* border-radius: 13.5px; */
-    /* border: solid 0.6px #fd5e5c; */
-  }
   .CalendarDay__hovered_span,
   .CalendarDay__hovered_span:hover {
     border-radius: 13.5px;
@@ -179,7 +168,7 @@ const Cover = styled(InputBox)`
   align-items: center;
   position: absolute;
   top: 0;
-  width: 50%;
+  width: 80%;
   background: #fff;
   border-right: none;
   font-size: 1.6rem;

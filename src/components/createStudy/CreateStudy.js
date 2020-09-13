@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import createStudy from './constants/constants';
 import PropTypes from 'prop-types';
 
-import Hashtag from './hashtag/Hashtag';
+import createStudy from './constants/constants';
+import { checkSpecialCharacters } from 'lib/utils';
+
+import HashtagInput from './hashtagInput/HashtagInput';
 import BoxTemplate from './boxTemplate/BoxTemplate';
 import SelectBox from './selectBox/SelectBox';
 import RadioBox from './radioBox/RadioBox';
@@ -36,6 +38,7 @@ function CreateStudy({ onSubmit, loading }) {
   const { register, handleSubmit, setValue, watch } = useForm({
     defaultValues: { duration: null },
   });
+
   const title = watch('title', '');
   const description = watch('description', '');
 
@@ -43,17 +46,10 @@ function CreateStudy({ onSubmit, loading }) {
     window.scrollTo({ top: 0 });
   }, []);
 
-  const checkSpecial = (str) => {
-    // eslint-disable-next-line
-    const specialPattern = /[`~!@#$%^&*\.,\=(){}+<>\[\]\\\'\";:\/?|]/gi;
+  const titleValidation = !checkSpecialCharacters(title);
 
-    if (specialPattern.test(str)) return true;
-    else return false;
-  };
+  const { groupName, introduction, locationOption, categoryOption, duration } = createStudy;
 
-  const titleValidation = !checkSpecial(title);
-
-  const { groupName, introduction, locationOption, categoryOption, period } = createStudy;
   return (
     <>
       <FormTemplate onSubmit={onSubmit} handleSubmit={handleSubmit}>
@@ -74,10 +70,9 @@ function CreateStudy({ onSubmit, loading }) {
           </BoxTemplate>
         </BoxLayout>
 
-        <BoxTemplate title="스터디 기간" htmlFor="period">
-          {/* <InputBox type="text" id="period" name="period" ref={register({ required: true })} /> */}
-          {/* <Controller as={<DatePicker />} name="duration" control={control} /> */}
+        <BoxTemplate title="스터디 기간" as="div">
           <DatePicker register={register} name="duration" setValue={setValue} />
+          <Description>{duration.description}</Description>
         </BoxTemplate>
 
         <BoxTemplate title="예치금 설정을 하시나요?" as="div" far>
@@ -126,7 +121,7 @@ function CreateStudy({ onSubmit, loading }) {
         </BoxTemplate>
 
         <BoxTemplate title="그룹 해시태그" htmlFor="hashtag" required={false} isHelp>
-          <Hashtag setValue={setValue} register={register} name={'hashtag'} />
+          <HashtagInput setValue={setValue} register={register} name={'hashtag'} />
         </BoxTemplate>
 
         <ButtonWrap>

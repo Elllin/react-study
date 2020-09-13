@@ -27,7 +27,6 @@ const Tag = styled.p`
   font-weight: 500;
   color: ${({ theme }) => theme.blueColor};
   cursor: pointer;
-  margin-top: 1.5rem;
 
   & + & {
     margin-left: 1.2rem;
@@ -35,9 +34,13 @@ const Tag = styled.p`
 `;
 
 TagItem.propTypes = {
-  onClick: PropTypes.func.isRequired,
   id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   text: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  onClick: PropTypes.func,
+};
+
+TagItem.defaultProps = {
+  onClick: null,
 };
 
 export default TagItem;
