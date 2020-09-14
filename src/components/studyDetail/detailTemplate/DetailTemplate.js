@@ -39,6 +39,7 @@ const ImgWrap = styled.div`
 `;
 
 const Main = styled.main`
+  padding-bottom: 5.2rem;
   width: 77rem;
   background-color: #fff;
 `;

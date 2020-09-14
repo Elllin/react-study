@@ -21,7 +21,6 @@ function DatePicker({ register, setValue, name, dateFormat, coverText }) {
   const onDatesChange = ({ startDate, endDate }) => {
     setStartDate(startDate);
     setEndDate(endDate);
-
     const formatedStarData = moment(startDate).format(dateFormat);
     const formatedEndData = moment(endDate).format(dateFormat);
     setValue(name, { starDate: formatedStarData, endDate: formatedEndData });
@@ -204,7 +203,7 @@ DatePicker.defaultProps = {
   name: null,
   setValue: null,
   register: null,
-  dateFormat: 'YYYY-MM-DD',
+  dateFormat: 'YYYY-MM-DD dd',
   coverText: null,
 };
 export default memo(DatePicker);

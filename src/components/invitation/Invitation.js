@@ -5,6 +5,7 @@ import Header from 'components/common/header/Header';
 
 import styled from 'styled-components';
 import { Layout } from 'style/CustomStyle';
+import mailImg from 'assets/images/invitation/mail.png';
 
 function Invitation({ mailAddress = 'ddd@naver.com' }) {
   const getUrl = (mailAddress) => {
@@ -20,7 +21,7 @@ function Invitation({ mailAddress = 'ddd@naver.com' }) {
       <Header />
       <Wrap>
         <ImgWrap>
-          <img src="assets/images/invitation/mail.png" alt="메일 일러스트" />
+          <img src={mailImg} alt="메일 일러스트" />
         </ImgWrap>
         <h2>초대 메일이 발송되었습니다!</h2>
         <p>

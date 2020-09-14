@@ -2,6 +2,7 @@ import React from 'react';
 
 import TagContainer from 'components/common/tagContainer/TagContainer';
 import DetailTemplate from './detailTemplate/DetailTemplate';
+import DetailContents from './detailContents/DetailContents';
 
 import styled from 'styled-components';
 import { Layout } from 'style/CustomStyle';
@@ -17,6 +18,7 @@ function StudyDetail() {
           <TagContainer tags={tags} />
         </HashtagWrap>
       </Wrap>
+      <DetailContents />
     </DetailTemplate>
   );
 }
