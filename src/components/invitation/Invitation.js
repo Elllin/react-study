@@ -20,7 +20,7 @@ function Invitation({ mailAddress = 'ddd@naver.com' }) {
       <Header />
       <Wrap>
         <ImgWrap>
-          <img src="http://placehold.it/211x182" alt="메일" />
+          <img src="assets/images/invitation/mail.png" alt="메일 일러스트" />
         </ImgWrap>
         <h2>초대 메일이 발송되었습니다!</h2>
         <p>

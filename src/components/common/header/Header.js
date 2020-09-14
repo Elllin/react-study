@@ -21,7 +21,7 @@ const HeaderBar = styled.header`
   padding: 2.5rem 0;
   width: 100%;
   h1 {
-    height: 2.9rem;
+    height: 3rem;
     font-family: AppleSDGothicNeo, sans-serif;
     font-size: 2.4rem;
     font-weight: 900;

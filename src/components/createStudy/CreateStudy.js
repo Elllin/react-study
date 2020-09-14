@@ -84,14 +84,14 @@ function CreateStudy({ onSubmit, loading }) {
 
         <BoxTemplate title="예치금 설정을 하시나요?" as="div" far>
           <RadioBox
-            id="yes"
+            id="deposit-yes"
             value={1}
             text="네. 할래요!"
             name="is_deposit"
             register={register({ required: true })}
           />
           <RadioBox
-            id="no"
+            id="deposit-no"
             value={0}
             text="아니요. 괜찮아요!"
             name="is_deposit"
@@ -121,7 +121,7 @@ function CreateStudy({ onSubmit, loading }) {
             value={description}
             onChange={onChange}
             maxLength={introduction.maxLength}
-            ref={register({ required: '그룹 소개를 입력해주세요.' })}
+            ref={register({ required: true })}
             placeholder={introduction.placeholder}
           ></TextArea>
           <CharacterCounter length={descriptionLength} maxLength={introduction.maxLength} />
