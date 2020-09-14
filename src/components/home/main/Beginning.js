@@ -1,6 +1,6 @@
 import React from 'react';
 
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Container, Layout } from 'style/CustomStyle';
 import { BsChevronDown } from 'react-icons/bs';
 
@@ -43,6 +43,13 @@ const DownIcon = styled(BsChevronDown)`
   cursor: pointer;
 `;
 
+const CommonStyle = css`
+  content: '';
+  position: absolute;
+  width: 0px;
+  height: 0px;
+`;
+
 const Wrap = styled.section`
   padding-top: 17.7rem;
   height: 87vh;
@@ -69,12 +76,9 @@ const Wrap = styled.section`
     background: ${({ theme }) => theme.mainColor};
 
     &:before {
-      content: '';
-      position: absolute;
+      ${CommonStyle}
       bottom: 0%;
       left: 0%;
-      width: 0px;
-      height: 0px;
       box-shadow: 0.2rem 0.2rem 0.5rem -0.1rem rgba(153, 153, 153, 0.55);
       -moz-box-shadow: 0.2rem 0.2rem 0.5rem -0.1rem rgba(153, 153, 153, 0.55);
       -webkit-box-shadow: 0.2rem 0.2rem 0.5rem -0.1rem rgba(153, 153, 153, 0.55);
@@ -83,12 +87,9 @@ const Wrap = styled.section`
     }
 
     &:after {
-      content: '';
-      position: absolute;
+      ${CommonStyle}
       bottom: -14%;
       left: -5%;
-      width: 0px;
-      height: 0px;
       border-right: 4rem solid transparent;
       border-bottom: 4rem solid #fff;
     }

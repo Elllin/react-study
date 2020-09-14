@@ -5,8 +5,8 @@ import { DateRangePicker } from 'react-dates';
 import moment from 'moment';
 import 'moment/locale/ko';
 
-import styled from 'styled-components';
-import { InputBox } from 'style/CustomStyle';
+import styled, { css } from 'styled-components';
+import { InputBox, BorderRadius2, Layout } from 'style/CustomStyle';
 import { TiArrowRight } from 'react-icons/ti';
 import { FaRegCalendarCheck } from 'react-icons/fa';
 
@@ -19,6 +19,7 @@ function DatePicker({ register, setValue }) {
   const onDatesChange = ({ startDate, endDate }) => {
     setStartDate(startDate);
     setEndDate(endDate);
+
     const formatedStarData = moment(startDate).format('YYYY-MM-DD');
     const formatedEndData = moment(endDate).format('YYYY-MM-DD');
     setValue('duration', { starDate: formatedStarData, endDate: formatedEndData });
@@ -56,16 +57,27 @@ function DatePicker({ register, setValue }) {
   );
 }
 
+const variables = css`
+  --mainColor: #fd5e5c;
+`;
+
+const CommonStyle = css`
+  border-top: solid 0.06rem var(--mainColor);
+  border-bottom: solid 0.06rem var(--mainColor);
+  background: none;
+`;
+
 const Wrap = styled.div`
+  ${variables}
   position: relative;
-  /* 고치기 */
+  font-family: ${({ theme }) => theme.mainFont};
+
   .DateRangePickerInput {
-    display: flex;
-    align-items: center;
+    width: 57rem;
+    height: 5rem;
+    ${Layout}
     justify-content: space-around;
-    width: 570px;
-    height: 50px;
-    border-radius: 2px;
+    ${BorderRadius2};
     border: solid 1px #939393;
   }
   .DateRangePickerInput_clearDates_default:focus,
@@ -75,8 +87,11 @@ const Wrap = styled.div`
 
   .DayPicker_transitionContainer {
     box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.36);
+    -moz-box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.36);
+    -webkit-box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.36);
+
     border: solid 1px #cbcbcb;
-    background-color: #ffffff;
+    background-color: #fff;
   }
   .CalendarDay__default {
     border: none;
@@ -110,45 +125,36 @@ const Wrap = styled.div`
     position: relative;
   }
   td {
-    font-size: 14px;
+    font-size: 1.4rem;
   }
 
   .CalendarDay__selected,
   .CalendarDay__selected:active,
   .CalendarDay__selected:hover {
-    background-color: #fd5e5c;
+    background-color: var(--mainColor);
   }
 
   .CalendarDay__hovered_span,
   .CalendarDay__hovered_span:hover {
-    border-radius: 13.5px;
-    border-top: solid 0.6px #fd5e5c;
-    border-bottom: solid 0.6px #fd5e5c;
-    background: none;
-    color: #fd5e5c;
+    border-radius: 1.35rem;
+    -webkit-border-radius: 1.35rem;
+    -moz-border-radius: 1.35rem;
+    ${CommonStyle}
+    color: var(--mainColor);
   }
 
   .CalendarDay__selected_span {
-    border-top: solid 0.6px #fd5e5c;
-    border-bottom: solid 0.6px #fd5e5c;
-    background: none;
+    ${CommonStyle}
     color: #000;
   }
-  .DayPickerNavigation_leftButton__horizontalDefault {
+
+  .DayPickerNavigation_leftButton__horizontalDefault,
+  .DayPickerNavigation_rightButton__horizontalDefault {
     left: 8rem;
     padding: 0.7rem;
     svg {
       fill: #232323;
-      height: 11px;
-    }
-  }
-
-  .DayPickerNavigation_rightButton__horizontalDefault {
-    right: 8rem;
-    padding: 0.7rem;
-    svg {
-      fill: #232323;
-      height: 11px;
+      height: 1.1rem;
     }
   }
 `;
@@ -171,7 +177,7 @@ const Cover = styled(InputBox)`
   background: #fff;
   border-right: none;
   font-size: 1.6rem;
-  letter-spacing: -0.3px;
+  letter-spacing: -0.03rem;
 `;
 
 export default memo(DatePicker);

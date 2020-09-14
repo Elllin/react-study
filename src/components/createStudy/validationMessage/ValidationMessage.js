@@ -5,6 +5,7 @@ import { RiCheckLine } from 'react-icons/ri';
 import { FiX } from 'react-icons/fi';
 
 import styled from 'styled-components';
+import { Layout } from 'style/CustomStyle';
 
 function ValidationMessage({ validation, length, passText, failText }) {
   return (
@@ -16,11 +17,10 @@ function ValidationMessage({ validation, length, passText, failText }) {
 }
 
 const Wrap = styled.div`
+  ${Layout}
   position: absolute;
   top: 4rem;
   right: 1.3rem;
-  display: flex;
-  align-items: center;
   margin-top: 0.7rem;
   font-size: 1.6rem;
   color: #cacaca;

@@ -2,7 +2,7 @@ import React, { memo } from 'react';
 import createStudy from '../../constants/constants';
 
 import styled, { css } from 'styled-components';
-import { Layout } from 'style/CustomStyle';
+import { Layout, BorderRadius6 } from 'style/CustomStyle';
 import { AiOutlineQuestionCircle } from 'react-icons/ai';
 
 function HelpBubble() {
@@ -58,9 +58,7 @@ const Bubbel = styled.div`
     color: #5e5e5e;
   }
 
-  border-radius: 0.6rem;
-  -moz-border-radius: 0.6rem;
-  -webkit-border-radius: 0.6rem;
+  ${BorderRadius6}
 `;
 
 const CommonStyle = css`

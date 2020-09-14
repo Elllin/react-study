@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import styled from 'styled-components';
-import { Layout } from 'style/CustomStyle';
+import { Layout, BorderRadius50 } from 'style/CustomStyle';
 
 function CreateButton() {
   return (
@@ -27,9 +27,7 @@ const Anchor = styled(Link)`
   -moz-box-shadow: 0 0.2rem 0.6rem 0.1rem rgba(153, 153, 153, 0.55);
   -webkit-box-shadow: 0 0.2rem 0.6rem 0.1rem rgba(153, 153, 153, 0.55);
   background-color: ${({ theme }) => theme.mainColor};
-  border-radius: 50%;
-  -moz-border-radius: 50%;
-  -webkit-border-radius: 50%;
+  ${BorderRadius50};
 
   font-family: ${({ theme }) => theme.titleFont};
   font-size: 1.6rem;

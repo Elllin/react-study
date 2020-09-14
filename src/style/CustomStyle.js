@@ -12,6 +12,24 @@ export const Layout = css`
   justify-content: center;
 `;
 
+export const BorderRadius6 = css`
+  border-radius: 0.6rem;
+  -moz-border-radius: 0.6rem;
+  -webkit-border-radius: 0.6rem;
+`;
+
+export const BorderRadius2 = css`
+  border-radius: 0.2rem;
+  -moz-border-radius: 0.2rem;
+  -webkit-border-radius: 0.2rem;
+`;
+
+export const BorderRadius50 = css`
+  border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+`;
+
 /* 스터디 개설 페이지 공통 스타일 */
 
 export const InputBox = styled.input`

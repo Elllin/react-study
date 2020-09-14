@@ -14,7 +14,7 @@ import CharacterCounter from './characterCounter/CharacterCounter';
 import LoadingPage from 'containers/common/LoadingPage';
 
 import styled from 'styled-components';
-import { InputBox, Description } from 'style/CustomStyle';
+import { InputBox, Description, BorderRadius6 } from 'style/CustomStyle';
 import ValidationMessage from './validationMessage/ValidationMessage';
 import DatePicker from './datePicker/DatePicker';
 import { darken, lighten } from 'polished';
@@ -163,9 +163,7 @@ const ButtonWrap = styled.div`
 
   button {
     width: 100%;
-    border-radius: 0.6rem;
-    -moz-border-radius: 0.6rem;
-    -webkit-border-radius: 0.6rem;
+    ${BorderRadius6};
     background-color: ${({ theme }) => theme.mainColor};
     height: 5.6rem;
     font-size: 2rem;
