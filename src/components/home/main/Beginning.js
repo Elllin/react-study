@@ -1,7 +1,7 @@
 import React from 'react';
 
 import styled, { css } from 'styled-components';
-import { Container, Layout } from 'style/CustomStyle';
+import { Container } from 'style/CustomStyle';
 import { BsChevronDown } from 'react-icons/bs';
 
 function Beginning() {
@@ -31,8 +31,7 @@ function Beginning() {
 }
 
 const DownButtonWrap = styled.div`
-  ${Layout}
-  position:absolute;
+  position: absolute;
   bottom: 0;
   right: 50%;
 `;

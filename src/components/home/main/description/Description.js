@@ -7,7 +7,7 @@ import { Container } from 'style/CustomStyle';
 
 function Description() {
   return (
-    <Div id="bottom">
+    <Wrap>
       <InnerWrap>
         <h2>{description.title}</h2>
         <p>{description.description}</p>
@@ -27,11 +27,11 @@ function Description() {
           })}
         </ItemWrap>
       </InnerWrap>
-    </Div>
+    </Wrap>
   );
 }
 
-const Div = styled.section`
+const Wrap = styled.section`
   h2 {
     margin-bottom: 1.5rem;
     font-family: '210 Yeonpilsketch R', sans-serif;
@@ -46,7 +46,8 @@ const Div = styled.section`
 
 const InnerWrap = styled(Container)`
   text-align: center;
-  padding-top: 13.2rem;
+  padding-top: 10.7rem;
+  margin: 0 auto;
 `;
 
 const ItemWrap = styled.ul`
