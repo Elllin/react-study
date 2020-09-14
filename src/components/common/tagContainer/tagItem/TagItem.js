@@ -26,7 +26,11 @@ const Tag = styled.div`
   font-size: 1.4rem;
   font-weight: 500;
   color: ${({ theme }) => theme.blueColor};
-  cursor: pointer;
+  ${({ onClick }) =>
+    onClick &&
+    `
+      cursor: pointer;
+  `}
 
   & + & {
     margin-left: 1.2rem;
