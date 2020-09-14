@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef, useCallback, memo } from 'react';
 import PropTypes from 'prop-types';
 import createStudy from '../constants/constants';
 
-import TagContainer from './tagContainer/TagContainer';
+import TagContainer from 'components/common/tagContainer/TagContainer';
 
 import { InputBox, Description } from 'style/CustomStyle';
 
@@ -27,8 +27,7 @@ function HashtagInput({ register, setValue, name, maxCount, isTagCreation }) {
       const value = e.target.value.trim();
 
       if (isTagCreation(e, value)) {
-        const text = `#${value}`;
-        const newhashTag = { id: tagId.current, text };
+        const newhashTag = { id: tagId.current, value };
 
         setHashtags(hashtags.concat([newhashTag]));
         tagId.current++;

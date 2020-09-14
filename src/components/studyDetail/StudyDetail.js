@@ -1,52 +1,32 @@
 import React from 'react';
 
-import Header from 'components/common/header/Header';
+import TagContainer from 'components/common/tagContainer/TagContainer';
+import DetailTemplate from './detailTemplate/DetailTemplate';
 
 import styled from 'styled-components';
-import { Container, Layout } from 'style/CustomStyle';
 
 function StudyDetail() {
+  const tags = ['영어공부', '회화연습', '취업'].map((v, i) => ({ id: i, text: v }));
   return (
-    <div>
-      <Header />
-      <Wrap>
-        <Container>
-          <Main>
-            <ImgWrap>
-              <img src="http://placehold.it/100x100" alt="스터디 상세페이지 썸네일" />
-            </ImgWrap>
-            <Location>강북구</Location>
-          </Main>
-        </Container>
-      </Wrap>
-    </div>
+    <DetailTemplate>
+      <Location>강북구</Location>
+      <h2>영어회화 초보 스터디 그룹</h2>
+      <HashtagWrap>
+        <TagContainer tags={tags} />
+      </HashtagWrap>
+    </DetailTemplate>
   );
 }
 
-const Wrap = styled.div`
-  background-color: #eee;
-`;
-
-const ImgWrap = styled.div`
-  margin-bottom: 4.6rem;
-  width: 100%;
-  height: 36rem;
-  img {
-    width: 100%;
-    height: 100%;
-  }
-`;
-
-const Main = styled.main`
-  width: 77rem;
-  background-color: #fff;
-`;
-
 const Location = styled.div`
-  ${Layout}
-  font-size: 20px;
+  margin-bottom: 1rem;
+  font-size: 2rem;
   font-weight: 800;
-  color: #fd5e5c;
+  color: ${({ theme }) => theme.requiredColor};
+`;
+
+const HashtagWrap = styled.div`
+  width: 33rem;
 `;
 
 export default StudyDetail;

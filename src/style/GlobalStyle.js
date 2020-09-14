@@ -6,7 +6,7 @@ const GlobalStyle = createGlobalStyle`
     *{
         box-sizing: border-box;
     }
-    html, body,button {
+    html, body, button {
         width: 100%;
         height: 100%;
         font-size:10px;
@@ -23,6 +23,15 @@ const GlobalStyle = createGlobalStyle`
         background: transparent;
         cursor: pointer;
     }
+
+    .blind{
+        display: block;
+  position: absolute;
+  top: -9999em;
+  left: 0;
+  overflow: hidden;
+    }
+  
 `;
 
 export default GlobalStyle;

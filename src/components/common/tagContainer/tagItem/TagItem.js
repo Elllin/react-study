@@ -8,13 +8,13 @@ function TagItem({ onClick, id, text }) {
   return (
     <>
       <Tag onClick={onClick} data-tag-id={id}>
-        {text}
+        #{text}
       </Tag>
     </>
   );
 }
 
-const Tag = styled.p`
+const Tag = styled.div`
   padding: 0.9rem 2rem;
   ${Layout}
 
