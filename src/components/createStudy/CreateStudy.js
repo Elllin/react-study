@@ -78,7 +78,7 @@ function CreateStudy({ onSubmit, loading }) {
         </BoxLayout>
 
         <BoxTemplate title="스터디 기간" as="div">
-          <DatePicker register={register} name="duration" setValue={setValue} />
+          <DatePicker register={register} name="duration" setValue={setValue} coverText="미정" />
           <Description>{duration.description}</Description>
         </BoxTemplate>
 
@@ -187,17 +187,3 @@ CreateStudy.defaultProps = {
 };
 
 export default CreateStudy;
-
-// const [inputs, setInputs] = useState({
-//   title: '',
-//   description: '',
-//   hashtag: '',
-//   is_deposit: '',
-// });
-
-// <BoxTemplate>
-//           <Title htmlFor="email">
-//             이메일 <Required>*</Required>
-//           </Title>
-//           <InputBox type="email" id="email" name="email" ref={register} required />
-//         </BoxTemplate>

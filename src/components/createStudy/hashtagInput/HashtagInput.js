@@ -78,6 +78,7 @@ function HashtagInput({ register, setValue, name, maxCount, isTagCreation }) {
 HashtagInput.propTypes = {
   register: PropTypes.func.isRequired,
   setValue: PropTypes.func.isRequired,
+  name: PropTypes.string.isRequired,
   isTagCreation: PropTypes.func.isRequired,
   key: PropTypes.string,
   maxCount: PropTypes.number,

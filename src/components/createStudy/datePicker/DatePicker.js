@@ -1,6 +1,8 @@
 import React, { useState, memo } from 'react';
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
+import PropTypes from 'prop-types';
+
 import { DateRangePicker } from 'react-dates';
 import moment from 'moment';
 import 'moment/locale/ko';
@@ -10,7 +12,7 @@ import { InputBox, BorderRadius2, Layout } from 'style/CustomStyle';
 import { TiArrowRight } from 'react-icons/ti';
 import { FaRegCalendarCheck } from 'react-icons/fa';
 
-function DatePicker({ register, setValue }) {
+function DatePicker({ register, setValue, name, dateFormat, coverText }) {
   const [startDate, setStartDate] = useState();
   const [endDate, setEndDate] = useState();
   const [focusedInput, setFocusedInput] = useState();
@@ -20,9 +22,9 @@ function DatePicker({ register, setValue }) {
     setStartDate(startDate);
     setEndDate(endDate);
 
-    const formatedStarData = moment(startDate).format('YYYY-MM-DD');
-    const formatedEndData = moment(endDate).format('YYYY-MM-DD');
-    setValue('duration', { starDate: formatedStarData, endDate: formatedEndData });
+    const formatedStarData = moment(startDate).format(dateFormat);
+    const formatedEndData = moment(endDate).format(dateFormat);
+    setValue(name, { starDate: formatedStarData, endDate: formatedEndData });
   };
 
   const onFocusChange = (focusedInput) => {
@@ -41,7 +43,7 @@ function DatePicker({ register, setValue }) {
         focusedInput={focusedInput}
         onFocusChange={onFocusChange}
         numberOfMonths={1}
-        ref={() => register('duration')}
+        ref={() => register(name)}
         hideKeyboardShortcutsPanel
         showDefaultInputIcon
         inputIconPosition="after"
@@ -50,9 +52,11 @@ function DatePicker({ register, setValue }) {
         customArrowIcon={<DateArrow />}
         customInputIcon={<CalendarIcon />}
       />
-      <Cover startdate={startDate} as="div">
-        미정
-      </Cover>
+      {coverText && (
+        <Cover startdate={startDate} as="div">
+          {coverText}
+        </Cover>
+      )}
     </Wrap>
   );
 }
@@ -65,6 +69,14 @@ const CommonStyle = css`
   border-top: solid 0.06rem var(--mainColor);
   border-bottom: solid 0.06rem var(--mainColor);
   background: none;
+`;
+
+const LeftAndRightButton = css`
+  padding: 0.7rem;
+  svg {
+    fill: #232323;
+    height: 1.1rem;
+  }
 `;
 
 const Wrap = styled.div`
@@ -148,14 +160,14 @@ const Wrap = styled.div`
     color: #000;
   }
 
-  .DayPickerNavigation_leftButton__horizontalDefault,
-  .DayPickerNavigation_rightButton__horizontalDefault {
+  .DayPickerNavigation_leftButton__horizontalDefault {
     left: 8rem;
-    padding: 0.7rem;
-    svg {
-      fill: #232323;
-      height: 1.1rem;
-    }
+    ${LeftAndRightButton}
+  }
+
+  .DayPickerNavigation_rightButton__horizontalDefault {
+    right: 8rem;
+    ${LeftAndRightButton}
   }
 `;
 
@@ -180,4 +192,19 @@ const Cover = styled(InputBox)`
   letter-spacing: -0.03rem;
 `;
 
+DatePicker.propTypes = {
+  name: PropTypes.string,
+  setValue: PropTypes.func,
+  register: PropTypes.func,
+  dateFormat: PropTypes.string,
+  coverText: PropTypes.string,
+};
+
+DatePicker.defaultProps = {
+  name: null,
+  setValue: null,
+  register: null,
+  dateFormat: 'YYYY-MM-DD',
+  coverText: null,
+};
 export default memo(DatePicker);
