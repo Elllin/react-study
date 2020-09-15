@@ -12,7 +12,15 @@ import { InputBox, BorderRadius2, Layout } from 'style/CustomStyle';
 import { TiArrowRight } from 'react-icons/ti';
 import { FaRegCalendarCheck } from 'react-icons/fa';
 
-function DatePicker({ register, setValue, name, dateFormat, coverText }) {
+function DatePicker({
+  register,
+  setValue,
+  name,
+  startDateName,
+  endDateName,
+  dateFormat,
+  coverText,
+}) {
   const [startDate, setStartDate] = useState();
   const [endDate, setEndDate] = useState();
   const [focusedInput, setFocusedInput] = useState();
@@ -23,7 +31,7 @@ function DatePicker({ register, setValue, name, dateFormat, coverText }) {
     setEndDate(endDate);
     const formatedStarData = moment(startDate).format(dateFormat);
     const formatedEndData = moment(endDate).format(dateFormat);
-    setValue(name, { starDate: formatedStarData, endDate: formatedEndData });
+    setValue(name, { startDateName: formatedStarData, endDateName: formatedEndData });
   };
 
   const onFocusChange = (focusedInput) => {
@@ -195,6 +203,8 @@ DatePicker.propTypes = {
   name: PropTypes.string,
   setValue: PropTypes.func,
   register: PropTypes.func,
+  startDateName: PropTypes.string,
+  endDateName: PropTypes.string,
   dateFormat: PropTypes.string,
   coverText: PropTypes.string,
 };
@@ -203,6 +213,8 @@ DatePicker.defaultProps = {
   name: null,
   setValue: null,
   register: null,
+  startDateName: 'startDate',
+  endDateName: 'endDate',
   dateFormat: 'YYYY-MM-DD dd',
   coverText: null,
 };
