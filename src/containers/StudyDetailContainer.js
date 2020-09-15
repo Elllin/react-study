@@ -1,10 +1,17 @@
 import React from 'react';
-import StudyDetail from 'components/studyDetail/StudyDetail';
+import DetailTemplate from 'components/studyDetail/detailTemplate/DetailTemplate';
+import DetailTitle from 'components/studyDetail/detailTitle/DetailTitle';
+import DetailContents from 'components/studyDetail/detailContents/DetailContents';
+import DetailFloting from 'components/studyDetail/detailFloting/DetailFloting';
 
 function StudyDetailContainer() {
   return (
     <>
-      <StudyDetail />
+      <DetailTemplate>
+        <DetailTitle />
+        <DetailContents />
+      </DetailTemplate>
+      <DetailFloting />
     </>
   );
 }

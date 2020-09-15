@@ -1,29 +1,20 @@
 import React from 'react';
 
 import TagContainer from 'components/common/tagContainer/TagContainer';
-import DetailTemplate from './detailTemplate/DetailTemplate';
-import DetailContents from './detailContents/DetailContents';
-import DetailFloting from './detailFloting/DetailFloting';
 
 import styled from 'styled-components';
 import { Layout } from 'style/CustomStyle';
 
-function StudyDetail() {
+function DetailTitle() {
   const tags = ['영어공부', '회화연습', '취업'].map((v, i) => ({ id: i, text: v }));
   return (
-    <>
-      <DetailTemplate>
-        <Wrap>
-          <Location>강북구</Location>
-          <h2>영어회화 초보 스터디 그룹</h2>
-          <HashtagWrap>
-            <TagContainer tags={tags} />
-          </HashtagWrap>
-        </Wrap>
-        <DetailContents />
-      </DetailTemplate>
-      <DetailFloting />
-    </>
+    <Wrap>
+      <Location>강북구</Location>
+      <h2>영어회화 초보 스터디 그룹</h2>
+      <HashtagWrap>
+        <TagContainer tags={tags} />
+      </HashtagWrap>
+    </Wrap>
   );
 }
 const Wrap = styled.div`
@@ -48,4 +39,4 @@ const HashtagWrap = styled.div`
   width: 33rem;
 `;
 
-export default StudyDetail;
+export default DetailTitle;

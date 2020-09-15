@@ -12,6 +12,7 @@ import RadioBox from './radioBox/RadioBox';
 import FormTemplate from './formTemplate/FormTemplate';
 import CharacterCounter from './characterCounter/CharacterCounter';
 import LoadingPage from 'containers/common/LoadingPage';
+import MainButton from 'components/common/mainButton/MainButton';
 
 import styled from 'styled-components';
 import { InputBox, Description, BorderRadius6 } from 'style/CustomStyle';
@@ -137,7 +138,9 @@ function CreateStudy({ onSubmit, loading }) {
         </BoxTemplate>
 
         <ButtonWrap>
-          <button type="submit">그룹 개설하기</button>
+          <MainButton type={'submit'} fullWidth>
+            그룹 개설하기
+          </MainButton>
         </ButtonWrap>
       </FormTemplate>
 
@@ -160,21 +163,25 @@ const BoxLayout = styled.div`
 
 const ButtonWrap = styled.div`
   margin-top: 1.1rem;
-
+  /* 
   button {
     width: 100%;
     ${BorderRadius6};
-    background-color: ${({ theme }) => theme.mainColor};
+    background-color: ${({ theme }) =>
+    theme.mainColor};
     height: 5.6rem;
     font-size: 2rem;
     font-weight: bold;
   }
   button:hover {
-    background: ${({ theme }) => lighten(0.12, theme.mainColor)};
+    background: ${({
+    theme,
+  }) => lighten(0.12, theme.mainColor)};
   }
   button:active {
-    background: ${({ theme }) => darken(0.12, theme.mainColor)};
-  }
+    background: ${({ theme }) =>
+    darken(0.12, theme.mainColor)};
+  } */
 `;
 
 CreateStudy.propTypes = {

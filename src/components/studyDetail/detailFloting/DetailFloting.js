@@ -19,9 +19,7 @@ function DetailFloting() {
         </List>
       </dl>
       <ButtomWrap>
-        <MainButton width={'32.6rem'} height={'6.2rem'}>
-          그룹 참여하기
-        </MainButton>
+        <MainButton largeFont>그룹 참여하기</MainButton>
       </ButtomWrap>
     </Wrap>
   );
