@@ -11,9 +11,9 @@ function App() {
     <>
       <GlobalStyle />
       <Switch>
-        <Route path="/" component={HomePage} exact />
-        <Route path="/create" component={CreateStudyPage} />
-        {/* <Route path="/" component={StudyDetailPage} /> */}
+        {/* <Route path="/" component={HomePage} exact /> */}
+        {/* <Route path="/create" component={CreateStudyPage} /> */}
+        <Route path="/" component={StudyDetailPage} />
         <Route
           render={({ location }) => (
             <div>

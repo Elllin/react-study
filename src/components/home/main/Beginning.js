@@ -1,5 +1,7 @@
 import React from 'react';
 
+import mainImg from 'assets/images/main/main.png';
+
 import styled, { css } from 'styled-components';
 import { Container } from 'style/CustomStyle';
 import { BsChevronDown } from 'react-icons/bs';
@@ -13,15 +15,23 @@ function Beginning() {
   return (
     <Wrap>
       <Container>
-        <h2>
-          효율적인 스터디 모임을 찾으시나요?
-          <br />
-          여기저기 헤매지 말고 스마트한 두잇두잇에서
-          <br />
-          스터디그룹을 시작해보세요!
-        </h2>
-        {/* 시작 버튼 컴포넌트 분리하기  */}
-        <button>간편하게 이메일로 시작</button>
+        <BackgroundWrap>
+          <Background>
+            <h2>
+              효율적인 스터디 모임을 찾으시나요?
+              <br />
+              여기저기 헤매지 말고 스마트한 두잇두잇에서
+              <br />
+              스터디그룹을 시작해보세요!
+            </h2>
+            {/* 시작 버튼 컴포넌트 분리하기  */}
+            {/* <div> */}
+            <button>간편하게 이메일로 시작</button>
+            {/* </div> */}
+            {/* <div> */}
+          </Background>
+        </BackgroundWrap>
+        {/* </div> */}
         <DownButtonWrap onClick={onClickDown}>
           <DownIcon />
         </DownButtonWrap>
@@ -29,6 +39,18 @@ function Beginning() {
     </Wrap>
   );
 }
+const BackgroundWrap = styled.div`
+  width: 100%;
+`;
+const Background = styled.div`
+  /* position: absolute; */
+  background-position: right bottom;
+  background: url(${mainImg}) no-repeat;
+  background-size: 604px 398px;
+  width: 100%;
+  height: 100%;
+  /* height: 398px; */
+`;
 
 const DownButtonWrap = styled.div`
   position: absolute;
@@ -59,6 +81,7 @@ const Wrap = styled.section`
     line-height: 1.64;
     letter-spacing: -0.06rem;
     font-family: ${({ theme }) => theme.titleFont};
+    min-width: 65.2rem;
   }
 
   button {
