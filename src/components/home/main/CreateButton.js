@@ -18,7 +18,8 @@ function CreateButton() {
 const Anchor = styled(Link)`
   ${Layout}
   position: fixed;
-  right: 11.5%;
+  margin-left: 457px;
+  left: 50%;
   bottom: 5rem;
   width: 12.7rem;
   height: 12.7rem;

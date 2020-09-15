@@ -1,25 +1,49 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { darken, lighten } from 'polished';
+import { BorderRadius6 } from 'style/CustomStyle';
 
-function MainButton({ children }) {
-  return <Button>{children}</Button>;
+function MainButton({ children, width, height, fontSize, ...rest }) {
+  return (
+    <Button width={width} height={height} fontSize={fontSize} {...rest}>
+      {children}
+    </Button>
+  );
 }
 
-const Button = styled.button`
-  width: 21.6rem;
-  height: 5.4rem;
-  border-radius: 0.6rem;
-  -moz-border-radius: 0.6rem;
-  -webkit-border-radius: 0.6rem;
-  border: solid 0.2rem #ffa91d;
-
-  font-family: AppleSDGothicNeo;
-  font-size: 2.2rem;
-  font-weight: 500;
-  line-height: 1.68;
-  text-align: center;
-  color: #eb7d02;
+const SizeStyles = css`
+  ${(props) => css`
+    width: ${props.width};
+    height: ${props.height};
+  `}
 `;
+
+const Button = styled.button`
+  ${BorderRadius6};
+  ${SizeStyles}
+  background-color: ${({ theme }) => theme.mainColor};
+  font-weight: bold;
+  font-size: ${({ fontSize }) => fontSize};
+  &:hover {
+    background: ${({ theme }) => lighten(0.1, theme.mainColor)};
+  }
+  &:active {
+    background: ${({ theme }) => darken(0.1, theme.mainColor)};
+  }
+`;
+
+MainButton.propTypes = {
+  width: PropTypes.string,
+  height: PropTypes.string,
+  fontSize: PropTypes.string,
+};
+
+MainButton.defaultProps = {
+  width: '100%',
+  height: '5.6rem',
+  fontSize: '2.2rem',
+};
 
 export default MainButton;
