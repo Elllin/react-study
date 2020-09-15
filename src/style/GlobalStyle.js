@@ -11,6 +11,7 @@ const GlobalStyle = createGlobalStyle`
         height: 100%;
         font-size:10px;
         font-family: 'AppleSDGothicNeo','Malgun Gothic','맑은 고딕',dotum,'돋움',sans-serif; 
+        box-sizing: border-box;
 
         /* scroll-behavior: smooth; */
     }

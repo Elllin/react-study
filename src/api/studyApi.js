@@ -11,3 +11,7 @@ export const fetchCreateStudy = (data) => {
     body: data,
   });
 };
+
+export const fetchStudyDetail = (id) => {
+  return axios.get(`http://ec2-13-125-153-253.ap-northeast-2.compute.amazonaws.com/study/${id}`);
+};

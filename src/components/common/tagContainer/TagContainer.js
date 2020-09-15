@@ -5,12 +5,12 @@ import TagItem from './tagItem/TagItem';
 
 import styled from 'styled-components';
 
-function TagContainer({ tags, onClick }) {
+function TagContainer({ tags, onClick, ...props }) {
   return (
     <Wrap>
       {tags.map((tag) => {
         const { id, text } = tag;
-        return <TagItem key={id} id={id} text={text} onClick={onClick} />;
+        return <TagItem key={id} id={id} text={text} onClick={onClick} {...props} />;
       })}
     </Wrap>
   );
@@ -27,11 +27,11 @@ TagContainer.propTypes = {
   tags: PropTypes.arrayOf(
     PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])),
   ).isRequired,
-  onClickTag: PropTypes.func,
+  onClick: PropTypes.func,
 };
 
 TagContainer.defaultProps = {
-  onClickTag: null,
+  onClick: null,
 };
 
 export default memo(TagContainer);

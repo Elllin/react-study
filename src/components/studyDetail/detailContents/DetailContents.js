@@ -1,5 +1,7 @@
 import React from 'react';
 
+import TagItem from 'components/common/tagContainer/tagItem/TagItem';
+
 import styled from 'styled-components';
 
 function DetailContents() {
@@ -8,9 +10,14 @@ function DetailContents() {
 
   return (
     <Wrap>
-      <DetailList>
+      <DetailList top>
         <TItle>스터디 기간</TItle>
-        <Description>9월 10일 (목) ~ 9월 25일 (금)</Description>
+        <Description>
+          <TagWrap>
+            <TagItem color="red" text="D-15" hash={null} fontWeight="bold" />
+          </TagWrap>
+          <span>9월 10일 (목) ~ 9월 25일 (금)</span>
+        </Description>
       </DetailList>
       <DetailList>
         <TItle>그룹 소개</TItle>
@@ -22,11 +29,11 @@ function DetailContents() {
           <Information>
             <div>
               <dt>지역:</dt>
-              <dd>강북구 (모임 장소 투표 예정)</dd>
+              <dd>서울특별시 강북구</dd>
             </div>
             <div>
               <dt>예치금:</dt>
-              <dd> 있음 (일기 작성 안할시)</dd>
+              <dd>있음</dd>
             </div>
             <div>
               <dt>그룹 카테고리:</dt>
@@ -47,22 +54,29 @@ const Wrap = styled.dl`
 const DetailList = styled.div`
   display: grid;
   grid-template-columns: 15.6rem 1fr;
+  padding: 3.4rem 0;
 
-  border-top: 0.1rem solid #eee;
+  border-top: ${({ top }) => (top ? '0.1rem solid #d1d1d1' : '0.1rem solid #eee')};
 `;
 
 const TItle = styled.dt`
-  padding: 3rem 0;
-  font-size: 2.1rem;
+  padding-top: 0.2rem;
+  font-size: 2rem;
   font-weight: bold;
   letter-spacing: -0.029rem;
 `;
 
+const TagWrap = styled.div`
+  margin-right: 1.5rem;
+  display: flex;
+  height: 3rem;
+`;
 const Description = styled.dd`
-  padding: 3rem 0;
+  display: flex;
+  /* padding: 3.4rem 0; */
   white-space: break-spaces;
   line-height: 2.5rem;
-  font-size: 1.9rem;
+  font-size: 1.8rem;
 `;
 
 const Information = styled.dl`

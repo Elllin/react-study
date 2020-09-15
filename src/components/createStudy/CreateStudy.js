@@ -134,6 +134,7 @@ function CreateStudy({ onSubmit, loading }) {
             register={register}
             name={'hashtag'}
             isTagCreation={isTagCreation}
+            fontSize="small"
           />
         </BoxTemplate>
 

@@ -11,32 +11,27 @@ function DetailTitle() {
     <Wrap>
       <Location>강북구</Location>
       <h2>영어회화 초보 스터디 그룹</h2>
-      <HashtagWrap>
+      <div>
         <TagContainer tags={tags} />
-      </HashtagWrap>
+      </div>
     </Wrap>
   );
 }
 const Wrap = styled.div`
-  padding: 3.4rem 0 3.5rem;
+  padding: 3.2rem 0 3.5rem;
   ${Layout}
   flex-direction:column;
   h2 {
-    margin-bottom: 1.6rem;
-    font-size: 3.2rem;
+    margin-bottom: 0.3rem;
+    font-size: 3rem;
     font-weight: 800;
   }
 `;
 
 const Location = styled.div`
-  margin-bottom: 1rem;
+  margin-bottom: 1.4rem;
   font-size: 2rem;
   font-weight: 800;
-  color: ${({ theme }) => theme.requiredColor};
-`;
-
-const HashtagWrap = styled.div`
-  width: 33rem;
 `;
 
 export default DetailTitle;

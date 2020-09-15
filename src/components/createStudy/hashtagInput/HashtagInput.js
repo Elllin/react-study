@@ -6,7 +6,7 @@ import TagContainer from 'components/common/tagContainer/TagContainer';
 
 import { InputBox, Description } from 'style/CustomStyle';
 
-function HashtagInput({ register, setValue, name, maxCount, isTagCreation }) {
+function HashtagInput({ register, setValue, name, maxCount, isTagCreation, ...props }) {
   const {
     hashtag: { placeholder, description, maxLength },
   } = createStudy;
@@ -69,7 +69,7 @@ function HashtagInput({ register, setValue, name, maxCount, isTagCreation }) {
         onKeyDown={onKeyDown}
       />
       <Description>{description}</Description>
-      <TagContainer tags={hashtags} onClick={removeHashtag} />
+      <TagContainer tags={hashtags} onClick={removeHashtag} {...props} />
     </>
   );
 }

@@ -19,7 +19,9 @@ function DetailFloting() {
         </List>
       </dl>
       <ButtomWrap>
-        <MainButton largeFont>그룹 참여하기</MainButton>
+        <MainButton fontSize="1.9rem" height="5.5rem">
+          그룹 참여하기
+        </MainButton>
       </ButtomWrap>
     </Wrap>
   );
@@ -27,20 +29,20 @@ function DetailFloting() {
 
 const Wrap = styled.aside`
   position: fixed;
-  top: 11rem;
+  top: 10.3rem;
   right: 50%;
   margin-right: -585px;
-  padding: 2.9rem 2.2rem 2rem;
+  padding: 2.5rem;
   width: 37rem;
-  height: 29.7rem;
+  height: 27rem;
   background-color: #fff;
   dt {
-    margin-bottom: 1.1rem;
-    font-size: 2.1rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
     font-weight: bold;
   }
   dd {
-    font-size: 2rem;
+    font-size: 1.6rem;
     line-height: 1.25;
   }
 
@@ -51,11 +53,11 @@ const Wrap = styled.aside`
 `;
 
 const List = styled.div`
-  padding-bottom: 1.9rem;
+  padding-bottom: 1.7rem;
 `;
 
 const ButtomWrap = styled.div`
-  margin-top: 1.2rem;
+  margin-top: 0.9rem;
 `;
 
 export default DetailFloting;

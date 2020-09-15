@@ -18,12 +18,12 @@ function Header() {
 }
 
 const HeaderBar = styled.header`
-  padding: 2.5rem 0;
+  padding: 2.4rem 0;
   width: 100%;
   h1 {
-    height: 3rem;
+    /* height: 3rem; */
     font-family: AppleSDGothicNeo, sans-serif;
-    font-size: 2.4rem;
+    font-size: 2rem;
     font-weight: 900;
   }
 `;
@@ -31,11 +31,12 @@ const HeaderBar = styled.header`
 const InnerWrap = styled(Container)`
   ${Layout}
   justify-content: space-between;
+  height: 2.4rem;
 `;
 
 const NavButton = styled.button`
   font-family: ${({ theme }) => theme.subFont};
-  font-size: 1.6rem;
+  font-size: 1.3rem;
   font-weight: 600;
   color: #5b5b5b;
   & + & {
