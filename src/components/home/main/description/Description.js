@@ -13,14 +13,14 @@ function Description() {
         <p>{description.description}</p>
         <ItemWrap>
           {descriptionItem.map((info) => {
-            const { title, discription, width, float, color } = info;
+            const { title, discription, width, float, images } = info;
             return (
               <DescriptionItem
                 title={title}
                 discription={discription}
                 width={width}
                 float={float}
-                color={color}
+                images={images}
                 key={title}
               />
             );
@@ -60,6 +60,16 @@ const ItemWrap = styled.ul`
     display: block;
     clear: both;
   }
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  &:nth-child(2),
+  &:nth-child(4) {
+    justify-self: end;
+  }
+  /* justify-content: space-between; */
+  /* grid-column-start: 26.5rem 24.3rem; */
+  /* grid-column-end: 23.6rem 24.3rem; */
 `;
 
 export default Description;

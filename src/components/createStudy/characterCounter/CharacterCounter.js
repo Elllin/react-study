@@ -1,4 +1,5 @@
 import React, { memo } from 'react';
+import PropTypes from 'prop-types';
 
 import styled from 'styled-components';
 
@@ -18,5 +19,10 @@ const Wrap = styled.div`
     color: ${({ theme }) => theme.requiredColor};
   }
 `;
+
+CharacterCounter.propTypes = {
+  length: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  maxLength: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+};
 
 export default memo(CharacterCounter);

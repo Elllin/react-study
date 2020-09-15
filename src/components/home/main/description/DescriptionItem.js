@@ -1,12 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
-function DescriptionItem({ title, discription, width, float, color }) {
+function DescriptionItem({ title, discription, width, images }) {
   return (
-    <List width={width} float={float}>
-      <div style={{ background: color, width: '48px', height: '62px', borderRadius: '50%' }}></div>
+    <List width={width}>
+      <ImageWrap imgWidth={images.width}>
+        <img src={images.image} alt={images.alt} />
+      </ImageWrap>
       <Title>{title}</Title>
       <Discription width={width}>{discription}</Discription>
     </List>
@@ -14,13 +16,19 @@ function DescriptionItem({ title, discription, width, float, color }) {
 }
 
 const List = styled.li`
-  ${({ width, float }) =>
-    css`
-      width: ${width};
-      float: ${float};
-    `};
-
+  width: ${({ width }) => width};
+  &:nth-child(2),
+  &:nth-child(4) {
+    justify-self: end;
+  }
   margin-bottom: 12.8rem;
+`;
+
+const ImageWrap = styled.div`
+  width: ${({ imgWidth }) => imgWidth};
+  img {
+    width: 100%;
+  }
 `;
 
 const Title = styled.div`
@@ -41,14 +49,12 @@ const Discription = styled.div`
 DescriptionItem.propTypes = {
   title: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   discription: PropTypes.string.isRequired,
+  images: PropTypes.objectOf(PropTypes.string).isRequired,
   width: PropTypes.string,
-  float: PropTypes.string,
-  color: PropTypes.string.isRequired,
 };
 
 DescriptionItem.defaultProps = {
   width: '25.3rem',
-  float: 'left',
 };
 
 export default DescriptionItem;
