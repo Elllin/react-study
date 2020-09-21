@@ -1,7 +1,7 @@
 import React from 'react';
 
 import styled from 'styled-components';
-import { Container, Layout } from 'style/CustomStyle';
+import { Container, defaultLayout } from 'style/CustomStyle';
 
 function Header() {
   return (
@@ -29,7 +29,7 @@ const HeaderBar = styled.header`
 `;
 
 const InnerWrap = styled(Container)`
-  ${Layout}
+  ${defaultLayout}
   justify-content: space-between;
   height: 2.4rem;
 `;

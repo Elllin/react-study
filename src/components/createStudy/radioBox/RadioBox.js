@@ -2,7 +2,7 @@ import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 
 import styled, { css } from 'styled-components';
-import { BorderRadius2 } from 'style/CustomStyle';
+import { borderRadius } from 'style/CustomStyle';
 import { RiCheckLine } from 'react-icons/ri';
 
 function RadioBox({ id, text, register, checkedcolor, ...props }) {
@@ -24,12 +24,12 @@ function RadioBox({ id, text, register, checkedcolor, ...props }) {
   );
 }
 
-const CommonStyle = css`
+const commonStyle = css`
   position: absolute;
   content: '';
   width: 2.2rem;
   height: 2.2rem;
-  ${BorderRadius2}
+  ${borderRadius(`0.2rem`)}
 `;
 
 const RadioWrap = styled.div`
@@ -48,7 +48,7 @@ const RadioWrap = styled.div`
   }
 
   [type='radio'] + label:before {
-    ${CommonStyle}
+    ${commonStyle}
     left: 0;
     text-align: center;
     background: #fff;
@@ -59,7 +59,7 @@ const RadioWrap = styled.div`
 
   [type='radio']:not(:checked) + label:after,
   [type='radio']:checked + label:after {
-    ${CommonStyle}
+    ${commonStyle}
     left: 0.01rem;
     top: 0.01rem;
     color: '#fff';

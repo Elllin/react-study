@@ -8,7 +8,7 @@ import moment from 'moment';
 import 'moment/locale/ko';
 
 import styled, { css } from 'styled-components';
-import { InputBox, BorderRadius2, Layout } from 'style/CustomStyle';
+import { InputBox, borderRadius, defaultLayout } from 'style/CustomStyle';
 import { TiArrowRight } from 'react-icons/ti';
 import { FaRegCalendarCheck } from 'react-icons/fa';
 
@@ -31,7 +31,7 @@ function DatePicker({
     setEndDate(endDate);
     const formatedStarData = moment(startDate).format(dateFormat);
     const formatedEndData = moment(endDate).format(dateFormat);
-    setValue(name, { startDateName: formatedStarData, endDateName: formatedEndData });
+    setValue(name, { [startDateName]: formatedStarData, [endDateName]: formatedEndData });
   };
 
   const onFocusChange = (focusedInput) => {
@@ -92,11 +92,12 @@ const Wrap = styled.div`
   font-family: ${({ theme }) => theme.mainFont};
 
   .DateRangePickerInput {
+    ${defaultLayout}
     width: 57rem;
     height: 5rem;
-    ${Layout}
     justify-content: space-around;
-    ${BorderRadius2};
+
+    ${borderRadius(`0.2rem`)};
     border: solid 1px #939393;
   }
   .DateRangePickerInput_clearDates_default:focus,
@@ -215,7 +216,7 @@ DatePicker.defaultProps = {
   register: null,
   startDateName: 'startDate',
   endDateName: 'endDate',
-  dateFormat: 'YYYY-MM-DD dd',
+  dateFormat: 'YYYY-MM-DD',
   coverText: null,
 };
 export default memo(DatePicker);

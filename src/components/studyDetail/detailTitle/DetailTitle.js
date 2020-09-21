@@ -3,7 +3,7 @@ import React from 'react';
 import TagContainer from 'components/common/tagContainer/TagContainer';
 
 import styled from 'styled-components';
-import { Layout } from 'style/CustomStyle';
+import { defaultLayout } from 'style/CustomStyle';
 
 function DetailTitle() {
   const tags = ['영어공부', '회화연습', '취업'].map((v, i) => ({ id: i, text: v }));
@@ -19,7 +19,7 @@ function DetailTitle() {
 }
 const Wrap = styled.div`
   padding: 3.2rem 0 3.5rem;
-  ${Layout}
+  ${defaultLayout}
   flex-direction:column;
   h2 {
     margin-bottom: 0.3rem;

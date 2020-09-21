@@ -18,8 +18,8 @@ const createStudy = {
       '그룹 해시태그 최대 3개, 태그당 최대 20자 제한, 쉼표 혹은 스페이스바를 입력하여 태그를 등록하세요. 등록된 태그를 클릭하면 삭제됩니다.',
     maxLength: 20,
   },
-  locationOption: ['서울 전체', '경기 전체', '인천 전체'],
-  categoryOption: ['대입 / 수능', '대학생 / 취업', '공무원 / 임용'],
+  locationOption: ['동작구', '경기 전체', '인천 전체'],
+  categoryOption: ['취업・면접', '대학생 / 취업', '공무원 / 임용'],
 };
 
 export default createStudy;

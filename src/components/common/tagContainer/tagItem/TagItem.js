@@ -2,7 +2,7 @@ import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 
 import styled, { css } from 'styled-components';
-import { Layout } from 'style/CustomStyle';
+import { defaultLayout } from 'style/CustomStyle';
 
 function TagItem({ onClick, id, text, color, fontSize, hash, ...props }) {
   return (
@@ -46,7 +46,7 @@ const fontStyles = css`
 
 const Tag = styled.span`
   padding: 0.9rem 2rem;
-  ${Layout}
+  ${defaultLayout}
   ${colorStyles}
   ${fontStyles}
 

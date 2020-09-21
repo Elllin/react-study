@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Header from 'components/common/header/Header';
 
 import styled from 'styled-components';
-import { Layout } from 'style/CustomStyle';
+import { defaultLayout } from 'style/CustomStyle';
 import mailImg from 'assets/images/invitation/mail.png';
 
 function Invitation({ mailAddress = 'ddd@naver.com' }) {
@@ -40,7 +40,7 @@ function Invitation({ mailAddress = 'ddd@naver.com' }) {
 }
 
 const Wrap = styled.main`
-  ${Layout}
+  ${defaultLayout}
   margin-top: 4rem;
   flex-direction: column;
   height: 70vh;

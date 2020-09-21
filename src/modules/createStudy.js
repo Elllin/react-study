@@ -1,6 +1,5 @@
-import { reducerUtils } from 'lib/asyncUtils';
 import * as createStudyAPI from 'api/studyApi';
-import { createAsyncActions, createAsyncThunk } from 'lib/asyncUtils';
+import { reducerUtils, createAsyncActions, createAsyncThunk } from 'lib/asyncUtils';
 
 const GET_CREATE_STUDY = 'createStudy/GET_CREATE_STUDY';
 const GET_CREATE_STUDY_SUCCESS = 'createStudy/GET_CREATE_STUDY_SUCCESS';

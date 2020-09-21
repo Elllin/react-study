@@ -22,7 +22,6 @@ export const reducerUtils = {
     data: null,
     error,
   }),
-
   reset: (data = null) => reducerUtils.initial(data),
 };
 
@@ -32,7 +31,9 @@ export const createAsyncThunk = (type, fetchFunc) => {
   return (param) => async (dispatch) => {
     dispatch({ type });
     try {
+      debugger;
       const payload = await fetchFunc(param);
+      console.log(payload);
       dispatch({ type: SUCCESS, payload });
     } catch (e) {
       dispatch({ type: ERROR, payload: e, error: true });
@@ -40,7 +41,7 @@ export const createAsyncThunk = (type, fetchFunc) => {
   };
 };
 
-export const createAsyncActions = (type, key) => {
+export const createAsyncActions = (type, key, keepState) => {
   const [SUCCESS, ERROR] = [`${type}_SUCCESS`, `${type}_ERROR`];
 
   return (state, action) => {
@@ -48,7 +49,7 @@ export const createAsyncActions = (type, key) => {
       case type:
         return {
           ...state,
-          [key]: reducerUtils.loading(),
+          [key]: reducerUtils.loading(keepState && state[key].data),
         };
 
       case SUCCESS:

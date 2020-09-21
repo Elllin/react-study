@@ -15,10 +15,9 @@ import LoadingPage from 'containers/common/LoadingPage';
 import MainButton from 'components/common/mainButton/MainButton';
 
 import styled from 'styled-components';
-import { InputBox, Description, BorderRadius6 } from 'style/CustomStyle';
+import { InputBox, Description } from 'style/CustomStyle';
 import ValidationMessage from './validationMessage/ValidationMessage';
 import DatePicker from './datePicker/DatePicker';
-import { darken, lighten } from 'polished';
 
 function CreateStudy({ onSubmit, loading }) {
   const [inputLength, setInputLength] = useState({
@@ -35,6 +34,7 @@ function CreateStudy({ onSubmit, loading }) {
   const onChange = useCallback(
     (e) => {
       const { value, name } = e.target;
+
       setInputLength({
         ...inputLength,
         [`${name}Length`]: value.length,
@@ -88,14 +88,14 @@ function CreateStudy({ onSubmit, loading }) {
             id="deposit-yes"
             value={1}
             text="네. 할래요!"
-            name="is_deposit"
+            name="deposit"
             register={register({ required: true })}
           />
           <RadioBox
             id="deposit-no"
             value={0}
             text="아니요. 괜찮아요!"
-            name="is_deposit"
+            name="deposit"
             register={register({ required: true })}
           />
         </BoxTemplate>
@@ -109,6 +109,7 @@ function CreateStudy({ onSubmit, loading }) {
             onChange={onChange}
             ref={register({ required: true })}
             placeholder={groupName.placeholder}
+            validation={titleValidation}
           />
           <ValidationMessage validation={titleValidation} length={titleLength} />
           <CharacterCounter length={titleLength} maxLength={groupName.maxLength} />
@@ -128,11 +129,11 @@ function CreateStudy({ onSubmit, loading }) {
           <CharacterCounter length={descriptionLength} maxLength={introduction.maxLength} />
         </BoxTemplate>
 
-        <BoxTemplate title="그룹 해시태그" htmlFor="hashtag" required={false} isHelp>
+        <BoxTemplate title="그룹 해시태그" htmlFor="tags" required={false} isHelp>
           <HashtagInput
             setValue={setValue}
             register={register}
-            name={'hashtag'}
+            name={'tags'}
             isTagCreation={isTagCreation}
             fontSize="small"
           />
@@ -164,25 +165,6 @@ const BoxLayout = styled.div`
 
 const ButtonWrap = styled.div`
   margin-top: 1.1rem;
-  /* 
-  button {
-    width: 100%;
-    ${BorderRadius6};
-    background-color: ${({ theme }) =>
-    theme.mainColor};
-    height: 5.6rem;
-    font-size: 2rem;
-    font-weight: bold;
-  }
-  button:hover {
-    background: ${({
-    theme,
-  }) => lighten(0.12, theme.mainColor)};
-  }
-  button:active {
-    background: ${({ theme }) =>
-    darken(0.12, theme.mainColor)};
-  } */
 `;
 
 CreateStudy.propTypes = {

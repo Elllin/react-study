@@ -2,7 +2,7 @@ import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 
 import styled from 'styled-components';
-import { Layout } from 'style/CustomStyle';
+import { defaultLayout } from 'style/CustomStyle';
 
 function FormTemplate({ children, handleSubmit, onSubmit }) {
   return (
@@ -41,7 +41,7 @@ const StudyForm = styled.form`
     text-align: center;
   }
   fieldset > div {
-    ${Layout}
+    ${defaultLayout}
     flex-direction: column;
     align-items: normal;
   }

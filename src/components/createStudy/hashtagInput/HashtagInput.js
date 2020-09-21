@@ -27,7 +27,7 @@ function HashtagInput({ register, setValue, name, maxCount, isTagCreation, ...pr
       const value = e.target.value.trim();
 
       if (isTagCreation(e, value)) {
-        const newhashTag = { id: tagId.current, value };
+        const newhashTag = { id: tagId.current, text: value };
 
         setHashtags(hashtags.concat([newhashTag]));
         tagId.current++;

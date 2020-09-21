@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import styled, { css } from 'styled-components';
 import { darken, lighten } from 'polished';
-import { BorderRadius6 } from 'style/CustomStyle';
+import { borderRadius } from 'style/CustomStyle';
 
 function MainButton({ children, fontSize, width, height, ...props }) {
   return (
@@ -23,7 +23,7 @@ function MainButton({ children, fontSize, width, height, ...props }) {
 // `;
 
 const Button = styled.button`
-  ${BorderRadius6};
+  ${borderRadius(`0.6rem`)};
   width: ${(width) => width};
   height: ${(height) => height};
   background-color: ${({ theme }) => theme.mainColor};

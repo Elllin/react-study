@@ -2,7 +2,7 @@ import React, { memo } from 'react';
 import createStudy from '../../constants/constants';
 
 import styled, { css } from 'styled-components';
-import { Layout, BorderRadius6 } from 'style/CustomStyle';
+import { defaultLayout, borderRadius } from 'style/CustomStyle';
 import { AiOutlineQuestionCircle } from 'react-icons/ai';
 
 function HelpBubble() {
@@ -36,7 +36,7 @@ const HelpIcon = styled(AiOutlineQuestionCircle)`
 `;
 
 const Bubbel = styled.div`
-  ${Layout}
+  ${defaultLayout}
   display: none;
   padding: 1.2rem 1rem;
   position: absolute;
@@ -58,7 +58,7 @@ const Bubbel = styled.div`
     color: #5e5e5e;
   }
 
-  ${BorderRadius6}
+  ${borderRadius(`0.6rem`)}
 `;
 
 const CommonStyle = css`
