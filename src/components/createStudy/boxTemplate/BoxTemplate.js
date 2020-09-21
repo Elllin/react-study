@@ -5,12 +5,21 @@ import HelpBubble from './helpBubble/HelpBubble';
 
 import styled from 'styled-components';
 
-function BoxTemplate({ children, title, required, requiredSign, isHelp, ...props }) {
+function BoxTemplate({
+  children,
+  title,
+  required,
+  requiredSign,
+  isHelp,
+  warningMessage,
+  ...props
+}) {
   return (
     <Wrap>
       <Title {...props}>
         {required && <Required>{requiredSign}</Required>}
-        {title}
+        <span>{title}</span>
+        {warningMessage && <WarningMessage>{warningMessage}</WarningMessage>}
         {isHelp && <HelpBubble />}
       </Title>
       {children}
@@ -34,6 +43,11 @@ const Title = styled.label`
 const Required = styled.span`
   margin-right: 0.3rem;
   color: ${({ theme }) => theme.requiredColor};
+`;
+
+const WarningMessage = styled.span`
+  color: ${({ theme }) => theme.warningColor};
+  margin-left: 0.7rem;
 `;
 
 BoxTemplate.propTypes = {

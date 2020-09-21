@@ -79,7 +79,12 @@ function CreateStudy({ onSubmit, loading }) {
         </BoxLayout>
 
         <BoxTemplate title="스터디 기간" as="div">
-          <DatePicker register={register} name="duration" setValue={setValue} coverText="미정" />
+          <DatePicker
+            register={register}
+            name="duration"
+            setValue={setValue}
+            coverText="상시모집"
+          />
           <Description>{duration.description}</Description>
         </BoxTemplate>
 
@@ -99,7 +104,7 @@ function CreateStudy({ onSubmit, loading }) {
             register={register({ required: true })}
           />
         </BoxTemplate>
-        <BoxTemplate title="그룹 이름 (특수문자 불가)" htmlFor="title">
+        <BoxTemplate title="그룹 이름" warningMessage="(특수문자 불가)" htmlFor="title">
           <InputBox
             type="text"
             id="title"
