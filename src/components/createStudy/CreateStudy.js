@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState, useCallback, memo } from 'react';
 import { useForm } from 'react-hook-form';
 import PropTypes from 'prop-types';
 
@@ -15,7 +15,7 @@ import LoadingPage from 'containers/common/LoadingPage';
 import MainButton from 'components/common/mainButton/MainButton';
 
 import styled, { css } from 'styled-components';
-import { InputBox, Description } from 'style/CustomStyle';
+import { InputBox, HelpMessage } from 'style/CustomStyle';
 import ValidationMessage from './validationMessage/ValidationMessage';
 import DatePicker from './datePicker/DatePicker';
 
@@ -69,6 +69,7 @@ function CreateStudy({ onSubmit, loading }) {
               register={register({ required: true })}
             />
           </BoxTemplate>
+
           <BoxTemplate title="그룹 카테고리" htmlFor="category">
             <SelectBox
               optionItems={categoryOption}
@@ -85,7 +86,7 @@ function CreateStudy({ onSubmit, loading }) {
             setValue={setValue}
             coverText="상시모집"
           />
-          <Description>{duration.description}</Description>
+          <HelpMessage>{duration.helpMessage}</HelpMessage>
         </BoxTemplate>
 
         <BoxTemplate title="예치금 설정을 하시나요?" as="div" far>
@@ -104,6 +105,7 @@ function CreateStudy({ onSubmit, loading }) {
             register={register({ required: true })}
           />
         </BoxTemplate>
+
         <BoxTemplate
           title="그룹 이름"
           warningMessage="(특수문자 불가)"
@@ -215,4 +217,4 @@ CreateStudy.defaultProps = {
   loading: false,
 };
 
-export default CreateStudy;
+export default memo(CreateStudy);

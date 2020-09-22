@@ -39,7 +39,7 @@ export const InputBox = styled.input`
   }
 `;
 
-export const Description = styled.span`
+export const HelpMessage = styled.span`
   display: inline-block;
   margin-top: 0.8rem;
   font-size: 1.4rem;

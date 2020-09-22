@@ -4,11 +4,11 @@ import createStudy from '../constants/constants';
 
 import TagContainer from 'components/common/tagContainer/TagContainer';
 
-import { InputBox, Description } from 'style/CustomStyle';
+import { InputBox, HelpMessage } from 'style/CustomStyle';
 
 function HashtagInput({ register, setValue, name, maxCount, isTagCreation, ...props }) {
   const {
-    hashtag: { placeholder, description, maxLength },
+    hashtag: { placeholder, helpMessage, maxLength },
   } = createStudy;
 
   const tagId = useRef(1);
@@ -68,7 +68,7 @@ function HashtagInput({ register, setValue, name, maxCount, isTagCreation, ...pr
         onChange={onChangeHashtag}
         onKeyDown={onKeyDown}
       />
-      <Description>{description}</Description>
+      <HelpMessage>{helpMessage}</HelpMessage>
       <TagContainer tags={hashtags} onClick={removeHashtag} {...props} />
     </>
   );
