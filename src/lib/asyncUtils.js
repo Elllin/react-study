@@ -1,3 +1,5 @@
+import { call, put } from 'redux-saga/effects';
+
 export const reducerUtils = {
   initial: (data = null) => ({
     data,
@@ -57,6 +59,22 @@ export const createAsyncThunkById = (type, fetchFunc, idSelector = defaultIdSele
       dispatch({ type: SUCCESS, payload, meta: id });
     } catch (e) {
       dispatch({ type: ERROR, payload: e, error: true, meta: id });
+    }
+  };
+};
+
+export const createAsyncSagaById = (type, fetchFunc) => {
+  const [SUCCESS, ERROR] = [`${type}_SUCCESS`, `${type}_ERROR`];
+
+  return function* (action) {
+    const id = action.meta;
+
+    try {
+      const res = yield call(fetchFunc, id);
+      const payload = res.data;
+      yield put({ type: SUCCESS, payload, meta: id });
+    } catch (e) {
+      yield put({ type: ERROR, payload: e, error: true, meta: id });
     }
   };
 };

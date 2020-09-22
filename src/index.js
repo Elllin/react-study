@@ -4,16 +4,26 @@ import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import rootReducer from './modules';
 import ReduxThunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import createSagaMiddleware from 'redux-saga';
+
+import rootReducer, { rootSaga } from './modules';
 
 import 'assets/fonts/styles.css';
 import '@kfonts/nanum-square-round-otf';
 import { ThemeProvider } from 'styled-components';
 import theme from 'style/theme';
 
-const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(ReduxThunk)));
+const sagaMiddleware = createSagaMiddleware();
+
+const store = createStore(
+  rootReducer,
+  composeWithDevTools(applyMiddleware(sagaMiddleware, ReduxThunk)),
+);
+
+sagaMiddleware.run(rootSaga);
+
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>

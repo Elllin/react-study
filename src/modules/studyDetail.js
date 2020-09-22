@@ -1,8 +1,7 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 
-import { reducerUtils } from 'lib/asyncUtils';
 import * as createStudyAPI from 'api/studyApi';
-import { createAsyncActionsById, createAsyncThunkById } from 'lib/asyncUtils';
+import { createAsyncActionsById, createAsyncSagaById } from 'lib/asyncUtils';
 
 const GET_STUDY_DETAIL = 'studyDetail/GET_STUDY_DETAIL';
 const GET_STUDY_DETAIL_SUCCESS = 'studyDetail/GET_STUDY_DETAIL_SUCCESS';
@@ -12,10 +11,13 @@ const initialState = {
   studyDetail: {},
 };
 
-export const fetchStudyDetail = createAsyncThunkById(
-  GET_STUDY_DETAIL,
-  createStudyAPI.fetchStudyDetail,
-);
+export const fetchStudyDetail = (id) => ({ type: GET_STUDY_DETAIL, meta: id });
+
+const fetchStudyDetailSaga = createAsyncSagaById(GET_STUDY_DETAIL, createStudyAPI.fetchStudyDetail);
+
+export function* studyDetailSaga() {
+  yield takeEvery(GET_STUDY_DETAIL, fetchStudyDetailSaga);
+}
 
 const asyncReducer = createAsyncActionsById(GET_STUDY_DETAIL, 'studyDetail', true);
 

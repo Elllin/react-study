@@ -26,7 +26,7 @@ function StudyDetailContainer({ detailId }) {
 
   if (loading && !data) return <LoadingPage />;
   if (error) return <ErrorPage />;
-  // if (!data) return null;
+  if (!data) return null;
 
   return (
     <>
