@@ -25,7 +25,7 @@ export const reducerUtils = {
   reset: (data = null) => reducerUtils.initial(data),
 };
 
-export const createAsyncThunk = (type, fetchFunc, idSelector = defaultIdSelector) => {
+export const createAsyncThunk = (type, fetchFunc) => {
   const [SUCCESS, ERROR] = [`${type}_SUCCESS`, `${type}_ERROR`];
 
   return (param) => async (dispatch) => {
@@ -82,6 +82,45 @@ export const createAsyncActions = (type, key, keepState) => {
         return {
           ...state,
           [key]: reducerUtils.error(action.payload),
+        };
+
+      default:
+        return state;
+    }
+  };
+};
+
+export const createAsyncActionsById = (type, key, keepState) => {
+  const [SUCCESS, ERROR] = [`${type}_SUCCESS`, `${type}_ERROR`];
+
+  return (state, action) => {
+    const id = action.meta;
+    switch (action.type) {
+      case type:
+        return {
+          ...state,
+          [key]: {
+            ...state[key],
+            [id]: reducerUtils.loading(keepState && state[key]?.[id]?.data),
+          },
+        };
+
+      case SUCCESS:
+        return {
+          ...state,
+          [key]: {
+            ...state[key],
+            [id]: reducerUtils.success(action.payload),
+          },
+        };
+
+      case ERROR:
+        return {
+          ...state,
+          [key]: {
+            ...state[key],
+            [id]: reducerUtils.error(action.payload),
+          },
         };
 
       default:

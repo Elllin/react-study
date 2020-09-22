@@ -15,7 +15,7 @@ function StudyDetailContainer({ detailId }) {
   const dispatch = useDispatch();
 
   const { loading, data, error } = useSelector((state) => {
-    console.log(state.studyDetail.studyDetail);
+    console.log(state.studyDetail);
     return state.studyDetail.studyDetail?.[detailId] || reducerUtils.initial();
   });
   useEffect(() => {
@@ -26,7 +26,7 @@ function StudyDetailContainer({ detailId }) {
 
   if (loading && !data) return <LoadingPage />;
   if (error) return <ErrorPage />;
-  if (!data) return null;
+  // if (!data) return null;
 
   return (
     <>
