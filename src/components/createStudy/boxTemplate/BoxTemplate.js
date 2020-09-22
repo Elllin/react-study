@@ -12,6 +12,7 @@ function BoxTemplate({
   requiredSign,
   isHelp,
   warningMessage,
+  validation,
   ...props
 }) {
   return (
@@ -19,7 +20,9 @@ function BoxTemplate({
       <Title {...props}>
         {required && <Required>{requiredSign}</Required>}
         <span>{title}</span>
-        {warningMessage && <WarningMessage>{warningMessage}</WarningMessage>}
+        {warningMessage && (
+          <WarningMessage validation={validation}>{warningMessage}</WarningMessage>
+        )}
         {isHelp && <HelpBubble />}
       </Title>
       {children}
@@ -46,7 +49,7 @@ const Required = styled.span`
 `;
 
 const WarningMessage = styled.span`
-  color: ${({ theme }) => theme.warningColor};
+  color: ${({ theme, validation }) => (validation ? '#000' : theme.warningColor)};
   margin-left: 0.7rem;
 `;
 
@@ -56,12 +59,16 @@ BoxTemplate.propTypes = {
   required: PropTypes.bool,
   requiredSign: PropTypes.string,
   isHelp: PropTypes.bool,
+  warningMessage: PropTypes.string,
+  validation: PropTypes.bool,
 };
 
 BoxTemplate.defaultProps = {
   required: true,
   requiredSign: '*',
   isHelp: false,
+  warningMessage: null,
+  validation: null,
 };
 
 export default memo(BoxTemplate);

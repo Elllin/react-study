@@ -20,8 +20,6 @@ import ValidationMessage from './validationMessage/ValidationMessage';
 import DatePicker from './datePicker/DatePicker';
 
 function CreateStudy({ onSubmit, loading }) {
-  const [checkRequired, setCheckRequired] = useState(false);
-
   const [inputLength, setInputLength] = useState({
     titleLength: 0,
     descriptionLength: 0,
@@ -106,7 +104,12 @@ function CreateStudy({ onSubmit, loading }) {
             register={register({ required: true })}
           />
         </BoxTemplate>
-        <BoxTemplate title="그룹 이름" warningMessage="(특수문자 불가)" htmlFor="title">
+        <BoxTemplate
+          title="그룹 이름"
+          warningMessage="(특수문자 불가)"
+          htmlFor="title"
+          validation={titleValidation}
+        >
           <TitleInput
             type="text"
             id="title"
