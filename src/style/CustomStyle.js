@@ -28,10 +28,6 @@ export const InputBox = styled.input`
   height: 5rem;
 
   ${borderRadius(`0.2rem`)};
-  border-color: ${({ validation, theme }) => !validation && theme.requiredColor};
-  &:focus {
-    outline-color: ${({ validation, theme }) => !validation && theme.requiredColor};
-  }
   border: solid 1px #939393;
 
   font-size: 1.6rem;

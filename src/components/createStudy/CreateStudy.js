@@ -14,12 +14,14 @@ import CharacterCounter from './characterCounter/CharacterCounter';
 import LoadingPage from 'containers/common/LoadingPage';
 import MainButton from 'components/common/mainButton/MainButton';
 
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { InputBox, Description } from 'style/CustomStyle';
 import ValidationMessage from './validationMessage/ValidationMessage';
 import DatePicker from './datePicker/DatePicker';
 
 function CreateStudy({ onSubmit, loading }) {
+  const [checkRequired, setCheckRequired] = useState(false);
+
   const [inputLength, setInputLength] = useState({
     titleLength: 0,
     descriptionLength: 0,
@@ -47,7 +49,7 @@ function CreateStudy({ onSubmit, loading }) {
     return (e.key === ' ' || e.key === ',') && value.length > 0;
   }, []);
 
-  const { register, handleSubmit, setValue, watch } = useForm({
+  const { register, handleSubmit, setValue, watch, errors } = useForm({
     defaultValues: { duration: null },
   });
 
@@ -105,7 +107,7 @@ function CreateStudy({ onSubmit, loading }) {
           />
         </BoxTemplate>
         <BoxTemplate title="그룹 이름" warningMessage="(특수문자 불가)" htmlFor="title">
-          <InputBox
+          <TitleInput
             type="text"
             id="title"
             name="title"
@@ -113,6 +115,7 @@ function CreateStudy({ onSubmit, loading }) {
             value={title}
             onChange={onChange}
             ref={register({ required: true })}
+            error={errors.title}
             placeholder={groupName.placeholder}
             validation={titleValidation}
           />
@@ -129,6 +132,7 @@ function CreateStudy({ onSubmit, loading }) {
             onChange={onChange}
             maxLength={introduction.maxLength}
             ref={register({ required: true })}
+            error={errors.description}
             placeholder={introduction.placeholder}
           ></TextArea>
           <CharacterCounter length={descriptionLength} maxLength={introduction.maxLength} />
@@ -156,10 +160,29 @@ function CreateStudy({ onSubmit, loading }) {
   );
 }
 
+const requiredError = css`
+  ${({ error, theme }) =>
+    error &&
+    css`
+      border-color: ${theme.requiredColor};
+      &::placeholder {
+        color: ${theme.requiredColor};
+      }
+      &::-webkit-input-placeholder {
+        color: ${theme.requiredColor};
+      }
+      &::-ms-input-placeholder {
+        color: ${theme.requiredColor};
+      }
+    `}
+`;
+
 const TextArea = styled(InputBox)`
   width: 100%;
   height: 24.4rem;
   padding: 1rem 2rem;
+  ${requiredError}
+  border-color: ${({ error, theme }) => error && theme.requiredColor};
 `;
 
 const BoxLayout = styled.div`
@@ -170,6 +193,14 @@ const BoxLayout = styled.div`
 
 const ButtonWrap = styled.div`
   margin-top: 1.1rem;
+`;
+
+const TitleInput = styled(InputBox)`
+  border-color: ${({ validation, theme }) => !validation && theme.requiredColor};
+  &:focus {
+    outline-color: ${({ validation, theme }) => !validation && theme.requiredColor};
+  }
+  ${requiredError}
 `;
 
 CreateStudy.propTypes = {
