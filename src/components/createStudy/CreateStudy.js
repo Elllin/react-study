@@ -11,7 +11,7 @@ import SelectBox from './selectBox/SelectBox';
 import RadioBox from './radioBox/RadioBox';
 import FormTemplate from './formTemplate/FormTemplate';
 import CharacterCounter from './characterCounter/CharacterCounter';
-import LoadingPage from 'containers/common/LoadingPage';
+import LoadingPage from 'common/LoadingPage';
 import MainButton from 'components/common/mainButton/MainButton';
 
 import styled, { css } from 'styled-components';

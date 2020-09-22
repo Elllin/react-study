@@ -1,8 +1,10 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
+
 import HomePage from 'pages/HomePage';
 import CreateStudyPage from 'pages/CreateStudyPage';
 import StudyDetailPage from 'pages/StudyDetailPage';
+import ErrorPage from 'common/ErrorPage';
 
 import GlobalStyle from 'style/GlobalStyle';
 
@@ -11,17 +13,10 @@ function App() {
     <>
       <GlobalStyle />
       <Switch>
-        <Route path="/" component={HomePage} exact />
+        {/* <Route path="/" component={HomePage} exact /> */}
         <Route path="/create" component={CreateStudyPage} />
-        {/* <Route path="/" component={StudyDetailPage} /> */}
-        <Route
-          render={({ location }) => (
-            <div>
-              <h2>이 페이지는 존재하지 않습니다. :</h2>
-              <p>{location.pathname}</p>
-            </div>
-          )}
-        />
+        <Route path="/" component={StudyDetailPage} />
+        <Route component={ErrorPage} />
       </Switch>
     </>
   );

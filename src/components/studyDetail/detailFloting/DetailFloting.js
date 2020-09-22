@@ -1,12 +1,32 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import MainButton from 'components/common/mainButton/MainButton';
 
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 function DetailFloting() {
+  const flotingRef = useRef();
+  const [isFixed, setIsFixed] = useState(false);
+  let topOffset = null;
+
+  const scrollHandler = () => {
+    const scrolledTopLength = window.pageYOffset;
+
+    if (scrolledTopLength >= topOffset) setIsFixed(true);
+    else setIsFixed(false);
+  };
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    topOffset = flotingRef.current.getBoundingClientRect().top;
+    window.addEventListener('scroll', scrollHandler, true);
+    return () => {
+      window.removeEventListener('scroll', scrollHandler, true);
+    };
+  }, []);
+
   return (
-    <Wrap>
+    <Wrap ref={flotingRef} isFixed={isFixed}>
       <h2 className="blind">그룹 참여하기</h2>
       <dl>
         <List>
@@ -14,7 +34,7 @@ function DetailFloting() {
           <dd>영어회화 초보 스터디 그룹</dd>
         </List>
         <List>
-          <dt>스터디 그룹</dt>
+          <dt>스터디 기간</dt>
           <dd>영어회화 초보 스터디 그룹</dd>
         </List>
       </dl>
@@ -28,9 +48,15 @@ function DetailFloting() {
 }
 
 const Wrap = styled.aside`
-  position: fixed;
+  position: absolute;
   top: 10.3rem;
   right: 50%;
+  ${({ isFixed }) =>
+    isFixed &&
+    css`
+      position: fixed;
+      top: 0;
+    `}
   margin-right: -585px;
   padding: 2.5rem;
   width: 37rem;

@@ -5,7 +5,7 @@ import { resetData } from 'modules/createStudy';
 
 import CreateStudy from 'components/createStudy/CreateStudy';
 import Invitation from 'components/invitation/Invitation';
-import ErrorPage from './common/ErrorPage';
+import ErrorPage from 'common/ErrorPage';
 
 function CreateStudyContainer() {
   const { data, loading, error } = useSelector((state) => {
