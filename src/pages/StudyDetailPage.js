@@ -4,7 +4,7 @@ import StudyDetailContainer from 'containers/StudyDetailContainer';
 function StudyDetailPage() {
   return (
     <>
-      <StudyDetailContainer />
+      <StudyDetailContainer detailId={1} />
     </>
   );
 }

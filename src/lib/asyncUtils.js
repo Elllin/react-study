@@ -25,18 +25,38 @@ export const reducerUtils = {
   reset: (data = null) => reducerUtils.initial(data),
 };
 
-export const createAsyncThunk = (type, fetchFunc) => {
+export const createAsyncThunk = (type, fetchFunc, idSelector = defaultIdSelector) => {
   const [SUCCESS, ERROR] = [`${type}_SUCCESS`, `${type}_ERROR`];
 
   return (param) => async (dispatch) => {
     dispatch({ type });
     try {
-      debugger;
-      const payload = await fetchFunc(param);
+      const res = await fetchFunc(param);
+      const payload = res.data;
       console.log(payload);
       dispatch({ type: SUCCESS, payload });
     } catch (e) {
       dispatch({ type: ERROR, payload: e, error: true });
+    }
+  };
+};
+
+const defaultIdSelector = (param) => param;
+
+export const createAsyncThunkById = (type, fetchFunc, idSelector = defaultIdSelector) => {
+  const [SUCCESS, ERROR] = [`${type}_SUCCESS`, `${type}_ERROR`];
+
+  return (param) => async (dispatch) => {
+    const id = idSelector(param);
+
+    dispatch({ type, meta: id });
+    try {
+      const res = await fetchFunc(param);
+      const payload = res.data;
+      console.log(payload);
+      dispatch({ type: SUCCESS, payload, meta: id });
+    } catch (e) {
+      dispatch({ type: ERROR, payload: e, error: true, meta: id });
     }
   };
 };

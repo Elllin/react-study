@@ -1,3 +1,5 @@
+import { call, put, takeEvery } from 'redux-saga/effects';
+
 import { reducerUtils } from 'lib/asyncUtils';
 import * as createStudyAPI from 'api/studyApi';
 import { createAsyncActions, createAsyncThunk } from 'lib/asyncUtils';
@@ -10,35 +12,48 @@ const initialState = {
   studyDtail: {},
 };
 
+// export const getStudyDetail = (id) => ({ type: GET_STUDY_DETAIL, payload: id, meta: id });
+
 // export const fetchCreateStudy = createAsyncThunk(GET_CREATE_STUDY, createStudyAPI.fetchCreateStudy);
-export const fetchCreateStudy = (id) => (dispatch) => {
-  dispatch({ type: GET_STUDY_DETAIL });
+export const fetchStudyDetail = (id) => async (dispatch) => {
+  dispatch({ type: GET_STUDY_DETAIL, meta: id });
   try {
-    const payload = createStudyAPI.fetchStudyDetail(id);
+    const res = await createStudyAPI.fetchStudyDetail(id);
+    const payload = res.data;
     dispatch({ type: GET_STUDY_DETAIL_SUCCESS, payload, meta: id });
   } catch (e) {
     dispatch({ type: GET_STUDY_DETAIL_SUCCESS, payload: e, error: true, meta: id });
   }
 };
 
-const asyncReducer = (state, action) => {
+export default function studyDetail(state = initialState, action) {
   const id = action.meta;
+
   switch (action.type) {
     case GET_STUDY_DETAIL:
+      return {
+        ...state,
+        studyDetail: {
+          ...state.studyDetail,
+          [id]: reducerUtils.loading(state.studyDetail?.[id].data),
+        },
+      };
     case GET_STUDY_DETAIL_SUCCESS:
+      return {
+        ...state,
+        studyDetail: {
+          ...state.studyDetail,
+          [id]: reducerUtils.success(action.payload),
+        },
+      };
     case GET_STUDY_DETAIL_ERROR:
-
-    default:
-      return state;
-  }
-};
-
-export default function createStudy(state = initialState, action) {
-  switch (action.type) {
-    case GET_STUDY_DETAIL:
-    case GET_STUDY_DETAIL_SUCCESS:
-    case GET_STUDY_DETAIL_ERROR:
-      return asyncReducer(state, action);
+      return {
+        ...state,
+        studyDetail: {
+          ...state.studyDetail,
+          [id]: reducerUtils.error(action.payload),
+        },
+      };
 
     default:
       return state;
