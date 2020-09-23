@@ -5,14 +5,12 @@ import { resetData } from 'modules/createStudy';
 
 import CreateStudy from 'components/createStudy/CreateStudy';
 import Invitation from 'components/invitation/Invitation';
-import ErrorPage from 'common/ErrorPage';
 
 function CreateStudyContainer() {
   const { data, loading, error } = useSelector((state) => state.createStudy.createStudy);
   const dispatch = useDispatch();
 
   const onSubmit = (data) => {
-    console.log(data);
     const strData = JSON.stringify(data);
     dispatch(fetchCreateStudy(strData));
   };
@@ -22,7 +20,7 @@ function CreateStudyContainer() {
   }, [dispatch]);
 
   if (loading) return <CreateStudy loading={loading} onSubmit={onSubmit} />;
-  if (error) return <ErrorPage />;
+  if (error) return <h1 style={{ fontSize: '50px' }}>{`에러가 발생했습니다!${error}`}</h1>;
 
   return <>{data ? <Invitation /> : <CreateStudy onSubmit={onSubmit} />}</>;
 }

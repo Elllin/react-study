@@ -11,7 +11,6 @@ const initialState = {
   studyDetail: {},
 };
 
-
 export const fetchStudyDetail = (id) => ({ type: GET_STUDY_DETAIL, meta: id });
 
 const fetchStudyDetailSaga = createAsyncSagaById(GET_STUDY_DETAIL, createStudyAPI.fetchStudyDetail);

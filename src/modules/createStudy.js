@@ -1,5 +1,7 @@
+import { takeEvery } from 'redux-saga/effects';
+
 import * as createStudyAPI from 'api/studyApi';
-import { reducerUtils, createAsyncActions, createAsyncThunk } from 'lib/asyncUtils';
+import { reducerUtils, createAsyncActions, createAsyncSaga } from 'lib/asyncUtils';
 
 const GET_CREATE_STUDY = 'createStudy/GET_CREATE_STUDY';
 const GET_CREATE_STUDY_SUCCESS = 'createStudy/GET_CREATE_STUDY_SUCCESS';
@@ -10,7 +12,15 @@ const initialState = {
   createStudy: reducerUtils.initial(),
 };
 
-export const fetchCreateStudy = createAsyncThunk(GET_CREATE_STUDY, createStudyAPI.fetchCreateStudy);
+export const fetchCreateStudy = (payload) => ({ type: GET_CREATE_STUDY, payload });
+
+const fetchCreateStudySaga = createAsyncSaga(GET_CREATE_STUDY, createStudyAPI.fetchCreateStudy);
+
+export function* createStudySaga() {
+  yield takeEvery(GET_CREATE_STUDY, fetchCreateStudySaga);
+}
+
+// export const fetchCreateStudy = createAsyncThunk(GET_CREATE_STUDY, createStudyAPI.fetchCreateStudy);
 
 export const resetData = (dispatch) => {
   dispatch({ type: CREATE_STUDY_RESET });

@@ -63,6 +63,20 @@ export const createAsyncThunkById = (type, fetchFunc, idSelector = defaultIdSele
   };
 };
 
+export const createAsyncSaga = (type, fetchFunc) => {
+  const [SUCCESS, ERROR] = [`${type}_SUCCESS`, `${type}_ERROR`];
+
+  return function* (action) {
+    try {
+      const res = yield call(fetchFunc, action.payload);
+      const payload = res.data;
+      yield put({ type: SUCCESS, payload });
+    } catch (e) {
+      yield put({ type: ERROR, payload: e, error: true });
+    }
+  };
+};
+
 export const createAsyncSagaById = (type, fetchFunc) => {
   const [SUCCESS, ERROR] = [`${type}_SUCCESS`, `${type}_ERROR`];
 
