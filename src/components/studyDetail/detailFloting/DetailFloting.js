@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 
 import MainButton from 'components/common/mainButton/MainButton';
 
@@ -86,5 +87,11 @@ const List = styled.div`
 const ButtomWrap = styled.div`
   margin-top: 0.9rem;
 `;
+
+DetailFloting.propTypes = {
+  title: PropTypes.string.isRequired,
+  startDate: PropTypes.string.isRequired,
+  endDate: PropTypes.string.isRequired,
+};
 
 export default DetailFloting;

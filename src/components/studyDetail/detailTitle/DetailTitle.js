@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import TagContainer from 'components/common/tagContainer/TagContainer';
 
@@ -31,5 +32,15 @@ const Location = styled.div`
   font-size: 1.8rem;
   color: #4e4e4e;
 `;
+
+DetailTitle.propTypes = {
+  title: PropTypes.string.isRequired,
+  location: PropTypes.string.isRequired,
+  tags: PropTypes.arrayOf(PropTypes.string),
+};
+
+DetailTitle.defaultProps = {
+  tags: null,
+};
 
 export default DetailTitle;

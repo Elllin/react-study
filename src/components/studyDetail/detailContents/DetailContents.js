@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import TagItem from 'components/common/tagContainer/tagItem/TagItem';
 
@@ -15,7 +16,6 @@ function DetailContents({
   tags,
 }) {
   description.replaceAll('\n', '<br />');
-
   const getDepositText = (deposit) => (deposit ? '있음' : '없음');
   const depositText = getDepositText(deposit);
   const hashTags = tags.map((tag) => `#${tag}`).join(', ');
@@ -106,5 +106,20 @@ const Information = styled.dl`
     margin-top: 1.5rem;
   }
 `;
+
+DetailContents.propTypes = {
+  location: PropTypes.string.isRequired,
+  category: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  deposit: PropTypes.string.isRequired,
+  startDate: PropTypes.string.isRequired,
+  endDate: PropTypes.string.isRequired,
+  dDay: PropTypes.string.isRequired,
+  tags: PropTypes.arrayOf(PropTypes.string),
+};
+
+DetailContents.defaultProps = {
+  tags: null,
+};
 
 export default DetailContents;
