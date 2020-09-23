@@ -1,4 +1,4 @@
-import { call, put, takeEvery } from 'redux-saga/effects';
+import { takeEvery } from 'redux-saga/effects';
 
 import * as createStudyAPI from 'api/studyApi';
 import { createAsyncActionsById, createAsyncSagaById } from 'lib/asyncUtils';
@@ -10,6 +10,7 @@ const GET_STUDY_DETAIL_ERROR = 'studyDetail/GET_STUDY_DETAIL_ERROR';
 const initialState = {
   studyDetail: {},
 };
+
 
 export const fetchStudyDetail = (id) => ({ type: GET_STUDY_DETAIL, meta: id });
 

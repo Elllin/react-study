@@ -5,15 +5,13 @@ import TagContainer from 'components/common/tagContainer/TagContainer';
 import styled from 'styled-components';
 import { defaultLayout } from 'style/CustomStyle';
 
-function DetailTitle() {
+function DetailTitle({ title, location }) {
   const tags = ['영어공부', '회화연습', '취업'].map((v, i) => ({ id: i, text: v }));
   return (
     <Wrap>
-      <Location>강북구</Location>
-      <h2>영어회화 초보 스터디 그룹</h2>
-      <div>
-        <TagContainer tags={tags} />
-      </div>
+      <Location>{location}</Location>
+      <h2>{title}</h2>
+      <div>{tags && <TagContainer tags={tags} hash={null} />}</div>
     </Wrap>
   );
 }
@@ -30,8 +28,8 @@ const Wrap = styled.div`
 
 const Location = styled.div`
   margin-bottom: 1.4rem;
-  font-size: 2rem;
-  font-weight: 800;
+  font-size: 1.8rem;
+  color: #4e4e4e;
 `;
 
 export default DetailTitle;

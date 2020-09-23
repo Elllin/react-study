@@ -1,41 +1,42 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import MainButton from 'components/common/mainButton/MainButton';
 
 import styled, { css } from 'styled-components';
 
-function DetailFloting() {
-  const flotingRef = useRef();
+function DetailFloting({ title, startDate, endDate }) {
+  // const flotingRef = useRef();
   const [isFixed, setIsFixed] = useState(false);
-  let topOffset = null;
-
-  const scrollHandler = () => {
-    const scrolledTopLength = window.pageYOffset;
-
-    if (scrolledTopLength >= topOffset) setIsFixed(true);
-    else setIsFixed(false);
-  };
+  const TOP_OFFSET = 130;
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    topOffset = flotingRef.current.getBoundingClientRect().top;
-    window.addEventListener('scroll', scrollHandler, true);
+    // topOffset = flotingRef.current.getBoundingClientRect().top;
+
+    const scrollHandler = () => {
+      const scrolledTopLength = window.pageYOffset;
+
+      if (scrolledTopLength >= TOP_OFFSET) setIsFixed(true);
+      else setIsFixed(false);
+    };
+
+    window.addEventListener('scroll', scrollHandler);
     return () => {
-      window.removeEventListener('scroll', scrollHandler, true);
+      window.removeEventListener('scroll', scrollHandler);
     };
   }, []);
 
   return (
-    <Wrap ref={flotingRef} isFixed={isFixed}>
+    <Wrap isFixed={isFixed}>
       <h2 className="blind">그룹 참여하기</h2>
       <dl>
         <List>
           <dt>스터디 그룹</dt>
-          <dd>영어회화 초보 스터디 그룹</dd>
+          <dd>{title}</dd>
         </List>
         <List>
           <dt>스터디 기간</dt>
-          <dd>영어회화 초보 스터디 그룹</dd>
+          <dd>{`${startDate} ~ ${endDate}`}</dd>
         </List>
       </dl>
       <ButtomWrap>

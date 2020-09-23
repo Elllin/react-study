@@ -8,10 +8,7 @@ import Invitation from 'components/invitation/Invitation';
 import ErrorPage from 'common/ErrorPage';
 
 function CreateStudyContainer() {
-  const { data, loading, error } = useSelector((state) => {
-    console.log(state.createStudy.createStudy);
-    return state.createStudy.createStudy;
-  });
+  const { data, loading, error } = useSelector((state) => state.createStudy.createStudy);
   const dispatch = useDispatch();
 
   const onSubmit = (data) => {
