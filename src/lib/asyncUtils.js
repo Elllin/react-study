@@ -68,7 +68,7 @@ export const createAsyncSaga = (type, fetchFunc) => {
 
   return function* (action) {
     try {
-      const res = yield call(fetchFunc, action.payload);
+      const res = yield call(fetchFunc, action?.payload);
       const payload = res.data;
       yield put({ type: SUCCESS, payload });
     } catch (e) {

@@ -1,4 +1,4 @@
-import { takeEvery } from 'redux-saga/effects';
+import { getContext, takeEvery } from 'redux-saga/effects';
 
 import * as createStudyAPI from 'api/studyApi';
 import { reducerUtils, createAsyncActions, createAsyncSaga } from 'lib/asyncUtils';
@@ -16,8 +16,16 @@ export const fetchCreateStudy = (payload) => ({ type: GET_CREATE_STUDY, payload 
 
 const fetchCreateStudySaga = createAsyncSaga(GET_CREATE_STUDY, createStudyAPI.fetchCreateStudy);
 
+function* goToDetailSaga() {
+  // const { id } = createStudy.data;
+  const history = yield getContext('history');
+  history.push('/detail/1');
+  // 응답으로 id를 받아서 그 아이디를 넣기
+}
+
 export function* createStudySaga() {
   yield takeEvery(GET_CREATE_STUDY, fetchCreateStudySaga);
+  yield takeEvery(GET_CREATE_STUDY_SUCCESS, goToDetailSaga);
 }
 
 // export const fetchCreateStudy = createAsyncThunk(GET_CREATE_STUDY, createStudyAPI.fetchCreateStudy);
