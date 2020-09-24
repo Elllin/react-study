@@ -29,6 +29,9 @@ export const InputBox = styled.input`
 
   ${borderRadius(`0.2rem`)};
   border: solid 1px #939393;
+  &:focus {
+    outline-color: ${({ theme }) => theme.mainColor};
+  }
 
   font-size: 1.6rem;
   font-family: AppleSDGothicNeo, 'Malgun Gothic', '맑은 고딕', dotum, 돋움, sans-serif;

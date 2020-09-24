@@ -7,12 +7,12 @@ import { AiOutlineQuestionCircle } from 'react-icons/ai';
 
 function HelpBubble() {
   //   const [isHover, setIsHover] = useState(false);
-  const { help } = createStudy.hashtag;
+  const { helpBubbleMessage } = createStudy.hashtag;
   return (
     <Wrap>
       <HelpIcon />
       <Bubbel className="help-bubble">
-        <span>{help}</span>
+        <span>{helpBubbleMessage}</span>
         <ArrowBorder />
         <BubbelArrow />
       </Bubbel>
