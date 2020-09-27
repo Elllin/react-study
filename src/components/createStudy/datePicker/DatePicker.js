@@ -224,6 +224,7 @@ const Wrap = styled.div`
   .DateInput_input {
     font-size: 1.6rem;
     letter-spacing: -0.03rem;
+    color: #000;
   }
   .DateInput {
     width: 180px;

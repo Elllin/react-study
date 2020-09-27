@@ -1,16 +1,14 @@
 const createStudy = {
   groupName: {
     placeholder: '주제가 잘 드러나는 이름이 좋아요.',
-    helpMessage: '특수문자 불가 / 그룹 이름의 띄어쓰기는 자동 ‘ - ’ 으로 변경됩니다.',
+    helpMessage: '특수문자는 사용이 불가해요.',
     maxLength: 20,
   },
   introduction: {
     placeholder: '그룹 소개, 이 방의 규칙 등을 자유롭게 작성해주세요.',
     maxLength: 5000,
   },
-  duration: {
-    helpMessage: '캘린더로 날짜 선택',
-  },
+
   hashtag: {
     placeholder: 'ex) 열공하는그룹, 취업목표',
     helpMessage:

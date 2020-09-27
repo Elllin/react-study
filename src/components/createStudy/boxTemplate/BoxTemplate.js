@@ -5,24 +5,15 @@ import HelpBubble from './helpBubble/HelpBubble';
 
 import styled from 'styled-components';
 
-function BoxTemplate({
-  children,
-  title,
-  required,
-  requiredSign,
-  isHelp,
-  warningMessage,
-  validation,
-  ...props
-}) {
+function BoxTemplate({ children, title, required, requiredSign, isHelp, ...props }) {
   return (
     <Wrap>
       <Title {...props}>
         {required && <Required>{requiredSign}</Required>}
         <span>{title}</span>
-        {warningMessage && (
+        {/* {warningMessage && (
           <WarningMessage validation={validation}>{warningMessage}</WarningMessage>
-        )}
+        )} */}
         {isHelp && <HelpBubble />}
       </Title>
       {children}

@@ -86,7 +86,6 @@ function CreateStudy({ onSubmit, loading }) {
             setValue={setValue}
             coverText="상시모집"
           />
-          <HelpMessage>{duration.helpMessage}</HelpMessage>
         </BoxTemplate>
 
         <BoxTemplate title="예치금 설정을 하시나요?" as="div" far>
@@ -106,12 +105,7 @@ function CreateStudy({ onSubmit, loading }) {
           />
         </BoxTemplate>
 
-        <BoxTemplate
-          title="그룹 이름"
-          warningMessage="(특수문자 불가)"
-          htmlFor="title"
-          validation={titleValidation}
-        >
+        <BoxTemplate title="그룹 이름" htmlFor="title">
           <TitleInput
             type="text"
             id="title"
@@ -124,7 +118,18 @@ function CreateStudy({ onSubmit, loading }) {
             placeholder={groupName.placeholder}
             validation={titleValidation}
           />
+
+          {/* 리팩토링 하기!!!! */}
           <ValidationMessage validation={titleValidation} length={titleLength} />
+
+          {/* {titleValidation && !errors.title && <HelpMessage>{groupName.helpMessage}</HelpMessage>} */}
+          {/* <ErrorMessage>{!titleValidation && groupName.}</ErrorMessage> */}
+
+          {<HelpMessage validation={titleValidation}>{groupName.helpMessage}</HelpMessage>}
+          {/* 아이디 중복의 state가 false라면 이걸 보여주고 아니면 아래 보여준다,  validation true면 회색 거짓 빨간색*/}
+          {/* <ErrorMessage>{}</ErrorMessage> */}
+          {/* 중복확인 메세지 넣어주고 스타일링ㅎㅏ기 */}
+
           <CharacterCounter length={titleLength} maxLength={groupName.maxLength} />
         </BoxTemplate>
 
