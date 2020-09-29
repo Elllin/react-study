@@ -1,24 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import styled from 'styled-components';
 import { Container, defaultLayout } from 'style/CustomStyle';
 
 function Header() {
+  const [clickedButton, setClickedButton] = useState('');
+  const onClickNavButton = (e) => {
+    setClickedButton(e.target.id);
+  };
+
   return (
     <HeaderBar>
       <InnerWrap>
-        <CustomLink to="/">
+        <CustomLink to="/" onClick={onClickNavButton}>
           <h1>DO IT. DO IT</h1>
         </CustomLink>
-        <div>
+        <nav>
           <CustomLink to="/">
-            <NavButton>로그인</NavButton>
+            <NavButton id="login-btn" onClick={onClickNavButton} clickedButton={clickedButton}>
+              로그인
+            </NavButton>
           </CustomLink>
           <CustomLink to="/detail/1">
-            <NavButton>그룹리스트</NavButton>
+            <NavButton id="list-btn" onClick={onClickNavButton} clickedButton={clickedButton}>
+              그룹리스트
+            </NavButton>
           </CustomLink>
-        </div>
+        </nav>
       </InnerWrap>
     </HeaderBar>
   );
@@ -60,10 +69,7 @@ const NavButton = styled.button`
   font-family: ${({ theme }) => theme.subFont};
   font-size: 1.3rem;
   font-weight: 600;
-  color: #5b5b5b;
-  /* & + & {
-    margin-left: 4.4rem;
-  } */
+  color: ${({ id, clickedButton }) => (id === clickedButton ? '#000' : '#5b5b5b')};
 `;
 
 export default Header;

@@ -19,7 +19,6 @@ function StudyDetailContainer({ detailId }) {
     (state) => state.studyDetail.studyDetail?.[detailId] || reducerUtils.initial(),
   );
 
-  console.log(data);
   useEffect(() => {
     if (data) return;
 

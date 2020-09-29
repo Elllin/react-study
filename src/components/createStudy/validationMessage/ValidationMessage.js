@@ -35,7 +35,6 @@ const Wrap = styled.div`
 
 const StatusIcon = styled.span`
   font-size: 2.1rem;
-  height: 2rem;
 `;
 
 ValidationMessage.propTypes = {
