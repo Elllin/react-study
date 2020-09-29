@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { darken, lighten } from 'polished';
-import { borderRadius } from 'style/CustomStyle';
+import { borderRadius, defaultLayout } from 'style/CustomStyle';
 
-function MainButton({ children, fontSize, width, height, ...props }) {
+function MainButton({ children, fontSize, width, height, radius, ...props }) {
   return (
-    <Button fontSize={fontSize} width={width} height={height} {...props}>
+    <Button fontSize={fontSize} width={width} height={height} radius={radius} {...props}>
       {children}
     </Button>
   );
@@ -23,7 +23,10 @@ function MainButton({ children, fontSize, width, height, ...props }) {
 // `;
 
 const Button = styled.button`
-  ${borderRadius(`0.6rem`)};
+  ${({ radius }) => css`
+    ${borderRadius(radius)}
+  `};
+  ${defaultLayout};
   width: ${(width) => width};
   height: ${(height) => height};
   background-color: ${({ theme }) => theme.mainColor};
@@ -42,6 +45,7 @@ MainButton.propTypes = {
   fontSize: PropTypes.string,
   width: PropTypes.string,
   height: PropTypes.string,
+  radius: PropTypes.string,
 };
 
 MainButton.defaultProps = {
@@ -49,6 +53,7 @@ MainButton.defaultProps = {
   fontSize: '2rem',
   width: '100%',
   height: '5.6rem',
+  radius: '0.6rem',
 };
 
 export default MainButton;
