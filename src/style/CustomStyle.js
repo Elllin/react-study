@@ -28,7 +28,7 @@ export const InputBox = styled.input`
   height: 5rem;
 
   ${borderRadius(`0.2rem`)};
-  border: solid 1px #939393;
+  border: ${({ borderNone }) => (borderNone ? 'none' : 'solid 1px #939393')};
   &:focus {
     outline-color: ${({ theme }) => theme.mainColor};
   }

@@ -2,12 +2,18 @@ import React from 'react';
 
 import Header from 'components/common/header/Header';
 import StudyList from 'components/studyList/StudyList';
+import SearchBox from 'components/studyList/searchBox/SearchBox';
+
+import { Container } from 'style/CustomStyle';
 
 function StudyListContainer() {
   return (
     <>
       <Header />
-      <StudyList />
+      <Container>
+        <SearchBox />
+        <StudyList />
+      </Container>
     </>
   );
 }

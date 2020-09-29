@@ -5,9 +5,9 @@ import PropTypes from 'prop-types';
 import createStudy from './constants/constants';
 import { checkSpecialCharacters } from 'lib/utils';
 
+import SelectBox from 'components/common/selectBox/SelectBox';
 import HashtagInput from './hashtagInput/HashtagInput';
 import BoxTemplate from './boxTemplate/BoxTemplate';
-import SelectBox from './selectBox/SelectBox';
 import RadioBox from './radioBox/RadioBox';
 import FormTemplate from './formTemplate/FormTemplate';
 import CharacterCounter from './characterCounter/CharacterCounter';
