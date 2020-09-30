@@ -107,7 +107,7 @@ const Wrap = styled.div`
 
   .DateRangePickerInput {
     ${defaultLayout}
-    padding-right: 15.4rem;
+    padding-right: 15rem;
     width: 57rem;
     height: 5rem;
     justify-content: space-around;
@@ -228,10 +228,6 @@ const Wrap = styled.div`
   }
   .DateInput {
     width: 180px;
-  }
-
-  .DateRangePickerInput_arrow {
-    padding-right: 2.4rem;
   }
 `;
 

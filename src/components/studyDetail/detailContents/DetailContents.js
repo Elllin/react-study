@@ -18,8 +18,7 @@ function DetailContents({
   description.replaceAll('\n', '<br />');
   const getDepositText = (deposit) => (deposit ? '있음' : '없음');
   const depositText = getDepositText(deposit);
-  const hashTags = tags.map((tag) => `#${tag}`).join(', ');
-
+  const hashTags = tags.map((tag) => `#${tag.word}`).join(', ');
   return (
     <Wrap>
       <DetailList top>
@@ -115,7 +114,7 @@ DetailContents.propTypes = {
   startDate: PropTypes.string.isRequired,
   endDate: PropTypes.string.isRequired,
   dDay: PropTypes.number.isRequired,
-  tags: PropTypes.arrayOf(PropTypes.string),
+  tags: PropTypes.arrayOf(PropTypes.object),
 };
 
 DetailContents.defaultProps = {

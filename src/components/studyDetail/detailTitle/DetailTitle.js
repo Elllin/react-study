@@ -6,13 +6,14 @@ import TagContainer from 'components/common/tagContainer/TagContainer';
 import styled from 'styled-components';
 import { defaultLayout } from 'style/CustomStyle';
 
-function DetailTitle({ title, location }) {
-  const tags = ['영어공부', '회화연습', '취업'].map((v, i) => ({ id: i, text: v }));
+function DetailTitle({ title, location, tags }) {
+  const tagArray = tags.map(({ id, word }) => ({ id, text: word }));
+
   return (
     <Wrap>
       <Location>{location}</Location>
       <h2>{title}</h2>
-      <div>{tags && <TagContainer tags={tags} hash={null} />}</div>
+      <div>{tags && <TagContainer tags={tagArray} hash={null} />}</div>
     </Wrap>
   );
 }
@@ -36,7 +37,7 @@ const Location = styled.div`
 DetailTitle.propTypes = {
   title: PropTypes.string.isRequired,
   location: PropTypes.string.isRequired,
-  tags: PropTypes.arrayOf(PropTypes.string),
+  tags: PropTypes.arrayOf(PropTypes.object),
 };
 
 DetailTitle.defaultProps = {
