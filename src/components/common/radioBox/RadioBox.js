@@ -5,9 +5,9 @@ import styled, { css } from 'styled-components';
 import { borderRadius } from 'style/CustomStyle';
 import { RiCheckLine } from 'react-icons/ri';
 
-function RadioBox({ id, text, register, checkedcolor, ...props }) {
+function RadioBox({ id, text, register, checkedcolor, size, ...props }) {
   return (
-    <RadioWrap>
+    <RadioWrap size={size}>
       <input
         type="radio"
         id={id}
@@ -24,11 +24,27 @@ function RadioBox({ id, text, register, checkedcolor, ...props }) {
   );
 }
 
+const sizes = {
+  small: {
+    size: '1.8rem',
+    font: '1.5rem',
+    margin: '2.4rem',
+  },
+  large: {
+    size: '2.2rem',
+    font: '2rem',
+    margin: '3.8rem',
+  },
+};
+
 const commonStyle = css`
   position: absolute;
+
   content: '';
-  width: 2.2rem;
-  height: 2.2rem;
+  ${({ size }) => css`
+    width: ${sizes[size].size};
+    height: ${sizes[size].size};
+  `}
   ${borderRadius(`0.2rem`)}
 `;
 
@@ -37,14 +53,10 @@ const RadioWrap = styled.div`
   position: relative;
   align-items: center;
 
-  & + & {
-    margin-left: 17.9rem;
-  }
-
   [type='radio'] {
     appearance: none;
     margin: 0;
-    margin-right: 3.8rem;
+    margin-right: ${({ size }) => sizes[size].margin};
   }
 
   [type='radio'] + label:before {
@@ -86,16 +98,20 @@ const RadioWrap = styled.div`
   }
 
   [type='radio'] + label {
-    font-size: 2rem;
+    font-size: ${({ size }) => sizes[size].font};
     letter-spacing: -0.03rem;
     cursor: pointer;
+  }
+
+  svg {
+    font-size: ${({ size }) => sizes[size].size};
   }
 `;
 
 const CheckedIcon = styled(RiCheckLine)`
   position: absolute;
-  left: 0.1rem;
-  top: 0.1rem;
+  left: 0rem;
+  top: 0rem;
   z-index: 1;
   color: #fff;
 `;
@@ -105,11 +121,13 @@ RadioBox.propTypes = {
   text: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   register: PropTypes.func,
   checkedcolor: PropTypes.string,
+  size: PropTypes.string,
 };
 
 RadioBox.defaultProps = {
   register: null,
   checkedcolor: null,
+  size: 'small',
 };
 
 export default memo(RadioBox);

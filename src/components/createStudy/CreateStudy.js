@@ -98,20 +98,24 @@ function CreateStudy({ onSubmit, loading }) {
         </BoxTemplate>
 
         <BoxTemplate title="예치금 설정을 하시나요?" as="div" far>
-          <RadioBox
-            id="deposit-yes"
-            value={1}
-            text="네. 할래요!"
-            name="deposit"
-            register={register({ required: true })}
-          />
-          <RadioBox
-            id="deposit-no"
-            value={0}
-            text="아니요. 괜찮아요!"
-            name="deposit"
-            register={register({ required: true })}
-          />
+          <RadiouContainer>
+            <RadioBox
+              id="deposit-yes"
+              value={1}
+              text="네. 할래요!"
+              name="deposit"
+              size="large"
+              register={register({ required: true })}
+            />
+            <RadioBox
+              id="deposit-no"
+              value={0}
+              text="아니요. 괜찮아요!"
+              name="deposit"
+              size="large"
+              register={register({ required: true })}
+            />
+          </RadiouContainer>
         </BoxTemplate>
 
         <BoxTemplate title="그룹 이름" htmlFor="title">
@@ -226,6 +230,12 @@ const TitleInput = styled(InputBox)`
     outline-color: ${({ validation, theme }) => validation && theme.requiredColor};
   }
   ${requiredError}
+`;
+
+const RadiouContainer = styled.div`
+  div + div {
+    margin-left: 17.9rem;
+  }
 `;
 
 CreateStudy.propTypes = {
