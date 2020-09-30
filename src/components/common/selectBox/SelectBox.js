@@ -6,6 +6,8 @@ import styled from 'styled-components';
 import { BsChevronDown } from 'react-icons/bs';
 
 function SelectBox({ optionItems, name, defaultText, register, defaultColor, ...props }) {
+  // defaultColor수정 하기!
+
   return (
     <SelectWrap>
       <InputBox as="select" defaultValue="" id={name} name={name} ref={register} {...props}>

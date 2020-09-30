@@ -1,7 +1,6 @@
 import React from 'react';
 
 import SelectBox from 'components/common/selectBox/SelectBox';
-import MainButton from 'components/common/mainButton/MainButton';
 
 import styled from 'styled-components';
 import { borderRadius } from 'style/CustomStyle';

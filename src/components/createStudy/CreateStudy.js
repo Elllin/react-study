@@ -56,7 +56,7 @@ function CreateStudy({ onSubmit, loading }) {
 
   const titleValidation = checkSpecialCharacters(title);
 
-  const { groupName, introduction, locationOption, categoryOption, duration } = createStudy;
+  const { groupName, introduction, locationOption, categoryOption } = createStudy;
 
   return (
     <>
@@ -68,7 +68,6 @@ function CreateStudy({ onSubmit, loading }) {
               name="location"
               register={register({ required: true })}
               defaultText="시/도 선택"
-              defaultColor="#a2a2a2"
             />
           </BoxTemplate>
 
@@ -78,7 +77,6 @@ function CreateStudy({ onSubmit, loading }) {
               name="category"
               register={register({ required: true })}
               defaultText="카테고리 선택"
-              defaultColor="#a2a2a2"
             />
           </BoxTemplate>
         </BoxLayout>
