@@ -6,7 +6,7 @@ import styled, { css } from 'styled-components';
 import { Container } from 'style/CustomStyle';
 import { BsChevronDown } from 'react-icons/bs';
 
-function Beginning() {
+function MainPage() {
   const onClickDown = () => {
     const viewHeight = window.innerHeight;
     window.scrollTo({ top: viewHeight, behavior: 'smooth' });
@@ -106,4 +106,4 @@ const Wrap = styled.section`
   }
 `;
 
-export default Beginning;
+export default MainPage;

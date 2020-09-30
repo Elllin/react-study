@@ -1,23 +1,23 @@
 import React from 'react';
-import DescriptionItem from './DescriptionItem';
-import { description, descriptionItem } from './constants/constants';
+import IntroduceItem from './introduceItem/IntroduceItem';
+import { introduce, introduceItem } from './constants/constants';
 
 import styled from 'styled-components';
 import { Container } from 'style/CustomStyle';
 
-function Description() {
+function Introduce() {
   return (
     <Wrap>
       <InnerWrap>
-        <h2>{description.title}</h2>
-        <p>{description.description}</p>
+        <h2>{introduce.title}</h2>
+        <p>{introduce.introduce}</p>
         <ItemWrap>
-          {descriptionItem.map((info) => {
-            const { title, discription, width, float, images } = info;
+          {introduceItem.map((info) => {
+            const { title, introduce, width, float, images } = info;
             return (
-              <DescriptionItem
+              <IntroduceItem
                 title={title}
-                discription={discription}
+                introduce={introduce}
                 width={width}
                 float={float}
                 images={images}
@@ -72,4 +72,4 @@ const ItemWrap = styled.ul`
   /* grid-column-end: 23.6rem 24.3rem; */
 `;
 
-export default Description;
+export default Introduce;

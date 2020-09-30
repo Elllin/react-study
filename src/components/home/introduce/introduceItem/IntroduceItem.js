@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 
 import styled from 'styled-components';
 
-function DescriptionItem({ title, discription, width, images }) {
+function IntroduceItem({ title, introduce, width, images }) {
   return (
     <List width={width}>
       <ImageWrap imgWidth={images.width}>
         <img src={images.image} alt={images.alt} />
       </ImageWrap>
       <Title>{title}</Title>
-      <Discription width={width}>{discription}</Discription>
+      <Introduce width={width}>{introduce}</Introduce>
     </List>
   );
 }
@@ -37,7 +37,7 @@ const Title = styled.div`
   font-size: 1.8rem;
 `;
 
-const Discription = styled.div`
+const Introduce = styled.div`
   word-break: keep-all;
   font-family: ${({ theme }) => theme.subFont};
   font-size: 1.6rem;
@@ -46,15 +46,15 @@ const Discription = styled.div`
   color: #666;
 `;
 
-DescriptionItem.propTypes = {
+IntroduceItem.propTypes = {
   title: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-  discription: PropTypes.string.isRequired,
+  Introduce: PropTypes.string.isRequired,
   images: PropTypes.objectOf(PropTypes.string).isRequired,
   width: PropTypes.string,
 };
 
-DescriptionItem.defaultProps = {
+IntroduceItem.defaultProps = {
   width: '25.3rem',
 };
 
-export default DescriptionItem;
+export default IntroduceItem;

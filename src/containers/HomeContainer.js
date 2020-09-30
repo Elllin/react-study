@@ -1,17 +1,17 @@
 import React from 'react';
 
 import Header from 'components/common/header/Header';
-import Beginning from 'components/home/main/Beginning';
-import Description from 'components/home/main/description/Description';
-import CreateButton from 'components/home/main/CreateButton';
+import MainPage from 'components/home/mainPage/MainPage';
+import Introduce from 'components/home/introduce/Introduce';
+import CreateButton from 'components/common/createButton/CreateButton';
 
 function HomeContainer() {
   return (
     <div>
       <Header />
       <main>
-        <Beginning />
-        <Description />
+        <MainPage />
+        <Introduce />
         <CreateButton />
       </main>
     </div>
