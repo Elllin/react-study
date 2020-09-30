@@ -22,7 +22,8 @@ function CreateStudyContainer() {
   if (loading) return <CreateStudy loading={loading} onSubmit={onSubmit} />;
   if (error) return <h1 style={{ fontSize: '50px' }}>{`에러가 발생했습니다!${error}`}</h1>;
 
-  return <>{data ? <Invitation /> : <CreateStudy onSubmit={onSubmit} />}</>;
+  // return <>{data ? <Invitation /> : <CreateStudy onSubmit={onSubmit} />}</>;
+  return <CreateStudy onSubmit={onSubmit} />;
 }
 
 export default CreateStudyContainer;
