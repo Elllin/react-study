@@ -48,7 +48,7 @@ const Introduce = styled.div`
 
 IntroduceItem.propTypes = {
   title: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-  Introduce: PropTypes.string.isRequired,
+  introduce: PropTypes.string.isRequired,
   images: PropTypes.objectOf(PropTypes.string).isRequired,
   width: PropTypes.string,
 };

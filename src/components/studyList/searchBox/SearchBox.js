@@ -1,6 +1,6 @@
 import React from 'react';
 
-import SelectBox from 'components/common/selectBox/SelectBox';
+import CustomSelectBox from 'components/common/customSelectBox/CustomSelectBox';
 
 import styled from 'styled-components';
 import { borderRadius } from 'style/CustomStyle';
@@ -12,15 +12,25 @@ function searchBox() {
     <Wrap>
       <SelectBoxWrap>
         <label className="blind">시/도</label>
-        <SelectBox optionItems={['서울', '인천']} name="location" defaultText="시/도" borderNone />
+        <CustomSelectBox
+          optionItems={['서울', '인천']}
+          name="location"
+          defaultText="시/도"
+          borderNone
+        />
       </SelectBoxWrap>
       <SelectBoxWrap>
         <label className="blind">구/군</label>
-        <SelectBox optionItems={['서울', '인천']} name="location" defaultText="구/군" borderNone />
+        <CustomSelectBox
+          optionItems={['서울', '인천']}
+          name="location"
+          defaultText="구/군"
+          borderNone
+        />
       </SelectBoxWrap>
       <SelectBoxWrap>
         <label className="blind">그룹 카테고리</label>
-        <SelectBox
+        <CustomSelectBox
           optionItems={['서울', '인천']}
           name="location"
           defaultText="그룹 카테고리"

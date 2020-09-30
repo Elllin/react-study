@@ -21,6 +21,7 @@ function DatePicker({
   endDateName,
   dateFormat,
   coverText,
+  displayFormat,
 }) {
   const [startDate, setStartDate] = useState();
   const [endDate, setEndDate] = useState();
@@ -60,7 +61,7 @@ function DatePicker({
         customArrowIcon={<DateArrow />}
         customInputIcon={<CalendarIcon />}
         customCloseIcon={<CloseIcon />}
-        displayFormat="YYYY년 M월 D일 (dd)"
+        displayFormat={displayFormat}
       />
       {coverText && (
         <Cover startdate={startDate} as="div">
@@ -265,6 +266,7 @@ DatePicker.propTypes = {
   endDateName: PropTypes.string,
   dateFormat: PropTypes.string,
   coverText: PropTypes.string,
+  displayFormat: PropTypes.string,
 };
 
 DatePicker.defaultProps = {
@@ -274,6 +276,7 @@ DatePicker.defaultProps = {
   startDateName: 'startDate',
   endDateName: 'endDate',
   dateFormat: 'YYYY-MM-DD',
+  displayFormat: 'YYYY년 M월 D일 (dd)',
   coverText: null,
 };
 export default memo(DatePicker);

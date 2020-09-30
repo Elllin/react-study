@@ -5,21 +5,23 @@ import PropTypes from 'prop-types';
 import createStudy from './constants/constants';
 import { checkSpecialCharacters } from 'lib/utils';
 
-import SelectBox from 'components/common/selectBox/SelectBox';
+import CustomSelectBox from 'components/common/customSelectBox/CustomSelectBox';
 import HashtagInput from './hashtagInput/HashtagInput';
 import BoxTemplate from './boxTemplate/BoxTemplate';
-import RadioBox from './radioBox/RadioBox';
+import RadioBox from 'components/common/radioBox/RadioBox';
 import FormTemplate from './formTemplate/FormTemplate';
 import CharacterCounter from './characterCounter/CharacterCounter';
 import LoadingPage from 'common/LoadingPage';
 import MainButton from 'components/common/mainButton/MainButton';
-
-import styled, { css } from 'styled-components';
-import { InputBox, HelpMessage, defaultLayout } from 'style/CustomStyle';
 import ValidationMessage from './validationMessage/ValidationMessage';
 import DatePicker from './datePicker/DatePicker';
 
+import styled, { css } from 'styled-components';
+import { InputBox, HelpMessage, defaultLayout } from 'style/CustomStyle';
+
 function CreateStudy({ onSubmit, loading }) {
+  const TAG_CREATION_KEY = [' ', ','];
+
   const [inputLength, setInputLength] = useState({
     titleLength: 0,
     descriptionLength: 0,
@@ -43,9 +45,14 @@ function CreateStudy({ onSubmit, loading }) {
     [inputLength],
   );
 
-  const isTagCreation = useCallback((e, value) => {
-    return (e.key === ' ' || e.key === ',') && value.length > 0;
-  }, []);
+  const isTagCreation = useCallback(
+    (e, value) => {
+      const isTagCreationKey = TAG_CREATION_KEY.includes(e.key);
+
+      return isTagCreationKey && value.length > 0;
+    },
+    [TAG_CREATION_KEY],
+  );
 
   const { register, handleSubmit, setValue, watch, errors } = useForm({
     defaultValues: { duration: null },
@@ -63,7 +70,7 @@ function CreateStudy({ onSubmit, loading }) {
       <FormTemplate onSubmit={onSubmit} handleSubmit={handleSubmit}>
         <BoxLayout>
           <BoxTemplate title="지역" htmlFor="location">
-            <SelectBox
+            <CustomSelectBox
               optionItems={locationOption}
               name="location"
               register={register({ required: true })}
@@ -72,7 +79,7 @@ function CreateStudy({ onSubmit, loading }) {
           </BoxTemplate>
 
           <BoxTemplate title="그룹 카테고리" htmlFor="category">
-            <SelectBox
+            <CustomSelectBox
               optionItems={categoryOption}
               name="category"
               register={register({ required: true })}
