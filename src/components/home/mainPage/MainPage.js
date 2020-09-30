@@ -23,7 +23,7 @@ function MainPage() {
             <br />
             스터디그룹을 시작해보세요!
           </h2>
-          <button>간편하게 이메일로 시작</button>
+          <button>스터디 시작하기</button>
         </Background>
         <DownButtonWrap onClick={onClickDown}>
           <DownIcon />

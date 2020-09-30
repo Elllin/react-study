@@ -55,7 +55,7 @@ function CreateStudy({ onSubmit, loading }) {
   );
 
   const { register, handleSubmit, setValue, watch, errors } = useForm({
-    defaultValues: { duration: null },
+    defaultValues: { duration: { startDate: null, endDate: null } },
   });
 
   const title = watch('title', '');

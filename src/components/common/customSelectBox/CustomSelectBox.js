@@ -44,15 +44,7 @@ function CustomSelectBox({
           ))}
         </OptionContainer>
 
-        <SelectBox
-          as="div"
-          defaultValue=""
-          id={name}
-          name={name}
-          toggle={toggle}
-          onClick={onClickToggle}
-          {...props}
-        >
+        <SelectBox as="div" toggle={toggle} onClick={onClickToggle} {...props}>
           {selected ? selected : defaultText}
           <SelectArrow>
             <BsChevronDown />
