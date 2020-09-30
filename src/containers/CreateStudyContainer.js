@@ -11,8 +11,7 @@ function CreateStudyContainer() {
   const dispatch = useDispatch();
 
   const onSubmit = (data) => {
-    const strData = JSON.stringify(data);
-    dispatch(fetchCreateStudy(strData));
+    dispatch(fetchCreateStudy(data));
   };
 
   useEffect(() => {

@@ -6,10 +6,18 @@ import axios from 'axios';
 //     body: data,
 //   });
 // };
+const options = {
+  headers: {
+    'Content-Type': 'application/json',
+  },
+};
+
 export const fetchCreateStudy = (data) => {
-  return axios.post('http://ec2-13-125-153-253.ap-northeast-2.compute.amazonaws.com/study', {
-    body: data,
-  });
+  return axios.post(
+    'http://ec2-13-125-153-253.ap-northeast-2.compute.amazonaws.com/study',
+    JSON.stringify(data),
+    options,
+  );
 };
 
 export const fetchStudyDetail = (id) => {

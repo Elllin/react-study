@@ -26,7 +26,7 @@ const Wrap = styled.div`
   color: #cacaca;
   color: ${({ validation, length, theme }) => {
     if (length && validation) return theme.warningColor;
-    else if (length && validation) return theme.successColor;
+    else if (length && !validation) return theme.successColor;
   }};
   span + span {
     margin-left: 0.2rem;

@@ -73,7 +73,8 @@ function CreateStudy({ onSubmit, loading }) {
             <CustomSelectBox
               optionItems={locationOption}
               name="location"
-              register={register({ required: true })}
+              register={register}
+              required
               defaultText="시/도 선택"
             />
           </BoxTemplate>
@@ -82,7 +83,8 @@ function CreateStudy({ onSubmit, loading }) {
             <CustomSelectBox
               optionItems={categoryOption}
               name="category"
-              register={register({ required: true })}
+              register={register}
+              required
               defaultText="카테고리 선택"
             />
           </BoxTemplate>
@@ -101,7 +103,7 @@ function CreateStudy({ onSubmit, loading }) {
           <RadiouContainer>
             <RadioBox
               id="deposit-yes"
-              value={1}
+              value="1"
               text="네. 할래요!"
               name="deposit"
               size="large"
@@ -109,7 +111,7 @@ function CreateStudy({ onSubmit, loading }) {
             />
             <RadioBox
               id="deposit-no"
-              value={0}
+              value="0"
               text="아니요. 괜찮아요!"
               name="deposit"
               size="large"
@@ -233,6 +235,8 @@ const TitleInput = styled(InputBox)`
 `;
 
 const RadiouContainer = styled.div`
+  display: flex;
+
   div + div {
     margin-left: 17.9rem;
   }
