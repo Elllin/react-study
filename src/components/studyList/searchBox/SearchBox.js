@@ -13,15 +13,20 @@ function searchBox() {
     <Wrap>
       <SelectBoxWrap>
         <label className="blind">시/도</label>
-        <SelectBox optionItems={['서울', '인천']} name="location" placeholder="시/도" borderNone />
+        <SelectBox optionItems={['서울', '인천']} name="location" defaultText="시/도" borderNone />
       </SelectBoxWrap>
       <SelectBoxWrap>
-        <label className="blind">시/도</label>
-        <SelectBox optionItems={['서울', '인천']} name="location" borderNone />
+        <label className="blind">구/군</label>
+        <SelectBox optionItems={['서울', '인천']} name="location" defaultText="구/군" borderNone />
       </SelectBoxWrap>
       <SelectBoxWrap>
-        <label className="blind">시/도</label>
-        <SelectBox optionItems={['서울', '인천']} name="location" borderNone />
+        <label className="blind">그룹 카테고리</label>
+        <SelectBox
+          optionItems={['서울', '인천']}
+          name="location"
+          defaultText="그룹 카테고리"
+          borderNone
+        />
       </SelectBoxWrap>
       <SearchButton>
         검색하기 <BsArrowRight />

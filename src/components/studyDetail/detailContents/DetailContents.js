@@ -111,10 +111,10 @@ DetailContents.propTypes = {
   location: PropTypes.string.isRequired,
   category: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  deposit: PropTypes.string.isRequired,
+  deposit: PropTypes.number.isRequired,
   startDate: PropTypes.string.isRequired,
   endDate: PropTypes.string.isRequired,
-  dDay: PropTypes.string.isRequired,
+  dDay: PropTypes.number.isRequired,
   tags: PropTypes.arrayOf(PropTypes.string),
 };
 

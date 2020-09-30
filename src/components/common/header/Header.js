@@ -8,6 +8,7 @@ function Header() {
   const [clickedButton, setClickedButton] = useState('');
   const onClickNavButton = (e) => {
     setClickedButton(e.target.id);
+    console.log(clickedButton, 1, e.target.id);
   };
 
   return (

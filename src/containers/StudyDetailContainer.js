@@ -13,6 +13,7 @@ import { reducerUtils } from 'lib/asyncUtils';
 import { getDday, getDateFormat } from 'lib/utils';
 
 function StudyDetailContainer({ detailId }) {
+  const DATE_FORMAT = 'M월 D일 (dd)';
   const dispatch = useDispatch();
 
   const { loading, data, error } = useSelector(
@@ -31,8 +32,8 @@ function StudyDetailContainer({ detailId }) {
 
   const { Location, Category, title, study_start, study_end, deposit, Tags, description } = data;
 
-  const startDate = getDateFormat(study_start, 'M월 D일 (dd)');
-  const endDate = getDateFormat(study_end, 'M월 D일 (dd)');
+  const startDate = getDateFormat(study_start, DATE_FORMAT);
+  const endDate = getDateFormat(study_end, DATE_FORMAT);
   const dDay = getDday(study_start, study_end);
 
   return (
@@ -60,5 +61,3 @@ StudyDetailContainer.propTypes = {
 };
 
 export default StudyDetailContainer;
-
-//71바 7194

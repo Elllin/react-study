@@ -5,10 +5,15 @@ import { InputBox } from 'style/CustomStyle';
 import styled from 'styled-components';
 import { BsChevronDown } from 'react-icons/bs';
 
-function SelectBox({ optionItems, name, register, ...props }) {
+function SelectBox({ optionItems, name, defaultText, register, defaultColor, ...props }) {
   return (
     <SelectWrap>
-      <InputBox as="select" id={name} name={name} ref={register} {...props}>
+      <InputBox as="select" defaultValue="" id={name} name={name} ref={register} {...props}>
+        {defaultText && (
+          <DefaultOption value="" disabled hidden defaultColor={defaultColor}>
+            {defaultText}
+          </DefaultOption>
+        )}
         {optionItems.map((text) => (
           <option value={text} key={text}>
             {text}
@@ -49,14 +54,22 @@ const SelectArrow = styled.div`
   pointer-events: none;
 `;
 
+const DefaultOption = styled.option`
+  color: ${({ defaultColor }) => defaultColor};
+`;
+
 SelectBox.propTypes = {
   optionItems: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number]))
     .isRequired,
   name: PropTypes.string.isRequired,
   register: PropTypes.func,
+  defaultText: PropTypes.string,
+  defaultColor: PropTypes.string,
 };
 SelectBox.defaultProps = {
   register: null,
+  defaultText: null,
+  defaultColor: '#000',
 };
 
 export default memo(SelectBox);
