@@ -15,7 +15,7 @@ import LoadingPage from 'common/LoadingPage';
 import MainButton from 'components/common/mainButton/MainButton';
 
 import styled, { css } from 'styled-components';
-import { InputBox, HelpMessage } from 'style/CustomStyle';
+import { InputBox, HelpMessage, defaultLayout } from 'style/CustomStyle';
 import ValidationMessage from './validationMessage/ValidationMessage';
 import DatePicker from './datePicker/DatePicker';
 
@@ -54,7 +54,7 @@ function CreateStudy({ onSubmit, loading }) {
   const title = watch('title', '');
   const description = watch('description', '');
 
-  const titleValidation = !checkSpecialCharacters(title);
+  const titleValidation = checkSpecialCharacters(title);
 
   const { groupName, introduction, locationOption, categoryOption, duration } = createStudy;
 
@@ -124,17 +124,18 @@ function CreateStudy({ onSubmit, loading }) {
           />
 
           {/* 리팩토링 하기!!!! */}
+
           <ValidationMessage validation={titleValidation} length={titleLength} />
+          <HelpArea>
+            {/* {titleValidation && !errors.title && <HelpMessage>{groupName.helpMessage}</HelpMessage>} */}
+            {/* <ErrorMessage>{!titleValidation && groupName.}</ErrorMessage> */}
 
-          {/* {titleValidation && !errors.title && <HelpMessage>{groupName.helpMessage}</HelpMessage>} */}
-          {/* <ErrorMessage>{!titleValidation && groupName.}</ErrorMessage> */}
-
-          {<HelpMessage validation={titleValidation}>{groupName.helpMessage}</HelpMessage>}
-          {/* 아이디 중복의 state가 false라면 이걸 보여주고 아니면 아래 보여준다,  validation true면 회색 거짓 빨간색*/}
-          {/* <ErrorMessage>{}</ErrorMessage> */}
-          {/* 중복확인 메세지 넣어주고 스타일링ㅎㅏ기 */}
-
-          <CharacterCounter length={titleLength} maxLength={groupName.maxLength} />
+            <HelpMessage validation={titleValidation}>{groupName.helpMessage}</HelpMessage>
+            {/* 아이디 중복의 state가 false라면 이걸 보여주고 아니면 아래 보여준다,  validation true면 회색 거짓 빨간색*/}
+            {/* <ErrorMessage>{}</ErrorMessage> */}
+            {/* 중복확인 메세지 넣어주고 스타일링ㅎㅏ기 */}
+            <CharacterCounter length={titleLength} maxLength={groupName.maxLength} />
+          </HelpArea>
         </BoxTemplate>
 
         <BoxTemplate title="그룹 소개" htmlFor="description">
@@ -209,10 +210,15 @@ const ButtonWrap = styled.div`
   margin-top: 1.1rem;
 `;
 
+const HelpArea = styled.div`
+  ${defaultLayout}
+  justify-content: space-between;
+`;
+
 const TitleInput = styled(InputBox)`
-  border-color: ${({ validation, theme }) => !validation && theme.requiredColor};
+  border-color: ${({ validation, theme }) => validation && theme.requiredColor};
   &:focus {
-    outline-color: ${({ validation, theme }) => !validation && theme.requiredColor};
+    outline-color: ${({ validation, theme }) => validation && theme.requiredColor};
   }
   ${requiredError}
 `;

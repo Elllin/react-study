@@ -17,8 +17,8 @@ const createStudy = {
       '그룹을 특색 있게 나타내는 해시태그를 입력 해주세요. 설정시 검색 확률이 높아져요! 등록된 태그를 클릭하면 삭제됩니다.',
     maxLength: 20,
   },
-  locationOption: ['동작구', '경기 전체', '인천 전체'],
-  categoryOption: ['취업・면접', '대학생 / 취업', '공무원 / 임용'],
+  locationOption: ['강동구', '경기 전체', '인천 전체'],
+  categoryOption: ['라이프・취미', '대학생 / 취업', '공무원 / 임용'],
 };
 
 export default createStudy;

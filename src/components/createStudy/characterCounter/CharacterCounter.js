@@ -12,6 +12,7 @@ function CharacterCounter({ length, maxLength }) {
 }
 
 const Wrap = styled.div`
+  /* display: inline-block; */
   margin-top: 0.8rem;
   text-align: end;
   font-size: 1.4rem;

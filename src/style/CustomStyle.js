@@ -47,5 +47,5 @@ export const HelpMessage = styled.span`
   margin-top: 0.8rem;
   font-size: 1.4rem;
   line-height: 1.8rem;
-  color: #5e5e5e;
+  color: ${({ validation, theme }) => (validation ? theme.requiredColor : '#5e5e5e')};
 `;

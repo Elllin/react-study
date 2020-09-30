@@ -10,8 +10,8 @@ import { defaultLayout } from 'style/CustomStyle';
 function ValidationMessage({ validation, length, passText, failText }) {
   return (
     <Wrap validation={validation} length={length}>
-      <StatusIcon>{validation ? <RiCheckLine /> : <FiX />}</StatusIcon>
-      <span>{validation ? passText : failText}</span>
+      <StatusIcon>{validation ? <FiX /> : <RiCheckLine />}</StatusIcon>
+      <span>{validation ? failText : passText}</span>
     </Wrap>
   );
 }
@@ -25,7 +25,7 @@ const Wrap = styled.div`
   font-size: 1.6rem;
   color: #cacaca;
   color: ${({ validation, length, theme }) => {
-    if (length && !validation) return theme.warningColor;
+    if (length && validation) return theme.warningColor;
     else if (length && validation) return theme.successColor;
   }};
   span + span {

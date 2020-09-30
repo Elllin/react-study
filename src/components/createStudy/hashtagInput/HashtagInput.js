@@ -28,8 +28,8 @@ function HashtagInput({ register, setValue, name, maxCount, isTagCreation, ...pr
 
       if (isTagCreation(e, value)) {
         const newhashTag = { id: tagId.current, text: value };
-
         setHashtags(hashtags.concat([newhashTag]));
+
         tagId.current++;
       }
     },
@@ -50,8 +50,8 @@ function HashtagInput({ register, setValue, name, maxCount, isTagCreation, ...pr
   );
 
   useEffect(() => {
-    const textArr = hashtags.map((tag) => tag.text.slice(1));
-
+    const textArr = hashtags.map((tag) => tag.text);
+    console.log(textArr);
     setValue(name, textArr);
   }, [hashtags, setValue, name]);
 
