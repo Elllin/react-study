@@ -15,6 +15,7 @@ function CustomSelectBox({
   required,
   register,
   defaultColor,
+  error,
   ...props
 }) {
   // defaultColor수정 하기!
@@ -39,13 +40,15 @@ function CustomSelectBox({
               value={text}
               key={text}
               onClick={onClickItem}
-              register={required && register({ required: true })}
+              register={register}
             />
           ))}
         </OptionContainer>
 
-        <SelectBox as="div" toggle={toggle} onClick={onClickToggle} {...props}>
-          {selected ? selected : defaultText}
+        <SelectBox as="div" toggle={toggle} onClick={onClickToggle} error={error} {...props}>
+          <SelectedValue error={error} selected={selected}>
+            {selected ? selected : defaultText}
+          </SelectedValue>
           <SelectArrow>
             <BsChevronDown />
           </SelectArrow>
@@ -60,6 +63,7 @@ const Wrap = styled.div`
   display: flex;
   cursor: pointer;
   flex-direction: column;
+
   ${({ toggle }) =>
     toggle &&
     css`
@@ -81,11 +85,30 @@ const SelectBox = styled(InputBox)`
   ${defaultLayout}
   justify-content: space-between;
   order: 0;
+  ${({ error, theme }) =>
+    error &&
+    css`
+      border-color: ${theme.requiredColor};
+    `}
 
   ${({ toggle }) =>
     toggle &&
     css`
       border: none;
+    `}
+`;
+
+const SelectedValue = styled.span`
+  ${({ selected }) =>
+    !selected &&
+    css`
+      color: #a2a2a2;
+    `}
+
+  ${({ error, theme }) =>
+    error &&
+    css`
+      color: ${theme.requiredColor};
     `}
 `;
 
@@ -127,12 +150,14 @@ CustomSelectBox.propTypes = {
   defaultText: PropTypes.string,
   defaultColor: PropTypes.string,
   required: PropTypes.bool,
+  error: PropTypes.object,
 };
 CustomSelectBox.defaultProps = {
   register: null,
   defaultText: null,
   defaultColor: '#000',
   required: null,
+  error: null,
 };
 
 export default memo(CustomSelectBox);

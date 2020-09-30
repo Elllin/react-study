@@ -5,14 +5,16 @@ import styled, { css } from 'styled-components';
 import { borderRadius } from 'style/CustomStyle';
 import { RiCheckLine } from 'react-icons/ri';
 
-function RadioBox({ id, text, register, checkedcolor, onClick, size, ...props }) {
+function RadioBox({ id, text, register, checkedcolor, onClick, size, error, ...props }) {
   const onClickRadio = ({ target }) => {
     if (!onClick) return;
     onClick(target.value);
   };
 
+  console.log(error);
+
   return (
-    <RadioWrap size={size} onClick={onClickRadio}>
+    <RadioWrap size={size} onClick={onClickRadio} error={error}>
       <input
         type="radio"
         id={id}
@@ -28,6 +30,14 @@ function RadioBox({ id, text, register, checkedcolor, onClick, size, ...props })
     </RadioWrap>
   );
 }
+
+const requiredError = css`
+  ${({ error, theme }) =>
+    error &&
+    css`
+      color: ${theme.requiredColor};
+    `}
+`;
 
 const sizes = {
   small: {
@@ -57,6 +67,7 @@ const RadioWrap = styled.div`
   display: flex;
   position: relative;
   align-items: center;
+  ${requiredError}
 
   [type='radio'] {
     appearance: none;
@@ -72,6 +83,11 @@ const RadioWrap = styled.div`
     border: 0.1rem solid #979797;
     cursor: pointer;
     box-sizing: border-box;
+    ${({ error, theme }) =>
+      error &&
+      css`
+        border-color: ${theme.requiredColor};
+      `}
   }
 
   [type='radio']:not(:checked) + label:after,
@@ -107,6 +123,11 @@ const RadioWrap = styled.div`
     letter-spacing: -0.03rem;
     cursor: pointer;
     color: #4e4e4e;
+    ${({ error, theme }) =>
+      error &&
+      css`
+        color: ${theme.requiredColor};
+      `}
   }
 
   svg {
@@ -129,6 +150,7 @@ RadioBox.propTypes = {
   register: PropTypes.func,
   checkedcolor: PropTypes.string,
   size: PropTypes.string,
+  error: PropTypes.object,
 };
 
 RadioBox.defaultProps = {
@@ -136,6 +158,7 @@ RadioBox.defaultProps = {
   checkedcolor: null,
   onClick: null,
   size: 'small',
+  error: null,
 };
 
 export default memo(RadioBox);

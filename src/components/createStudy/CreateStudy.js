@@ -73,9 +73,9 @@ function CreateStudy({ onSubmit, loading }) {
             <CustomSelectBox
               optionItems={locationOption}
               name="location"
-              register={register}
-              required
+              register={register({ required: true })}
               defaultText="시/도 선택"
+              error={errors.location}
             />
           </BoxTemplate>
 
@@ -83,9 +83,9 @@ function CreateStudy({ onSubmit, loading }) {
             <CustomSelectBox
               optionItems={categoryOption}
               name="category"
-              register={register}
-              required
+              register={register({ required: true })}
               defaultText="카테고리 선택"
+              error={errors.category}
             />
           </BoxTemplate>
         </BoxLayout>
@@ -108,6 +108,7 @@ function CreateStudy({ onSubmit, loading }) {
               name="deposit"
               size="large"
               register={register({ required: true })}
+              error={errors.deposit}
             />
             <RadioBox
               id="deposit-no"
@@ -115,6 +116,7 @@ function CreateStudy({ onSubmit, loading }) {
               text="아니요. 괜찮아요!"
               name="deposit"
               size="large"
+              error={errors.deposit}
               register={register({ required: true })}
             />
           </RadiouContainer>
