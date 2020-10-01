@@ -13,13 +13,9 @@ const options = {
 };
 
 export const fetchCreateStudy = (data) => {
-  return axios.post(
-    'http://ec2-13-125-153-253.ap-northeast-2.compute.amazonaws.com/study',
-    JSON.stringify(data),
-    options,
-  );
+  return axios.post(process.env.REACT_APP_BASE_URL, JSON.stringify(data), options);
 };
 
 export const fetchStudyDetail = (id) => {
-  return axios.get(`http://ec2-13-125-153-253.ap-northeast-2.compute.amazonaws.com/study/${id}`);
+  return axios.get(`${process.env.REACT_APP_BASE_URL}/${id}`);
 };
