@@ -5,10 +5,11 @@ import styled from 'styled-components';
 import { Container, defaultLayout } from 'style/CustomStyle';
 
 function Header() {
-  const [clickedButton, setClickedButton] = useState('');
+  const [clickedButton, setClickedButton] = useState(null);
+
   const onClickNavButton = (e) => {
-    setClickedButton(e.target.id);
-    console.log(clickedButton, 1, e.target.id);
+    const id = e.target.id;
+    setClickedButton(id);
   };
 
   return (
@@ -23,7 +24,7 @@ function Header() {
               로그인
             </NavButton>
           </CustomLink>
-          <CustomLink to="/detail/1">
+          <CustomLink to="/list">
             <NavButton id="list-btn" onClick={onClickNavButton} clickedButton={clickedButton}>
               그룹리스트
             </NavButton>

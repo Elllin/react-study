@@ -76,6 +76,7 @@ function CreateStudy({ onSubmit, loading }) {
               register={register({ required: true })}
               defaultText="시/도 선택"
               error={errors.location}
+              defaultColor={'#a2a2a2'}
             />
           </BoxTemplate>
 
@@ -86,6 +87,7 @@ function CreateStudy({ onSubmit, loading }) {
               register={register({ required: true })}
               defaultText="카테고리 선택"
               error={errors.category}
+              defaultColor={'#a2a2a2'}
             />
           </BoxTemplate>
         </BoxLayout>

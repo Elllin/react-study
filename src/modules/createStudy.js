@@ -17,12 +17,10 @@ export const fetchCreateStudy = (payload) => ({ type: GET_CREATE_STUDY, payload 
 const fetchCreateStudySaga = createAsyncSaga(GET_CREATE_STUDY, createStudyAPI.fetchCreateStudy);
 
 function* goToDetailSaga() {
-  // const { id } = createStudy.data;
-
   const id = yield select((state) => state.createStudy.createStudy.data.study_id);
-  console.log(id);
-  //위 id를 넣기!!
   const history = yield getContext('history');
+
+  //위 id를 넣기!!
   history.push('/detail/1');
 }
 
@@ -30,8 +28,6 @@ export function* createStudySaga() {
   yield takeEvery(GET_CREATE_STUDY, fetchCreateStudySaga);
   yield takeEvery(GET_CREATE_STUDY_SUCCESS, goToDetailSaga);
 }
-
-// export const fetchCreateStudy = createAsyncThunk(GET_CREATE_STUDY, createStudyAPI.fetchCreateStudy);
 
 export const resetData = (dispatch) => {
   dispatch({ type: CREATE_STUDY_RESET });

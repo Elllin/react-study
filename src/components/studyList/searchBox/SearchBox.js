@@ -19,15 +19,7 @@ function searchBox() {
           borderNone
         />
       </SelectBoxWrap>
-      <SelectBoxWrap>
-        <label className="blind">구/군</label>
-        <CustomSelectBox
-          optionItems={['서울', '인천']}
-          name="location"
-          defaultText="구/군"
-          borderNone
-        />
-      </SelectBoxWrap>
+
       <SelectBoxWrap>
         <label className="blind">그룹 카테고리</label>
         <CustomSelectBox
@@ -56,11 +48,12 @@ const Wrap = styled.form`
 `;
 
 const SelectBoxWrap = styled.div`
-  width: 27.7rem;
+  width: 35rem;
+  background: #fff;
 `;
 
 const SearchButton = styled.button`
-  width: 23.5rem;
+  width: 35rem;
   display: flex;
   justify-content: space-between;
   align-items: center;

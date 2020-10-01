@@ -17,7 +17,6 @@ function CustomSelectBox({
   error,
   ...props
 }) {
-  // defaultColor수정 하기!
   const [toggle, setToggel] = useState(false);
   const [selected, setSelected] = useState(null);
 
@@ -45,7 +44,7 @@ function CustomSelectBox({
         </OptionContainer>
 
         <SelectBox as="div" toggle={toggle} onClick={onClickToggle} error={error} {...props}>
-          <SelectedValue error={error} selected={selected}>
+          <SelectedValue error={error} selected={selected} defaultColor={defaultColor}>
             {selected ? selected : defaultText}
           </SelectedValue>
           <SelectArrow>
@@ -98,10 +97,10 @@ const SelectBox = styled(InputBox)`
 `;
 
 const SelectedValue = styled.span`
-  ${({ selected }) =>
+  ${({ selected, defaultColor }) =>
     !selected &&
     css`
-      color: #a2a2a2;
+      color: ${defaultColor};
     `}
 
   ${({ error, theme }) =>
@@ -132,7 +131,6 @@ const OptionContainer = styled.div`
     toggle &&
     css`
       display: block;
-
       border-top: 0.1rem solid #cbcbcb;
     `}
 `;
