@@ -11,8 +11,6 @@ function RadioBox({ id, text, register, checkedcolor, onClick, size, error, ...p
     onClick(target.value);
   };
 
-  console.log(error);
-
   return (
     <RadioWrap size={size} onClick={onClickRadio} error={error}>
       <input
@@ -31,14 +29,6 @@ function RadioBox({ id, text, register, checkedcolor, onClick, size, error, ...p
   );
 }
 
-const requiredError = css`
-  ${({ error, theme }) =>
-    error &&
-    css`
-      color: ${theme.requiredColor};
-    `}
-`;
-
 const sizes = {
   small: {
     size: '1.8rem',
@@ -52,15 +42,23 @@ const sizes = {
   },
 };
 
+const requiredError = css`
+  ${({ error, theme }) =>
+    error &&
+    css`
+      color: ${theme.requiredColor};
+    `}
+`;
+
 const commonStyle = css`
   position: absolute;
-
   content: '';
+  ${borderRadius(`0.2rem`)}
+
   ${({ size }) => css`
     width: ${sizes[size].size};
     height: ${sizes[size].size};
   `}
-  ${borderRadius(`0.2rem`)}
 `;
 
 const RadioWrap = styled.div`

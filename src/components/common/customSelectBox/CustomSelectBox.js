@@ -1,7 +1,6 @@
 import React, { memo, useState } from 'react';
 import PropTypes from 'prop-types';
 
-import CustomSelectOption from './customSelectOption/CustomSelectOption';
 import RadioBox from '../radioBox/RadioBox';
 
 import { InputBox, defaultLayout, borderRadius } from 'style/CustomStyle';
@@ -115,10 +114,6 @@ const SelectedValue = styled.span`
 const SelectArrow = styled.div`
   color: #787878;
   font-size: 2.1rem;
-`;
-
-const DefaultOption = styled.option`
-  color: ${({ defaultColor }) => defaultColor};
 `;
 
 const OptionContainer = styled.div`
