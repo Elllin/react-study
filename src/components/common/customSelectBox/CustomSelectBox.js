@@ -15,21 +15,30 @@ function CustomSelectBox({
   register,
   defaultColor,
   error,
+  borderNone,
+  onClick,
+  propsToggle,
+  optionPadding,
   ...props
 }) {
-  const [toggle, setToggel] = useState(false);
+  const [localToggle, setLocalToggel] = useState(false);
   const [selected, setSelected] = useState(null);
 
-  const onClickToggle = () => setToggel((prevState) => !prevState);
+  const onClickToggle = () => {
+    if (onClick) return onClick();
+    setLocalToggel((prevState) => !prevState);
+  };
   const onClickItem = (value) => {
     setSelected(value);
-    return setTimeout(() => setToggel(false), 250);
+    return setTimeout(() => setLocalToggel(false), 250);
   };
+
+  const toggle = propsToggle ? propsToggle : localToggle;
 
   return (
     <>
-      <Wrap toggle={toggle}>
-        <OptionContainer toggle={toggle}>
+      <Wrap toggle={toggle} borderNone={borderNone}>
+        <OptionContainer toggle={toggle} optionPadding={optionPadding} {...props}>
           {optionItems.map((text) => (
             <RadioBox
               id={text}
@@ -43,7 +52,14 @@ function CustomSelectBox({
           ))}
         </OptionContainer>
 
-        <SelectBox as="div" toggle={toggle} onClick={onClickToggle} error={error} {...props}>
+        <SelectBox
+          as="div"
+          toggle={toggle}
+          onClick={onClickToggle}
+          error={error}
+          borderNone={borderNone}
+          {...props}
+        >
           <SelectedValue error={error} selected={selected} defaultColor={defaultColor}>
             {selected ? selected : defaultText}
           </SelectedValue>
@@ -61,6 +77,7 @@ const Wrap = styled.div`
   display: flex;
   cursor: pointer;
   flex-direction: column;
+  padding: 0.5rem 1rem 0;
 
   ${({ toggle }) =>
     toggle &&
@@ -72,6 +89,13 @@ const Wrap = styled.div`
       box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.35);
       border: solid 1px #cbcbcb;
       background-color: #ffffff;
+    `}
+
+  ${({ borderNone }) =>
+    borderNone &&
+    css`
+      border: none;
+      box-shadow: none;
     `}
 `;
 
@@ -91,6 +115,12 @@ const SelectBox = styled(InputBox)`
 
   ${({ toggle }) =>
     toggle &&
+    css`
+      border: none;
+    `}
+
+    ${({ borderNone }) =>
+    borderNone &&
     css`
       border: none;
     `}
@@ -117,14 +147,13 @@ const SelectArrow = styled.div`
 
 const OptionContainer = styled.div`
   ${defaultLayout}
+  display: inline-flex;
   align-items: start;
   flex-direction: column;
-  padding: 2rem 0 3rem;
-  margin: 0 2.3rem;
+  padding: ${({ optionPadding }) => optionPadding};
+  margin: 0 1.6rem;
   order: 1;
-  div + div {
-    margin-top: 2rem;
-  }
+
   display: none;
 
   ${({ toggle }) =>
@@ -132,6 +161,17 @@ const OptionContainer = styled.div`
     css`
       display: block;
       border-top: 0.1rem solid #cbcbcb;
+      ${({ both }) =>
+        both &&
+        css`
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+        `}
+      ${({ far }) =>
+        far &&
+        css`
+          column-gap: 5rem;
+        `}
     `}
 `;
 
@@ -144,6 +184,10 @@ CustomSelectBox.propTypes = {
   defaultColor: PropTypes.string,
   required: PropTypes.bool,
   error: PropTypes.object,
+  borderNone: PropTypes.bool,
+  propsToggle: PropTypes.bool,
+  both: PropTypes.bool,
+  optionPadding: PropTypes.string,
 };
 CustomSelectBox.defaultProps = {
   register: null,
@@ -151,6 +195,10 @@ CustomSelectBox.defaultProps = {
   defaultColor: '#000',
   required: null,
   error: null,
+  borderNone: null,
+  propsToggle: null,
+  both: null,
+  optionPadding: '1rem 0 2rem',
 };
 
 export default memo(CustomSelectBox);

@@ -1,34 +1,53 @@
-import React from 'react';
+import React, { memo, useState, useRef } from 'react';
 
 import CustomSelectBox from 'components/common/customSelectBox/CustomSelectBox';
+import { locationOption, categoryOption } from './constants/constants';
 
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { borderRadius } from 'style/CustomStyle';
 
 import { BsArrowRight } from 'react-icons/bs';
 
-function searchBox() {
+function SearchBox({ onToggle, toggle }) {
+  // const [toggle, setToggel] = useState(false);
+
+  const onClickSearch = () => {
+    onToggle();
+  };
+
+  console.log(onToggle, toggle);
+
   return (
     <Wrap>
-      <SelectBoxWrap>
-        <label className="blind">시/도</label>
-        <CustomSelectBox
-          optionItems={['서울', '인천']}
-          name="location"
-          defaultText="시/도"
-          borderNone
-        />
-      </SelectBoxWrap>
+      <SelectBoxContainer toggle={toggle}>
+        <SelectBoxWrap>
+          <CustomSelectBox
+            onClick={onToggle}
+            optionItems={locationOption}
+            name="location"
+            defaultText="시/도"
+            borderNone
+            berder="none"
+            propsToggle={toggle}
+            both
+            optionPadding="1.8rem 0 4rem"
+            far
+          />
+        </SelectBoxWrap>
 
-      <SelectBoxWrap>
-        <label className="blind">그룹 카테고리</label>
-        <CustomSelectBox
-          optionItems={['서울', '인천']}
-          name="location"
-          defaultText="그룹 카테고리"
-          borderNone
-        />
-      </SelectBoxWrap>
+        <SelectBoxWrap>
+          <CustomSelectBox
+            onClick={onToggle}
+            optionItems={categoryOption}
+            name="category"
+            defaultText="그룹 카테고리"
+            borderNone
+            propsToggle={toggle}
+            both
+            optionPadding="1.8rem 0 4rem"
+          />
+        </SelectBoxWrap>
+      </SelectBoxContainer>
       <SearchButton>
         검색하기 <BsArrowRight />
       </SearchButton>
@@ -48,8 +67,28 @@ const Wrap = styled.form`
 `;
 
 const SelectBoxWrap = styled.div`
+  position: relative;
   width: 35rem;
+
   background: #fff;
+  & + & {
+    margin-left: 4rem;
+  }
+`;
+
+const SelectBoxContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+
+  ${({ toggle }) =>
+    toggle &&
+    css`
+      /* padding: 0 1.3rem; */
+      min-height: 360px;
+      box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.35);
+      border: solid 1px #cbcbcb;
+      background-color: #ffffff;
+    `}
 `;
 
 const SearchButton = styled.button`
@@ -66,4 +105,4 @@ const SearchButton = styled.button`
   }
 `;
 
-export default searchBox;
+export default SearchBox;

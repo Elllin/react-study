@@ -92,7 +92,7 @@ const RadioWrap = styled.div`
   [type='radio']:checked + label:after {
     ${commonStyle}
     left: 0.01rem;
-    top: 0.01rem;
+    top: 1.3rem;
     color: '#fff';
     font-weight: 700;
     -webkit-transition: all 0.2s ease;
@@ -121,11 +121,14 @@ const RadioWrap = styled.div`
     letter-spacing: -0.03rem;
     cursor: pointer;
     color: #4e4e4e;
+    width: 100%;
+    padding: 1.3rem 0;
+
     ${({ error, theme }) =>
       error &&
       css`
         color: ${theme.requiredColor};
-      `}
+      `};
   }
 
   svg {
@@ -136,7 +139,7 @@ const RadioWrap = styled.div`
 const CheckedIcon = styled(RiCheckLine)`
   position: absolute;
   left: 0rem;
-  top: 0rem;
+  top: 1.3rem;
   z-index: 1;
   color: #fff;
 `;
