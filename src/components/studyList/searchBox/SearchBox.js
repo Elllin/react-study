@@ -13,6 +13,7 @@ function SearchBox({ onToggle, toggle, onClose }) {
     return () => {
       onClose();
     };
+    // eslint-disable-next-line
   }, []);
 
   return (
@@ -81,7 +82,6 @@ const SelectBoxContainer = styled.div`
   ${({ toggle }) =>
     toggle &&
     css`
-      /* padding: 0 1.3rem; */
       min-height: 360px;
       box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.35);
       border: solid 1px #cbcbcb;
