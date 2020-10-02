@@ -20,8 +20,7 @@ function* goToDetailSaga() {
   const id = yield select((state) => state.createStudy.createStudy.data.study_id);
   const history = yield getContext('history');
 
-  //위 id를 넣기!!
-  history.push('/detail/1');
+  history.push(`/detail/${id}`);
 }
 
 export function* createStudySaga() {

@@ -161,12 +161,14 @@ const OptionContainer = styled.div`
     css`
       display: block;
       border-top: 0.1rem solid #cbcbcb;
+
       ${({ both }) =>
         both &&
         css`
           display: grid;
           grid-template-columns: 1fr 1fr;
         `}
+
       ${({ far }) =>
         far &&
         css`

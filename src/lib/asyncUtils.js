@@ -27,42 +27,6 @@ export const reducerUtils = {
   reset: (data = null) => reducerUtils.initial(data),
 };
 
-export const createAsyncThunk = (type, fetchFunc) => {
-  const [SUCCESS, ERROR] = [`${type}_SUCCESS`, `${type}_ERROR`];
-
-  return (param) => async (dispatch) => {
-    dispatch({ type });
-    try {
-      const res = await fetchFunc(param);
-      const payload = res.data;
-      console.log(payload);
-      dispatch({ type: SUCCESS, payload });
-    } catch (e) {
-      dispatch({ type: ERROR, payload: e, error: true });
-    }
-  };
-};
-
-const defaultIdSelector = (param) => param;
-
-export const createAsyncThunkById = (type, fetchFunc, idSelector = defaultIdSelector) => {
-  const [SUCCESS, ERROR] = [`${type}_SUCCESS`, `${type}_ERROR`];
-
-  return (param) => async (dispatch) => {
-    const id = idSelector(param);
-
-    dispatch({ type, meta: id });
-    try {
-      const res = await fetchFunc(param);
-      const payload = res.data;
-      console.log(payload);
-      dispatch({ type: SUCCESS, payload, meta: id });
-    } catch (e) {
-      dispatch({ type: ERROR, payload: e, error: true, meta: id });
-    }
-  };
-};
-
 export const createAsyncSaga = (type, fetchFunc) => {
   const [SUCCESS, ERROR] = [`${type}_SUCCESS`, `${type}_ERROR`];
 
@@ -158,6 +122,44 @@ export const createAsyncActionsById = (type, key, keepState) => {
 
       default:
         return state;
+    }
+  };
+};
+
+// 제거 예정
+
+export const createAsyncThunk = (type, fetchFunc) => {
+  const [SUCCESS, ERROR] = [`${type}_SUCCESS`, `${type}_ERROR`];
+
+  return (param) => async (dispatch) => {
+    dispatch({ type });
+    try {
+      const res = await fetchFunc(param);
+      const payload = res.data;
+      console.log(payload);
+      dispatch({ type: SUCCESS, payload });
+    } catch (e) {
+      dispatch({ type: ERROR, payload: e, error: true });
+    }
+  };
+};
+
+const defaultIdSelector = (param) => param;
+
+export const createAsyncThunkById = (type, fetchFunc, idSelector = defaultIdSelector) => {
+  const [SUCCESS, ERROR] = [`${type}_SUCCESS`, `${type}_ERROR`];
+
+  return (param) => async (dispatch) => {
+    const id = idSelector(param);
+
+    dispatch({ type, meta: id });
+    try {
+      const res = await fetchFunc(param);
+      const payload = res.data;
+      console.log(payload);
+      dispatch({ type: SUCCESS, payload, meta: id });
+    } catch (e) {
+      dispatch({ type: ERROR, payload: e, error: true, meta: id });
     }
   };
 };

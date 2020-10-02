@@ -1,4 +1,4 @@
-import React, { memo, useState, useRef } from 'react';
+import React, { memo, useEffect } from 'react';
 
 import CustomSelectBox from 'components/common/customSelectBox/CustomSelectBox';
 import { locationOption, categoryOption } from './constants/constants';
@@ -8,14 +8,12 @@ import { borderRadius } from 'style/CustomStyle';
 
 import { BsArrowRight } from 'react-icons/bs';
 
-function SearchBox({ onToggle, toggle }) {
-  // const [toggle, setToggel] = useState(false);
-
-  const onClickSearch = () => {
-    onToggle();
-  };
-
-  console.log(onToggle, toggle);
+function SearchBox({ onToggle, toggle, onClose }) {
+  useEffect(() => {
+    return () => {
+      onClose();
+    };
+  }, []);
 
   return (
     <Wrap>
@@ -105,4 +103,4 @@ const SearchButton = styled.button`
   }
 `;
 
-export default SearchBox;
+export default memo(SearchBox);
