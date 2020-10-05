@@ -57,7 +57,7 @@ function StudyDetailContainer({ detailId }) {
 }
 
 StudyDetailContainer.propTypes = {
-  detailId: PropTypes.number.isRequired,
+  detailId: PropTypes.string.isRequired,
 };
 
 export default StudyDetailContainer;

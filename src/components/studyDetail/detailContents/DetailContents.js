@@ -24,10 +24,16 @@ function DetailContents({
       <DetailList top>
         <TItle>스터디 기간</TItle>
         <Description>
-          <TagWrap>
-            <TagItem color="red" text={`D-${dDay}`} hash={null} fontWeight="bold" />
-          </TagWrap>
-          <span>{`${startDate} ~ ${endDate}`}</span>
+          {dDay ? (
+            <>
+              <TagWrap>
+                <TagItem color="red" text={`D-${dDay}`} hash={null} fontWeight="bold" />
+              </TagWrap>
+              <span>{`${startDate} ~ ${endDate}`}</span>
+            </>
+          ) : (
+            '상시모집'
+          )}
         </Description>
       </DetailList>
       <DetailList>
@@ -50,10 +56,12 @@ function DetailContents({
               <dt>그룹 카테고리:</dt>
               <dd>{category}</dd>
             </div>
-            <div>
-              <dt>그룹 해시태그:</dt>
-              <dd>{hashTags}</dd>
-            </div>
+            {hashTags && (
+              <div>
+                <dt>그룹 해시태그:</dt>
+                <dd>{hashTags}</dd>
+              </div>
+            )}
           </Information>
         </Description>
       </DetailList>

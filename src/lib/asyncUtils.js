@@ -60,7 +60,6 @@ export const createAsyncSagaById = (type, fetchFunc) => {
 
 export const createAsyncActions = (type, key, keepState) => {
   const [SUCCESS, ERROR] = [`${type}_SUCCESS`, `${type}_ERROR`];
-
   return (state, action) => {
     switch (action.type) {
       case type:

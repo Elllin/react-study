@@ -1,11 +1,10 @@
 import axios from 'axios';
 
-// export const fetchCreateStudy = (data) => {
-//   debugger;
-//   return axios.post('https://jsonplaceholder.typicode.com/posts', {
-//     body: data,
-//   });
-// };
+export const fetchDuplicationCheck = (data) => {
+  console.log(data);
+  return axios.get('https://jsonplaceholder.typicode.com/posts');
+};
+
 const options = {
   headers: {
     'Content-Type': 'application/json',

@@ -19,9 +19,8 @@ import DatePicker from './datePicker/DatePicker';
 import styled, { css } from 'styled-components';
 import { InputBox, HelpMessage, defaultLayout } from 'style/CustomStyle';
 
-function CreateStudy({ onSubmit, loading }) {
+function CreateStudy({ onSubmit, loading, onDuplicationCheck, duplicationCheck }) {
   const TAG_CREATION_KEY = [' ', ','];
-
   const [inputLength, setInputLength] = useState({
     titleLength: 0,
     descriptionLength: 0,
@@ -44,6 +43,12 @@ function CreateStudy({ onSubmit, loading }) {
     },
     [inputLength],
   );
+
+  const onKeyUp = ({ target }) => {
+    onDuplicationCheck(target.value);
+  };
+
+  console.log(duplicationCheck, 'ss');
 
   const isTagCreation = useCallback(
     (e, value) => {
@@ -136,6 +141,7 @@ function CreateStudy({ onSubmit, loading }) {
             error={errors.title}
             placeholder={groupName.placeholder}
             validation={titleValidation}
+            onKeyUp={onKeyUp}
           />
 
           {/* 리팩토링 하기!!!! */}
@@ -145,10 +151,14 @@ function CreateStudy({ onSubmit, loading }) {
             {/* {titleValidation && !errors.title && <HelpMessage>{groupName.helpMessage}</HelpMessage>} */}
             {/* <ErrorMessage>{!titleValidation && groupName.}</ErrorMessage> */}
 
-            <HelpMessage validation={titleValidation}>{groupName.helpMessage}</HelpMessage>
-            {/* 아이디 중복의 state가 false라면 이걸 보여주고 아니면 아래 보여준다,  validation true면 회색 거짓 빨간색*/}
-            {/* <ErrorMessage>{}</ErrorMessage> */}
-            {/* 중복확인 메세지 넣어주고 스타일링ㅎㅏ기 */}
+            {duplicationCheck === 'ok' ? (
+              <HelpMessage validation>
+                {'이미 존재하는 그룹 이름입니다. 다른 그룹 이름을 입력해주세요.'}
+              </HelpMessage>
+            ) : (
+              <HelpMessage validation={titleValidation}>{groupName.helpMessage}</HelpMessage>
+            )}
+
             <CharacterCounter length={titleLength} maxLength={groupName.maxLength} />
           </HelpArea>
         </BoxTemplate>

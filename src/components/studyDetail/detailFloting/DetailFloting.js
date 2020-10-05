@@ -6,7 +6,6 @@ import MainButton from 'components/common/mainButton/MainButton';
 import styled, { css } from 'styled-components';
 
 function DetailFloting({ title, startDate, endDate }) {
-  // const flotingRef = useRef();
   const [isFixed, setIsFixed] = useState(false);
   const TOP_OFFSET = 130;
 
@@ -37,7 +36,8 @@ function DetailFloting({ title, startDate, endDate }) {
         </List>
         <List>
           <dt>스터디 기간</dt>
-          <dd>{`${startDate} ~ ${endDate}`}</dd>
+
+          <dd>{startDate === 'Invalid date' ? '상시모집' : `${startDate} ~ ${endDate}`}</dd>
         </List>
       </dl>
       <ButtomWrap>

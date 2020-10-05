@@ -1,10 +1,12 @@
 import React from 'react';
 import StudyDetailContainer from 'containers/StudyDetailContainer';
 
-function StudyDetailPage() {
+function StudyDetailPage({ match }) {
+  const id = match.params.id;
+  console.log(id);
   return (
     <>
-      <StudyDetailContainer detailId={1} />
+      <StudyDetailContainer detailId={id} />
     </>
   );
 }
