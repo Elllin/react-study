@@ -43,16 +43,10 @@ function* goToDetailSaga() {
   history.push(`/detail/${id}`);
 }
 
-function* a() {
-  const id = yield select((state) => state.createStudy.duplicationCheck);
-  console.log(id);
-}
-
 export function* createStudySaga() {
   yield takeEvery(GET_CREATE_STUDY, fetchCreateStudySaga);
   yield takeEvery(DUPLICATION_CHECK, fetchDuplicationCheckSaga);
   yield takeEvery(GET_CREATE_STUDY_SUCCESS, goToDetailSaga);
-  yield takeEvery(DUPLICATION_CHECK_SUCCESS, a);
 }
 
 export const resetData = (dispatch) => {

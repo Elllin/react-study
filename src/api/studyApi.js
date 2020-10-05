@@ -12,9 +12,13 @@ const options = {
 };
 
 export const fetchCreateStudy = (data) => {
-  return axios.post(process.env.REACT_APP_BASE_URL, JSON.stringify(data), options);
+  return axios.post(`${process.env.REACT_APP_BASE_URL}/study`, JSON.stringify(data), options);
+};
+
+export const fetchStudyList = () => {
+  return axios.get(`${process.env.REACT_APP_BASE_URL}/study`);
 };
 
 export const fetchStudyDetail = (id) => {
-  return axios.get(`${process.env.REACT_APP_BASE_URL}/${id}`);
+  return axios.get(`${process.env.REACT_APP_BASE_URL}/study/${id}`);
 };
