@@ -10,9 +10,7 @@ const TOGGLE_SELECT = 'studyList/TOGGLE_SELECT';
 const CLOSE_SELECT = 'studyList/CLOSE_SELECT';
 
 const initialState = {
-  studyList: {
-    studyList: reducerUtils.initial(),
-  },
+  studyList: reducerUtils.initial(),
   searchToggle: false,
 };
 
@@ -37,19 +35,13 @@ export default function studyList(state = initialState, action) {
     case TOGGLE_SELECT:
       return {
         ...state,
-        studyList: {
-          ...state,
-          searchToggle: !state.studyList.searchToggle,
-        },
+        searchToggle: !state.studyList.searchToggle,
       };
 
     case CLOSE_SELECT:
       return {
         ...state,
-        studyList: {
-          ...state,
-          searchToggle: false,
-        },
+        searchToggle: false,
       };
 
     default:

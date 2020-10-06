@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { defaultLayout } from 'style/CustomStyle';
 
-function FormTemplate({ children, handleSubmit, onSubmit }) {
+function FormTemplate({ children, onSubmit, handleSubmit }) {
   return (
     <Wrap>
       <h1>DO IT DO IT</h1>
@@ -55,7 +55,6 @@ const RequiredMessage = styled.span`
 
 FormTemplate.propTypes = {
   children: PropTypes.node.isRequired,
-  handleSubmit: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
 };
 

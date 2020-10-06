@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchCreateStudy, fetchDuplicationCheck } from 'modules/createStudy';
 import { resetData } from 'modules/createStudy';
@@ -12,9 +12,13 @@ function CreateStudyContainer() {
   const { data } = useSelector((state) => state.createStudy.duplicationCheck);
   const dispatch = useDispatch();
 
-  const onSubmit = (data) => {
-    dispatch(fetchCreateStudy(data));
-  };
+  const onSubmit = useCallback(
+    (data) => {
+      dispatch(fetchCreateStudy(data));
+    },
+    [dispatch],
+  );
+
   const onDuplicationCheck = debounce(
     (studyName) => dispatch(fetchDuplicationCheck(studyName)),
     500,

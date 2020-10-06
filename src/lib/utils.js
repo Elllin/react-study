@@ -5,9 +5,9 @@ moment.locale('ko');
 export const checkSpecialCharacters = (str) => {
   // eslint-disable-next-line
   const specialPattern = /[`~!@#$%^&*\.,\=(){}+<>\[\]\\\'\";:\/?|]/gi;
-
-  if (specialPattern.test(str)) return true;
-  else return false;
+  return specialPattern.test(str);
+  // if (specialPattern.test(str)) return true;
+  // else return false;
 };
 
 export const getDday = (startDate, endDate) => {

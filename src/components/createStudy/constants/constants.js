@@ -1,4 +1,4 @@
-const createStudy = {
+const createStudyConstants = {
   groupName: {
     placeholder: '주제가 잘 드러나는 이름이 좋아요.',
     helpMessage: '특수문자는 사용이 불가해요.',
@@ -21,4 +21,4 @@ const createStudy = {
   categoryOption: ['라이프・취미', '대학생 / 취업', '공무원 / 임용'],
 };
 
-export default createStudy;
+export default createStudyConstants;

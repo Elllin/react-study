@@ -11,11 +11,11 @@ function HelpBubble() {
   return (
     <Wrap>
       <HelpIcon />
-      <Bubbel className="help-bubble">
+      <Bubble className="help-bubble">
         <span>{helpBubbleMessage}</span>
         <ArrowBorder />
-        <BubbelArrow />
-      </Bubbel>
+        <BubbleArrow />
+      </Bubble>
     </Wrap>
   );
 }
@@ -35,7 +35,7 @@ const HelpIcon = styled(AiOutlineQuestionCircle)`
   }
 `;
 
-const Bubbel = styled.div`
+const Bubble = styled.div`
   ${defaultLayout}
   display: none;
   padding: 1.2rem 1rem;
@@ -76,7 +76,7 @@ const ArrowBorder = styled.div`
   left: -1.5rem;
 `;
 
-const BubbelArrow = styled.div`
+const BubbleArrow = styled.div`
   ${CommonStyle}
   border-color: transparent #fff transparent transparent;
   left: -1.35rem;

@@ -1,7 +1,7 @@
 import React from 'react';
 
-function studyList() {
+function StudyList() {
   return <></>;
 }
 
-export default studyList;
+export default StudyList;

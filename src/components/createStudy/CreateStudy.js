@@ -2,7 +2,7 @@ import React, { useEffect, useState, useCallback, memo } from 'react';
 import { useForm } from 'react-hook-form';
 import PropTypes from 'prop-types';
 
-import createStudy from './constants/constants';
+import createStudyConstants from './constants/constants';
 import { checkSpecialCharacters } from 'lib/utils';
 
 import CustomSelectBox from 'components/common/customSelectBox/CustomSelectBox';
@@ -21,6 +21,7 @@ import { InputBox, HelpMessage, defaultLayout } from 'style/CustomStyle';
 
 function CreateStudy({ onSubmit, loading, onDuplicationCheck, duplicationCheck }) {
   const TAG_CREATION_KEY = [' ', ','];
+
   const [inputLength, setInputLength] = useState({
     titleLength: 0,
     descriptionLength: 0,
@@ -68,8 +69,7 @@ function CreateStudy({ onSubmit, loading, onDuplicationCheck, duplicationCheck }
 
   const titleValidation = checkSpecialCharacters(title);
 
-  const { groupName, introduction, locationOption, categoryOption } = createStudy;
-
+  const { groupName, introduction, locationOption, categoryOption } = createStudyConstants;
   return (
     <>
       <FormTemplate onSubmit={onSubmit} handleSubmit={handleSubmit}>
