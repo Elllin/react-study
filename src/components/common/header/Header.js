@@ -24,7 +24,7 @@ function Header() {
               로그인
             </NavButton>
           </CustomLink>
-          <CustomLink to="/list">
+          <CustomLink to="/studies/list">
             <NavButton id="list-btn" onClick={onClickNavButton} clickedButton={clickedButton}>
               그룹리스트
             </NavButton>

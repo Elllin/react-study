@@ -67,9 +67,6 @@ const ItemWrap = styled.ul`
   &:nth-child(4) {
     justify-self: end;
   }
-  /* justify-content: space-between; */
-  /* grid-column-start: 26.5rem 24.3rem; */
-  /* grid-column-end: 23.6rem 24.3rem; */
 `;
 
 export default Introduce;

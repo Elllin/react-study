@@ -1,4 +1,4 @@
-import React, { memo, useState } from 'react';
+import React, { memo, useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 
 import RadioBox from '../radioBox/RadioBox';
@@ -21,16 +21,17 @@ function CustomSelectBox({
   optionPadding,
   ...props
 }) {
-  const [localToggle, setLocalToggel] = useState(false);
+  const [localToggle, setLocalToggle] = useState(false);
   const [selected, setSelected] = useState(null);
 
-  const onClickToggle = () => {
+  const onClickToggle = useCallback(() => {
     if (onClick) return onClick();
-    setLocalToggel((prevState) => !prevState);
-  };
+    setLocalToggle((prevState) => !prevState);
+  }, [onClick]);
+
   const onClickItem = (value) => {
     setSelected(value);
-    return setTimeout(() => setLocalToggel(false), 250);
+    return setTimeout(() => setLocalToggle(false), 250);
   };
 
   const toggle = propsToggle ? propsToggle : localToggle;

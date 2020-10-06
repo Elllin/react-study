@@ -6,7 +6,7 @@ import { defaultLayout, borderRadius } from 'style/CustomStyle';
 
 function CreateButton() {
   return (
-    <Anchor to="/create">
+    <Anchor to="/studies/create">
       <span>
         스터디 그룹
         <br /> 개설하기

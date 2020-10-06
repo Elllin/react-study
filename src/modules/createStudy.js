@@ -40,7 +40,7 @@ function* goToDetailSaga() {
   const id = yield select((state) => state.createStudy.createStudy.data.study_id);
   const history = yield getContext('history');
 
-  history.push(`/detail/${id}`);
+  history.push(`/studies/detail/${id}`);
 }
 
 export function* createStudySaga() {
