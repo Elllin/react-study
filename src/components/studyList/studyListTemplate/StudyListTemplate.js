@@ -10,18 +10,21 @@ function StudyListTemplate({ children, searchBox }) {
   return (
     <div>
       <Header />
-      <Container>
-        {searchBox && searchBox}
-        <Wrap>
+      <Container>{searchBox && searchBox}</Container>
+      <MainWrap>
+        <Container>
           <main>{children}</main>
-        </Wrap>
-      </Container>
+        </Container>
+      </MainWrap>
     </div>
   );
 }
 
-const Wrap = styled.div`
+const MainWrap = styled.main`
   background-color: #f6f6f6;
+  margin-top: 3.7rem;
+  padding: 4rem 9rem;
+  width: 100vw;
 `;
 
 StudyListTemplate.propTypes = {
