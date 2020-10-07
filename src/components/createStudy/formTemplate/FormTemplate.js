@@ -54,7 +54,6 @@ const RequiredMessage = styled.span`
 `;
 
 FormTemplate.propTypes = {
-  children: PropTypes.node.isRequired,
   onSubmit: PropTypes.func.isRequired,
 };
 

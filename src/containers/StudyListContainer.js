@@ -8,7 +8,7 @@ import StudyList from 'components/studyList/studyList/StudyList';
 import SearchBox from 'components/studyList/searchBox/SearchBox';
 import LoadingPage from 'common/LoadingPage';
 
-import { Container } from 'style/CustomStyle';
+import StudyListTemplate from 'components/studyList/studyListTemplate/StudyListTemplate';
 
 function StudyListContainer() {
   const {
@@ -31,14 +31,12 @@ function StudyListContainer() {
   if (error) return <h1 style={{ fontSize: '50px' }}>{`에러가 발생했습니다!${error}`}</h1>;
   if (!data) return null;
 
+  const searchBox = <SearchBox onToggle={onToggle} toggle={searchToggle} onClose={onClose} />;
+
   return (
-    <>
-      <Header />
-      <Container>
-        <SearchBox onToggle={onToggle} toggle={searchToggle} onClose={onClose} />
-        <StudyList />
-      </Container>
-    </>
+    <StudyListTemplate searchBox={searchBox}>
+      <StudyList />
+    </StudyListTemplate>
   );
 }
 
