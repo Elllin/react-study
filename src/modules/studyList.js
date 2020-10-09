@@ -48,7 +48,7 @@ export default function studyList(state = initialState, action) {
     case TOGGLE_SELECT:
       return {
         ...state,
-        searchToggle: !state.studyList.searchToggle,
+        searchToggle: !state.searchToggle,
       };
 
     case CLOSE_SELECT:
