@@ -6,10 +6,10 @@ import StudyItem from "./studyItem/StudyItem";
 
 import styled from 'styled-components';
 
-function StudyList({data}) {
+function StudyList({data, onClickItem}) {
   return(
       <List>
-          {data.map(item => <StudyItem key={item.id} item={item}/>)}
+          {data.map(item => <StudyItem key={item.id} item={item} onClickItem={onClickItem}/>)}
     </List>
 )}
 

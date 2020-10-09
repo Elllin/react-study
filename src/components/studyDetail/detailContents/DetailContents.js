@@ -15,6 +15,7 @@ function DetailContents({
   dDay,
   tags,
 }) {
+  debugger
   description.replaceAll('\n', '<br />');
   const getDepositText = (deposit) => (deposit ? '있음' : '없음');
   const depositText = getDepositText(deposit);

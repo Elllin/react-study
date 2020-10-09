@@ -9,7 +9,7 @@ import {getDateFormat, getDday} from "lib/utils";
 
 
 
-function StudyItem({item}) {
+function StudyItem({item, onClickItem}) {
 
   const [titleHeight, setTitleHeight] = useState(0)
   const titleRef = useRef(null);
@@ -25,7 +25,10 @@ function StudyItem({item}) {
   useEffect(() => {
     setTitleHeight(titleRef.current.clientHeight)
   })
-  return <Item>
+
+  const onClick = () => onClickItem(item.id)
+
+  return <Item onClick={onClick}>
     <ImgWrap >
       {dDay < 0 && <Expiration>스터디 기간이 만료되었습니다.</Expiration> }
 

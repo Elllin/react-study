@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { getContext } from 'redux-saga/effects';
 
-import { toggleSelect, closeSelect, fetchStudyList } from 'modules/studyList';
+
+import {toggleSelect, closeSelect, fetchStudyList, clickStudyList} from 'modules/studyList';
 
 import Header from 'components/common/header/Header';
 import StudyList from 'components/studyList/studyList/StudyList';
@@ -21,6 +23,10 @@ function StudyListContainer() {
   const onToggle = () => dispatch(toggleSelect());
   const onClose = () => dispatch(closeSelect());
 
+  const onClickItem = (id) => dispatch(clickStudyList(id))
+
+
+
   useEffect(() => {
     // if (data) return;
 
@@ -35,7 +41,7 @@ function StudyListContainer() {
 
   return (
     <StudyListTemplate searchBox={searchBox}>
-      <StudyList data={data}/>
+      <StudyList data={data} onClickItem={onClickItem}/>
     </StudyListTemplate>
   );
 }
