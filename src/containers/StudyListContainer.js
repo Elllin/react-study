@@ -35,7 +35,7 @@ function StudyListContainer() {
 
   return (
     <StudyListTemplate searchBox={searchBox}>
-      <StudyList />
+      <StudyList data={data}/>
     </StudyListTemplate>
   );
 }

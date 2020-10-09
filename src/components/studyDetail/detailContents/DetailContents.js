@@ -22,7 +22,7 @@ function DetailContents({
   return (
     <Wrap>
       <DetailList top>
-        <TItle>스터디 기간</TItle>
+        <Title>스터디 기간</Title>
         <Description>
           {dDay ? (
             <>
@@ -37,11 +37,11 @@ function DetailContents({
         </Description>
       </DetailList>
       <DetailList>
-        <TItle>그룹 소개</TItle>
+        <Title>그룹 소개</Title>
         <Description>{description}</Description>
       </DetailList>
       <DetailList>
-        <TItle>상세정보</TItle>
+        <Title>상세정보</Title>
         <Description>
           <Information>
             <div>
@@ -82,7 +82,7 @@ const DetailList = styled.div`
   border-top: ${({ top }) => (top ? '0.1rem solid #d1d1d1' : '0.1rem solid #eee')};
 `;
 
-const TItle = styled.dt`
+const Title = styled.dt`
   padding-top: 0.2rem;
   font-size: 2rem;
   font-weight: bold;
