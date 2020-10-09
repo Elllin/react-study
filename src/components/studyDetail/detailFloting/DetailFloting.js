@@ -11,7 +11,6 @@ function DetailFloting({ title, startDate, endDate }) {
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    // topOffset = flotingRef.current.getBoundingClientRect().top;
 
     const scrollHandler = () => {
       const scrolledTopLength = window.pageYOffset;

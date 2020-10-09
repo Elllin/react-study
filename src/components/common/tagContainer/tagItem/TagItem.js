@@ -34,7 +34,7 @@ const colorStyles = css`
 `;
 
 const fontSizes = {
-  small: '1.4rem',
+  small: '1.3rem',
   medium: '1.8rem',
 };
 
