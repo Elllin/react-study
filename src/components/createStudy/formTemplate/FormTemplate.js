@@ -54,7 +54,10 @@ const RequiredMessage = styled.span`
 `;
 
 FormTemplate.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func,
+};
+FormTemplate.default = {
+  onSubmit: null,
 };
 
 export default memo(FormTemplate);

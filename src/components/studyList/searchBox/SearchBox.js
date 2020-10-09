@@ -29,7 +29,7 @@ function SearchBox({ onToggle, toggle, onClose }) {
             berder="none"
             propsToggle={toggle}
             both
-            optionPadding="1.8rem 0 4rem"
+            optionPadding="1.8rem 0 3.8rem"
             far
           />
         </SelectBoxWrap>
@@ -82,6 +82,7 @@ const SelectBoxContainer = styled.div`
   ${({ toggle }) =>
     toggle &&
     css`
+      z-index:5;
       min-height: 360px;
       box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.35);
       border: solid 1px #cbcbcb;

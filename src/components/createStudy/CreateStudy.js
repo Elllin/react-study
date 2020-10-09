@@ -257,12 +257,13 @@ const RadiouContainer = styled.div`
 `;
 
 CreateStudy.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func,
   loading: PropTypes.bool,
 };
 
 CreateStudy.defaultProps = {
   loading: false,
+  onSubmit:null,
 };
 
 export default memo(CreateStudy);
