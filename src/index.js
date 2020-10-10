@@ -12,7 +12,7 @@ import { createBrowserHistory } from 'history';
 import rootReducer, { rootSaga } from './modules';
 
 import 'assets/fonts/styles.css';
-import '@kfonts/nanum-square-round-otf';
+// import '@kfonts/nanum-square-round-otf';
 import { ThemeProvider } from 'styled-components';
 import theme from 'style/theme';
 

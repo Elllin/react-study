@@ -16,13 +16,6 @@ function DetailContents({
   tags,
 }) {
 
-  // description.replace(/\n/gi, '<br />');
-  const replacedDescription = replaceAll(description,'\n', '<br/>')
-  function replaceAll(str, searchStr, replaceStr) {
-    return str.split(searchStr).join(replaceStr);
-  }
-
-
   const getDepositText = (deposit) => (deposit ? '있음' : '없음');
   const depositText = getDepositText(deposit);
   const hashTags = tags.map((tag) => `#${tag.word}`).join(', ');
@@ -45,7 +38,7 @@ function DetailContents({
       </DetailList>
       <DetailList>
         <Title>그룹 소개</Title>
-        <Description>{replacedDescription}</Description>
+        <Description>{description}</Description>
       </DetailList>
       <DetailList>
         <Title>상세정보</Title>
@@ -107,6 +100,7 @@ const Description = styled.dd`
   
   line-height: 2.5rem;
   font-size: 1.8rem;
+  white-space: pre;
 `;
 
 const Information = styled.dl`
