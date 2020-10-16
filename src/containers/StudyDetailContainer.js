@@ -20,6 +20,8 @@ function StudyDetailContainer({ detailId }) {
     (state) => state.studyDetail.studyDetail?.[detailId] || reducerUtils.initial(),
   );
 
+  console.log(data, 12);
+
   useEffect(() => {
     if (data) return;
 

@@ -6,6 +6,7 @@ import CreateStudyPage from 'pages/CreateStudyPage';
 import InvitationPage from 'pages/InvitationPage';
 import StudyDetailPage from 'pages/StudyDetailPage';
 import StudyListPage from 'pages/StudyListPage';
+import StudyEditPage from 'pages/StudyEditPage';
 import ErrorPage from 'common/ErrorPage';
 
 import GlobalStyle from 'style/GlobalStyle';
@@ -19,6 +20,7 @@ function App() {
         <Route path="/studies/create" component={CreateStudyPage} />
         <Route path="/studies/create/invitation" component={InvitationPage} />
         <Route path="/studies/detail/:id" component={StudyDetailPage} />
+        <Route path="/studies/detail/edit/:id" component={StudyEditPage} />
         <Route path="/studies/list" component={StudyListPage} />
         <Route component={ErrorPage} />
       </Switch>
