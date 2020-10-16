@@ -17,9 +17,9 @@ function App() {
       <GlobalStyle />
       <Switch>
         <Route path="/" component={HomePage} exact />
-        <Route path="/studies/create" component={CreateStudyPage} />
-        <Route path="/studies/create/invitation" component={InvitationPage} />
-        <Route path="/studies/detail/:id" component={StudyDetailPage} />
+        <Route path="/studies/create" component={CreateStudyPage} exact />
+        <Route path="/studies/create/invitation" component={InvitationPage} exact />
+        <Route path="/studies/detail/:id" component={StudyDetailPage} exact />
         <Route path="/studies/detail/edit/:id" component={StudyEditPage} />
         <Route path="/studies/list" component={StudyListPage} />
         <Route component={ErrorPage} />

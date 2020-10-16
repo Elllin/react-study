@@ -1,11 +1,10 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { reducerUtils } from '../lib/asyncUtils';
 
-function StudyEditContainer() {
-  const { loading, data, error } = useSelector(
-    (state) => state.studyDetail.studyDetail?.[detailId],
-  );
-
+function StudyEditContainer({ editId }) {
+  const { data } = useSelector((state) => state.studyDetail.studyDetail?.[editId]);
+  console.log(data);
   return <></>;
 }
 

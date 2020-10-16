@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 
 import TagItem from 'components/common/tagContainer/tagItem/TagItem';
 
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { borderRadius, defaultLayout } from 'style/CustomStyle';
 import { getDateFormat, getDday } from 'lib/utils';
 

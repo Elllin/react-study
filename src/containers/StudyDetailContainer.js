@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { fetchStudyDetail } from 'modules/studyDetail';
+import { fetchStudyDetail, goToEdit } from 'modules/studyDetail';
 import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 
@@ -19,6 +19,8 @@ function StudyDetailContainer({ detailId }) {
   const { loading, data, error } = useSelector(
     (state) => state.studyDetail.studyDetail?.[detailId] || reducerUtils.initial(),
   );
+
+  const onClickEditBtn = () => dispatch(goToEdit(data.id));
 
   console.log(data, 12);
 
@@ -53,7 +55,12 @@ function StudyDetailContainer({ detailId }) {
           tags={Tags}
         />
       </DetailTemplate>
-      <DetailFloting title={title} startDate={startDate} endDate={endDate} />
+      <DetailFloting
+        title={title}
+        startDate={startDate}
+        endDate={endDate}
+        onClickEditBtn={onClickEditBtn}
+      />
     </>
   );
 }
