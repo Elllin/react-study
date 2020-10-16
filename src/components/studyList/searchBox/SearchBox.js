@@ -4,7 +4,7 @@ import CustomSelectBox from 'components/common/customSelectBox/CustomSelectBox';
 import { locationOption, categoryOption } from './constants/constants';
 
 import styled, { css } from 'styled-components';
-import { borderRadius } from 'style/CustomStyle';
+import { borderRadius, defaultLayout } from 'style/CustomStyle';
 
 import { BsArrowRight } from 'react-icons/bs';
 
@@ -48,7 +48,7 @@ function SearchBox({ onToggle, toggle, onClose }) {
         </SelectBoxWrap>
       </SelectBoxContainer>
       <SearchButton>
-        검색하기 <BsArrowRight />
+        <span>검색하기</span> <BsArrowRight />
       </SearchButton>
     </Wrap>
   );
@@ -82,11 +82,12 @@ const SelectBoxContainer = styled.div`
   ${({ toggle }) =>
     toggle &&
     css`
-      z-index:5;
+      z-index: 5;
+      background: #fff;
       min-height: 360px;
       box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.35);
       border: solid 1px #cbcbcb;
-      background-color: #ffffff;
+      background-cßolor: #ffffff;
     `}
 `;
 
@@ -95,9 +96,11 @@ const SearchButton = styled.button`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.5rem 2.3rem;
+  padding: 1.2rem 2.3rem 1.5rem;
   font-size: 1.6rem;
   background-color: ${({ theme }) => theme.mainColor};
+  ${defaultLayout}
+  justify-content: space-between;
   ${borderRadius('0.4rem')}
   svg {
     font-size: 3rem;

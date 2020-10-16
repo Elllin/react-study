@@ -35,7 +35,7 @@ export const createAsyncSaga = (type, fetchFunc) => {
       const res = yield call(fetchFunc, action?.payload);
       const payload = res.data;
 
-      console.log(payload, 'id를 주세요');
+      console.log(payload, '받아온 데이터');
       yield put({ type: SUCCESS, payload });
     } catch (e) {
       yield put({ type: ERROR, payload: e, error: true });

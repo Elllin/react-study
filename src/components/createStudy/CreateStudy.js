@@ -19,9 +19,9 @@ import DatePicker from './datePicker/DatePicker';
 import styled, { css } from 'styled-components';
 import { InputBox, HelpMessage, defaultLayout } from 'style/CustomStyle';
 
-function CreateStudy({ onSubmit, loading, onDuplicationCheck, duplicationCheck }) {
-  const TAG_CREATION_KEY = [' ', ','];
-
+function CreateStudy({ onSubmit, loading, onDuplicationCheck, duplication }) {
+  const TAG_CREATION_KEY = 'Enter';
+  console.log(duplication);
   const [inputLength, setInputLength] = useState({
     titleLength: 0,
     descriptionLength: 0,
@@ -49,11 +49,9 @@ function CreateStudy({ onSubmit, loading, onDuplicationCheck, duplicationCheck }
     onDuplicationCheck(target.value);
   };
 
-  console.log(duplicationCheck, 'ss');
-
   const isTagCreation = useCallback(
     (e, value) => {
-      const isTagCreationKey = TAG_CREATION_KEY.includes(e.key);
+      const isTagCreationKey = TAG_CREATION_KEY === e.key;
 
       return isTagCreationKey && value.length > 0;
     },
@@ -69,10 +67,16 @@ function CreateStudy({ onSubmit, loading, onDuplicationCheck, duplicationCheck }
 
   const titleValidation = checkSpecialCharacters(title);
 
+  const onKeyPress = (e) => {
+    if (e.key == 'Enter') {
+      e.preventDefault();
+    }
+  };
+
   const { groupName, introduction, locationOption, categoryOption } = createStudyConstants;
   return (
     <>
-      <FormTemplate onSubmit={onSubmit} handleSubmit={handleSubmit}>
+      <FormTemplate onSubmit={onSubmit} handleSubmit={handleSubmit} onKeyPress={onKeyPress}>
         <BoxLayout>
           <BoxTemplate title="지역" htmlFor="location">
             <CustomSelectBox
@@ -146,12 +150,11 @@ function CreateStudy({ onSubmit, loading, onDuplicationCheck, duplicationCheck }
 
           {/* 리팩토링 하기!!!! */}
 
-          <ValidationMessage validation={titleValidation} length={titleLength} />
           <HelpArea>
             {/* {titleValidation && !errors.title && <HelpMessage>{groupName.helpMessage}</HelpMessage>} */}
             {/* <ErrorMessage>{!titleValidation && groupName.}</ErrorMessage> */}
 
-            {duplicationCheck === 'ok' ? (
+            {duplication ? (
               <HelpMessage validation>
                 {'이미 존재하는 그룹 이름입니다. 다른 그룹 이름을 입력해주세요.'}
               </HelpMessage>
@@ -263,7 +266,7 @@ CreateStudy.propTypes = {
 
 CreateStudy.defaultProps = {
   loading: false,
-  onSubmit:null,
+  onSubmit: null,
 };
 
 export default memo(CreateStudy);

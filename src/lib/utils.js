@@ -6,15 +6,13 @@ export const checkSpecialCharacters = (str) => {
   // eslint-disable-next-line
   const specialPattern = /[`~!@#$%^&*\.,\=(){}+<>\[\]\\\'\";:\/?|]/gi;
   return specialPattern.test(str);
-  // if (specialPattern.test(str)) return true;
-  // else return false;
 };
 
-export const getDday = (startDate, endDate) => {
-  const startTime = moment(startDate);
+export const getDday = (endDate) => {
+  const startTime = moment(new Date());
   const endTime = moment(endDate);
-
-  return moment.duration(endTime.diff(startTime)).asDays();
+  const diff = endTime.diff(startTime, 'days');
+  return diff + 1;
 };
 
 export const getDateFormat = (date, format) => {

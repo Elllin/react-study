@@ -4,11 +4,11 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { defaultLayout } from 'style/CustomStyle';
 
-function FormTemplate({ children, onSubmit, handleSubmit }) {
+function FormTemplate({ children, onSubmit, handleSubmit, onKeyPress }) {
   return (
     <Wrap>
       <h1>DO IT DO IT</h1>
-      <StudyForm action="#" method="post" onSubmit={handleSubmit(onSubmit)}>
+      <StudyForm action="#" method="post" onSubmit={handleSubmit(onSubmit)} onKeyPress={onKeyPress}>
         <fieldset>
           <div>
             <legend>스터디 그룹 개설하기</legend>
@@ -55,9 +55,11 @@ const RequiredMessage = styled.span`
 
 FormTemplate.propTypes = {
   onSubmit: PropTypes.func,
+  onKeyPress: PropTypes.func,
 };
 FormTemplate.default = {
   onSubmit: null,
+  onKeyPress: null,
 };
 
 export default memo(FormTemplate);

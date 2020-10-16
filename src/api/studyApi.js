@@ -1,8 +1,7 @@
 import axios from 'axios';
 
 export const fetchDuplicationCheck = (data) => {
-  console.log(data);
-  return axios.get('https://jsonplaceholder.typicode.com/posts');
+  return axios.get(`${process.env.REACT_APP_BASE_URL}/study/check/${data}`);
 };
 
 const options = {
@@ -20,6 +19,6 @@ export const fetchStudyList = () => {
 };
 
 export const fetchStudyDetail = (id) => {
-  console.log(id)
+  console.log(id);
   return axios.get(`${process.env.REACT_APP_BASE_URL}/study/${id}`);
 };

@@ -34,7 +34,7 @@ function StudyDetailContainer({ detailId }) {
 
   const startDate = getDateFormat(study_start, DATE_FORMAT);
   const endDate = getDateFormat(study_end, DATE_FORMAT);
-  const dDay = getDday(study_start, study_end);
+  const dDay = getDday(study_end);
 
   return (
     <>

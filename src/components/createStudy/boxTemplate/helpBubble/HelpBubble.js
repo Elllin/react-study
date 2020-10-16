@@ -6,7 +6,6 @@ import { defaultLayout, borderRadius } from 'style/CustomStyle';
 import { AiOutlineQuestionCircle } from 'react-icons/ai';
 
 function HelpBubble() {
-  //   const [isHover, setIsHover] = useState(false);
   const { helpBubbleMessage } = createStudy.hashtag;
   return (
     <Wrap>
@@ -38,12 +37,11 @@ const HelpIcon = styled(AiOutlineQuestionCircle)`
 const Bubble = styled.div`
   ${defaultLayout}
   display: none;
-  padding: 1.2rem 1rem;
+  padding: 1.1rem 1.3rem 1rem 1.8rem;
   position: absolute;
   left: 3.4rem;
   bottom: 0;
-  width: 24.6rem;
-
+  width: 23.5rem;
   box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.36);
   -moz-box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.36);
   -webkit-box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.36);
@@ -51,11 +49,12 @@ const Bubble = styled.div`
   border: solid 1px #cbcbcb;
   background-color: #fff;
   span {
+    word-break: keep-all;
     font-size: 1.2rem;
     font-weight: 500;
-    line-height: 1.5;
     letter-spacing: -0.03rem;
     color: #5e5e5e;
+    line-height: 1.58;
   }
 
   ${borderRadius(`0.6rem`)}

@@ -42,7 +42,7 @@ const Background = styled.div`
 
 const DownButtonWrap = styled.div`
   position: absolute;
-  bottom: 0;
+  bottom: 3rem;
   right: 50%;
 `;
 

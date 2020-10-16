@@ -9,7 +9,7 @@ import Invitation from 'components/invitation/Invitation';
 
 function CreateStudyContainer() {
   const { loading, error } = useSelector((state) => state.createStudy.createStudy);
-  const { data } = useSelector((state) => state.createStudy.duplicationCheck);
+  const { error: duplication } = useSelector((state) => state.createStudy.duplicationCheck);
   const dispatch = useDispatch();
 
   const onSubmit = useCallback(
@@ -35,7 +35,7 @@ function CreateStudyContainer() {
     <CreateStudy
       onSubmit={onSubmit}
       onDuplicationCheck={onDuplicationCheck}
-      duplicationCheck={data}
+      duplication={duplication}
     />
   );
 }

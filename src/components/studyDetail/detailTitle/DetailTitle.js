@@ -13,14 +13,19 @@ function DetailTitle({ title, location, tags }) {
     <Wrap>
       <Location>{location}</Location>
       <h2>{title}</h2>
-      <div>{tags && <TagContainer tags={tagArray} hash={null} />}</div>
+      {tags && (
+        <div>
+          {' '}
+          <TagContainer tags={tagArray} hash={null} />
+        </div>
+      )}
     </Wrap>
   );
 }
 const Wrap = styled.div`
-  padding: 3.2rem 0 3.5rem;
-  ${defaultLayout}
-  flex-direction:column;
+  padding: 3.2rem 0;
+  ${defaultLayout};
+  flex-direction: column;
   h2 {
     margin-bottom: 0.3rem;
     font-size: 3rem;

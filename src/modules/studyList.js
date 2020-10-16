@@ -13,14 +13,13 @@ const CLICK_STUDY_LIST = 'studyList/CLICK_STUDY_LIST';
 const initialState = {
   studyList: reducerUtils.initial(),
   searchToggle: false,
-  studyId: null
+  studyId: null,
 };
 
 export const toggleSelect = () => ({ type: TOGGLE_SELECT });
 export const closeSelect = () => ({ type: CLOSE_SELECT });
 export const fetchStudyList = () => ({ type: GET_STUDY_LIST });
-export const clickStudyList = (id) => ({ type: CLICK_STUDY_LIST, payload : id });
-
+export const clickStudyList = (id) => ({ type: CLICK_STUDY_LIST, payload: id });
 
 function* goToDetailSaga() {
   const id = yield select((state) => state.studyList.studyId);
@@ -34,7 +33,6 @@ const fetchStudyListSaga = createAsyncSaga(GET_STUDY_LIST, createStudyAPI.fetchS
 export function* studyListSaga() {
   yield takeEvery(GET_STUDY_LIST, fetchStudyListSaga);
   yield takeEvery(CLICK_STUDY_LIST, goToDetailSaga);
-
 }
 const studyListReducer = createAsyncActions(GET_STUDY_LIST, 'studyList');
 
@@ -58,10 +56,10 @@ export default function studyList(state = initialState, action) {
       };
 
     case CLICK_STUDY_LIST:
-      return{
+      return {
         ...state,
-        studyId: action.payload
-      }
+        studyId: action.payload,
+      };
 
     default:
       return state;

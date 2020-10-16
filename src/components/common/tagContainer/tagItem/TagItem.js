@@ -2,7 +2,7 @@ import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 
 import styled, { css } from 'styled-components';
-import { defaultLayout } from 'style/CustomStyle';
+import { borderRadius, defaultLayout } from 'style/CustomStyle';
 
 function TagItem({ onClick, id, text, color, fontSize, hash, ...props }) {
   return (
@@ -50,12 +50,8 @@ const Tag = styled.span`
   ${colorStyles}
   ${fontStyles}
 
-  font-weight: ${({ fontWeight }) =>
-    fontWeight ? fontWeight : '500'};
-
-  border-radius: 1.7rem;
-  -moz-border-radius: 1.7rem;
-  -webkit-border-radius: 1.7rem;
+  font-weight: ${({ fontWeight }) => (fontWeight ? fontWeight : '500')};
+  ${borderRadius('1.7rem')}
 
   ${({ onClick }) =>
     onClick &&

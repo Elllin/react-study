@@ -15,7 +15,7 @@ function LoadingPage() {
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    display: 'flex',
+    display: "flex",
     justifyContent: 'center',
     alignItems: 'center',
     position: 'fixed',

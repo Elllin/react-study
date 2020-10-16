@@ -38,7 +38,7 @@ const Wrap = styled.section`
     font-size: 3.4rem;
   }
   p {
-    margin-bottom: 17rem;
+    margin-bottom: 8%;
     font-family: ${({ theme }) => theme.subFont};
     font-size: 2rem;
   }

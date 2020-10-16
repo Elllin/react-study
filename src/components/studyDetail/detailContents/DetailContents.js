@@ -15,26 +15,28 @@ function DetailContents({
   dDay,
   tags,
 }) {
-
+  console.log(isNaN(dDay));
   const getDepositText = (deposit) => (deposit ? '있음' : '없음');
   const depositText = getDepositText(deposit);
   const hashTags = tags.map((tag) => `#${tag.word}`).join(', ');
+  const getPeriod = () => {
+    if (isNaN(dDay)) return '상시모집';
+    else if (dDay < 0) return '기간만료';
+    else
+      return (
+        <>
+          <TagWrap>
+            <TagItem color="red" text={`D-${dDay}`} hash={null} fontWeight="bold" />
+          </TagWrap>
+          <span>{`${startDate} ~ ${endDate}`}</span>
+        </>
+      );
+  };
   return (
     <Wrap>
       <DetailList top>
         <Title>스터디 기간</Title>
-        <Description>
-          {dDay ? (
-            <>
-              <TagWrap>
-                <TagItem color="red" text={`D-${dDay}`} hash={null} fontWeight="bold" />
-              </TagWrap>
-              <span>{`${startDate} ~ ${endDate}`}</span>
-            </>
-          ) : (
-            '상시모집'
-          )}
-        </Description>
+        <Description>{getPeriod()}</Description>
       </DetailList>
       <DetailList>
         <Title>그룹 소개</Title>
@@ -97,7 +99,7 @@ const TagWrap = styled.div`
 const Description = styled.dd`
   display: flex;
   white-space: break-spaces;
-  
+
   line-height: 2.5rem;
   font-size: 1.8rem;
   white-space: pre;
