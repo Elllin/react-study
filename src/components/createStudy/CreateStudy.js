@@ -13,15 +13,21 @@ import FormTemplate from './formTemplate/FormTemplate';
 import CharacterCounter from './characterCounter/CharacterCounter';
 import LoadingPage from 'common/LoadingPage';
 import MainButton from 'components/common/mainButton/MainButton';
-import ValidationMessage from './validationMessage/ValidationMessage';
+
 import DatePicker from './datePicker/DatePicker';
 
 import styled, { css } from 'styled-components';
 import { InputBox, HelpMessage, defaultLayout } from 'style/CustomStyle';
 
-function CreateStudy({ onSubmit, loading, onDuplicationCheck, duplication }) {
+function CreateStudy({
+  onSubmit,
+  loading,
+  onDuplicationCheck,
+  duplication,
+  titleRendering,
+  selectedValue,
+}) {
   const TAG_CREATION_KEY = 'Enter';
-  console.log(duplication);
   const [inputLength, setInputLength] = useState({
     titleLength: 0,
     descriptionLength: 0,
@@ -59,7 +65,7 @@ function CreateStudy({ onSubmit, loading, onDuplicationCheck, duplication }) {
   );
 
   const { register, handleSubmit, setValue, watch, errors } = useForm({
-    defaultValues: { duration: { startDate: null, endDate: null } },
+    defaultValues: selectedValue || { duration: { startDate: null, endDate: null } },
   });
 
   const title = watch('title', '');
@@ -68,7 +74,7 @@ function CreateStudy({ onSubmit, loading, onDuplicationCheck, duplication }) {
   const titleValidation = checkSpecialCharacters(title);
 
   const onKeyPress = (e) => {
-    if (e.key == 'Enter') {
+    if (e.key === 'Enter') {
       e.preventDefault();
     }
   };
@@ -76,7 +82,12 @@ function CreateStudy({ onSubmit, loading, onDuplicationCheck, duplication }) {
   const { groupName, introduction, locationOption, categoryOption } = createStudyConstants;
   return (
     <>
-      <FormTemplate onSubmit={onSubmit} handleSubmit={handleSubmit} onKeyPress={onKeyPress}>
+      <FormTemplate
+        onSubmit={onSubmit}
+        handleSubmit={handleSubmit}
+        onKeyPress={onKeyPress}
+        titleRendering={titleRendering}
+      >
         <BoxLayout>
           <BoxTemplate title="지역" htmlFor="location">
             <CustomSelectBox
@@ -111,7 +122,7 @@ function CreateStudy({ onSubmit, loading, onDuplicationCheck, duplication }) {
         </BoxTemplate>
 
         <BoxTemplate title="예치금 설정을 하시나요?" as="div" far>
-          <RadiouContainer>
+          <RadioContainer>
             <RadioBox
               id="deposit-yes"
               value="1"
@@ -130,7 +141,7 @@ function CreateStudy({ onSubmit, loading, onDuplicationCheck, duplication }) {
               error={errors.deposit}
               register={register({ required: true })}
             />
-          </RadiouContainer>
+          </RadioContainer>
         </BoxTemplate>
 
         <BoxTemplate title="그룹 이름" htmlFor="title">
@@ -177,7 +188,7 @@ function CreateStudy({ onSubmit, loading, onDuplicationCheck, duplication }) {
             ref={register({ required: true })}
             error={errors.description}
             placeholder={introduction.placeholder}
-          ></TextArea>
+          />
           <CharacterCounter length={descriptionLength} maxLength={introduction.maxLength} />
         </BoxTemplate>
 
@@ -224,7 +235,7 @@ const TextArea = styled(InputBox)`
   width: 100%;
   height: 24.4rem;
   padding: 1rem 2rem;
-  ${requiredError}
+  ${requiredError};
   border-color: ${({ error, theme }) => error && theme.requiredColor};
 `;
 
@@ -239,7 +250,7 @@ const ButtonWrap = styled.div`
 `;
 
 const HelpArea = styled.div`
-  ${defaultLayout}
+  ${defaultLayout};
   justify-content: space-between;
 `;
 
@@ -251,7 +262,7 @@ const TitleInput = styled(InputBox)`
   ${requiredError}
 `;
 
-const RadiouContainer = styled.div`
+const RadioContainer = styled.div`
   display: flex;
 
   div + div {
@@ -262,11 +273,13 @@ const RadiouContainer = styled.div`
 CreateStudy.propTypes = {
   onSubmit: PropTypes.func,
   loading: PropTypes.bool,
+  titleRendering: PropTypes.bool,
 };
 
 CreateStudy.defaultProps = {
   loading: false,
   onSubmit: null,
+  titleRendering: true,
 };
 
 export default memo(CreateStudy);

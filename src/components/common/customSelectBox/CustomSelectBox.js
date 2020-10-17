@@ -11,6 +11,7 @@ function CustomSelectBox({
   optionItems,
   name,
   defaultText,
+  selectedValue,
   required,
   register,
   defaultColor,
@@ -22,7 +23,7 @@ function CustomSelectBox({
   ...props
 }) {
   const [localToggle, setLocalToggle] = useState(false);
-  const [selected, setSelected] = useState(null);
+  const [selected, setSelected] = useState(selectedValue || null);
 
   const onClickToggle = useCallback(() => {
     if (onClick) return onClick();
@@ -69,7 +70,7 @@ function CustomSelectBox({
           </SelectArrow>
         </SelectBox>
       </Wrap>
-      {toggle && <EmptyPlace></EmptyPlace>}
+      {toggle && <EmptyPlace />}
     </>
   );
 }
@@ -105,7 +106,7 @@ const EmptyPlace = styled.div`
 `;
 
 const SelectBox = styled(InputBox)`
-  ${defaultLayout}
+  ${defaultLayout};
   justify-content: space-between;
   order: 0;
   ${({ error, theme }) =>
@@ -191,6 +192,7 @@ CustomSelectBox.propTypes = {
   propsToggle: PropTypes.bool,
   both: PropTypes.bool,
   optionPadding: PropTypes.string,
+  selectedValue: PropTypes.string,
 };
 CustomSelectBox.defaultProps = {
   register: null,
@@ -202,6 +204,7 @@ CustomSelectBox.defaultProps = {
   propsToggle: null,
   both: null,
   optionPadding: '1rem 0 2rem',
+  selectedValue: null,
 };
 
 export default memo(CustomSelectBox);

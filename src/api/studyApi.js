@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 export const fetchDuplicationCheck = (data) => {
-  return axios.get(`${process.env.REACT_APP_BASE_URL}/study/check/${data}`);
+  const str = encodeURI(encodeURIComponent(data));
+  return axios.get(`${process.env.REACT_APP_BASE_URL}/study/check/${str}`);
 };
 
 const options = {
@@ -19,6 +20,5 @@ export const fetchStudyList = () => {
 };
 
 export const fetchStudyDetail = (id) => {
-  console.log(id);
   return axios.get(`${process.env.REACT_APP_BASE_URL}/study/${id}`);
 };
