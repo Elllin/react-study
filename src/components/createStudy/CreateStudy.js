@@ -25,12 +25,12 @@ function CreateStudy({
   onDuplicationCheck,
   duplication,
   titleRendering,
-  selectedValue,
+  detailValue,
 }) {
   const TAG_CREATION_KEY = 'Enter';
   const [inputLength, setInputLength] = useState({
-    titleLength: 0,
-    descriptionLength: 0,
+    titleLength: detailValue?.title.length || 0,
+    descriptionLength: detailValue?.description.length || 0,
   });
 
   useEffect(() => {
@@ -64,8 +64,13 @@ function CreateStudy({
     [TAG_CREATION_KEY],
   );
 
+  let defaultFormValue = null;
+
+  if (detailValue) defaultFormValue = detailValue;
+  else defaultFormValue = { duration: { startDate: null, endDate: null } };
+  console.log(defaultFormValue);
   const { register, handleSubmit, setValue, watch, errors } = useForm({
-    defaultValues: selectedValue || { duration: { startDate: null, endDate: null } },
+    defaultValues: defaultFormValue,
   });
 
   const title = watch('title', '');
@@ -92,6 +97,7 @@ function CreateStudy({
           <BoxTemplate title="지역" htmlFor="location">
             <CustomSelectBox
               optionItems={locationOption}
+              selectedValue={detailValue?.location || null}
               name="location"
               register={register({ required: true })}
               defaultText="시/도 선택"
@@ -104,6 +110,7 @@ function CreateStudy({
             <CustomSelectBox
               optionItems={categoryOption}
               name="category"
+              selectedValue={detailValue?.category || null}
               register={register({ required: true })}
               defaultText="카테고리 선택"
               error={errors.category}
@@ -131,6 +138,7 @@ function CreateStudy({
               size="large"
               register={register({ required: true })}
               error={errors.deposit}
+              // checked={detailValue?.deposit === 1}
             />
             <RadioBox
               id="deposit-no"
@@ -140,6 +148,7 @@ function CreateStudy({
               size="large"
               error={errors.deposit}
               register={register({ required: true })}
+              // checked={detailValue?.deposit === 0}
             />
           </RadioContainer>
         </BoxTemplate>
@@ -199,6 +208,7 @@ function CreateStudy({
             name={'tags'}
             isTagCreation={isTagCreation}
             fontSize="small"
+            detailValue={detailValue?.tags}
           />
         </BoxTemplate>
 
@@ -273,6 +283,7 @@ const RadioContainer = styled.div`
 CreateStudy.propTypes = {
   onSubmit: PropTypes.func,
   loading: PropTypes.bool,
+  detailValue: PropTypes.object,
   titleRendering: PropTypes.bool,
 };
 
@@ -280,6 +291,7 @@ CreateStudy.defaultProps = {
   loading: false,
   onSubmit: null,
   titleRendering: true,
+  detailValue: null,
 };
 
 export default memo(CreateStudy);

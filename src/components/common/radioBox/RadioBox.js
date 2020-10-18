@@ -5,14 +5,9 @@ import styled, { css } from 'styled-components';
 import { borderRadius } from 'style/CustomStyle';
 import { RiCheckLine } from 'react-icons/ri';
 
-function RadioBox({ id, text, register, checkedcolor, onClick, size, error, ...props }) {
-  const onClickRadio = ({ target }) => {
-    if (!onClick) return;
-    onClick(target.value);
-  };
-
+function RadioBox({ id, text, register, checkedcolor, size, error, ...props }) {
   return (
-    <RadioWrap size={size} onClick={onClickRadio} error={error}>
+    <RadioWrap size={size} error={error}>
       <input
         type="radio"
         id={id}
@@ -74,7 +69,7 @@ const RadioWrap = styled.div`
   }
 
   [type='radio'] + label:before {
-    ${commonStyle}
+    ${commonStyle};
     left: 0;
     text-align: center;
     background: #fff;
@@ -90,10 +85,10 @@ const RadioWrap = styled.div`
 
   [type='radio']:not(:checked) + label:after,
   [type='radio']:checked + label:after {
-    ${commonStyle}
+    ${commonStyle};
     left: 0.01rem;
     top: 1.3rem;
-    color: '#fff';
+    color: #fff;
     font-weight: 700;
     -webkit-transition: all 0.2s ease;
     -moz-transition: all 0.2s ease;
@@ -138,7 +133,7 @@ const RadioWrap = styled.div`
 
 const CheckedIcon = styled(RiCheckLine)`
   position: absolute;
-  left: 0rem;
+  left: 0;
   top: 1.3rem;
   z-index: 1;
   color: #fff;
@@ -147,7 +142,6 @@ const CheckedIcon = styled(RiCheckLine)`
 RadioBox.propTypes = {
   id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   text: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-  onClick: PropTypes.func,
   register: PropTypes.func,
   checkedcolor: PropTypes.string,
   size: PropTypes.string,
@@ -157,7 +151,6 @@ RadioBox.propTypes = {
 RadioBox.defaultProps = {
   register: null,
   checkedcolor: null,
-  onClick: null,
   size: 'small',
   error: null,
 };

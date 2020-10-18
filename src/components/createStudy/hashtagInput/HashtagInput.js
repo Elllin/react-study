@@ -6,11 +6,19 @@ import TagContainer from 'components/common/tagContainer/TagContainer';
 
 import { InputBox, HelpMessage } from 'style/CustomStyle';
 
-function HashtagInput({ register, setValue, name, maxCount, isTagCreation, ...props }) {
+function HashtagInput({
+  register,
+  setValue,
+  name,
+  maxCount,
+  isTagCreation,
+  defaultValue,
+  ...props
+}) {
   const {
     hashtag: { placeholder, helpMessage, maxLength },
   } = createStudy;
-
+  console.log(defaultValue);
   const tagId = useRef(1);
   const [hashtag, setHashtag] = useState('');
   const [hashtags, setHashtags] = useState([]);
@@ -39,6 +47,13 @@ function HashtagInput({ register, setValue, name, maxCount, isTagCreation, ...pr
   useEffect(() => {
     setHashtag('');
   }, [hashtags]);
+
+  useEffect(() => {
+    if (defaultValue) {
+      const defaultTags = defaultValue.map((tag) => ({ id: tag.id, text: tag.word }));
+      setHashtags(defaultTags);
+    }
+  }, [defaultValue]);
 
   const removeHashtag = useCallback(
     ({ target }) => {
@@ -81,11 +96,13 @@ HashtagInput.propTypes = {
   isTagCreation: PropTypes.func.isRequired,
   key: PropTypes.string,
   maxCount: PropTypes.number,
+  defaultValue: PropTypes.array,
 };
 
 HashtagInput.defaultProps = {
   key: ' ',
   maxCount: 3,
+  defaultValue: null,
 };
 
 export default memo(HashtagInput);
