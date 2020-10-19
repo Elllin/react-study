@@ -72,7 +72,7 @@ function CreateStudy({
   const { register, handleSubmit, setValue, watch, errors } = useForm({
     defaultValues: defaultFormValue,
   });
-
+  console.log(detailValue?.tags, 13);
   const title = watch('title', '');
   const description = watch('description', '');
 
@@ -97,7 +97,7 @@ function CreateStudy({
           <BoxTemplate title="지역" htmlFor="location">
             <CustomSelectBox
               optionItems={locationOption}
-              selectedValue={detailValue?.location || null}
+              selectedValue={detailValue?.location}
               name="location"
               register={register({ required: true })}
               defaultText="시/도 선택"
@@ -110,7 +110,7 @@ function CreateStudy({
             <CustomSelectBox
               optionItems={categoryOption}
               name="category"
-              selectedValue={detailValue?.category || null}
+              selectedValue={detailValue?.category}
               register={register({ required: true })}
               defaultText="카테고리 선택"
               error={errors.category}

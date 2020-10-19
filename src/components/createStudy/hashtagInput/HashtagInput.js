@@ -12,13 +12,13 @@ function HashtagInput({
   name,
   maxCount,
   isTagCreation,
-  defaultValue,
+  detailValue,
   ...props
 }) {
   const {
     hashtag: { placeholder, helpMessage, maxLength },
   } = createStudy;
-  console.log(defaultValue);
+  console.log(detailValue, 12);
   const tagId = useRef(1);
   const [hashtag, setHashtag] = useState('');
   const [hashtags, setHashtags] = useState([]);
@@ -49,11 +49,11 @@ function HashtagInput({
   }, [hashtags]);
 
   useEffect(() => {
-    if (defaultValue) {
-      const defaultTags = defaultValue.map((tag) => ({ id: tag.id, text: tag.word }));
+    if (detailValue) {
+      const defaultTags = detailValue.map((tag) => ({ id: tag.id, text: tag.word }));
       setHashtags(defaultTags);
     }
-  }, [defaultValue]);
+  }, [detailValue]);
 
   const removeHashtag = useCallback(
     ({ target }) => {
@@ -96,13 +96,13 @@ HashtagInput.propTypes = {
   isTagCreation: PropTypes.func.isRequired,
   key: PropTypes.string,
   maxCount: PropTypes.number,
-  defaultValue: PropTypes.array,
+  detailValue: PropTypes.array,
 };
 
 HashtagInput.defaultProps = {
   key: ' ',
   maxCount: 3,
-  defaultValue: null,
+  detailValue: null,
 };
 
 export default memo(HashtagInput);
