@@ -41,13 +41,13 @@ function CustomSelectBox({
     <>
       <Wrap toggle={toggle} borderNone={borderNone}>
         <OptionContainer toggle={toggle} optionPadding={optionPadding} {...props}>
-          {optionItems.map((text) => (
+          {optionItems.map((text, i) => (
             <RadioBox
               id={text}
               text={text}
               name={name}
               value={text}
-              key={text}
+              key={text + i}
               onClick={onClickItem}
               register={register}
             />

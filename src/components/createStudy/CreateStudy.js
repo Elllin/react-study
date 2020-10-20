@@ -72,7 +72,7 @@ function CreateStudy({
   const { register, handleSubmit, setValue, watch, errors } = useForm({
     defaultValues: defaultFormValue,
   });
-  console.log(detailValue?.tags, 13);
+  console.log(detailValue, 13);
   const title = watch('title', '');
   const description = watch('description', '');
 
@@ -124,6 +124,7 @@ function CreateStudy({
             register={register}
             name="duration"
             setValue={setValue}
+            detailValue={detailValue?.duration}
             coverText="상시모집"
           />
         </BoxTemplate>
@@ -138,7 +139,7 @@ function CreateStudy({
               size="large"
               register={register({ required: true })}
               error={errors.deposit}
-              // checked={detailValue?.deposit === 1}
+              className={detailValue?.deposit === 1 ? 'checked' : null}
             />
             <RadioBox
               id="deposit-no"
@@ -148,7 +149,7 @@ function CreateStudy({
               size="large"
               error={errors.deposit}
               register={register({ required: true })}
-              // checked={detailValue?.deposit === 0}
+              className={detailValue?.deposit === 0 ? 'checked' : null}
             />
           </RadioContainer>
         </BoxTemplate>

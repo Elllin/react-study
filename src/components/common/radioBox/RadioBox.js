@@ -5,15 +5,21 @@ import styled, { css } from 'styled-components';
 import { borderRadius } from 'style/CustomStyle';
 import { RiCheckLine } from 'react-icons/ri';
 
-function RadioBox({ id, text, register, checkedcolor, size, error, ...props }) {
+function RadioBox({ id, text, register, checkedcolor, onClick, size, error, className, ...props }) {
+  const onClickRadio = ({ target }) => {
+    if (!onClick) return;
+    onClick(target.value);
+  };
+
   return (
-    <RadioWrap size={size} error={error}>
+    <RadioWrap size={size} error={error} onClick={onClickRadio}>
       <input
         type="radio"
         id={id}
         value={text}
         ref={register}
         checkedcolor={checkedcolor}
+        // className={className}
         {...props}
       />
       <label htmlFor={id}>
@@ -60,7 +66,7 @@ const RadioWrap = styled.div`
   display: flex;
   position: relative;
   align-items: center;
-  ${requiredError}
+  ${requiredError};
 
   [type='radio'] {
     appearance: none;

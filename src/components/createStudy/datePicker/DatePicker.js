@@ -1,4 +1,4 @@
-import React, { useState, memo } from 'react';
+import React, { useState, memo, useEffect, useCallback } from 'react';
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
 import PropTypes from 'prop-types';
@@ -22,23 +22,33 @@ function DatePicker({
   dateFormat,
   coverText,
   displayFormat,
+  detailValue,
 }) {
   const [startDate, setStartDate] = useState();
   const [endDate, setEndDate] = useState();
   const [focusedInput, setFocusedInput] = useState();
   moment.locale('ko');
 
-  const onDatesChange = ({ startDate, endDate }) => {
+  const onDatesChange = useCallback(({ startDate, endDate }) => {
+    console.log(startDate, endDate);
     setStartDate(startDate);
     setEndDate(endDate);
     const formatedStarData = moment(startDate).format(dateFormat);
     const formatedEndData = moment(endDate).format(dateFormat);
     setValue(name, { [startDateName]: formatedStarData, [endDateName]: formatedEndData });
-  };
+  });
 
   const onFocusChange = (focusedInput) => {
     setFocusedInput(focusedInput);
   };
+
+  useEffect(() => {
+    if (!detailValue) return;
+    const startDate = moment(detailValue.startDate);
+    const endDate = moment(detailValue.endDate);
+    setStartDate(startDate);
+    setEndDate(endDate);
+  }, [detailValue]);
 
   return (
     <Wrap>
@@ -205,7 +215,7 @@ const Wrap = styled.div`
   }
 
   .CalendarDay__selected_span {
-    ${commonStyle}
+    ${commonStyle};
     color: #000;
     position: relative;
   }
