@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { defaultLayout } from 'style/CustomStyle';
 
-function FormTemplate({ children, onSubmit, handleSubmit, onKeyPress, titleRendering }) {
+function FormTemplate({ children, onSubmit, handleSubmit, onKeyPress, titleRendering, margin }) {
   return (
-    <Wrap>
+    <Wrap margin={margin}>
       {titleRendering && <h1>DO IT DO IT</h1>}
       <StudyForm action="#" method="post" onSubmit={handleSubmit(onSubmit)} onKeyPress={onKeyPress}>
         <fieldset>
@@ -21,7 +21,8 @@ function FormTemplate({ children, onSubmit, handleSubmit, onKeyPress, titleRende
 }
 
 const Wrap = styled.main`
-  margin: 9rem auto;
+  margin: ${({ margin }) => (margin ? '8.5rem auto 11.5rem' : '0 auto')};
+  //margin: 0s auto;
   width: 57rem;
   h1 {
     margin-bottom: 1.3rem;
@@ -49,10 +50,12 @@ const StudyForm = styled.form`
 FormTemplate.propTypes = {
   onSubmit: PropTypes.func,
   onKeyPress: PropTypes.func,
+  margin: PropTypes.bool,
 };
 FormTemplate.default = {
   onSubmit: null,
   onKeyPress: null,
+  margin: false,
 };
 
 export default memo(FormTemplate);

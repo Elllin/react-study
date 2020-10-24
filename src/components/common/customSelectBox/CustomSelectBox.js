@@ -79,7 +79,6 @@ const Wrap = styled.div`
   display: flex;
   cursor: pointer;
   flex-direction: column;
-  padding: 0.5rem 1rem 0;
 
   ${({ toggle }) =>
     toggle &&

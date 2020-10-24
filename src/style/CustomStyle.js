@@ -48,6 +48,5 @@ export const HelpMessage = styled.span`
   font-size: 1.4rem;
   line-height: 1.8rem;
   color: ${({ validation, theme }) => (validation ? theme.requiredColor : '#5e5e5e')};
-  
-  
+  letter-spacing: -0.3px;
 `;

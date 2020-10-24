@@ -4,6 +4,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import StudyEdit from 'components/studyEdit/StudyEdit';
 import { fetchStudyDetail } from 'modules/studyDetail';
 import { reducerUtils } from '../lib/asyncUtils';
+import DetailTemplate from 'components/studyDetail/detailTemplate/DetailTemplate';
+import EditFloting from '../components/studyEdit/editFloting/EditFloting';
 
 function StudyEditContainer({ editId }) {
   const dispatch = useDispatch();
@@ -20,17 +22,21 @@ function StudyEditContainer({ editId }) {
 
   const { error: duplication } = useSelector((state) => state.createStudy.duplicationCheck);
 
-  const onSubmit = useCallback(
-    (data) => {
-      // dispatch(fetchCreateStudy(data));
-      console.log(data, 'su');
-    },
-    [dispatch],
-  );
+  const onSubmit = useCallback((data) => {
+    // dispatch(fetchCreateStudy(data));
+    console.log(data, 'su');
+  }, []);
 
   console.log(data, 2);
 
-  return <StudyEdit data={data} duplication={duplication} onSubmit={onSubmit} loading={loading} />;
+  return (
+    <>
+      <DetailTemplate>
+        <StudyEdit data={data} duplication={duplication} onSubmit={onSubmit} loading={loading} />
+      </DetailTemplate>
+      <EditFloting />
+    </>
+  );
 }
 
 export default StudyEditContainer;

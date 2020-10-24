@@ -26,6 +26,9 @@ function CreateStudy({
   duplication,
   titleRendering,
   detailValue,
+  margin,
+  createButton,
+  children,
 }) {
   const TAG_CREATION_KEY = 'Enter';
   const [inputLength, setInputLength] = useState({
@@ -68,11 +71,9 @@ function CreateStudy({
 
   if (detailValue) defaultFormValue = detailValue;
   else defaultFormValue = { duration: { startDate: null, endDate: null } };
-  console.log(defaultFormValue);
   const { register, handleSubmit, setValue, watch, errors } = useForm({
     defaultValues: defaultFormValue,
   });
-  console.log(detailValue, 13);
   const title = watch('title', '');
   const description = watch('description', '');
 
@@ -92,7 +93,9 @@ function CreateStudy({
         handleSubmit={handleSubmit}
         onKeyPress={onKeyPress}
         titleRendering={titleRendering}
+        margin={margin}
       >
+        {children}
         <BoxLayout>
           <BoxTemplate title="지역" htmlFor="location">
             <CustomSelectBox
@@ -213,11 +216,13 @@ function CreateStudy({
           />
         </BoxTemplate>
 
-        <ButtonWrap>
-          <MainButton type={'submit'} fullWidth>
-            그룹 개설하기
-          </MainButton>
-        </ButtonWrap>
+        {createButton && (
+          <ButtonWrap>
+            <MainButton type={'submit'} fullWidth>
+              그룹 개설하기
+            </MainButton>
+          </ButtonWrap>
+        )}
       </FormTemplate>
 
       {loading && <LoadingPage />}
@@ -286,6 +291,7 @@ CreateStudy.propTypes = {
   loading: PropTypes.bool,
   detailValue: PropTypes.object,
   titleRendering: PropTypes.bool,
+  createButton: PropTypes.bool,
 };
 
 CreateStudy.defaultProps = {
@@ -293,6 +299,7 @@ CreateStudy.defaultProps = {
   onSubmit: null,
   titleRendering: true,
   detailValue: null,
+  createButton: false,
 };
 
 export default memo(CreateStudy);

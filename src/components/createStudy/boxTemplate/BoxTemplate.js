@@ -11,9 +11,6 @@ function BoxTemplate({ children, title, required, requiredSign, isHelp, ...props
       <Title {...props}>
         {required && <Required>{requiredSign}</Required>}
         <span>{title}</span>
-        {/* {warningMessage && (
-          <WarningMessage validation={validation}>{warningMessage}</WarningMessage>
-        )} */}
         {isHelp && <HelpBubble />}
       </Title>
       {children}
@@ -37,11 +34,6 @@ const Title = styled.label`
 const Required = styled.span`
   margin-right: 0.3rem;
   color: ${({ theme }) => theme.requiredColor};
-`;
-
-const WarningMessage = styled.span`
-  color: ${({ theme, validation }) => (validation ? '#000' : theme.warningColor)};
-  margin-left: 0.7rem;
 `;
 
 BoxTemplate.propTypes = {

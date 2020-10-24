@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useCallback, memo } from 'react';
 
-import PropTypes from 'prop-types';
 import CreateStudy from '../createStudy/CreateStudy';
+import Thumbnail from './thumbnail/Thumbnail';
 
 function StudyEdit({ data, duplication, onSubmit, loading }) {
   const { Category, Location, Tags, deposit, description, study_end, study_start, title } =
@@ -29,7 +29,9 @@ function StudyEdit({ data, duplication, onSubmit, loading }) {
       detailValue={detailValue}
       duplication={duplication}
       onSubmit={onSubmit}
-    />
+    >
+      <Thumbnail />
+    </CreateStudy>
   );
 }
 

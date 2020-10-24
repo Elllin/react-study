@@ -11,13 +11,7 @@ function DetailTemplate({ children }) {
       <Header />
       <Wrap>
         <Container>
-          <Main>
-            <h1 className="blind">스터디 모집 상세 보기</h1>
-            <ImgWrap>
-              <img src="http://placehold.it/100x100" alt="스터디 상세페이지 썸네일" />
-            </ImgWrap>
-            {children}
-          </Main>
+          <Main>{children}</Main>
         </Container>
       </Wrap>
     </div>
@@ -26,16 +20,7 @@ function DetailTemplate({ children }) {
 
 const Wrap = styled.div`
   padding: 3rem 0 6rem;
-  background-color: #eee;
-`;
-
-const ImgWrap = styled.div`
-  width: 100%;
-  height: 36rem;
-  img {
-    width: 100%;
-    height: 100%;
-  }
+  background-color: #f8f8f8;
 `;
 
 const Main = styled.main`

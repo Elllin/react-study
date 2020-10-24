@@ -36,6 +36,8 @@ function CreateStudyContainer() {
       onSubmit={onSubmit}
       onDuplicationCheck={onDuplicationCheck}
       duplication={duplication}
+      margin
+      createButton
     />
   );
 }

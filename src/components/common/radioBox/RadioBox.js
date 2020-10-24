@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React, { memo, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 
 import styled, { css } from 'styled-components';
@@ -10,6 +10,14 @@ function RadioBox({ id, text, register, checkedcolor, onClick, size, error, clas
     if (!onClick) return;
     onClick(target.value);
   };
+
+  const inputRef = useRef(register);
+
+  useEffect(() => {
+    if (className === 'checked') {
+      //
+    }
+  }, [className]);
 
   return (
     <RadioWrap size={size} error={error} onClick={onClickRadio}>

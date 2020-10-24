@@ -10,18 +10,35 @@ function DetailTitle({ title, location, tags }) {
   const tagArray = tags.map(({ id, word }) => ({ id, text: word }));
 
   return (
-    <Wrap>
-      <Location>{location}</Location>
-      <h2>{title}</h2>
-      {tags && (
-        <div>
-          {' '}
-          <TagContainer tags={tagArray} hash={null} />
-        </div>
-      )}
-    </Wrap>
+    <>
+      <h1 className="blind">스터디 모집 상세 보기</h1>
+      <ImgWrap>
+        <img src="http://placehold.it/100x100" alt="스터디 상세페이지 썸네일" />
+      </ImgWrap>
+
+      <Wrap>
+        <Location>{location}</Location>
+        <h2>{title}</h2>
+        {tags && (
+          <div>
+            {' '}
+            <TagContainer tags={tagArray} hash={null} />
+          </div>
+        )}
+      </Wrap>
+    </>
   );
 }
+
+const ImgWrap = styled.div`
+  width: 100%;
+  height: 36rem;
+  img {
+    width: 100%;
+    height: 100%;
+  }
+`;
+
 const Wrap = styled.div`
   padding: 3.2rem 0;
   ${defaultLayout};
