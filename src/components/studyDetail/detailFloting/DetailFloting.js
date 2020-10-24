@@ -28,6 +28,7 @@ function DetailFloting({ title, startDate, endDate, onClickEditBtn }) {
   );
 }
 const ListWrap = styled.dl`
+  margin-top: 1.95rem;
   dt {
     margin-bottom: 1.5rem;
     font-size: 1.8rem;
@@ -36,11 +37,6 @@ const ListWrap = styled.dl`
   dd {
     font-size: 1.6rem;
     line-height: 1.25;
-  }
-
-  div + div {
-    padding-top: 1.7rem;
-    border-top: 0.1rem solid #e8e8e8;
   }
 `;
 

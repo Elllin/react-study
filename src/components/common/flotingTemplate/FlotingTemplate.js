@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import UserInfo from './userInfo/UserInfo';
 
 import styled, { css } from 'styled-components';
 
@@ -24,6 +25,7 @@ function FlotingTemplate({ children, small }) {
 
   return (
     <Wrap isFixed={isFixed} small={small}>
+      <UserInfo />
       {children}
     </Wrap>
   );
@@ -40,9 +42,9 @@ const Wrap = styled.aside`
       top: 0;
     `};
   margin-right: -585px;
-  padding: 2.5rem;
+  padding: 2.5rem 2.2rem;
   width: 37rem;
-  height: ${({ small }) => (small ? '20.1rem' : '27rem')};
+  // height: ${({ small }) => (small ? '20.1rem' : '27rem')};
   background-color: #fff;
 `;
 

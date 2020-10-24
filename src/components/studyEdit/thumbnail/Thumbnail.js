@@ -36,8 +36,10 @@ function Thumbnail() {
             <HelpMessage>
               * 그룹을 대표하는 썸네일 이미지입니다. 주제를 잘 보여주는 이미지가 좋아요.
             </HelpMessage>
-            {files.map((file) => (
-              <UploadFileArea onClick={() => removeFile(file)}>{file.name}</UploadFileArea>
+            {files.map((file, i) => (
+              <UploadFileArea key={i} onClick={() => removeFile(file)}>
+                {file.name}
+              </UploadFileArea>
             ))}
           </HelpWrap>
         </Container>
