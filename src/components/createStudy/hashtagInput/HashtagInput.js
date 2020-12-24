@@ -66,7 +66,6 @@ function HashtagInput({
 
   useEffect(() => {
     const textArr = hashtags.map((tag) => tag.text);
-    console.log(textArr);
     setValue(name, textArr);
   }, [hashtags, setValue, name]);
 

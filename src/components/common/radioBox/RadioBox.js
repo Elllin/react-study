@@ -5,19 +5,31 @@ import styled, { css } from 'styled-components';
 import { borderRadius } from 'style/CustomStyle';
 import { RiCheckLine } from 'react-icons/ri';
 
-function RadioBox({ id, text, register, checkedcolor, onClick, size, error, className, ...props }) {
+function RadioBox({
+  id,
+  text,
+  register,
+  checkedcolor,
+  onClick,
+  detailValue,
+  name,
+  setValue,
+  size,
+  error,
+  className,
+  ...props
+}) {
   const onClickRadio = ({ target }) => {
     if (!onClick) return;
     onClick(target.value);
   };
 
-  const inputRef = useRef(register);
-
   useEffect(() => {
-    if (className === 'checked') {
-      //
-    }
-  }, [className]);
+    debugger;
+    if (!detailValue) return;
+    debugger;
+    setValue(name, detailValue);
+  }, [detailValue, name, setValue]);
 
   return (
     <RadioWrap size={size} error={error} onClick={onClickRadio}>

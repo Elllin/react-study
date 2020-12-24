@@ -140,6 +140,8 @@ function CreateStudy({
               text="네. 할래요!"
               name="deposit"
               size="large"
+              setValue={setValue}
+              detailValue={detailValue?.deposit}
               register={register({ required: true })}
               error={errors.deposit}
               className={detailValue?.deposit === 1 ? 'checked' : null}
@@ -149,6 +151,8 @@ function CreateStudy({
               value="0"
               text="아니요. 괜찮아요!"
               name="deposit"
+              setValue={setValue}
+              detailValue={detailValue?.deposit}
               size="large"
               error={errors.deposit}
               register={register({ required: true })}
