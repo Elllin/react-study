@@ -99,12 +99,13 @@ const Item = styled.li`
 `;
 
 const ImgWrap = styled.div`
-position: relative;
+  position: relative;
   width: 37rem;
   height: 18.5rem;
   img {
-  width: 100%;
-  height: 100%;
+    width: 100%;
+    height: 100%;
+  }
 `;
 
 const Information = styled.div`
